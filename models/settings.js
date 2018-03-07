@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    computers: {
+    computerCount: {
       type: DataTypes.INTEGER,
       allowNull: false
     }

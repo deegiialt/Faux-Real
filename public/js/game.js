@@ -25,7 +25,7 @@ $(document).ready(function() {
     settings = {
       userName: name,
       userColor: color,
-      computers: computerPlayers
+      computerCount: computerPlayers
     }
 
     console.log(settings);
