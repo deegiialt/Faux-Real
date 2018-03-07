@@ -9,6 +9,6 @@ module.exports = function(app) {
 
   	}).then(function(db) {
   	res.json(db);
-  	}
+  	})
   })
 };
