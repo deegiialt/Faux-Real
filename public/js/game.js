@@ -15,6 +15,7 @@ $(document).ready(function() {
   $("submitSettings").on("click", function() {
     event.preventDefault();
 
+
     var name = $("#name").val().trim();
     var color = $("#color");
     var numPlayers = $("#numPlayers");
@@ -36,6 +37,7 @@ $(document).ready(function() {
         console.log("Settings Stored Successfully!");
       });
   })
+
 
 
 

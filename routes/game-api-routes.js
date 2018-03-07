@@ -4,11 +4,10 @@ var db = require("../models");
 // =============================================================
 module.exports = function(app) {
 
-  app.get("/api/pieces", function(req, res) {
-  	db.Piece.findAll({
-
-  	}).then(function(db) {
-  	res.json(db);
-  	}
+  app.post("/api/settings", function(req, res) {
+  	db.Settings.create(req.body).then(function(settings) {
+  		console.log(settings);
+  		res.json(settings);
+  	})
   })
 };
