@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="20" height="21" tilewidth="31" tileheight="30" infinite="0" nextobjectid="816">
+ <tileset firstgid="1" source="Lo_Siento_Official.json"/>
+ <layer name="Tile Layer 1" width="20" height="21" offsetx="-6.66667" offsety="174.667">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <imagelayer name="Sorry Board" offsetx="-6.66667" offsety="84">
+  <image source="sorry_board.png" width="600" height="600"/>
+ </imagelayer>
+ <objectgroup name="collision" offsetx="-6.66667" offsety="174.667">
+  <object id="725" name="gamecard_discard" type="gamecard" x="327.681" y="147.766" width="63.3333" height="114.667"/>
+  <object id="726" name="gamecard_placeholder" type="gamecard" x="203.681" y="149.099" width="63.3333" height="114.667"/>
+  <object id="727" name="red_safe_5" type="square" x="194.878" y="388.916" width="30.5" height="30"/>
+  <object id="728" name="red_safe_4" type="square" x="158.878" y="389.583" width="30.5" height="30"/>
+  <object id="729" name="red_safe_3" type="square" x="123.545" y="389.25" width="30.5" height="30"/>
+  <object id="730" name="red_safe_2" type="square" x="87.5455" y="389.916" width="30.5" height="30"/>
+  <object id="731" name="red_safe_1" type="square" x="51.5455" y="389.583" width="30.5" height="30"/>
+  <object id="732" name="green_safe_5" type="square" x="479.545" y="281.25" width="30.5" height="30"/>
+  <object id="733" name="green_safe_4" type="square" x="479.212" y="316.25" width="30.5" height="30"/>
+  <object id="734" name="green_safe_3" type="square" x="479.212" y="351.916" width="30.5" height="30"/>
+  <object id="735" name="green_safe_2" type="square" x="478.545" y="387.083" width="30.5" height="30"/>
+  <object id="736" name="green_safe_1" type="square" x="478.545" y="422.583" width="30.5" height="30"/>
+  <object id="737" name="yellow_safe_5" type="square" x="371.545" y="-2.9167" width="30.5" height="30"/>
+  <object id="738" name="yellow_safe_4" type="square" x="406.545" y="-3.25" width="30.5" height="30"/>
+  <object id="739" name="yellow_safe_3" type="square" x="442.545" y="-3.25" width="30.5" height="30"/>
+  <object id="740" name="yellow_safe_2" type="square" x="478.211" y="-3.5834" width="30.5" height="30"/>
+  <object id="741" name="yellow_safe_1" type="square" x="512.878" y="-3.9167" width="30.5" height="30"/>
+  <object id="742" name="blue_safe_5" type="square" x="87.2121" y="104.417" width="30.5" height="30"/>
+  <object id="743" name="blue_safe_4" type="square" x="87.2121" y="68.7499" width="30.5" height="30"/>
+  <object id="744" name="blue_safe_3" type="square" x="87.5455" y="33.7499" width="30.5" height="30"/>
+  <object id="745" name="blue_safe_2" type="square" x="87.8788" y="-2.2501" width="30.5" height="30"/>
+  <object id="746" name="blue_safe_1" type="square" x="87.8788" y="-37.5834" width="30.5" height="30"/>
+  <object id="747" name="red_start" type="circle" x="55.1818" y="296.599" width="77.5" height="75.5">
+   <ellipse/>
+  </object>
+  <object id="748" name="red_home" type="circle" x="233.848" y="363.932" width="77.5" height="75.5">
+   <ellipse/>
+  </object>
+  <object id="749" name="start_green" type="circle" x="384.515" y="374.599" width="77.5" height="75.5">
+   <ellipse/>
+  </object>
+  <object id="750" name="home_green" type="circle" x="455.848" y="194.599" width="77.5" height="75.5">
+   <ellipse/>
+  </object>
+  <object id="751" name="start_yellow" type="circle" x="465.014" y="42.9319" width="77.5" height="75.5">
+   <ellipse/>
+  </object>
+  <object id="752" name="yellow_home" type="circle" x="284.348" y="-25.5681" width="77.5" height="75.5">
+   <ellipse/>
+  </object>
+  <object id="753" name="blue_start" type="circle" x="135.014" y="-36.2348" width="77.5" height="75.5">
+   <ellipse/>
+  </object>
+  <object id="754" name="blue_home" type="circle" x="118.545" y="235.432" width="77.5" height="75.5" rotation="570">
+   <ellipse/>
+  </object>
+  <object id="755" name="Position 60" type="square" x="17.5455" y="-38.2501" width="30.9091" height="30"/>
+  <object id="756" name="Position 59" type="square" x="18.0455" y="-2.7501" width="30.9091" height="30"/>
+  <object id="757" name="Position 58" type="square" x="16.5455" y="32.7499" width="30.9091" height="30"/>
+  <object id="758" name="Position 57" type="square" x="17.0455" y="67.7499" width="30.9091" height="30"/>
+  <object id="759" name="Position 56" type="square" x="16.0455" y="103.75" width="30.9091" height="30"/>
+  <object id="760" name="Position 55" type="square" x="17.5455" y="139.25" width="30.9091" height="30"/>
+  <object id="761" name="Position 54" type="square" x="17.5455" y="173.25" width="30.9091" height="30"/>
+  <object id="762" name="Position 53" type="square" x="16.5455" y="210.75" width="30.9091" height="30"/>
+  <object id="763" name="Position 52" type="square" x="17.0455" y="245.75" width="30.9091" height="30"/>
+  <object id="764" name="Position 51" type="square" x="17.0455" y="281.25" width="30.9091" height="30"/>
+  <object id="765" name="Position 50" type="square" x="17.5455" y="317.75" width="30.9091" height="30"/>
+  <object id="766" name="Position 49" type="square" x="17.0455" y="353.25" width="30.9091" height="30"/>
+  <object id="767" name="Position 48" type="square" x="17.0455" y="388.75" width="30.9091" height="30"/>
+  <object id="768" name="Position 47" type="square" x="17.5455" y="424.25" width="30.9091" height="30"/>
+  <object id="769" name="Position 46" type="square" x="17.0455" y="459.75" width="30.9091" height="30"/>
+  <object id="770" name="Position 45" type="square" x="52.0455" y="460.25" width="30.9091" height="30"/>
+  <object id="771" name="Position 44" type="square" x="87.5455" y="459.25" width="30.9091" height="30"/>
+  <object id="772" name="Position 43" type="square" x="123.545" y="458.75" width="30.9091" height="30"/>
+  <object id="773" name="Position 42" type="square" x="159.045" y="459.25" width="30.9091" height="30"/>
+  <object id="774" name="Position 41" type="square" x="195.045" y="458.75" width="30.9091" height="30"/>
+  <object id="775" name="Position 40" type="square" x="229.545" y="458.75" width="30.9091" height="30"/>
+  <object id="776" name="Position 39" type="square" x="264.545" y="458.25" width="30.9091" height="30"/>
+  <object id="777" name="Position 38" type="square" x="301.545" y="458.25" width="30.9091" height="30"/>
+  <object id="778" name="Position 37" type="square" x="337.545" y="458.25" width="30.9091" height="30"/>
+  <object id="779" name="Position 36" type="square" x="372.045" y="458.25" width="30.9091" height="30"/>
+  <object id="780" name="Position 35" type="square" x="407.545" y="458.25" width="30.9091" height="30"/>
+  <object id="781" name="Position 34" type="square" x="443.045" y="457.75" width="30.9091" height="30"/>
+  <object id="782" name="Position 33" type="square" x="478.545" y="457.75" width="30.9091" height="30"/>
+  <object id="783" name="Position 32" type="square" x="514.045" y="457.75" width="30.9091" height="30"/>
+  <object id="784" name="Position 31" type="square" x="548.545" y="456.75" width="30.9091" height="30"/>
+  <object id="785" name="Position 30" type="square" x="548.545" y="422.25" width="30.9091" height="30"/>
+  <object id="786" name="Position 29" type="square" x="548.712" y="386.917" width="30.9091" height="30"/>
+  <object id="787" name="Position 28" type="square" x="549.045" y="351.917" width="30.9091" height="30"/>
+  <object id="788" name="Position 27" type="square" x="548.712" y="317.25" width="30.9091" height="30"/>
+  <object id="789" name="Position 26" type="square" x="548.712" y="281.583" width="30.9091" height="30"/>
+  <object id="790" name="Position 25" type="square" x="549.045" y="246.25" width="30.9091" height="30"/>
+  <object id="791" name="Position 24" type="square" x="549.045" y="210.25" width="30.9091" height="30"/>
+  <object id="792" name="Position 23" type="square" x="548.545" y="174.25" width="30.9091" height="30"/>
+  <object id="793" name="Position 22" type="square" x="548.045" y="137.25" width="30.9091" height="30"/>
+  <object id="794" name="Position 21" type="square" x="548.378" y="100.417" width="30.9091" height="30"/>
+  <object id="795" name="Position 20" type="square" x="547.712" y="66.4169" width="30.9091" height="30"/>
+  <object id="796" name="Position 19" type="square" x="547.712" y="29.7499" width="30.9091" height="30"/>
+  <object id="797" name="Position 18" type="square" x="547.712" y="-5.5832" width="30.9091" height="30"/>
+  <object id="798" name="Position 17" type="square" x="547.045" y="-40.2499" width="30.9091" height="30"/>
+  <object id="799" name="Position 16" type="square" x="547.545" y="-71.2499" width="30.9091" height="30"/>
+  <object id="800" name="Position 15" type="square" x="512.045" y="-72.2499" width="30.9091" height="30"/>
+  <object id="801" name="Position 14" type="square" x="477.045" y="-71.7499" width="30.9091" height="30"/>
+  <object id="802" name="Position 13" type="square" x="442.045" y="-71.7499" width="30.9091" height="30"/>
+  <object id="803" name="Position 12" type="square" x="406.545" y="-72.2499" width="30.9091" height="30"/>
+  <object id="804" name="Position 11" type="square" x="371.045" y="-72.2499" width="30.9091" height="30"/>
+  <object id="805" name="Position 10" type="square" x="335.545" y="-71.7499" width="30.9091" height="30"/>
+  <object id="806" name="Position 9" type="square" x="300.045" y="-71.7499" width="30.9091" height="30"/>
+  <object id="807" name="Position 8" type="square" x="264.545" y="-72.2499" width="30.9091" height="30"/>
+  <object id="808" name="Position 7" type="square" x="229.045" y="-71.7499" width="30.9091" height="30"/>
+  <object id="809" name="Position 6" type="square" x="194.045" y="-71.7499" width="30.9091" height="30"/>
+  <object id="810" name="Position 5" type="square" x="158.045" y="-71.2499" width="30.9091" height="30"/>
+  <object id="811" name="Position 4" type="square" x="122.545" y="-71.7499" width="30.9091" height="30"/>
+  <object id="812" name="Position 3" type="square" x="87.0451" y="-71.2499" width="30.9091" height="30"/>
+  <object id="813" name="Position 2" type="square" x="52.0451" y="-71.7499" width="30.9091" height="30"/>
+  <object id="814" name="Position 1" type="square" x="17.6815" y="-71.7499" width="30.9091" height="30"/>
+ </objectgroup>
+</map>
