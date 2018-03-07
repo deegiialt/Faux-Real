@@ -1,0 +1,100 @@
+body {
+    font-family: "Lato", sans-serif;
+    background-color: #0057B8;
+}
+
+/*===============================================*/
+/*Sidebar*/
+/*===============================================*/
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    opacity: 0.5;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #cccccc;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+/*===============================================*/
+/*CHAT*/
+/*===============================================*/
+
+form {
+    font-family: Roboto, sans-serif;
+    max-width: 260px;
+    height: 600px;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+.msg-wrapper {
+    max-height: 400px;
+    overflow: auto;
+}
+
+.msg-wrapper div {
+    font-size: 16px
+}
+
+.textboxes {
+	margin-top: 80%;
+}
+
+.columns {
+    padding-left: 25px;
+}
+
+#nameInput,
+textarea {
+    width: 250px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: inline-block;
+}
+
+.error {
+    color: red;
+    font-size: -2em
+}
+
+input[type=submit] {
+    width: 30%;
+    background-color: #cccccc;
+    cursor: pointer;
+}
+
+#messagesDiv {
+    color: black;
+}
