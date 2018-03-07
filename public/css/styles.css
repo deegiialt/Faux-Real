@@ -49,33 +49,50 @@ body {
 /*CHAT*/
 /*===============================================*/
 
-#chat {
-  /* Positioning */
-  position: relative;
-  /* Box-model */
-  width: 600px;
-  height: 150px;
-  /* Visual */
-  padding: 10px;
-  margin: 20px auto;
+form {
+    font-family: Roboto, sans-serif;
+    max-width: 260px;
+    height: 600px;
+    margin: 10px auto;
+    border-radius: 5px;
 }
-#chat-messages {
-  /* Box-model */
-  height: 125px;
-  overflow: auto;
-  /* Visual */
-  background-color: #fffcf7;
+
+.msg-wrapper {
+    max-height: 400px;
+    overflow: auto;
 }
-#chat-bar {
-  /* Positioning */
-  position: absolute;
-  bottom: 10px;
+
+.msg-wrapper div {
+    font-size: 16px
 }
-#chat-input {
-  /* Box-model */
-  width: 550px;
+
+.textboxes {
+	margin-top: 80%;
 }
-#chat-send {
-  /* Box-model */
-  width: 40px;
+
+.columns {
+    padding-left: 25px;
+}
+
+#nameInput,
+textarea {
+    width: 250px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: inline-block;
+}
+
+.error {
+    color: red;
+    font-size: -2em
+}
+
+input[type=submit] {
+    width: 30%;
+    background-color: #cccccc;
+    cursor: pointer;
+}
+
+#messagesDiv {
+    color: white;
 }
