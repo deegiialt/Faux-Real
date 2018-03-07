@@ -1,12 +1,12 @@
-$pathNumber: 18;
+# $pathNumber: 18;
 
-// The color that will be at the beginning and the end of the loop.
-$firstColor: #0057B8;
+# // The color that will be at the beginning and the end of the loop.
+# $firstColor: #0057B8;
 
-// The list of all the used colors. You can add or remove colors, the animation stays fluid. The $first-color must remain at the end of the list though.
-$listColors: #F11E4A, #F8A527, #266D7F, #82A, $firstColor;
+# // The list of all the used colors. You can add or remove colors, the animation stays fluid. The $first-color must remain at the end of the list though.
+# $listColors: #F11E4A, #F8A527, #266D7F, #82A, $firstColor;
 
-$delayCoeff: 0.1s; 
+# $delayCoeff: 0.1s; 
 
 body {
   background-color: #0057B8;
@@ -43,13 +43,13 @@ body {
    }
 }
 
-@keyframes pweek {
-  0% {
-    fill: $firstColor;
-  }
-  @for $i from 1 through length($listColors) {
-    #{$i*(100/length($listColors))}% {
-      fill: nth($listColors, $i);
-    }
-  }
-}
+# @keyframes pweek {
+#   0% {
+#     fill: $firstColor;
+#   }
+#   @for $i from 1 through length($listColors) {
+#     #{$i*(100/length($listColors))}% {
+#       fill: nth($listColors, $i);
+#     }
+#   }
+# }
