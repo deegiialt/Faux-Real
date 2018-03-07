@@ -9,20 +9,16 @@
 }
 
 .link {
-  position: absolute;
-/*  top: 50px;*/
-/*  left: calc(50% - 50px);*/
-}
-
-.wrapper {
-  position: relative;
-/*  max-width: 100%;*/
+  display: block;
+  text-align: center;
+  margin-top: 30px;
 }
 
 body {
+  position: relative;
   background-color: #0057B8;
   text-align: center;
-  line-height: 100vh; 
+/*  line-height: 100vh; */
 }
 
 /*=============================================================*/
@@ -49,7 +45,8 @@ body {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 25%;
+    height: 70%;
 }
 
 /* The Close Button */
@@ -72,6 +69,7 @@ body {
 /*=============================================================*/
 
 .svg {
+  margin-top: 250px;
   display: inline-block;
   height: 200px;
   width: 200px;
