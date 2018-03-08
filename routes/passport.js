@@ -1,5 +1,5 @@
 // config/passport.js
-				
+
 // load all the things we need
 var LocalStrategy   = require('passport-local').Strategy;
 
@@ -9,10 +9,10 @@ var connection = mysql.createConnection({
 				  host     : 'localhost',
 				  user     : 'root',
 				  password : 'root',
-                  port : 8889
+          port : 3306
 				});
 
-connection.query('USE users');	
+connection.query('USE users');
 
 // expose this function to our app using module.exports
 module.exports = function(passport) {
@@ -30,11 +30,11 @@ module.exports = function(passport) {
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-		connection.query("select * from users where id = "+id,function(err,rows){	
+		connection.query("select * from users where id = "+id,function(err,rows){
 			done(err, rows[0]);
 		});
     });
-	
+
 
  	// =========================================================================
     // LOCAL SIGNUP ============================================================
@@ -53,7 +53,7 @@ module.exports = function(passport) {
 
 		// find a user whose email is the same as the forms email
 		// we are checking to see if the user trying to login already exists
-        connection.query("select * from users where email = '"+email+"'",function(err,rows){
+        connection.query("select * from users where email = '" + email + "'",function(err,rows){
 			console.log(rows);
 			console.log("above row object");
 			if (err)
@@ -65,18 +65,18 @@ module.exports = function(passport) {
 				// if there is no user with that email
                 // create the user
                 var newUserMysql = new Object();
-				
+
 				newUserMysql.email    = email;
                 newUserMysql.password = password; // use the generateHash function in our user model
-			
+
 				var insertQuery = "INSERT INTO users ( email, username, password ) values ('" + email +"','" + username +"','"+ password +"')";
 					console.log(insertQuery);
 				connection.query(insertQuery,function(err,rows){
 				newUserMysql.id = rows.insertId;
-				
+
 				return done(null, newUserMysql);
-				});	
-            }	
+				});
+            }
 		});
     }));
 
@@ -99,17 +99,17 @@ module.exports = function(passport) {
                 return done(err);
 			 if (!rows.length) {
                 return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
-            } 
-			
+            }
+
 			// if the user is found but the password is wrong
             if (!( rows[0].password == password))
                 return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
-			
+
             // all is well, return successful user
-            return done(null, rows[0]);			
-		
+            return done(null, rows[0]);
+
 		});
-		
+
 
 
     }));
