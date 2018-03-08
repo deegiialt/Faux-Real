@@ -8,20 +8,22 @@ $(document).ready(function(){
 
 //var newsAPI = keys.apiNewsKey;
 
- $("#trending").on("click", function(){
+$("#trending").on("click", function(){
      searchTopHeadlines();
 })
 
 $("#search-submit").on("click", function(){
+      $("#div-section").empty();
       searchKeyword();
-      renderArticles().clear();
 });
 
 $("#business").on("click", function(){
+      $("#div-section").empty();
       searchBusiness();
 });
 
 $("#sports").on("click", function(){
+      $("#div-section").empty();
       searchSports();
 })
 
@@ -129,18 +131,20 @@ function searchEntertainment(){
 //this function will render all other search functions
 
 function renderArticles(searchResponse){
+  //searchResponse.length
 
-    for(var i = 0; i < searchResponse.length; i++){
+    for(var i = 0; i < 5; i++){
 
       var newPanel = $("<div>"); 
+      newPanel.attr("class", "headBodyPanel")
       var newPanelHeading = $("<div>");
-      newPanelHeading.attr("class", "panel-heading" + searchResponse[i])
-      newPanelHeading.attr("id", "articleHead")
+      newPanelHeading.attr("class", "panel-heading")
+      newPanelHeading.attr("id", "articleHead-" + i)
       newPanelHeading.append("<h3>" + searchResponse[i].source.name + "</h>");
       newPanelHeading.append("<h4>" + searchResponse[i].author + "</h4>");
       var newPanelBody = $("<div>");
-      newPanelBody.attr("class", searchResponse[i])
-      newPanelBody.attr("id", "articleBody");
+      newPanelBody.attr("class", "panel-body")
+      newPanelBody.attr("id", "articleBody-" + i);
       newPanelBody.append("<p>" + searchResponse[i].description + "</p>");
       newPanelBody.append("<a href=" + "'" + searchResponse[i].url + "'" + "target='_blank'" + ">" + "Go to Article" + "</a>");
 
@@ -154,20 +158,5 @@ function renderArticles(searchResponse){
 
 
 //searchTopHeadlines();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 })
