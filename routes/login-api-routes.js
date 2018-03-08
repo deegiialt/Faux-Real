@@ -23,7 +23,7 @@
       })
     })
 
-    app.post('/login', passport.authenticate('local-login', { successRedirect: '/main',failureRedirect: '/' }));
+    app.post('/login', passport.authenticate('local-login', { successRedirect: '/main', failureRedirect: '/' }));
 
     app.get('/logout', (req, res)=>{
       req.logout();

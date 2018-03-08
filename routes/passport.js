@@ -1,9 +1,4 @@
 //load bcrypt
-const session = require('express-session');
-const CookieParser = require('cookie-parser');
-const {userResponse, validateUser, secret} = require('./config/config.json');
-const passport = require('passport');
-
 var bCrypt = require('bcrypt-nodejs');
 
 module.exports = function(passport, user){
