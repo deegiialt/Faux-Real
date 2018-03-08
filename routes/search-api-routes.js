@@ -27,7 +27,8 @@ module.exports = function(app) {
 
 	app.get("/api/trending", function(req, res){
 
-		res.json(data);
+		//res.json(data);
+		console.log(req.body);
 	})
 
 	app.post("/api/settings", function(req, res) {

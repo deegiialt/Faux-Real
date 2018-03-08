@@ -3,14 +3,14 @@ console.log("here");
 
 $(document).ready(function(){
 
-var keys = require("./keys.js");
+//var keys = require("./keys.js");
 
 
-var newsAPI = keys.apiNewsKey;
+//var newsAPI = keys.apiNewsKey;
 
- $.get("/api/trending", function(res){
+ $("#trending").on("click", function(){
 
-     var data = searchTopHeadLines();
+     searchTopHeadlines();
 
 })
 
@@ -27,7 +27,7 @@ function searchTopHeadlines(){
 
       }).then(function(response){
         console.log(response);
-        return renderHeadLines(response.articles);
+        return renderArticles(response.articles);
       });
 };
 
@@ -35,7 +35,7 @@ function renderArticles(searchResponse){
 
     for(var i = 0; i < 10; i++){
 
-      var newPanel = $("<div>");
+      var newPanel = $("<div>"); 
       var newPanelHeading = $("<div>");
       newPanelHeading.attr("class", "panel-heading" + searchResponse[i])
       newPanelHeading.attr("id", "articleHead")
@@ -45,7 +45,7 @@ function renderArticles(searchResponse){
       newPanelBody.attr("class", searchResponse[i])
       newPanelBody.attr("id", "articleBody");
       newPanelBody.append("<p>" + searchResponse[i].description + "</p>");
-      newPanelBody.append("<p>" + searchResponse[i].url + "</p>");
+      newPanelBody.append("<a href=" + "'" + searchResponse[i].url + "'" + "target='_blank'" + ">" + "Go to Article" + "</a>");
 
       newPanel.append(newPanelHeading);
       newPanel.append(newPanelBody);
@@ -53,13 +53,21 @@ function renderArticles(searchResponse){
       $("#div-section").append(newPanel);
 
     };
+};
+
+
+
+function searchInternational(){
+    
+
+
 }
 
 
 
 
 
-searchTopHeadlines();
+//searchTopHeadlines();
 
 
 
