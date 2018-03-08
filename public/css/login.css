@@ -4,7 +4,7 @@
   top: 90px;
   font-size: 80px;
   color: white;
-  font-family: "Montserrat", sans-serif;
+  font-family: Montserrat, sans-serif;
   font-weight: bold;
   letter-spacing: 6px;
 }
@@ -13,6 +13,20 @@
   display: block;
   text-align: center;
   margin-top: 30px;
+}
+
+.linkstyle {
+  padding: 10px;
+  color: white;
+  font-family: Quicksand, sans-serif;
+  font-size: 20px
+}
+
+.linkstyle:hover,
+.linkstyle:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 body {
