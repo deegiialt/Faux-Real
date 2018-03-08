@@ -8,21 +8,21 @@ module.exports = function(sequelize, DataTypes) {
     },
     email: { //users email
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isEmail: true
-      }
+      // allowNull: false,
+      // validate: {
+      //   isEmail: true
+      // }
     },
     password: { //users password
       type: DataTypes.STRING,
-      validate: {
-        len: [7, 25],
-        isAlphanumeric: true
-      }
+//       validate: {
+//         len: [7, 25],
+//         isAlphanumeric: true
+//       }
     },
     image: { // users image (when we get to it)
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     }
   });
 
