@@ -99,12 +99,24 @@ input[type=submit] {
     color: black;
 }
 
+#chatText {
+    margin: 15px;
+}
+
 /*===============================================*/
 /*NAV*/
 /*===============================================*/
 
 #search-form {
     float: right;
-    margin: 5px;
+    margin: 15px;
     max-width: 40%;
+}
+
+#advancedOptions {
+    padding: 15px;
+}
+
+.nav>li>a {
+    color: white;
 }
