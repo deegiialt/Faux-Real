@@ -113,6 +113,10 @@ input[type=submit] {
     max-width: 40%;
 }
 
+#advancedOptions {
+    padding: 15px;
+}
+
 .nav>li>a {
     color: white;
 }
