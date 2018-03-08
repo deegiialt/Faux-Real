@@ -112,3 +112,7 @@ input[type=submit] {
     margin: 15px;
     max-width: 40%;
 }
+
+.nav>li>a {
+    color: white;
+}
