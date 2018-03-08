@@ -9,7 +9,8 @@ $(document).ready(function(){
 //var newsAPI = keys.apiNewsKey;
 
 $("#trending").on("click", function(){
-     searchTopHeadlines();
+    $("#div-section").empty();
+    searchTopHeadlines();
 })
 
 $("#search-submit").on("click", function(){
@@ -28,6 +29,7 @@ $("#sports").on("click", function(){
 })
 
 $("#entertainment").on("click", function(){
+      $("#div-section").empty();
       searchEntertainment();
 })
 
@@ -131,9 +133,8 @@ function searchEntertainment(){
 //this function will render all other search functions
 
 function renderArticles(searchResponse){
-  //searchResponse.length
 
-    for(var i = 0; i < 5; i++){
+    for(var i = 0; i < searchResponse.length; i++){
 
       var newPanel = $("<div>"); 
       newPanel.attr("class", "headBodyPanel")
