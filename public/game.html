@@ -8,7 +8,7 @@
 	<!-- Main CSS -->
 	<link rel="stylesheet" href="css/main.css" media="screen" title="no title">
 	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Karla|Montserrat|Roboto" rel="stylesheet">
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="http://jonathanrosen.com/wp-content/uploads/2017/07/trump-twitter-bird-300x300.png" />
 	<!-- Firebase Link -->
@@ -75,13 +75,20 @@
 
 	          	<li id="advNews">
 	          		<form action="">
-					  <input type="radio" name="newsSource" value="Other" checked> All <br><br>
-					  <input type="radio" name="newsSource" value="CNN"> CNN <br><br>
-					  <input type="radio" name="newsSource" value="WSJ"> Wall Street Journal <br><br>
-					  <input type="radio" name="newsSource" value="WSJ"> New York Times <br><br>
-					  <input type="radio" name="newsSource" value="Other"> Other <br><br>
-					  <input type="radio" name="newsSource" value="Other"> Other <br><br>
-					  <input type="radio" name="newsSource" value="Other"> Other <br><br>
+					  	<input type="radio" name="newsSource" value="Other" checked> All <br><br>
+					  	<input type="radio" name="newsSource" value="cnn"> CNN <br><br>
+					  	<input type="radio" name="newsSource" value="the-wall-street-journal"> Wall Street Journal <br><br>
+					  	<input type="radio" name="newsSource" value="the-huffington-post"> Huffington Post <br><br>
+					  	<input type="radio" name="newsSource" value="vice-news"> Vice News <br><br>
+					  	<input type="radio" name="newsSource" value="usa-today"> USA Today <br><br>
+					  	<input type="radio" name="newsSource" value="google-news"> Google News <br><br>
+					  	<input type="radio" name="newsSource" value="buzzfeed"> BuzzFeed <br><br>
+						<div class="input-group">
+						    <span class="input-group-addon">
+						        <input type="checkbox">
+						    </span>
+						    <input type="text" class="form-control" placeholder="Other">
+						</div><!-- /input-group --> 
 					</form>
 	          	</li>
 
@@ -113,39 +120,40 @@
 	</ul>
 </nav>
 
-<div class="container-fluid">
+	<div class="container-fluid">
 
-    <div class="jumbotron">
-      <h1 class="text-center">
+      <h1 class="title text-center">
         <strong>
-          <div class="glyphicon glyphicon-thumbs-up"></div>
+         <!--  <div class="glyphicon glyphicon-thumbs-up"></div> -->
           Faux Real
-          <div class="glyphicon glyphicon-thumbs-down"></div>
+         <!--  <div class="glyphicon glyphicon-thumbs-down"></div> -->
         </strong>
       </h1>
     </div>
+	</div>
 
+	<div class="container">
+    	<div class="row">
+	      <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12" id="topArticles">
+	        <br>
 
-    <div class="row">
-      <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12" id="topArticles">
-        <br>
+	        <div class="panel">
 
-        <div class="panel">
+	          <div class="panel-heading">
+	            <h3 class="panel-title">
+	              <strong>
+	              <div class="glyphicon glyphicon-th-list"></div>
+	              Top Results
+	              </strong>
+	            </h3>
+	          </div>
 
-          <div class="panel-heading">
-            <h3 class="panel-title">
-              <strong>
-              <div class="glyphicon glyphicon-th-list"></div>
-              Top Results
-              </strong>
-            </h3>
-          </div>
-
-          <div class="panel-body" id="div-section">
-          </div>
-        </div>
-      </div>
-    </div>
+	          <div class="panel-body" id="div-section">
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	</div>
 
 	<script>
 		// Initialize Firebase
