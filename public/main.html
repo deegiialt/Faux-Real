@@ -7,6 +7,11 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
 	<!-- Main CSS -->
 	<link rel="stylesheet" href="css/main.css" media="screen" title="no title">
+	<!-- Grid CSS -->
+	<link rel="stylesheet" type="text/css" href="css/default.css" />
+	<link rel="stylesheet" type="text/css" href="css/component.css" />
+	<script src="js/modernizr.custom.js"></script>
+
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Karla|Montserrat|Roboto" rel="stylesheet">
 	<!-- Favicon -->
@@ -18,7 +23,6 @@
 </head>
 <body>
 	<!-- Chat Slide Out -->
-
 
 <nav class="navbar navbar-light bg-light justify-content-between">
 
@@ -136,20 +140,40 @@
 	<div class="container">
     	<div class="row">
 	      <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12" id="topArticles">
-	        <br>
-
 	        <div class="panel">
-
-	          <div class="panel-heading">
-	            <h3 class="panel-title">
-	              <strong>
-	              <div class="glyphicon glyphicon-th-list"></div>
-	              Top Results
-	              </strong>
-	            </h3>
-	          </div>
-
-	          <div class="panel-body" id="div-section">
+				<div class="panel-body" id="div-section">
+<!-- ============================================================================= -->
+					<div class="container">	
+						<header class="clearfix">
+							<h1>Thumbnail Grid <span>with Expanding Preview</span></h1>	
+						</header>
+						<div class="main">
+							<ul id="og-grid" class="og-grid">
+								<li>
+									<a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/1.jpg" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
+										<img src="http://via.placeholder.com/250x250" alt="img01"/>
+									</a>
+								</li>
+								<li>
+									<a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/2.jpg" data-title="Veggies sunt bona vobis" data-description="Komatsuna prairie turnip wattle seed artichoke mustard horseradish taro rutabaga ricebean carrot black-eyed pea turnip greens beetroot yarrow watercress kombu.">
+										<img src="http://via.placeholder.com/250x250" alt="img02"/>
+									</a>
+								</li>
+								<li>
+									<a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/3.jpg" data-title="Dandelion horseradish" data-description="Cabbage bamboo shoot broccoli rabe chickpea chard sea lettuce lettuce ricebean artichoke earthnut pea aubergine okra brussels sprout avocado tomato.">
+										<img src="http://via.placeholder.com/250x250" alt="img03"/>
+									</a>
+								</li>
+								</ul>
+						</div>
+					</div><!-- /container -->
+					<script src="js/grid.js"></script>
+					<script>
+						$(function() {
+							Grid.init();
+						});
+					</script>
+<!-- ========================================================================== -->
 	          </div>
 	        </div>
 	      </div>

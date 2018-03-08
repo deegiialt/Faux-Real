@@ -1,5 +1,5 @@
 body {
-    background-color: #0057B8;
+    background-color: #000044;
 }
 
 .title {
@@ -130,4 +130,15 @@ input[type=submit] {
 
 .nav>li>a {
     color: white;
+}
+
+/*===============================================*/
+/*Results panel*/
+/*===============================================*/
+.panel {
+    border-radius: 0;
+}
+
+#topArticles {
+    padding:0;
 }
