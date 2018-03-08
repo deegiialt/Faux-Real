@@ -15,9 +15,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     password: { //users password
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
-        len: [1]
+        len: [7, 25],
+        isAlphanumeric: true
       }
     },
     image: { // users image (when we get to it)

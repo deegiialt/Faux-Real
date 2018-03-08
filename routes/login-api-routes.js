@@ -14,7 +14,7 @@
       });
     });
 
-    app.post("/api/signup", function(req, res) { // after post is complete, have the logic setup the URL with the users username or email for the get request
+    app.post("/api/login", function(req, res) { // after post is complete, have the logic setup the URL with the users username or email for the get request
       db.User.create({
         where: {
           userName: req.body.userName,
@@ -26,14 +26,4 @@
       })
     })
 
-    app.post("/api/login", function(req, res) {
-      db.User.create({
-        where: {
-          userName: req.body.userName,
-          password: req.body.password
-        }
-      }).then(function(db) {
-        res.json(db)
-      })
-    })
   };
