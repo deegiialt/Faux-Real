@@ -27,10 +27,46 @@
   require("./routes/user-votes-routes.js")(app);
 
 
-  // Syncing sequelize models and then starting our Express app
-  // =============================================================
-  db.sequelize.sync({ force:true }).then(function() {
-    app.listen(PORT, function() {
-      console.log("App listening on PORT " + PORT);
-    });
+//Authentication routes
+
+const session = require('express-session');
+const CookieParser = require('cookie-parser');
+const {userResponse, validateUser, secret} = require('./config/config.json');
+const passport = require('passport');
+const passportConfig = require('./routes/passport.js');
+
+app.use(CookieParser());
+
+passportConfig(passport);
+
+app.use(session({
+secret,
+name:'cookie',
+resave: false,
+saveUninitialized:false,
+cookie:{
+httponly, //put here some values
+maxAge,
+secure
+}
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.post('/signup', passport.authenticate('local-signup'), userResponse);
+
+app.post('/login', passport.authenticate('local-login'), userResponse);
+
+app.get('/logout', (req, res)=>{
+req.logout();
+return res.json({status:'success'});
+});
+
+
+// Syncing sequelize models and then starting our Express app
+// =============================================================
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
   });
+});
