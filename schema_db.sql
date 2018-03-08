@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS faux_db;
+CREATE DATABASE faux_db;
+USE faux_db;

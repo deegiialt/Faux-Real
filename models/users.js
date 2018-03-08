@@ -6,27 +6,32 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    userColor: {
+    email: { //users email
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isEmail: true
+      }
+    },
+    password: { //users password
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
+    image: { // users image (when we get to it)
       type: DataTypes.STRING,
       allowNull: false
-    },
-    piece1: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
-    piece2: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0    
-    },
-    piece3: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
-    piece4: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
+    }
   });
+
+
+  // User.associate = function(models) {
+  //   User.hasMany(models.Votes, {
+  //     onDelete: "cascade"
+  //   });
+  // };
 
   return User;
 };
