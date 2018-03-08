@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="css/login.css" media="screen" title="no title">
 	<link rel="stylesheet" href="css/loginmodal.css">
 	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Karla|Montserrat|Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Quicksand" rel="stylesheet">
 	<!-- Firebase Link -->
     <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
 	<script src="https://code.jquery.com/jquery.js"></script>
@@ -27,7 +27,10 @@
 		</div>
 
 		<!-- Login links -->
-		<span class="link"><span id="loginbtn"><a href="#login">login</a></span> || <span id="signupbtn"><a href="#signup">sign-up</a></span></span>
+		<div class="link">
+			<span id="loginbtn"><a href="#login" class="linkstyle">login</a></span>
+			<span id="signupbtn"><a href="#signup" class="linkstyle">sign-up</a></span>
+		</div>
 		
 		<!-- The Login Modal -->
 		<div id="myModal" class="modal">
@@ -36,14 +39,14 @@
 		    <!-- Login form -->
 				<form class="loginmodal">
 					<label>
-						<input type="text" required />
+						<input type="text" id="usernameInput" required />
 						<div class="label-text">Username</div>
 					</label>
 					<label>
-				    	<input type="text" required />
+				    	<input type="text" id="passwordInput" required />
 				    	<div class="label-text">Password</div>
 					</label>
-					<button>Submit</button>
+					<button id="loginSubmit">Submit</button>
 				</form>
 		    <form action="../main.html"></form>
 		  </div>
@@ -56,18 +59,18 @@
 		    <!-- Login form -->
 				<form class="loginmodal">
 					<label>
-						<input type="text" required />
+						<input type="text" id="#emailInput" required />
 						<div class="label-text">Email</div>
 					</label>
 					<label>
-						<input type="text" required />
+						<input type="text" id="newUsernameInput" required />
 						<div class="label-text">Username</div>
 					</label>
 					<label>
-				    	<input type="text" required />
+				    	<input type="text" id="newPasswordInput" required />
 				    	<div class="label-text">Password</div>
 					</label>
-					<button>Submit</button>
+					<button id="signupSubmit">Submit</button>
 				</form>
 		    <form action="../main.html"></form>
 		  </div>
@@ -76,6 +79,9 @@
 	</div>
 
 	<script>
+		//=================================================================
+		//Modal setup
+		//=================================================================
 		// Get the modal
 		var modal = document.getElementById('myModal');
 		var modal2 = document.getElementById('myModal2');
@@ -114,6 +120,71 @@
 		    	modal2.style.display = "none";
 		    }
 		}
+
+		//=================================================================
+		//Firebase setup
+		//=================================================================
+
+		var config = {
+			apiKey: "AIzaSyA7uWeljdVkI-dTT5T48pxGqYX0d5FxkLY",
+			authDomain: "project-28f23.firebaseapp.com",
+			databaseURL: "https://project-28f23.firebaseio.com",
+			projectId: "project-28f23",
+			storageBucket: "project-28f23.appspot.com",
+			messagingSenderId: "294037184898"
+		};
+
+		firebase.initializeApp(config);
+
+		var database = firebase.database();
+
+		$("#loginSubmit").click(function() {
+			var username = $("#usernameInput").val().trim().toLowerCase();
+			var password = $("#passwordInput").val().trim();
+			firebase.auth().signInWithEmailAndPassword(username, password).catch(function(error) {
+			  // Handle Errors here.
+			  var errorCode = error.code;
+			  var errorMessage = error.message;
+			  // ...
+			});
+			// firebase.auth().onAuthStateChanged(function(user) {
+			//   if (user) {
+			//     // User is signed in.
+			//     var displayName = user.displayName;
+			//     var email = user.email;
+			//     var emailVerified = user.emailVerified;
+			//     var photoURL = user.photoURL;
+			//     var isAnonymous = user.isAnonymous;
+			//     var uid = user.uid;
+			//     var providerData = user.providerData;
+			//     // ...
+			//   } else {
+			//     // User is signed out.
+			//     // ...
+			//   }
+			// });
+			if(username !== "" && password !== "") {
+				database.ref().push({username: username, password: password});
+			}
+		});
+
+		$("#signupSubmit").click(function() {
+			var email = $("#emailInput").val().trim().toLowerCase();
+			var username = $("#newUsernameInput").val().trim().toLowerCase();
+			var password = $("#newPasswordInput").val().trim();
+			firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+			  // Handle Errors here.
+			  var errorCode = error.code;
+			  var errorMessage = error.message;
+			  // ...
+			});
+		})
+
+
+		//=============================================================
+		//Google sign-in
+		//=============================================================
+		var provider = new firebase.auth.GoogleAuthProvider();
 	</script>
 </body>
 </html>
