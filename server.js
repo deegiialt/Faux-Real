@@ -1,36 +1,36 @@
-var express = require("express");
-var bodyParser = require("body-parser");
+  var express = require("express");
+  var bodyParser = require("body-parser");
 
-// Sets up the Express App
-// =============================================================
-var app = express();
-var PORT = process.env.PORT || 8080;
+  // Sets up the Express App
+  // =============================================================
+  var app = express();
+  var PORT = process.env.PORT || 8080;
 
-// Requiring our models for syncing
-var db = require("./models");
+  // Requiring our models for syncing
+  var db = require("./models");
 
-// Sets up the Express app to handle data parsing
+  // Sets up the Express app to handle data parsing
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
-// parse application/json
-app.use(bodyParser.json());
+  // parse application/x-www-form-urlencoded
+  app.use(bodyParser.urlencoded({ extended: true }));
+  // parse application/json
+  app.use(bodyParser.json());
 
-// Static directory
-app.use(express.static("public"));
+  // Static directory
+  app.use(express.static("public"));
 
-// Routes
-// =============================================================
-require("./routes/html-routes.js")(app);
-require("./routes/login-api-routes.js")(app);
-require("./routes/count-api-routes.js")(app);
-require("./routes/user-votes-routes.js")(app);
+  // Routes
+  // =============================================================
+  require("./routes/html-routes.js")(app);
+  require("./routes/login-api-routes.js")(app);
+  require("./routes/count-api-routes.js")(app);
+  require("./routes/user-votes-routes.js")(app);
 
 
-// Syncing sequelize models and then starting our Express app
-// =============================================================
-db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
+  // Syncing sequelize models and then starting our Express app
+  // =============================================================
+  db.sequelize.sync({ force:true }).then(function() {
+    app.listen(PORT, function() {
+      console.log("App listening on PORT " + PORT);
+    });
   });
-});
