@@ -11,11 +11,71 @@ $("#trending").on("click", function(){
 
 $("#search-submit").on("click", function(){
       $("#div-section").empty();
-      
+      var start = $("#startDate").val();
+      var end = $("#endDate").val();
       if($('#all').is(':checked')){
-        searchKeyword();
+        if(start!= "" && end!=""){
+          console.log("working");
+            var keyword = $(".form-control").val().trim();
+
+            var url = 'https://newsapi.org/v2/everything?' +
+              'q=' + keyword + '&' +
+              'language=en&' +
+              'sortBy=publishedAt&' +
+              'sortBy=relevancy&' +
+              'sortBy=popularity&' +
+              'from=' + start + '&' +
+              'to=' + end + '&' +
+              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+
+              return searchKeyword(url);
+
+        }else{
+            var keyword = $(".form-control").val().trim();
+
+            var url = 'https://newsapi.org/v2/everything?' +
+                  'q=' + keyword + '&' +
+                  'language=en&' +
+                  'sortBy=publishedAt&' +
+                  'sortBy=relevancy&' +
+                  'sortBy=popularity&' +
+                  'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+            searchKeyword(url);
+      }
       }else if($('#cnn').is(':checked')){
+        if(start!= "" && end!=""){
+          console.log("working");
+            var keyword = $(".form-control").val().trim();
+
+            var url = 'https://newsapi.org/v2/everything?' +
+              'q=' + keyword + '&' +
+              'sources=cnn&' +
+              'language=en&' +
+              'sortBy=publishedAt&' +
+              'sortBy=relevancy&' +
+              'sortBy=popularity&' +
+              'from=' + start + '&' +
+              'to=' + end + '&' +
+              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+
+              return searchKeyword(url);
+
+        }else{
+            var keyword = $(".form-control").val().trim();
+
+            var url = 'https://newsapi.org/v2/everything?' +
+              'q=' + keyword + '&' +
+              'sources=cnn&' +
+              'language=en&' +
+              'sortBy=publishedAt&' +
+              'sortBy=relevancy&' +
+              'sortBy=popularity&' +
+              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+            searchKeyword(url);
+
+
         searchCNN();
+        }
       }else if($('#the-wall-street-journal').is(':checked')){
         searchWallStreet();
       }else if($('#the-huffington-post').is(':checked')){
@@ -58,17 +118,11 @@ $("#technology").on("click", function(){
 //the next 8 functions are for the search option menu
 
 //ALL seach bar function
-function searchKeyword(){
+function searchKeyword(url){
 
   var keyword = $(".form-control").val().trim();
 
-  var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+  var url = url;
       $.ajax({
         url: url,
         method: "GET",
@@ -83,14 +137,7 @@ function searchCNN(){
 
   var keyword = $(".form-control").val().trim();
 
-  var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=cnn&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+  
       $.ajax({
         url: url,
         method: "GET",
@@ -347,9 +394,19 @@ function renderArticles(searchResponse){
       newPanelBody.attr("id", "articleBody-" + i);
       newPanelBody.append("<p>" + searchResponse[i].description + "</p>");
       newPanelBody.append("<a href=" + "'" + searchResponse[i].url + "'" + "target='_blank'" + ">" + "Go to Article" + "</a>");
+      var fauxNewButton = $("<button>Faux</button>");
+      var realNewButton = $("<button>Real</button>");
+      fauxNewButton.attr("class", "fauxButton")
+      fauxNewButton.attr("id", "faux-" + searchResponse[i].url);
+      realNewButton.attr("class", "realButton");
+      realNewButton.attr("id", "real-" + searchResponse[i].url);
+
+
 
       newPanel.append(newPanelHeading);
       newPanel.append(newPanelBody);
+      newPanel.append(fauxNewButton);
+      newPanel.append(realNewButton)
 
       $("#div-section").append(newPanel);
 
