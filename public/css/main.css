@@ -51,7 +51,7 @@ body {
 /*CHAT*/
 /*===============================================*/
 
-form {
+.chatForm {
     font-family: Roboto, sans-serif;
     max-width: 260px;
     height: 600px;
@@ -97,4 +97,14 @@ input[type=submit] {
 
 #messagesDiv {
     color: black;
+}
+
+/*===============================================*/
+/*NAV*/
+/*===============================================*/
+
+#search-form {
+    float: right;
+    margin: 5px;
+    max-width: 40%;
 }
