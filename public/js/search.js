@@ -3,10 +3,6 @@ console.log("here");
 
 $(document).ready(function(){
 
-//var keys = require("./keys.js");
-
-
-//var newsAPI = keys.apiNewsKey;
 
 $("#trending").on("click", function(){
     $("#div-section").empty();
@@ -15,7 +11,15 @@ $("#trending").on("click", function(){
 
 $("#search-submit").on("click", function(){
       $("#div-section").empty();
-      searchKeyword();
+      
+      if($('#all').is(':checked')){
+        searchKeyword();
+      }else if($('#cnn').is(':checked')){
+        searchCNN();
+      }else if($('#the-wall-street-journal').is(':checked')){
+        searchWallStreet();
+      }
+      
 });
 
 $("#business").on("click", function(){
@@ -51,9 +55,9 @@ function searchTopHeadlines(){
 };
 
 
+//the next 8 functions are for the search option menu
 
-//seach bar function
-
+//ALL seach bar function
 function searchKeyword(){
 
   var keyword = $(".form-control").val().trim();
@@ -61,6 +65,51 @@ function searchKeyword(){
   var url = 'https://newsapi.org/v2/everything?' +
               'q=' + keyword + '&' +
               'language=en&' +
+              'sortBy=publishedAt&' +
+              'sortBy=relevancy&' +
+              'sortBy=popularity&' +
+              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+      $.ajax({
+        url: url,
+        method: "GET",
+
+      }).then(function(response){
+        console.log(response);
+        return renderArticles(response.articles);
+      });
+}
+
+function searchCNN(){
+
+  var keyword = $(".form-control").val().trim();
+
+  var url = 'https://newsapi.org/v2/everything?' +
+              'q=' + keyword + '&' +
+              'sources=cnn&' +
+              'language=en&' +
+              'sortBy=publishedAt&' +
+              'sortBy=relevancy&' +
+              'sortBy=popularity&' +
+              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+      $.ajax({
+        url: url,
+        method: "GET",
+
+      }).then(function(response){
+        console.log(response);
+        return renderArticles(response.articles);
+      });
+}
+
+function searchWallStreet(){
+
+  var keyword = $(".form-control").val().trim();
+
+  var url = 'https://newsapi.org/v2/everything?' +
+              'q=' + keyword + '&' +
+              'sources=the-wall-street-journal&' +
+              'language=en&' +
+              'sortBy=publishedAt&' +
               'sortBy=relevancy&' +
               'sortBy=popularity&' +
               'apiKey=b8438b744ce24b42a60f3a56367a00c4';
