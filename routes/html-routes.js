@@ -7,7 +7,7 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
-  app.get("/game", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/game.html"));
+  app.get("/main", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/main.html"));
   });
 };
