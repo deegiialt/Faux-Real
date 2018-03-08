@@ -1,5 +1,8 @@
   var express = require("express");
   var bodyParser = require("body-parser");
+  var session = require("express-session");
+  var passport = require('passport');
+
 
   // Sets up the Express App
   // =============================================================
@@ -19,6 +22,8 @@
   // Static directory
   app.use(express.static("public"));
 
+  app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true}));
+
   // Routes
   // =============================================================
   require("./routes/html-routes.js")(app);
@@ -27,45 +32,9 @@
   require("./routes/user-votes-routes.js")(app);
 
 
-//Authentication routes
-
-const session = require('express-session');
-const CookieParser = require('cookie-parser');
-const {userResponse, validateUser, secret} = require('./config/config.json');
-const passport = require('passport');
-const passportConfig = require('./routes/passport.js');
-
-app.use(CookieParser());
-
-passportConfig(passport);
-
-app.use(session({
-secret,
-name:'cookie',
-resave: false,
-saveUninitialized:false,
-cookie:{
-httponly, //put here some values
-maxAge,
-secure
-}
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-
-app.post('/signup', passport.authenticate('local-signup'), userResponse);
-
-app.post('/login', passport.authenticate('local-login'), userResponse);
-
-app.get('/logout', (req, res)=>{
-req.logout();
-return res.json({status:'success'});
-});
-
-
 // Syncing sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync().then(function() {
+db.sequelize.sync({ force: false}).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
