@@ -6,8 +6,9 @@
 	<!-- Latest compiled and minified CSS & JS -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/login.css" media="screen" title="no title">
+	<link rel="stylesheet" href="css/loginmodal.css">
 	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Karla|Montserrat|Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Quicksand" rel="stylesheet">
 	<!-- Firebase Link -->
     <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
 	<script src="https://code.jquery.com/jquery.js"></script>
@@ -26,45 +27,80 @@
 		</div>
 
 		<!-- Login links -->
-		<span class="link"><span id="loginbtn"><a href="#login">login</a></span> || <span id="signupbtn"><a href="#signup">sign-up</a></span></span>
-		<!-- The Modal -->
+		<div class="link">
+			<span id="loginbtn"><a href="#login" class="linkstyle">login</a></span>
+			<span id="signupbtn"><a href="#signup" class="linkstyle">sign-up</a></span>
+		</div>
+		
+		<!-- The Login Modal -->
 		<div id="myModal" class="modal">
-
-		  <!-- Modal content -->
 		  <div class="modal-content" id="login">
 		    <span class="close">&times;</span>
 		    <!-- Login form -->
-				<form>
+				<form class="loginmodal">
 					<label>
-						<input type="text" required />
+						<input type="text" id="usernameInput" required />
 						<div class="label-text">Username</div>
 					</label>
 					<label>
-				    	<input type="text" required />
+				    	<input type="text" id="passwordInput" required />
 				    	<div class="label-text">Password</div>
 					</label>
-					<button>Submit</button>
+					<button id="loginSubmit">Submit</button>
 				</form>
 		    <form action="../main.html"></form>
 		  </div>
+		</div>
 
+		<!-- The Sign-up Modal -->
+		<div id="myModal2" class="modal">
+		  <div class="modal-content" id="signup">
+		    <span class="close2">&times;</span>
+		    <!-- Login form -->
+				<form class="loginmodal">
+					<label>
+						<input type="text" id="#emailInput" required />
+						<div class="label-text">Email</div>
+					</label>
+					<label>
+						<input type="text" id="newUsernameInput" required />
+						<div class="label-text">Username</div>
+					</label>
+					<label>
+				    	<input type="text" id="newPasswordInput" required />
+				    	<div class="label-text">Password</div>
+					</label>
+					<button id="signupSubmit">Submit</button>
+				</form>
+		    <form action="../main.html"></form>
+		  </div>
 		</div>
 		<!-- End of Wrapper -->
 	</div>
 
 	<script>
+		//=================================================================
+		//Modal setup
+		//=================================================================
 		// Get the modal
 		var modal = document.getElementById('myModal');
+		var modal2 = document.getElementById('myModal2');
 
 		// Get the button that opens the modal
 		var btn = document.getElementById("loginbtn");
+		var btn2 = document.getElementById("signupbtn");
 
 		// Get the <span> element that closes the modal
 		var span = document.getElementsByClassName("close")[0];
+		var span2 = document.getElementsByClassName("close2")[0];
 
 		// When the user clicks the button, open the modal 
 		btn.onclick = function() {
 		    modal.style.display = "block";
+		}
+
+		btn2.onclick = function() {
+		    modal2.style.display = "block";
 		}
 
 		// When the user clicks on <span> (x), close the modal
@@ -72,12 +108,83 @@
 		    modal.style.display = "none";
 		}
 
+		span2.onclick = function() {
+			modal2.style.display = "none";
+		}
+
 		// When the user clicks anywhere outside of the modal, close it
 		window.onclick = function(event) {
 		    if (event.target == modal) {
 		        modal.style.display = "none";
+		    } else if (event.target == modal2) {
+		    	modal2.style.display = "none";
 		    }
 		}
+
+		//=================================================================
+		//Firebase setup
+		//=================================================================
+
+		var config = {
+			apiKey: "AIzaSyA7uWeljdVkI-dTT5T48pxGqYX0d5FxkLY",
+			authDomain: "project-28f23.firebaseapp.com",
+			databaseURL: "https://project-28f23.firebaseio.com",
+			projectId: "project-28f23",
+			storageBucket: "project-28f23.appspot.com",
+			messagingSenderId: "294037184898"
+		};
+
+		firebase.initializeApp(config);
+
+		var database = firebase.database();
+
+		$("#loginSubmit").click(function() {
+			var username = $("#usernameInput").val().trim().toLowerCase();
+			var password = $("#passwordInput").val().trim();
+			firebase.auth().signInWithEmailAndPassword(username, password).catch(function(error) {
+			  // Handle Errors here.
+			  var errorCode = error.code;
+			  var errorMessage = error.message;
+			  // ...
+			});
+			// firebase.auth().onAuthStateChanged(function(user) {
+			//   if (user) {
+			//     // User is signed in.
+			//     var displayName = user.displayName;
+			//     var email = user.email;
+			//     var emailVerified = user.emailVerified;
+			//     var photoURL = user.photoURL;
+			//     var isAnonymous = user.isAnonymous;
+			//     var uid = user.uid;
+			//     var providerData = user.providerData;
+			//     // ...
+			//   } else {
+			//     // User is signed out.
+			//     // ...
+			//   }
+			// });
+			if(username !== "" && password !== "") {
+				database.ref().push({username: username, password: password});
+			}
+		});
+
+		$("#signupSubmit").click(function() {
+			var email = $("#emailInput").val().trim().toLowerCase();
+			var username = $("#newUsernameInput").val().trim().toLowerCase();
+			var password = $("#newPasswordInput").val().trim();
+			firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+			  // Handle Errors here.
+			  var errorCode = error.code;
+			  var errorMessage = error.message;
+			  // ...
+			});
+		})
+
+
+		//=============================================================
+		//Google sign-in
+		//=============================================================
+		var provider = new firebase.auth.GoogleAuthProvider();
 	</script>
 </body>
 </html>
