@@ -1,11 +1,12 @@
 .title {
-  left: calc(50% - 150px);
+  left: calc(50% - 240px);
   position: absolute;
   top: 90px;
   font-size: 80px;
   color: white;
-  font-family: "Abel", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: bold;
+  letter-spacing: 6px;
 }
 
 .link {
