@@ -3,6 +3,18 @@ body {
     background-color: #0057B8;
 }
 
+.title {
+/*  left: calc(50% - 240px);
+  position: absolute;
+  top: 90px;*/
+  font-size: 80px;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  letter-spacing: 6px;
+  margin bottom: 20px;
+}
+
 /*===============================================*/
 /*Sidebar*/
 /*===============================================*/
@@ -51,7 +63,7 @@ body {
 /*CHAT*/
 /*===============================================*/
 
-form {
+.chatForm {
     font-family: Roboto, sans-serif;
     max-width: 260px;
     height: 600px;
@@ -97,4 +109,26 @@ input[type=submit] {
 
 #messagesDiv {
     color: black;
+}
+
+#chatText {
+    margin: 15px;
+}
+
+/*===============================================*/
+/*NAV*/
+/*===============================================*/
+
+#search-form {
+    float: right;
+    margin: 15px;
+    max-width: 40%;
+}
+
+#advancedOptions {
+    padding: 15px;
+}
+
+.nav>li>a {
+    color: white;
 }
