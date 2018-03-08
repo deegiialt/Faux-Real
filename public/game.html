@@ -2,26 +2,31 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Lo Siento</title>
+	<title>Faux - Fake News or Not?</title>
 	<!-- Latest compiled and minified CSS & JS -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/main.css" media="screen" title="no title">
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="http://jonathanrosen.com/wp-content/uploads/2017/07/trump-twitter-bird-300x300.png" />
 	<!-- Firebase Link -->
     <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
-
 	<!-- Chat Slide Out -->
+
+
+<nav class="navbar navbar-light bg-light justify-content-between">
+
 	<span style="font-size:30px;cursor:pointer;color:white;" onclick="openNav()">&#9776; chat</span>
 	<div id="mySidenav" class="sidenav">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 		<!-- Chat -->
     	 <div id="chatBox">
-			<form>
+			<form class="chatForm">
 				<div class="row">
 					<div class="large-12 columns">
 					    <div id='messagesDiv' class="msg-wrapper"></div>
@@ -55,8 +60,75 @@
 		</div>
 	</div>
 
+	<div class="input-group" id="search-form">
+	  <input type="text" class="form-control" aria-label="...">
+	  <div class="input-group-btn">
+ 			<button type="button" class="btn btn-default" id="search-submit"><span class="glyphicon glyphicon-search"></span></button>
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> News Source <span class="caret"></span></button>
+	        <ul class="dropdown-menu dropdown-menu-right">
+	          <li value="CNN"><a href="#">CNN</a></li>
+	          <li value="New York Times"><a href="#">New York Times</a></li>
+	          <li value="Other"><a href="#">Other Source</a></li>
+	          <li value="Other"><a href="#">Other Source</a></li>
+	          <li value="Other"><a href="#">Other Source</a></li>
+	        </ul>
+        </div>
+	</div>
+	<!-- Search -->	
+<!--   	<form class="form-inline" id="search-form">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  	</form> -->
+	<br>
+	<br>
+	<!-- Nav -->	
+	<ul class="nav nav-pills nav-justified">
+		<li role="presentation"><a href="#">Business</a></li>
+		<li role="presentation"><a href="#">Sports</a></li>
+		<li role="presentation"><a href="#">Trending</a></li>
+		<li role="presentation"><a href="#">International</a></li>
+		<li role="presentation"><a href="#">Entertainment</a></li>
+	</ul>
+</nav>
+
+<div class="container-fluid">
+
+    <div class="jumbotron">
+      <h1 class="text-center">
+        <strong>
+          <div class="glyphicon glyphicon-book"></div>
+          Faux
+          <div class="glyphicon glyphicon-book"></div>
+        </strong>
+      </h1>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12" id="topArticles">
+        <br>
+
+        <div class="panel">
+
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <strong>
+              <div class="glyphicon glyphicon-th-list"></div>
+              Top Results
+              </strong>
+            </h3>
+          </div>
+
+          <div class="panel-body" id="div-section">
+          </div>
+        </div>
+      </div>
+    </div>
+
 	<script>
 		// Initialize Firebase
+		$("#topArticles").hide();
+
 		var config = {
 			apiKey: "AIzaSyA7uWeljdVkI-dTT5T48pxGqYX0d5FxkLY",
 			authDomain: "project-28f23.firebaseapp.com",
