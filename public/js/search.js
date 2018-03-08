@@ -18,6 +18,16 @@ $("#search-submit").on("click", function(){
         searchCNN();
       }else if($('#the-wall-street-journal').is(':checked')){
         searchWallStreet();
+      }else if($('#the-huffington-post').is(':checked')){
+        searchHuffPost()
+      }else if($('#vice-news').is(':checked')){
+        searchVice();
+      }else if($('#usa-today').is(':checked')){
+        searchUSA();
+      }else if($('#google-news').is(':checked')){
+        searchGogle();
+      }else if($('#buzzfeed').is(':checked')){
+        searchBuzzfeed();
       }
       
 });
