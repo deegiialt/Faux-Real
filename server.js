@@ -31,7 +31,6 @@
   require("./routes/count-api-routes.js")(app);
   require("./routes/user-votes-routes.js")(app);
 
-
 // Syncing sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync({ force: false}).then(function() {
