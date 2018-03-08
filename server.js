@@ -35,27 +35,27 @@ const {userResponse, validateUser, secret} = require('./config/config.json');
 const passport = require('passport');
 const passportConfig = require('./routes/passport.js');
 
-app.use(CookieParser());
+//app.use(CookieParser());
 
-passportConfig(passport);
+//passportConfig(passport);
 
-app.use(session({
-secret,
-name:'cookie',
-resave: false,
-saveUninitialized:false,
-cookie:{
-httponly, //put here some values
-maxAge,
-secure
-}
-}));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(session({
+// secret,
+// name:'cookie',
+// resave: false,
+// saveUninitialized:false,
+// // cookie:{
+// // httponly, //put here some values
+// // maxAge,
+// // secure
+// // }
+// }));
+//app.use(passport.initialize());
+//app.use(passport.session());
 
-app.post('/signup', passport.authenticate('local-signup'), userResponse);
+// app.post('/signup', passport.authenticate('local-signup'), userResponse);
 
-app.post('/login', passport.authenticate('local-login'), userResponse);
+// app.post('/login', passport.authenticate('local-login'), userResponse);
 
 app.get('/logout', (req, res)=>{
 req.logout();
