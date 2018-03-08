@@ -13,11 +13,10 @@ $("#search-submit").on("click", function(){
       $("#div-section").empty();
       var start = $("#startDate").val();
       var end = $("#endDate").val();
+      var keyword = $(".form-control").val().trim();
+
       if($('#all').is(':checked')){
         if(start!= "" && end!=""){
-          console.log("working");
-            var keyword = $(".form-control").val().trim();
-
             var url = 'https://newsapi.org/v2/everything?' +
               'q=' + keyword + '&' +
               'language=en&' +
@@ -31,8 +30,6 @@ $("#search-submit").on("click", function(){
               return searchKeyword(url);
 
         }else{
-            var keyword = $(".form-control").val().trim();
-
             var url = 'https://newsapi.org/v2/everything?' +
                   'q=' + keyword + '&' +
                   'language=en&' +
@@ -44,9 +41,6 @@ $("#search-submit").on("click", function(){
       }
       }else if($('#cnn').is(':checked')){
         if(start!= "" && end!=""){
-          console.log("working");
-            var keyword = $(".form-control").val().trim();
-
             var url = 'https://newsapi.org/v2/everything?' +
               'q=' + keyword + '&' +
               'sources=cnn&' +
@@ -58,11 +52,9 @@ $("#search-submit").on("click", function(){
               'to=' + end + '&' +
               'apiKey=b8438b744ce24b42a60f3a56367a00c4';
 
-              return searchKeyword(url);
+              return searchCNN(url);
 
         }else{
-            var keyword = $(".form-control").val().trim();
-
             var url = 'https://newsapi.org/v2/everything?' +
               'q=' + keyword + '&' +
               'sources=cnn&' +
@@ -71,23 +63,166 @@ $("#search-submit").on("click", function(){
               'sortBy=relevancy&' +
               'sortBy=popularity&' +
               'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-            searchKeyword(url);
-
-
-        searchCNN();
+            searchCNN(url);
         }
       }else if($('#the-wall-street-journal').is(':checked')){
-        searchWallStreet();
+          if(start!= "" && end!=""){
+            var url = 'https://newsapi.org/v2/everything?' +
+              'q=' + keyword + '&' +
+              'sources=the-wall-street-journal&' +
+              'language=en&' +
+              'sortBy=publishedAt&' +
+              'sortBy=relevancy&' +
+              'sortBy=popularity&' +
+              'from=' + start + '&' +
+              'to=' + end + '&' +
+              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+
+              return searchWallStreet(url);
+
+        }else{
+            var url = 'https://newsapi.org/v2/everything?' +
+              'q=' + keyword + '&' +
+              'sources=the-wall-street-journal&' +
+              'language=en&' +
+              'sortBy=publishedAt&' +
+              'sortBy=relevancy&' +
+              'sortBy=popularity&' +
+              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+            searchWallStreet(url);
+        }
       }else if($('#the-huffington-post').is(':checked')){
-        searchHuffPost()
+        if(start!= "" && end!=""){
+            var url = 'https://newsapi.org/v2/everything?' +
+              'q=' + keyword + '&' +
+              'sources=the-huffington-post&' +
+              'language=en&' +
+              'sortBy=publishedAt&' +
+              'sortBy=relevancy&' +
+              'sortBy=popularity&' +
+              'from=' + start + '&' +
+              'to=' + end + '&' +
+              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+
+              return searchHuffPost(url);
+
+        }else{
+            var url = 'https://newsapi.org/v2/everything?' +
+              'q=' + keyword + '&' +
+              'sources=the-huffington-post&' +
+              'language=en&' +
+              'sortBy=publishedAt&' +
+              'sortBy=relevancy&' +
+              'sortBy=popularity&' +
+              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+            searchHuffPost(url);
+        }
       }else if($('#vice-news').is(':checked')){
-        searchVice();
+        if(start!= "" && end!=""){
+            var url = 'https://newsapi.org/v2/everything?' +
+              'q=' + keyword + '&' +
+              'sources=vice-news&' +
+              'language=en&' +
+              'sortBy=publishedAt&' +
+              'sortBy=relevancy&' +
+              'sortBy=popularity&' +
+              'from=' + start + '&' +
+              'to=' + end + '&' +
+              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+
+              return searchVice(url);
+
+        }else{
+            var url = 'https://newsapi.org/v2/everything?' +
+              'q=' + keyword + '&' +
+              'sources=vice-news&' +
+              'language=en&' +
+              'sortBy=publishedAt&' +
+              'sortBy=relevancy&' +
+              'sortBy=popularity&' +
+              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+            searchVice(url);
+        }
       }else if($('#usa-today').is(':checked')){
-        searchUSA();
+        if(start!= "" && end!=""){
+            var url = 'https://newsapi.org/v2/everything?' +
+              'q=' + keyword + '&' +
+              'sources=usa-today&' +
+              'language=en&' +
+              'sortBy=publishedAt&' +
+              'sortBy=relevancy&' +
+              'sortBy=popularity&' +
+              'from=' + start + '&' +
+              'to=' + end + '&' +
+              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+
+              return searchUSA(url);
+
+        }else{
+            var url = 'https://newsapi.org/v2/everything?' +
+              'q=' + keyword + '&' +
+              'sources=usa-today&' +
+              'language=en&' +
+              'sortBy=publishedAt&' +
+              'sortBy=relevancy&' +
+              'sortBy=popularity&' +
+              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+            searchUSA(url);
+        }
       }else if($('#google-news').is(':checked')){
-        searchGoogle();
+        if(start!= "" && end!=""){
+            var url = 'https://newsapi.org/v2/everything?' +
+              'q=' + keyword + '&' +
+              'sources=google-news&' +
+              'language=en&' +
+              'sortBy=publishedAt&' +
+              'sortBy=relevancy&' +
+              'sortBy=popularity&' +
+              'from=' + start + '&' +
+              'to=' + end + '&' +
+              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+
+              return searchGoogle(url);
+
+        }else{
+            var url = 'https://newsapi.org/v2/everything?' +
+              'q=' + keyword + '&' +
+              'sources=google-news&' +
+              'language=en&' +
+              'sortBy=publishedAt&' +
+              'sortBy=relevancy&' +
+              'sortBy=popularity&' +
+              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+            searchGoogle(url);
+        }
       }else if($('#buzzfeed').is(':checked')){
-        searchBuzzfeed();
+        if(start!= "" && end!=""){
+            var url = 'https://newsapi.org/v2/everything?' +
+              'q=' + keyword + '&' +
+              'sources=buzzfeed&' +
+              'language=en&' +
+              'sortBy=publishedAt&' +
+              'sortBy=relevancy&' +
+              'sortBy=popularity&' +
+              'from=' + start + '&' +
+              'to=' + end + '&' +
+              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+
+              return searchBuzzfeed(url);
+
+        }else{
+            
+
+            var url = 'https://newsapi.org/v2/everything?' +
+              'q=' + keyword + '&' +
+              'sources=buzzfeed&' +
+              'language=en&' +
+              'sortBy=publishedAt&' +
+              'sortBy=relevancy&' +
+              'sortBy=popularity&' +
+              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+            searchBuzzfeed(url);
+        }
       }
       
 });
@@ -120,8 +255,6 @@ $("#technology").on("click", function(){
 //ALL seach bar function
 function searchKeyword(url){
 
-  var keyword = $(".form-control").val().trim();
-
   var url = url;
       $.ajax({
         url: url,
@@ -133,10 +266,7 @@ function searchKeyword(url){
       });
 }
 
-function searchCNN(){
-
-  var keyword = $(".form-control").val().trim();
-
+function searchCNN(url){
   
       $.ajax({
         url: url,
@@ -148,18 +278,8 @@ function searchCNN(){
       });
 }
 
-function searchWallStreet(){
+function searchWallStreet(url){
 
-  var keyword = $(".form-control").val().trim();
-
-  var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=the-wall-street-journal&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
       $.ajax({
         url: url,
         method: "GET",
@@ -170,18 +290,8 @@ function searchWallStreet(){
       });
 }
 
-function searchHuffPost(){
+function searchHuffPost(url){
 
-  var keyword = $(".form-control").val().trim();
-
-  var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=the-huffington-post&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
       $.ajax({
         url: url,
         method: "GET",
@@ -192,18 +302,8 @@ function searchHuffPost(){
       });
 }
 
-function searchVice(){
+function searchVice(url){
 
-  var keyword = $(".form-control").val().trim();
-
-  var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=vice-news&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
       $.ajax({
         url: url,
         method: "GET",
@@ -214,18 +314,8 @@ function searchVice(){
       });
 }
 
-function searchUSA(){
+function searchUSA(url){
 
-  var keyword = $(".form-control").val().trim();
-
-  var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=usa-today&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
       $.ajax({
         url: url,
         method: "GET",
@@ -236,18 +326,8 @@ function searchUSA(){
       });
 }
 
-function searchGoogle(){
+function searchGoogle(url){
 
-  var keyword = $(".form-control").val().trim();
-
-  var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=google-news&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
       $.ajax({
         url: url,
         method: "GET",
@@ -258,18 +338,8 @@ function searchGoogle(){
       });
 }
 
-function searchBuzzfeed(){
+function searchBuzzfeed(url){
 
-  var keyword = $(".form-control").val().trim();
-
-  var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=buzzfeed&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
       $.ajax({
         url: url,
         method: "GET",
@@ -412,8 +482,5 @@ function renderArticles(searchResponse){
 
     };
 };
-
-
-//searchTopHeadlines();
 
 })
