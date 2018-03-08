@@ -147,6 +147,7 @@
 			  var errorMessage = error.message;
 			  // ...
 			});
+			
 			// firebase.auth().onAuthStateChanged(function(user) {
 			//   if (user) {
 			//     // User is signed in.
@@ -163,6 +164,7 @@
 			//     // ...
 			//   }
 			// });
+
 			if(username !== "" && password !== "") {
 				database.ref().push({username: username, password: password});
 			}
