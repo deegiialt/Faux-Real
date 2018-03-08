@@ -13,6 +13,7 @@
 	<!-- Firebase Link -->
     <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
 	<script src="https://code.jquery.com/jquery.js"></script>
+
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -85,7 +86,7 @@
 	<ul class="nav nav-pills nav-justified">
 		<li role="presentation"><a href="#">Business</a></li>
 		<li role="presentation"><a href="#">Sports</a></li>
-		<li role="presentation"><a href="#">Trending</a></li>
+		<li role="presentation"><a href="/api/trending">Trending</a></li>
 		<li role="presentation"><a href="#">International</a></li>
 		<li role="presentation"><a href="#">Entertainment</a></li>
 	</ul>
@@ -120,14 +121,16 @@
           </div>
 
           <div class="panel-body" id="div-section">
+
           </div>
         </div>
       </div>
     </div>
 
+    <script src="js/search.js" type="text/javascript"></script>
 	<script>
 		// Initialize Firebase
-		$("#topArticles").hide();
+		//$("#topArticles").hide();
 
 		var config = {
 			apiKey: "AIzaSyA7uWeljdVkI-dTT5T48pxGqYX0d5FxkLY",
@@ -176,7 +179,7 @@
 		    document.getElementById("mySidenav").style.width = "0";
 		}
 	</script>
-  <script src="js/game.js" type="text/javascript"></script>
+  
 
 </body>
 </html>

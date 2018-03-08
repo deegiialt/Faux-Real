@@ -17,12 +17,17 @@ var db = require("../models");
 // =============================================================
 module.exports = function(app) {
 
-	
-	
-	app.get("api/search/:userinput", function(req, res){
 
-		res.json(res);
+	
+	app.get("/api/search/:userinput", function(req, res){
 
+		// res.json(res);
+
+	})
+
+	app.get("/api/trending", function(req, res){
+
+		res.json(data);
 	})
 
 	app.post("/api/settings", function(req, res) {
