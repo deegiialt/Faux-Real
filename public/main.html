@@ -4,18 +4,17 @@
 	<meta charset="UTF-8">
 	<title>Faux Real- Fake News or Not?</title>
 	<!-- Latest compiled and minified CSS & JS -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Grid CSS -->
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<link rel="stylesheet" type="text/css" href="css/component.css">
+	<script src="js/modernizr.custom.js"></script>
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Railway" rel="stylesheet">
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="http://jonathanrosen.com/wp-content/uploads/2017/07/trump-twitter-bird-300x300.png" />	
 	<!-- Main CSS -->
 	<link rel="stylesheet" href="css/main.css" media="screen" title="no title">
-	<!-- Grid CSS -->
-	<link rel="stylesheet" type="text/css" href="css/default.css" />
-	<link rel="stylesheet" type="text/css" href="css/component.css" />
-	<script src="js/modernizr.custom.js"></script>
-
-	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Karla|Montserrat|Roboto" rel="stylesheet">
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="http://jonathanrosen.com/wp-content/uploads/2017/07/trump-twitter-bird-300x300.png" />
 	<!-- Firebase Link -->
     <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
 	<script src="https://code.jquery.com/jquery.js"></script>
@@ -24,7 +23,7 @@
 <body>
 	<!-- Chat Slide Out -->
 
-<nav class="navbar navbar-light bg-light justify-content-between">
+	<nav class="navbar navbar-light bg-light justify-content-between">
 
 	<span id="chatText" style="font-size:30px;cursor:pointer;color:white;" onclick="openNav()">&#9776; chat</span>
 	<div id="mySidenav" class="sidenav">
@@ -102,9 +101,10 @@
 	          	<li role="separator" class="divider"></li>
 
 	          	<li id="advDate">
-	          		Search Dates <i>(start date, stop date)<i> <br><br>
-			  		<input type="date" id="startDate" class="form-control" placeholder="Start Date" >
-  					<input type="date" id="endDate" class="form-control" placeholder="End Date" >
+	          		Search Dates (start date, stop date) <br><br>
+			  		<input type="date" class="form-control" placeholder="Start Date" >
+  					<input type="date" class="form-control" placeholder="End Date" >
+
 	          	</li>
 
 	        </ul>
@@ -119,24 +119,20 @@
 	<br>
 	<br>
 	<!-- Nav -->	
-	<ul class="nav nav-pills nav-justified">
-		<li role="presentation"><a id="business">Business</a></li>
-		<li role="presentation"><a id="sports">Sports</a></li>
-		<li role="presentation"><a id="trending">Trending</a></li>
-		<li role="presentation"><a id="technology">Technology</a></li>
-		<li role="presentation"><a id="entertainment">Entertainment</a></li>
+	<ul class="nav  nav-justified">
+		<li role="presentation"><a class="navLinks" id="business">Business</a></li>
+		<li role="presentation"><a class="navLinks" id="sports">Sports</a></li>
+		<li role="presentation"><a class="navLinks" id="trending">Trending</a></li>
+		<li role="presentation"><a class="navLinks" id="technology">Technology</a></li>
+		<li role="presentation"><a class="navLinks" id="entertainment">Entertainment</a></li>
 	</ul>
 </nav>
 
 	<div class="container-fluid">
-
-      <h1 class="title text-center">
-        <strong>
-         <!--  <div class="glyphicon glyphicon-thumbs-up"></div> -->
-          Faux Real
-         <!--  <div class="glyphicon glyphicon-thumbs-down"></div> -->
-        </strong>
+      <h1 id="title">
+          FAUX REAL
       </h1>
+      <span><a href="/main">Home</a></span>
     </div>
 	</div>
 
@@ -145,26 +141,67 @@
 	      <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12" id="topArticles">
 	        <div class="panel">
 				<div class="panel-body" id="div-section">
-<!-- ============================================================================= -->
+					<!-- ============================================================================= -->
+					<!-- Grid -->
 					<div class="container">	
-						<header class="clearfix">
-							<h1>Thumbnail Grid <span>with Expanding Preview</span></h1>	
-						</header>
+<!-- 						<header class="clearfix">
+							<h1>Trending</h1>	
+						</header> -->
 						<div class="main">
 							<ul id="og-grid" class="og-grid">
 								<li>
 									<a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/1.jpg" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
-										<img src="http://via.placeholder.com/250x250" alt="img01"/>
+										<!-- <img src="http://via.placeholder.com/250x250" alt="img01"/> -->
+										<div class="tileContent">
+											<p class="tileTitle">Example Title</p>
+											<p class="tileSource">CNN</p>
+											<p class="tileDate">Date</p>
+										</div>
 									</a>
 								</li>
 								<li>
 									<a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/2.jpg" data-title="Veggies sunt bona vobis" data-description="Komatsuna prairie turnip wattle seed artichoke mustard horseradish taro rutabaga ricebean carrot black-eyed pea turnip greens beetroot yarrow watercress kombu.">
-										<img src="http://via.placeholder.com/250x250" alt="img02"/>
+										<div class="tileContent">
+											<p class="tileTitle">Example Title</p>
+											<p class="tileSource">CNN</p>
+											<p class="tileDate">Date</p>
+										</div>
 									</a>
 								</li>
 								<li>
 									<a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/3.jpg" data-title="Dandelion horseradish" data-description="Cabbage bamboo shoot broccoli rabe chickpea chard sea lettuce lettuce ricebean artichoke earthnut pea aubergine okra brussels sprout avocado tomato.">
-										<img src="http://via.placeholder.com/250x250" alt="img03"/>
+										<div class="tileContent">
+											<p class="tileTitle">Example Title</p>
+											<p class="tileSource">CNN</p>
+											<p class="tileDate">Date</p>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/3.jpg" data-title="Dandelion horseradish" data-description="Cabbage bamboo shoot broccoli rabe chickpea chard sea lettuce lettuce ricebean artichoke earthnut pea aubergine okra brussels sprout avocado tomato.">
+										<div class="tileContent">
+											<p class="tileTitle">Example Title</p>
+											<p class="tileSource">CNN</p>
+											<p class="tileDate">Date</p>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/3.jpg" data-title="Dandelion horseradish" data-description="Cabbage bamboo shoot broccoli rabe chickpea chard sea lettuce lettuce ricebean artichoke earthnut pea aubergine okra brussels sprout avocado tomato.">
+										<div class="tileContent">
+											<p class="tileTitle">Example Title</p>
+											<p class="tileSource">CNN</p>
+											<p class="tileDate">Date</p>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/3.jpg" data-title="Dandelion horseradish" data-description="Cabbage bamboo shoot broccoli rabe chickpea chard sea lettuce lettuce ricebean artichoke earthnut pea aubergine okra brussels sprout avocado tomato.">
+										<div class="tileContent">
+											<p class="tileTitle">Example Title</p>
+											<p class="tileSource">CNN</p>
+											<p class="tileDate">Date</p>
+										</div>
 									</a>
 								</li>
 								</ul>
@@ -176,13 +213,13 @@
 							Grid.init();
 						});
 					</script>
-<!-- ========================================================================== -->
+					<!-- ========================================================================== -->
+					<!-- End of grid -->
 	          </div>
 	        </div>
 	      </div>
 	    </div>
 	</div>
-
 	<script>
 		// Initialize Firebase
 		//$("#topArticles").hide();
