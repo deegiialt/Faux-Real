@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 // config/passport.js
 
 // load all the things we need
@@ -54,7 +55,10 @@ const session = require('express-session');
 const CookieParser = require('cookie-parser');
 const {userResponse, validateUser, secret} = require('./config/config.json');
 const passport = require('passport');
+=======
+>>>>>>> b22610f33cfe00080e03f33fef70b3c799443849
 
+//load bcrypt
 var bCrypt = require('bcrypt-nodejs');
 
 module.exports = function(passport, user){
@@ -86,6 +90,7 @@ passport.use('local-signup', new LocalStrategy(
     {
         userName : email,
         password : password,
+<<<<<<< HEAD
 >>>>>>> 35b593eff71dfcbf04fa5fc7ddeb199451bce3d6
         passReqToCallback : true // allows us to pass back the entire request to the callback
     },
@@ -130,6 +135,8 @@ passport.use('local-signup', new LocalStrategy(
         // by default, local strategy uses username and password, we will override with email
         usernameField : 'username',
         passwordField : 'password',
+=======
+>>>>>>> b22610f33cfe00080e03f33fef70b3c799443849
         passReqToCallback : true // allows us to pass back the entire request to the callback
     },
     function(req, email, password, done) { // callback with email and password from our form
@@ -145,6 +152,7 @@ passport.use('local-signup', new LocalStrategy(
             if (!( rows[0].password == password))
                 return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
 
+<<<<<<< HEAD
             // all is well, return successful user
             return done(null, rows[0]);
 
@@ -156,6 +164,8 @@ passport.use('local-signup', new LocalStrategy(
 
 };
 =======
+=======
+>>>>>>> b22610f33cfe00080e03f33fef70b3c799443849
     function(req, email, password, done){
 
 
@@ -248,4 +258,7 @@ passport.use('local-login', new LocalStrategy(
     ));
 
 }
+<<<<<<< HEAD
 >>>>>>> 35b593eff71dfcbf04fa5fc7ddeb199451bce3d6
+=======
+>>>>>>> b22610f33cfe00080e03f33fef70b3c799443849
