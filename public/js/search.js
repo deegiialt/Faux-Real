@@ -460,40 +460,19 @@ function renderArticles(searchResponse){
       newPanelList.attr("class", "og-grid");
       newPanel.append(newPanelList);
       var listItemOne = $("<li>")
-      listItemOne.append("<a href=" + searchResponse[i].url + " data-largesrc=" + searchResponse[i].urlToImage + " data-title=" + searchResponse[i].title + " data-description=" + searchResponse[i].description + ">");
+      listItemOne.append("<a href=" + searchResponse[i].url + 
+                          " data-largesrc=" + searchResponse[i].urlToImage + 
+                          " data-title=" + searchResponse[i].title + 
+                          " data-description=" + searchResponse[i].description + ">" + 
+                          "<img src=" + searchResponse[i].urlToImage + " width= 250px height=250px/> </a>")
       newPanelList.append(listItemOne);
+
       // var tileContent = $("<div>");
       // listItemOne.append(tileContent);
       // tileContent.append("<p class= 'tileTitle'>" + searchResponse[i].title + "</p>");
       // tileContent.append("<p class= 'tileSource'>" + searchResponse[i].source.name + "</p>");
       // tileContent.append("<p class= 'tileDate'>" + searchResponse[i].publishedAt + "</p>");
       // var listItemTwo = $("<li>")
-
-
-
-
-      // newPanelHeading.attr("class", "panel-heading")
-      // newPanelHeading.attr("id", "articleHead-" + i)
-      // newPanelHeading.append("<h3>" + searchResponse[i].source.name + "</h3>");
-      // newPanelHeading.append("<h4>" + searchResponse[i].author + "</h4>");
-      // var newPanelBody = $("<div>");
-      // newPanelBody.attr("class", "panel-body")
-      // newPanelBody.attr("id", "articleBody-" + i);
-      // newPanelBody.append("<p>" + searchResponse[i].description + "</p>");
-      // newPanelBody.append("<a href=" + "'" + searchResponse[i].url + "'" + "target='_blank'" + ">" + "Go to Article" + "</a>");
-      // var fauxNewButton = $("<button>Faux</button>");
-      // var realNewButton = $("<button>Real</button>");
-      // fauxNewButton.attr("class", "fauxButton")
-      // fauxNewButton.attr("id", "faux-" + searchResponse[i].url);
-      // realNewButton.attr("class", "realButton");
-      // realNewButton.attr("id", "real-" + searchResponse[i].url);
-
-
-
-      // newPanel.append(newPanelHeading);
-      // newPanel.append(newPanelBody);
-      // newPanel.append(fauxNewButton);
-      // newPanel.append(realNewButton);
 
       $("#div-section").append(newPanel);
 
