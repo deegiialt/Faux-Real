@@ -460,11 +460,21 @@ function renderArticles(searchResponse){
       newPanelList.attr("class", "og-grid");
       newPanel.append(newPanelList);
       var listItemOne = $("<li>")
-      listItemOne.append("<a href=" + searchResponse[i].url + 
-                          " data-largesrc=" + searchResponse[i].urlToImage + 
-                          " data-title=" + searchResponse[i].title + 
-                          " data-description=" + searchResponse[i].description + ">" + 
-                          "<img src=" + searchResponse[i].urlToImage + " width= 250px height=250px/> </a>")
+      var aTag = $("<a>");
+      aTag.attr("href", searchResponse[i].url);
+      aTag.attr("data-largesrc", searchResponse[i].urlToImage);
+      aTag.attr("data-description", searchResponse[i].description);
+      var image = $("<img>");
+      image.attr("src", searchResponse[i].urlToImage);
+      image.attr("width", "250px");
+      image.attr("height", "250px");
+      aTag.append(image);
+      listItemOne.append(aTag)
+      // listItemOne.append("<a href=" + searchResponse[i].url + 
+      //                     " data-largesrc=" + searchResponse[i].urlToImage + 
+      //                     " data-title=" + searchResponse[i].title + 
+      //                     " data-description=" + searchResponse[i].description + ">" + 
+      //                     "<img src=" + searchResponse[i].urlToImage + " width= 250px height=250px/> </a>")
       newPanelList.append(listItemOne);
 
       // var tileContent = $("<div>");
