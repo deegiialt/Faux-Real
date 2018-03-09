@@ -17,12 +17,17 @@
   },
   "homepage": "https://github.com/deegiialt/Lo-Siento#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "express-generator": "^4.15.5",
+    "express-session": "^1.15.6",
     "mysql": "^2.15.0",
     "mysql2": "^1.5.2",
     "node-sass": "^4.7.2",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "sequelize": "^4.35.2"
   }
 }

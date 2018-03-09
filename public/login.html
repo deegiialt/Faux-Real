@@ -9,6 +9,8 @@
 	<link rel="stylesheet" href="css/loginmodal.css">
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Quicksand" rel="stylesheet">
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="http://jonathanrosen.com/wp-content/uploads/2017/07/trump-twitter-bird-300x300.png" />
 	<!-- Firebase Link -->
     <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
 	<script src="https://code.jquery.com/jquery.js"></script>
@@ -37,13 +39,13 @@
 		  <div class="modal-content" id="login">
 		    <span class="close">&times;</span>
 		    <!-- Login form -->
-				<form class="loginmodal">
+				<form class="loginmodal" method="post" action="/login">
 					<label>
-						<input type="text" id="usernameInput" required />
+						<input type="text" id="userName" name="userName" required />
 						<div class="label-text">Username</div>
 					</label>
 					<label>
-				    	<input type="text" id="passwordInput" required />
+				    	<input type="text" id="password" name="password" required />
 				    	<div class="label-text">Password</div>
 					</label>
 					<button id="loginSubmit">Submit</button>
@@ -57,17 +59,17 @@
 		  <div class="modal-content" id="signup">
 		    <span class="close2">&times;</span>
 		    <!-- Login form -->
-				<form class="loginmodal">
+				<form class="loginmodal" method="post" action="/signup">
 					<label>
-						<input type="text" id="#emailInput" required />
+						<input type="text" id="email" name="email" required />
 						<div class="label-text">Email</div>
 					</label>
 					<label>
-						<input type="text" id="newUsernameInput" required />
+						<input type="text" id="userName2" name="userName2"  required />
 						<div class="label-text">Username</div>
 					</label>
 					<label>
-				    	<input type="text" id="newPasswordInput" required />
+				    	<input type="text" id="password2" name="password2" required />
 				    	<div class="label-text">Password</div>
 					</label>
 					<button id="signupSubmit">Submit</button>
@@ -121,70 +123,8 @@
 		    }
 		}
 
-		//=================================================================
-		//Firebase setup
-		//=================================================================
-
-		var config = {
-			apiKey: "AIzaSyA7uWeljdVkI-dTT5T48pxGqYX0d5FxkLY",
-			authDomain: "project-28f23.firebaseapp.com",
-			databaseURL: "https://project-28f23.firebaseio.com",
-			projectId: "project-28f23",
-			storageBucket: "project-28f23.appspot.com",
-			messagingSenderId: "294037184898"
-		};
-
-		firebase.initializeApp(config);
-
-		var database = firebase.database();
-
-		$("#loginSubmit").click(function() {
-			var username = $("#usernameInput").val().trim().toLowerCase();
-			var password = $("#passwordInput").val().trim();
-			firebase.auth().signInWithEmailAndPassword(username, password).catch(function(error) {
-			  // Handle Errors here.
-			  var errorCode = error.code;
-			  var errorMessage = error.message;
-			  // ...
-			});
-			// firebase.auth().onAuthStateChanged(function(user) {
-			//   if (user) {
-			//     // User is signed in.
-			//     var displayName = user.displayName;
-			//     var email = user.email;
-			//     var emailVerified = user.emailVerified;
-			//     var photoURL = user.photoURL;
-			//     var isAnonymous = user.isAnonymous;
-			//     var uid = user.uid;
-			//     var providerData = user.providerData;
-			//     // ...
-			//   } else {
-			//     // User is signed out.
-			//     // ...
-			//   }
-			// });
-			if(username !== "" && password !== "") {
-				database.ref().push({username: username, password: password});
-			}
-		});
-
-		$("#signupSubmit").click(function() {
-			var email = $("#emailInput").val().trim().toLowerCase();
-			var username = $("#newUsernameInput").val().trim().toLowerCase();
-			var password = $("#newPasswordInput").val().trim();
-			firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-			  // Handle Errors here.
-			  var errorCode = error.code;
-			  var errorMessage = error.message;
-			  // ...
-			});
-		})
 
 
-		//=============================================================
-		//Google sign-in
-		//=============================================================
-		var provider = new firebase.auth.GoogleAuthProvider();
 	</script>
 </body>
 </html>
