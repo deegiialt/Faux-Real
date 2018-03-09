@@ -8,8 +8,8 @@
 console.log("horsey");
 
 
-  $(".fauxButton").on("click", function() {
-    //event.preventDefault();
+  $(".fauxButton").on("submit", function() {
+    event.preventDefault();
     //var id = $(this).data("id");
     // var vote = true;
     // var source = $(this).data("source");

@@ -31,43 +31,44 @@
 
                 return searchKeyword(url);
 
-          }else{
-              var url = 'https://newsapi.org/v2/everything?' +
-                    'q=' + keyword + '&' +
-                    'language=en&' +
-                    'sortBy=publishedAt&' +
-                    'sortBy=relevancy&' +
-                    'sortBy=popularity&' +
-                    'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-              searchKeyword(url);
-        }
-        }else if($('#cnn').is(':checked')){
-          if(start!= "" && end!=""){
-              var url = 'https://newsapi.org/v2/everything?' +
-                'q=' + keyword + '&' +
-                'sources=cnn&' +
-                'language=en&' +
-                'sortBy=publishedAt&' +
-                'sortBy=relevancy&' +
-                'sortBy=popularity&' +
-                'from=' + start + '&' +
-                'to=' + end + '&' +
-                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+            }else{
+                var url = 'https://newsapi.org/v2/everything?' +
+                      'q=' + keyword + '&' +
+                      'language=en&' +
+                      'sortBy=publishedAt&' +
+                      'sortBy=relevancy&' +
+                      'sortBy=popularity&' +
+                      'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+                searchKeyword(url);
+              }
 
-                return searchCNN(url);
+        } else if($('#cnn').is(':checked')){
+            if(start!= "" && end!=""){
+                var url = 'https://newsapi.org/v2/everything?' +
+                  'q=' + keyword + '&' +
+                  'sources=cnn&' +
+                  'language=en&' +
+                  'sortBy=publishedAt&' +
+                  'sortBy=relevancy&' +
+                  'sortBy=popularity&' +
+                  'from=' + start + '&' +
+                  'to=' + end + '&' +
+                  'apiKey=b8438b744ce24b42a60f3a56367a00c4';
 
-          }else{
-              var url = 'https://newsapi.org/v2/everything?' +
-                'q=' + keyword + '&' +
-                'sources=cnn&' +
-                'language=en&' +
-                'sortBy=publishedAt&' +
-                'sortBy=relevancy&' +
-                'sortBy=popularity&' +
-                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-              searchCNN(url);
-          }
-        }else if($('#the-wall-street-journal').is(':checked')){
+                  return searchCNN(url);
+
+            }   else{
+                var url = 'https://newsapi.org/v2/everything?' +
+                  'q=' + keyword + '&' +
+                  'sources=cnn&' +
+                  'language=en&' +
+                  'sortBy=publishedAt&' +
+                  'sortBy=relevancy&' +
+                  'sortBy=popularity&' +
+                  'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+                searchCNN(url);
+            }
+        } else if($('#the-wall-street-journal').is(':checked')){
             if(start!= "" && end!=""){
               var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
@@ -82,7 +83,7 @@
 
                 return searchWallStreet(url);
 
-          }else{
+          }   else{
               var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=the-wall-street-journal&' +
@@ -225,6 +226,8 @@
                 'apiKey=b8438b744ce24b42a60f3a56367a00c4';
               searchBuzzfeed(url);
           }
+        };
+
       var start = $("#startDate").val();
       var end = $("#endDate").val();
       var keyword = $(".form-control").val().trim();
@@ -453,6 +456,7 @@
               'apiKey=b8438b744ce24b42a60f3a56367a00c4';
             searchBuzzfeed(url);
         }
+      };
       $(".form-control").val("")
 
   });
@@ -804,8 +808,8 @@ function renderArticles(searchResponse){
       aTag.attr("data-description", searchResponse[i].description);
       var image = $("<img>");
       image.attr("src", searchResponse[i].urlToImage);
-      image.attr("width", "280px");
-      image.attr("height", "250px");
+      image.attr("width", "270px");
+      image.attr("height", "230px");
       var artTitle = $("<p>" + searchResponse[i].title + "</p>");
       //listItemOne.append(artTitle)
       aTag.append(image);
@@ -816,6 +820,15 @@ function renderArticles(searchResponse){
       //                     " data-description=" + searchResponse[i].description + ">" +
       //                     "<img src=" + searchResponse[i].urlToImage + " width= 250px height=250px/> </a>")
       newPanelList.append(listItemOne);
+      var fauxNewButton = $("<button>Faux</button>");
+      var realNewButton = $("<button>Real</button>");
+      fauxNewButton.attr("type", "submit");
+      //fauxNewButton.attr("id", "faux" + i);
+      fauxNewButton.addClass("fauxButton");
+      fauxNewButton.attr("data-id", i);
+      //fauxNewButton.attr("data-id", "faux-" + searchResponse[i].url);
+      realNewButton.addClass("realButton");
+      //realNewButton.attr("data-id", "real-" + searchResponse[i].url);
 
       // var tileContent = $("<div>");
       // listItemOne.append(tileContent);
@@ -824,7 +837,11 @@ function renderArticles(searchResponse){
       // tileContent.append("<p class= 'tileDate'>" + searchResponse[i].publishedAt + "</p>");
       // var listItemTwo = $("<li>")
 
+      newPanel.append(fauxNewButton);
+      newPanel.append(realNewButton);
+
       $("#div-section").append(newPanel);
+
 
       // <div class="main">
       //                       <ul id="og-grid" class="og-grid">
@@ -854,14 +871,15 @@ function renderArticles(searchResponse){
 
 
 
-function validateDate(){
-  var start = $("#startDate").val();
-  var end = $("#endDate").val();
-  if(start == ""){
-    alert("Please fill in a start date.")
-    return false;
-  } else if(end == ""){
-    alert("Please fill in an end date.")
-    return false;
-  }
-})
+  function validateDate(){
+    var start = $("#startDate").val();
+    var end = $("#endDate").val();
+    if(start == ""){
+      alert("Please fill in a start date.")
+      return false;
+    } else if(end == ""){
+      alert("Please fill in an end date.")
+      return false;
+    }
+  };
+});
