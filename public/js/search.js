@@ -480,8 +480,10 @@ function renderArticles(searchResponse){
       aTag.attr("data-description", searchResponse[i].description);
       var image = $("<img>");
       image.attr("src", searchResponse[i].urlToImage);
-      image.attr("width", "250px");
+      image.attr("width", "280px");
       image.attr("height", "250px");
+      var artTitle = $("<p>" + searchResponse[i].title + "</p>");
+      //listItemOne.append(artTitle)
       aTag.append(image);
       listItemOne.append(aTag)
       // listItemOne.append("<a href=" + searchResponse[i].url + 
