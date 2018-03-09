@@ -110,11 +110,13 @@
 	        </div>
 	        <div class="input-group-btn">
 	        	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" area-expanded="false"><span class="glyphicon glyphicon-user"></span></button>
-	        <ul class="dropdown-menu">
-	        	<li id="profileName">Name</li>
-	        	<li>Pic</li>
+	        <ul class="dropdown-menu" id="userInfo">
+	        	<li id="profileName" class="text-center">Username</li> <br><br>
+	        	<li id="profilePic" class="text-center">Pic</li>
 	        	<li role="separator" class="divider"></li>
-	        	<button id="logoutbutton">log-out</button>
+	        	<form method="get" action="/logout">
+	        		<button id="logoutbutton">log-out</button>
+	        	</form>
 	        </ul>
 	        </div>
         </div>

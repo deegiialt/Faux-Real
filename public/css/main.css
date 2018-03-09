@@ -122,8 +122,20 @@ input[type=submit] {
     max-width: 23%;
 }
 
-#advancedOptions {
+#advancedOptions,
+#userInfo {
     padding: 15px;
+}
+
+#logoutbutton {
+    padding: 5px;
+    display: block;
+    margin: 0 auto;
+}
+
+#userInfo {
+    position: absolute;
+    left: -120px;
 }
 
 .nav>li>a {
