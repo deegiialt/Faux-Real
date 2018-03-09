@@ -16,7 +16,9 @@ $("#search-submit").on("click", function(){
       var keyword = $(".form-control").val().trim();
 
       if($('#all').is(':checked')){
-        if(start!= "" && end!=""){
+        if(start!= "" || end!=""){
+          var check = validateDate();
+          if(check == false) return;
             var url = 'https://newsapi.org/v2/everything?' +
               'q=' + keyword + '&' +
               'language=en&' +
@@ -224,6 +226,7 @@ $("#search-submit").on("click", function(){
             searchBuzzfeed(url);
         }
       }
+    $(".form-control").val("")
       
 });
 
@@ -246,9 +249,6 @@ $("#technology").on("click", function(){
       $("#div-section").empty();
       searchTech();
 })
-
-
-
 
 //the next 8 functions are for the search option menu
 
@@ -349,10 +349,10 @@ function searchBuzzfeed(url){
         return renderArticles(response.articles);
       });
 }
-//================================================================
-//================================================================
-//================================================================
 
+//================================================================
+//================================================================
+//================================================================
 //the remainder of the functions are for the tab options on the page
 //business tab search
 
@@ -476,11 +476,32 @@ function renderArticles(searchResponse){
       newPanel.append(newPanelHeading);
       newPanel.append(newPanelBody);
       newPanel.append(fauxNewButton);
-      newPanel.append(realNewButton)
+      newPanel.append(realNewButton);
 
       $("#div-section").append(newPanel);
 
     };
 };
+
+//=============================================================
+//=============================================================
+//=============================================================
+//this code toggles the date search option
+
+
+
+function validateDate(){
+  var start = $("#startDate").val();
+  var end = $("#endDate").val();
+  if(start == ""){
+    alert("Please fill in a start date.")
+    return false;
+  }else if(end == ""){
+    alert("Please fill in an end date.")
+    return false;
+  }
+  return true;
+}
+
 
 })
