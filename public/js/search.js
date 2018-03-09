@@ -453,32 +453,67 @@ function renderArticles(searchResponse){
     for(var i = 0; i < searchResponse.length; i++){
 
       var newPanel = $("<div>"); 
-      newPanel.attr("class", "headBodyPanel")
-      var newPanelHeading = $("<div>");
-      newPanelHeading.attr("class", "panel-heading")
-      newPanelHeading.attr("id", "articleHead-" + i)
-      newPanelHeading.append("<h3>" + searchResponse[i].source.name + "</h3>");
-      newPanelHeading.append("<h4>" + searchResponse[i].author + "</h4>");
-      var newPanelBody = $("<div>");
-      newPanelBody.attr("class", "panel-body")
-      newPanelBody.attr("id", "articleBody-" + i);
-      newPanelBody.append("<p>" + searchResponse[i].description + "</p>");
-      newPanelBody.append("<a href=" + "'" + searchResponse[i].url + "'" + "target='_blank'" + ">" + "Go to Article" + "</a>");
-      var fauxNewButton = $("<button>Faux</button>");
-      var realNewButton = $("<button>Real</button>");
-      fauxNewButton.attr("class", "fauxButton")
-      fauxNewButton.attr("id", "faux-" + searchResponse[i].url);
-      realNewButton.attr("class", "realButton");
-      realNewButton.attr("id", "real-" + searchResponse[i].url);
+      newPanel.attr("class", "main");
+
+      var newPanelList = $("<ul>");
+      newPanelList.attr("id", "og-grid");
+      newPanelList.attr("class", "og-grid");
+      newPanel.append(newPanelList);
+      var listItemOne = $("<li>")
+      listItemOne.append("<a href=" + searchResponse[i].url + " data-largesrc=" + searchResponse[i].urlToImage + " data-title=" + searchResponse[i].title + " data-description=" + searchResponse[i].description + ">");
+      newPanelList.append(listItemOne);
+      // var tileContent = $("<div>");
+      // listItemOne.append(tileContent);
+      // tileContent.append("<p class= 'tileTitle'>" + searchResponse[i].title + "</p>");
+      // tileContent.append("<p class= 'tileSource'>" + searchResponse[i].source.name + "</p>");
+      // tileContent.append("<p class= 'tileDate'>" + searchResponse[i].publishedAt + "</p>");
+      // var listItemTwo = $("<li>")
 
 
 
-      newPanel.append(newPanelHeading);
-      newPanel.append(newPanelBody);
-      newPanel.append(fauxNewButton);
-      newPanel.append(realNewButton);
+
+      // newPanelHeading.attr("class", "panel-heading")
+      // newPanelHeading.attr("id", "articleHead-" + i)
+      // newPanelHeading.append("<h3>" + searchResponse[i].source.name + "</h3>");
+      // newPanelHeading.append("<h4>" + searchResponse[i].author + "</h4>");
+      // var newPanelBody = $("<div>");
+      // newPanelBody.attr("class", "panel-body")
+      // newPanelBody.attr("id", "articleBody-" + i);
+      // newPanelBody.append("<p>" + searchResponse[i].description + "</p>");
+      // newPanelBody.append("<a href=" + "'" + searchResponse[i].url + "'" + "target='_blank'" + ">" + "Go to Article" + "</a>");
+      // var fauxNewButton = $("<button>Faux</button>");
+      // var realNewButton = $("<button>Real</button>");
+      // fauxNewButton.attr("class", "fauxButton")
+      // fauxNewButton.attr("id", "faux-" + searchResponse[i].url);
+      // realNewButton.attr("class", "realButton");
+      // realNewButton.attr("id", "real-" + searchResponse[i].url);
+
+
+
+      // newPanel.append(newPanelHeading);
+      // newPanel.append(newPanelBody);
+      // newPanel.append(fauxNewButton);
+      // newPanel.append(realNewButton);
 
       $("#div-section").append(newPanel);
+
+      // <div class="main">
+      //                       <ul id="og-grid" class="og-grid">
+      //                           <li>
+      //                               <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/1.jpg" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
+      //                                   <!-- <img src="http://via.placeholder.com/250x250" alt="img01"/> -->
+      //                                   <div class="tileContent">
+      //                                       <p class="tileTitle">Example Title</p>
+      //                                       <p class="tileSource">CNN</p>
+      //                                       <p class="tileDate">Date</p>
+      //                                   </div>
+      //                               </a>
+      //                           </li>
+      //                           <li>
+      //                               <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/2.jpg" data-title="Veggies sunt bona vobis" data-description="Komatsuna prairie turnip wattle seed artichoke mustard horseradish taro rutabaga ricebean carrot black-eyed pea turnip greens beetroot yarrow watercress kombu.">
+      //                                   <img src="http://via.placeholder.com/250x250" alt="img02"/>
+      //                               </a>
+      //                           </li>
 
     };
 };
