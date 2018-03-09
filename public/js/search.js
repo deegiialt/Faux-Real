@@ -464,15 +464,15 @@ function searchTech(){
 
 function renderArticles(searchResponse){
 
-    for(var i = 0; i < searchResponse.length; i++){
-
       var newPanel = $("<div>"); 
       newPanel.attr("class", "main");
-
       var newPanelList = $("<ul>");
       newPanelList.attr("id", "og-grid");
       newPanelList.attr("class", "og-grid");
       newPanel.append(newPanelList);
+
+    for(var i = 0; i < searchResponse.length; i++){
+
       var listItemOne = $("<li>")
       var aTag = $("<a>");
       aTag.attr("href", searchResponse[i].url);
