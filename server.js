@@ -30,6 +30,7 @@
   require("./routes/login-api-routes.js")(app);
   require("./routes/count-api-routes.js")(app);
   require("./routes/user-votes-routes.js")(app);
+  require('./routes/passport.js')(passport);
 
 // Syncing sequelize models and then starting our Express app
 // =============================================================
