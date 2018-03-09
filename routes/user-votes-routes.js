@@ -42,7 +42,7 @@
           faux: req.body.faux,
           real: req.body.real,
           source: req.body.source,
-          article: req.body.article,
+          articleURL: req.body.articleURL,
           articleTitle: req.body.articleTitle
         }
       }).then(function(votes) {

@@ -4,6 +4,7 @@
   var passport = require('passport');
   var flash = require('connect-flash');
 
+
   // Sets up the Express App
   // =============================================================
   var app = express();
@@ -23,7 +24,11 @@
   app.use(express.static("public"));
 
   app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true}));
-  
+
+  app.use(passport.initialize());
+
+  app.use(passport.session());
+
   app.use(flash());
 
   // Routes

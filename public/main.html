@@ -37,7 +37,7 @@
 					    <br>
 					</div>
 				</div>
-				
+
 				<div class="textboxes">
 					<div class="row">
 						<div class="large-12 columns">
@@ -48,7 +48,7 @@
 							</label>
 						</div>
 					</div>
-					
+
 					<div class="row">
 						<div class="large-12 columns">
 						    <label>
@@ -59,7 +59,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 			</form>
 		</div>
 	</div>
@@ -71,7 +71,7 @@
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus"></span> <span class="caret"></span></button>
 	        <ul class="dropdown-menu dropdown-menu-right" id="advancedOptions">
 
-				<li id="advSearch" class="input-group">		
+				<li id="advSearch" class="input-group">
 			  		<input type="text" class="form-control" placeholder="Search" >
 				</li>
 	          	<li role="separator" class="divider"></li>
@@ -87,13 +87,13 @@
 					  	<input type="radio" name="newsSource" classe= "radio" id="usa-today"> USA Today <br><br>
 					  	<input type="radio" name="newsSource" classe= "radio" id="google-news"> Google News <br><br>
 					  	<input type="radio" name="newsSource" classe= "radio" id="buzzfeed"> BuzzFeed <br><br>
-                  
+
 						<div class="input-group">
 						    <span class="input-group-addon">
 						        <input type="checkbox">
 						    </span>
 						    <input type="text" class="form-control" placeholder="Other">
-						</div><!-- /input-group --> 
+						</div><!-- /input-group -->
 
 					</form>
 	          	</li>
@@ -106,33 +106,39 @@
   					<input type="date" class="form-control" placeholder="End Date" >
 
 	          	</li>
-
 	        </ul>
+	        </div>
+	        <div class="input-group-btn">
+	        	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" area-expanded="false"><span class="glyphicon glyphicon-user"></span></button>
+	        <ul class="dropdown-menu">
+	        	<li id="profileName">Name</li>
+	        	<li>Pic</li>
+	        	<li role="separator" class="divider"></li>
+	        	<button id="logoutbutton">log-out</button>
+	        </ul>
+	        </div>
         </div>
+
+	  <h1 id="title">
+      FAUX REAL
+	  </h1>
+
 	</div>
-	<!-- Search -->	
-<!--   	<form class="form-inline" id="search-form">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  	</form> -->
+
 	<br>
 	<br>
 	<br>
 	<!-- Nav -->	
-	<ul class="nav  nav-justified">
+	<ul class="nav nav-tabs nav-justified">
 		<li role="presentation"><a class="navLinks" id="business">Business</a></li>
 		<li role="presentation"><a class="navLinks" id="sports">Sports</a></li>
-		<li role="presentation"><a class="navLinks" id="trending">Trending</a></li>
+		<li role="presentation"><a class="navLinks" id="trending">Home</a></li>
 		<li role="presentation"><a class="navLinks" id="technology">Technology</a></li>
 		<li role="presentation"><a class="navLinks" id="entertainment">Entertainment</a></li>
 	</ul>
 </nav>
 
 	<div class="container-fluid">
-      <h1 id="title">
-          FAUX REAL
-      </h1>
-      <span><a href="/main">Home</a></span>
     </div>
 	</div>
 
@@ -143,10 +149,10 @@
 				<div class="panel-body" id="div-section">
 					<!-- ============================================================================= -->
 					<!-- Grid -->
-					<div class="container">	
-<!-- 						<header class="clearfix">
-							<h1>Trending</h1>	
-						</header> -->
+					<div class="container">
+						<h1 class="text-center">Trending</h1>
+
+
 						<div class="main">
 							<ul id="og-grid" class="og-grid">
 								<li>
@@ -161,15 +167,6 @@
 								</li>
 								<li>
 									<a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/2.jpg" data-title="Veggies sunt bona vobis" data-description="Komatsuna prairie turnip wattle seed artichoke mustard horseradish taro rutabaga ricebean carrot black-eyed pea turnip greens beetroot yarrow watercress kombu.">
-										<div class="tileContent">
-											<p class="tileTitle">Example Title</p>
-											<p class="tileSource">CNN</p>
-											<p class="tileDate">Date</p>
-										</div>
-									</a>
-								</li>
-								<li>
-									<a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/3.jpg" data-title="Dandelion horseradish" data-description="Cabbage bamboo shoot broccoli rabe chickpea chard sea lettuce lettuce ricebean artichoke earthnut pea aubergine okra brussels sprout avocado tomato.">
 										<div class="tileContent">
 											<p class="tileTitle">Example Title</p>
 											<p class="tileSource">CNN</p>
@@ -255,7 +252,7 @@
 			var message = snapshot.val();
 			displayChatMessage(message.name, message.text);
 	    });
-	    
+
 	    function displayChatMessage(name, text) {
 			$('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
 			$('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
@@ -270,8 +267,17 @@
 		function closeNav() {
 		    document.getElementById("mySidenav").style.width = "0";
 		}
+
+	// 	$("#fauxButton").on("click", function(event) {
+	// 		event.preventDefault();
+	// 		console.log("---------------------");
+	// 		console.log("fake vote worked");
+	// 		console.log("---------------------");
+	// });
 	</script>
   <script src="js/search.js" type="text/javascript"></script>
+	<script src="js/vote.js" type="text/javascript"></script>
+
 
 </body>
 </html>
