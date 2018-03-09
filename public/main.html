@@ -107,10 +107,17 @@
 
 	          	</li>
 	        </ul>
-	        <!-- Profile button -->
-	        <button type="button" class="btn btn-default" id="profile-submit"><span class="glyphicon glyphicon-user"></span></button>
+	        </div>
+	        <div class="input-group-btn">
+	        	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" area-expanded="false"><span class="glyphicon glyphicon-user"></span></button>
+	        <ul class="dropdown-menu">
+	        	<li id="profileName">Name</li>
+	        	<li>Pic</li>
+	        	<li role="separator" class="divider"></li>
+	        	<button id="logoutbutton">log-out</button>
+	        </ul>
+	        </div>
         </div>
-	</div>
 	  <h1 id="title">
       FAUX REAL
 	  </h1>
@@ -121,7 +128,7 @@
 	<ul class="nav nav-tabs nav-justified">
 		<li role="presentation"><a class="navLinks" id="business">Business</a></li>
 		<li role="presentation"><a class="navLinks" id="sports">Sports</a></li>
-		<li role="presentation"><a class="navLinks" id="trending">Trending</a></li>
+		<li role="presentation"><a class="navLinks" id="trending">Home</a></li>
 		<li role="presentation"><a class="navLinks" id="technology">Technology</a></li>
 		<li role="presentation"><a class="navLinks" id="entertainment">Entertainment</a></li>
 	</ul>
@@ -138,7 +145,8 @@
 				<div class="panel-body" id="div-section">
 					<!-- ============================================================================= -->
 					<!-- Grid -->
-					<div class="container">	
+					<div class="container">
+						<h1 class="text-center">Trending</h1>
 						<div class="main">
 							<ul id="og-grid" class="og-grid">
 								<li>

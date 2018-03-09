@@ -136,7 +136,7 @@ input[type=submit] {
    background-color: #000044 !important;
 }
 
-input.form-control, button.btn.btn-default.dropdown-toggle, button#profile-submit.btn.btn-default, ul#advancedOptions.drowdown-menu.dropdown-meu-right {
+input.form-control, .btn-default {
     border-radius: 0 !important;
 }
 
