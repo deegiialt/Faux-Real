@@ -8,7 +8,7 @@
 console.log("horsey");
 
 
-  $("button").on("submit", "#faux0", function() {
+  $(".fauxButton").on("click", function() {
     //event.preventDefault();
     //var id = $(this).data("id");
     // var vote = true;
