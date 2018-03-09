@@ -7,19 +7,19 @@
 
 
     app.post("/signup", function(req, res) {
-      db.User.create({
-          userName: req.body.userName,
-          email: req.body.email,
-          password: req.body.password
-      }).then(function(db, err) {
-        if (err) {
-          return res.render('register', { account : account });
-        }
+      // db.User.create({
+      //     userName: req.body.userName,
+      //     email: req.body.email,
+      //     password: req.body.password
+      // }).then(function(db, err) {
+      //   if (err) {
+      //     return res.render('register', { account : account });
+      //   }
        
         passport.authenticate('local-signup')(req, res, function() {
           res.redirect('/main')
         })
-      })
+      
     })
 
     //This isnt working:

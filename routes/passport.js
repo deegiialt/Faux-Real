@@ -1,10 +1,11 @@
 
 //load bcrypt
 var bCrypt = require('bcrypt-nodejs');
+var User = require('../models').User;
 
-module.exports = function(passport, user){
+module.exports = function(passport){
 
-    var User = user;
+    // var User = user;
     console.log(User);
 
     var LocalStrategy = require('passport-local').Strategy;
@@ -33,24 +34,37 @@ module.exports = function(passport, user){
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
 
-        function(req, done){
+        function(req, userName, password, done){
 
-            var generateHash = function() {
-                return bCrypt.hashSync(req.body.password, bCrypt.genSaltSync(8), null);
+            var generateHash = function(password) {
+                console.log("BCYRPT Running HERE!!!!!!!!")
+
+                return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
+                // var encryptedPassword =  bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
+                // console.log(encryptedPassword);
+                // return encryptedPassword;
             };
 
-            User.findOne({email: req.body.email}).then(function(response){
+            User.findOne({where: {userName: userName}}).then(function(response){
+
+                console.log(response);
 
                 if (response) {
-                    return done(null, false, {message : 'That email is already taken'} );
+                    console.log("Condintional 1, user exists!!!!!!!!!")
+                    return done(null, false, {message : 'That name is already taken'} );
                 } else {
-                    var userPassword = generateHash(req.body.password);
+                    console.log("Condintional 2, user being created!!!!!!!!!")
+
+
+                    var userPassword = generateHash(password);
+                    console.log(userPassword);
                     var data = {
-                        userName: req.body.userName,
-                        password: userPassword,
+                        userName: userName,
+                        password: password,
                         email: req.body.email
                     };
 
+                    data.password = generateHash(data.password);
 
                     User.create(data).then(function(newUser,created){
                         if(!newUser){
@@ -58,6 +72,7 @@ module.exports = function(passport, user){
                         }
 
                         if(newUser){
+                            console.log(newUser)
                             return done(null,newUser);
 
                         }
@@ -87,19 +102,19 @@ module.exports = function(passport, user){
 
         function(req, userName, password, done) {
             
-            var isValidPassword = function(userpass){
-                return bCrypt.compareSync(req.body.password, userpass);
+            var isValidPassword = function(password, userpass){
+                return bCrypt.compareSync(password, userpass);
             }
 
             console.log(User);
 
-            User.findOne({ userName: req.body.userName}).then(function (user) {
+            User.findOne({where: {userName: userName}}).then(function (user) {
 
                 if (!user) {
                     return done(null, false, { message: 'User Name does not exist' });
                 }    
 
-                if (!isValidPassword(user.password, req.body.password)) {
+                if (!isValidPassword(password, user.password)) {
 
                     return done(null, false, { message: 'Incorrect password' });
 
