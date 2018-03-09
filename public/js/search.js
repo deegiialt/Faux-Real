@@ -31,43 +31,44 @@
 
                 return searchKeyword(url);
 
-          }else{
-              var url = 'https://newsapi.org/v2/everything?' +
-                    'q=' + keyword + '&' +
-                    'language=en&' +
-                    'sortBy=publishedAt&' +
-                    'sortBy=relevancy&' +
-                    'sortBy=popularity&' +
-                    'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-              searchKeyword(url);
-        }
-        }else if($('#cnn').is(':checked')){
-          if(start!= "" && end!=""){
-              var url = 'https://newsapi.org/v2/everything?' +
-                'q=' + keyword + '&' +
-                'sources=cnn&' +
-                'language=en&' +
-                'sortBy=publishedAt&' +
-                'sortBy=relevancy&' +
-                'sortBy=popularity&' +
-                'from=' + start + '&' +
-                'to=' + end + '&' +
-                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+            }else{
+                var url = 'https://newsapi.org/v2/everything?' +
+                      'q=' + keyword + '&' +
+                      'language=en&' +
+                      'sortBy=publishedAt&' +
+                      'sortBy=relevancy&' +
+                      'sortBy=popularity&' +
+                      'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+                searchKeyword(url);
+              }
 
-                return searchCNN(url);
+        } else if($('#cnn').is(':checked')){
+            if(start!= "" && end!=""){
+                var url = 'https://newsapi.org/v2/everything?' +
+                  'q=' + keyword + '&' +
+                  'sources=cnn&' +
+                  'language=en&' +
+                  'sortBy=publishedAt&' +
+                  'sortBy=relevancy&' +
+                  'sortBy=popularity&' +
+                  'from=' + start + '&' +
+                  'to=' + end + '&' +
+                  'apiKey=b8438b744ce24b42a60f3a56367a00c4';
 
-          }else{
-              var url = 'https://newsapi.org/v2/everything?' +
-                'q=' + keyword + '&' +
-                'sources=cnn&' +
-                'language=en&' +
-                'sortBy=publishedAt&' +
-                'sortBy=relevancy&' +
-                'sortBy=popularity&' +
-                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-              searchCNN(url);
-          }
-        }else if($('#the-wall-street-journal').is(':checked')){
+                  return searchCNN(url);
+
+            }   else{
+                var url = 'https://newsapi.org/v2/everything?' +
+                  'q=' + keyword + '&' +
+                  'sources=cnn&' +
+                  'language=en&' +
+                  'sortBy=publishedAt&' +
+                  'sortBy=relevancy&' +
+                  'sortBy=popularity&' +
+                  'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+                searchCNN(url);
+            }
+        } else if($('#the-wall-street-journal').is(':checked')){
             if(start!= "" && end!=""){
               var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
@@ -82,7 +83,7 @@
 
                 return searchWallStreet(url);
 
-          }else{
+          }   else{
               var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=the-wall-street-journal&' +
@@ -225,6 +226,8 @@
                 'apiKey=b8438b744ce24b42a60f3a56367a00c4';
               searchBuzzfeed(url);
           }
+        };
+
       var start = $("#startDate").val();
       var end = $("#endDate").val();
       var keyword = $(".form-control").val().trim();
@@ -453,6 +456,7 @@
               'apiKey=b8438b744ce24b42a60f3a56367a00c4';
             searchBuzzfeed(url);
         }
+      };
       $(".form-control").val("")
 
   });
@@ -854,14 +858,15 @@ function renderArticles(searchResponse){
 
 
 
-function validateDate(){
-  var start = $("#startDate").val();
-  var end = $("#endDate").val();
-  if(start == ""){
-    alert("Please fill in a start date.")
-    return false;
-  } else if(end == ""){
-    alert("Please fill in an end date.")
-    return false;
-  }
-})
+  function validateDate(){
+    var start = $("#startDate").val();
+    var end = $("#endDate").val();
+    if(start == ""){
+      alert("Please fill in a start date.")
+      return false;
+    } else if(end == ""){
+      alert("Please fill in an end date.")
+      return false;
+    }
+  };
+});
