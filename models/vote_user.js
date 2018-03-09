@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    article: { // article url (stored to save and display to users)
+    articleURL: { // article url (stored to save and display to users)
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
