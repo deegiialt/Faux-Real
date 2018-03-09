@@ -6,7 +6,7 @@
   module.exports = function(app) {
 
 
-    app.post("/signup", function(req, res) { // after post is complete, have the logic setup the URL with the users username or email for the get request
+    app.post("/signup", function(req, res) {
       db.User.create({
           userName: req.body.userName,
           email: req.body.email,
@@ -19,14 +19,22 @@
         passport.authenticate('local-signup')(req, res, function() {
           res.redirect('/main')
         })
-        res.json(db)
       })
     })
 
-    app.post('/login', passport.authenticate('local-login', { successRedirect: '/main', failureRedirect: '/' }));
+    //This isnt working:
+    app.post('/login', 
+      passport.authenticate('local-login', {  
+        successRedirect: '/main',
+        failureRedirect: '/', 
+        failureFlash : true })// allow flash messages
+
+    );
+
 
     app.get('/logout', (req, res)=>{
       req.logout();
+      res.redirect('/')
       return res.json({status:'success'});
     });
 
