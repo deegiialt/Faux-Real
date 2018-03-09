@@ -6,7 +6,6 @@
 
   $("#trending").on("click", function(){
       $("#div-section").empty();
-<<<<<<< HEAD
       searchTopHeadlines();
   })
 
@@ -226,7 +225,6 @@
                 'apiKey=b8438b744ce24b42a60f3a56367a00c4';
               searchBuzzfeed(url);
           }
-=======
       var start = $("#startDate").val();
       var end = $("#endDate").val();
       var keyword = $(".form-control").val().trim();
@@ -443,7 +441,7 @@
               return searchBuzzfeed(url);
 
         }else{
-            
+
 
             var url = 'https://newsapi.org/v2/everything?' +
               'q=' + keyword + '&' +
@@ -454,7 +452,6 @@
               'sortBy=popularity&' +
               'apiKey=b8438b744ce24b42a60f3a56367a00c4';
             searchBuzzfeed(url);
->>>>>>> 5b312cee0342cca9577b84c97dc698446abed73a
         }
       $(".form-control").val("")
 
@@ -659,7 +656,6 @@
 
   function searchTech(){
       var url = 'https://newsapi.org/v2/top-headlines?' +
-<<<<<<< HEAD
                 'country=us&' +
                 'category=technology&' +
                 'sortBy=publishedAt&' +
@@ -737,7 +733,6 @@
       return false;
     }
     return true;
-=======
               'country=us&' +
               'category=sports&' +
               'sortBy=publishedAt&' +
@@ -793,7 +788,7 @@ function searchTech(){
 
 function renderArticles(searchResponse){
 
-      var newPanel = $("<div>"); 
+      var newPanel = $("<div>");
       newPanel.attr("class", "main");
       var newPanelList = $("<ul>");
       newPanelList.attr("id", "og-grid");
@@ -815,10 +810,10 @@ function renderArticles(searchResponse){
       //listItemOne.append(artTitle)
       aTag.append(image);
       listItemOne.append(aTag)
-      // listItemOne.append("<a href=" + searchResponse[i].url + 
-      //                     " data-largesrc=" + searchResponse[i].urlToImage + 
-      //                     " data-title=" + searchResponse[i].title + 
-      //                     " data-description=" + searchResponse[i].description + ">" + 
+      // listItemOne.append("<a href=" + searchResponse[i].url +
+      //                     " data-largesrc=" + searchResponse[i].urlToImage +
+      //                     " data-title=" + searchResponse[i].title +
+      //                     " data-description=" + searchResponse[i].description + ">" +
       //                     "<img src=" + searchResponse[i].urlToImage + " width= 250px height=250px/> </a>")
       newPanelList.append(listItemOne);
 
@@ -865,11 +860,8 @@ function validateDate(){
   if(start == ""){
     alert("Please fill in a start date.")
     return false;
-  }else if(end == ""){
+  } else if(end == ""){
     alert("Please fill in an end date.")
     return false;
->>>>>>> 5b312cee0342cca9577b84c97dc698446abed73a
   }
-
-
-  })
+})
