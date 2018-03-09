@@ -824,10 +824,10 @@ function renderArticles(searchResponse){
       var realNewButton = $("<button>Real</button>");
       fauxNewButton.attr("type", "submit");
       //fauxNewButton.attr("id", "faux" + i);
-      fauxNewButton.addClass("fauxButton");
+      fauxNewButton.attr("id", "fauxButton");
       fauxNewButton.attr("data-id", i);
       //fauxNewButton.attr("data-id", "faux-" + searchResponse[i].url);
-      realNewButton.addClass("realButton");
+      realNewButton.attr("id", "realButton");
       //realNewButton.attr("data-id", "real-" + searchResponse[i].url);
 
       // var tileContent = $("<div>");

@@ -8,7 +8,7 @@
 console.log("horsey");
 
 
-  $(".fauxButton").on("submit", function() {
+  $(document).on("click", "#fauxButton", function() {
     event.preventDefault();
     //var id = $(this).data("id");
     // var vote = true;
@@ -40,7 +40,7 @@ console.log("horsey");
     // );
   });
 
-  $(" .realButton ").on("click", function() {
+  $(document).on("click", "#realButton", function() {
     //event.preventDefault();
     //var id = $(this).data("id");
     // var vote = true;
