@@ -2,7 +2,7 @@
   var bodyParser = require("body-parser");
   var session = require("express-session");
   var passport = require('passport');
-
+  var flash = require('connect-flash');
 
   // Sets up the Express App
   // =============================================================
@@ -23,6 +23,8 @@
   app.use(express.static("public"));
 
   app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true}));
+  
+  app.use(flash());
 
   // Routes
   // =============================================================

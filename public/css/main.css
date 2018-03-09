@@ -1,17 +1,15 @@
 body {
     background-color: #000044;
+    font-family: Montserrat, sans-serif;
 }
 
-.title {
-/*  left: calc(50% - 240px);
-  position: absolute;
-  top: 90px;*/
+#title {
   font-size: 80px;
   color: white;
-  font-family: Montserrat, sans-serif;
   font-weight: bold;
   letter-spacing: 6px;
   margin bottom: 20px;
+  text-align: center;
 }
 
 /*===============================================*/
@@ -26,7 +24,7 @@ body {
     top: 0;
     left: 0;
     background-color: white;
-    opacity: 0.5;
+    opacity: 0.9;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -76,7 +74,7 @@ body {
 }
 
 .msg-wrapper div {
-    font-size: 16px
+    font-size: 16px;
 }
 
 .textboxes {
@@ -97,7 +95,7 @@ textarea {
 
 .error {
     color: red;
-    font-size: -2em
+    font-size: -2em;
 }
 
 input[type=submit] {
@@ -132,13 +130,44 @@ input[type=submit] {
     color: white;
 }
 
+.navLinks:hover {
+   cursor: crosshair;
+   color: #ffffff3b;
+   background-color: #000044 !important;
+}
+
 /*===============================================*/
 /*Results panel*/
 /*===============================================*/
 .panel {
     border-radius: 0;
+    margin:0;
 }
 
 #topArticles {
     padding:0;
+    height: auto;
+}
+
+/*===============================================*/
+/*Tile Content*/
+/*===============================================*/
+li a:hover {
+    text-decoration: none;
+    cursor: crosshair;
+}
+
+.tileContent:hover {
+    background-color: #337d8180;
+}
+
+.tileContent {
+    width: 250px;
+    height: 250px;
+    background-color: #337d81b8;
+    color:white;
+}
+
+.tileTitle {
+    padding-top: 30px;
 }
