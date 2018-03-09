@@ -42,7 +42,9 @@ $("#search-submit").on("click", function(){
             searchKeyword(url);
       }
       }else if($('#cnn').is(':checked')){
-        if(start!= "" && end!=""){
+        if(start!= "" || end!=""){
+          var check = validateDate();
+          if(check == false) return;
             var url = 'https://newsapi.org/v2/everything?' +
               'q=' + keyword + '&' +
               'sources=cnn&' +
@@ -68,7 +70,9 @@ $("#search-submit").on("click", function(){
             searchCNN(url);
         }
       }else if($('#the-wall-street-journal').is(':checked')){
-          if(start!= "" && end!=""){
+          if(start!= "" || end!=""){
+            var check = validateDate();
+            if(check == false) return;
             var url = 'https://newsapi.org/v2/everything?' +
               'q=' + keyword + '&' +
               'sources=the-wall-street-journal&' +
@@ -94,7 +98,9 @@ $("#search-submit").on("click", function(){
             searchWallStreet(url);
         }
       }else if($('#the-huffington-post').is(':checked')){
-        if(start!= "" && end!=""){
+        if(start!= "" || end!=""){
+          var check = validateDate();
+          if(check == false) return;
             var url = 'https://newsapi.org/v2/everything?' +
               'q=' + keyword + '&' +
               'sources=the-huffington-post&' +
@@ -120,7 +126,9 @@ $("#search-submit").on("click", function(){
             searchHuffPost(url);
         }
       }else if($('#vice-news').is(':checked')){
-        if(start!= "" && end!=""){
+        if(start!= "" || end!=""){
+          var check = validateDate();
+          if(check == false) return;
             var url = 'https://newsapi.org/v2/everything?' +
               'q=' + keyword + '&' +
               'sources=vice-news&' +
@@ -146,7 +154,9 @@ $("#search-submit").on("click", function(){
             searchVice(url);
         }
       }else if($('#usa-today').is(':checked')){
-        if(start!= "" && end!=""){
+        if(start!= "" || end!=""){
+          var check = validateDate();
+          if(check == false) return;
             var url = 'https://newsapi.org/v2/everything?' +
               'q=' + keyword + '&' +
               'sources=usa-today&' +
@@ -172,7 +182,9 @@ $("#search-submit").on("click", function(){
             searchUSA(url);
         }
       }else if($('#google-news').is(':checked')){
-        if(start!= "" && end!=""){
+        if(start!= "" || end!=""){
+          var check = validateDate();
+          if(check == false) return;
             var url = 'https://newsapi.org/v2/everything?' +
               'q=' + keyword + '&' +
               'sources=google-news&' +
@@ -198,7 +210,9 @@ $("#search-submit").on("click", function(){
             searchGoogle(url);
         }
       }else if($('#buzzfeed').is(':checked')){
-        if(start!= "" && end!=""){
+        if(start!= "" || end!=""){
+          var check = validateDate();
+          if(check == false) return;
             var url = 'https://newsapi.org/v2/everything?' +
               'q=' + keyword + '&' +
               'sources=buzzfeed&' +
@@ -450,35 +464,61 @@ function searchTech(){
 
 function renderArticles(searchResponse){
 
+      var newPanel = $("<div>"); 
+      newPanel.attr("class", "main");
+      var newPanelList = $("<ul>");
+      newPanelList.attr("id", "og-grid");
+      newPanelList.attr("class", "og-grid");
+      newPanel.append(newPanelList);
+
     for(var i = 0; i < searchResponse.length; i++){
 
-      var newPanel = $("<div>"); 
-      newPanel.attr("class", "headBodyPanel")
-      var newPanelHeading = $("<div>");
-      newPanelHeading.attr("class", "panel-heading")
-      newPanelHeading.attr("id", "articleHead-" + i)
-      newPanelHeading.append("<h3>" + searchResponse[i].source.name + "</h3>");
-      newPanelHeading.append("<h4>" + searchResponse[i].author + "</h4>");
-      var newPanelBody = $("<div>");
-      newPanelBody.attr("class", "panel-body")
-      newPanelBody.attr("id", "articleBody-" + i);
-      newPanelBody.append("<p>" + searchResponse[i].description + "</p>");
-      newPanelBody.append("<a href=" + "'" + searchResponse[i].url + "'" + "target='_blank'" + ">" + "Go to Article" + "</a>");
-      var fauxNewButton = $("<button>Faux</button>");
-      var realNewButton = $("<button>Real</button>");
-      fauxNewButton.attr("class", "fauxButton")
-      fauxNewButton.attr("id", "faux-" + searchResponse[i].url);
-      realNewButton.attr("class", "realButton");
-      realNewButton.attr("id", "real-" + searchResponse[i].url);
+      var listItemOne = $("<li>")
+      var aTag = $("<a>");
+      aTag.attr("href", searchResponse[i].url);
+      aTag.attr("data-largesrc", searchResponse[i].urlToImage);
+      aTag.attr("data-description", searchResponse[i].description);
+      var image = $("<img>");
+      image.attr("src", searchResponse[i].urlToImage);
+      image.attr("width", "280px");
+      image.attr("height", "250px");
+      var artTitle = $("<p>" + searchResponse[i].title + "</p>");
+      //listItemOne.append(artTitle)
+      aTag.append(image);
+      listItemOne.append(aTag)
+      // listItemOne.append("<a href=" + searchResponse[i].url + 
+      //                     " data-largesrc=" + searchResponse[i].urlToImage + 
+      //                     " data-title=" + searchResponse[i].title + 
+      //                     " data-description=" + searchResponse[i].description + ">" + 
+      //                     "<img src=" + searchResponse[i].urlToImage + " width= 250px height=250px/> </a>")
+      newPanelList.append(listItemOne);
 
-
-
-      newPanel.append(newPanelHeading);
-      newPanel.append(newPanelBody);
-      newPanel.append(fauxNewButton);
-      newPanel.append(realNewButton);
+      // var tileContent = $("<div>");
+      // listItemOne.append(tileContent);
+      // tileContent.append("<p class= 'tileTitle'>" + searchResponse[i].title + "</p>");
+      // tileContent.append("<p class= 'tileSource'>" + searchResponse[i].source.name + "</p>");
+      // tileContent.append("<p class= 'tileDate'>" + searchResponse[i].publishedAt + "</p>");
+      // var listItemTwo = $("<li>")
 
       $("#div-section").append(newPanel);
+
+      // <div class="main">
+      //                       <ul id="og-grid" class="og-grid">
+      //                           <li>
+      //                               <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/1.jpg" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
+      //                                   <!-- <img src="http://via.placeholder.com/250x250" alt="img01"/> -->
+      //                                   <div class="tileContent">
+      //                                       <p class="tileTitle">Example Title</p>
+      //                                       <p class="tileSource">CNN</p>
+      //                                       <p class="tileDate">Date</p>
+      //                                   </div>
+      //                               </a>
+      //                           </li>
+      //                           <li>
+      //                               <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/2.jpg" data-title="Veggies sunt bona vobis" data-description="Komatsuna prairie turnip wattle seed artichoke mustard horseradish taro rutabaga ricebean carrot black-eyed pea turnip greens beetroot yarrow watercress kombu.">
+      //                                   <img src="http://via.placeholder.com/250x250" alt="img02"/>
+      //                               </a>
+      //                           </li>
 
     };
 };
