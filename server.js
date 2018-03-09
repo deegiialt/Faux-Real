@@ -4,6 +4,7 @@
   var passport = require('passport');
   var flash = require('connect-flash');
 
+
   // Sets up the Express App
   // =============================================================
   var app = express();
@@ -23,7 +24,11 @@
   app.use(express.static("public"));
 
   app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true}));
-  
+
+  app.use(passport.initialize());
+
+  app.use(passport.session());
+
   app.use(flash());
 
   // Routes
@@ -32,7 +37,7 @@
   require("./routes/login-api-routes.js")(app);
   require("./routes/count-api-routes.js")(app);
   require("./routes/user-votes-routes.js")(app);
-  require('./routes/passport.js')(passport);
+  // require('./routes/passport.js')(passport);
 
 // Syncing sequelize models and then starting our Express app
 // =============================================================
