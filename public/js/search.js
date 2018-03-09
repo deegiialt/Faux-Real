@@ -808,8 +808,8 @@ function renderArticles(searchResponse){
       aTag.attr("data-description", searchResponse[i].description);
       var image = $("<img>");
       image.attr("src", searchResponse[i].urlToImage);
-      image.attr("width", "280px");
-      image.attr("height", "250px");
+      image.attr("width", "270px");
+      image.attr("height", "230px");
       var artTitle = $("<p>" + searchResponse[i].title + "</p>");
       //listItemOne.append(artTitle)
       aTag.append(image);
@@ -820,6 +820,15 @@ function renderArticles(searchResponse){
       //                     " data-description=" + searchResponse[i].description + ">" +
       //                     "<img src=" + searchResponse[i].urlToImage + " width= 250px height=250px/> </a>")
       newPanelList.append(listItemOne);
+      var fauxNewButton = $("<button>Faux</button>");
+      var realNewButton = $("<button>Real</button>");
+      fauxNewButton.attr("type", "submit");
+      //fauxNewButton.attr("id", "faux" + i);
+      fauxNewButton.addClass("fauxButton");
+      fauxNewButton.attr("data-id", i);
+      //fauxNewButton.attr("data-id", "faux-" + searchResponse[i].url);
+      realNewButton.addClass("realButton");
+      //realNewButton.attr("data-id", "real-" + searchResponse[i].url);
 
       // var tileContent = $("<div>");
       // listItemOne.append(tileContent);
@@ -828,7 +837,11 @@ function renderArticles(searchResponse){
       // tileContent.append("<p class= 'tileDate'>" + searchResponse[i].publishedAt + "</p>");
       // var listItemTwo = $("<li>")
 
+      newPanel.append(fauxNewButton);
+      newPanel.append(realNewButton);
+
       $("#div-section").append(newPanel);
+
 
       // <div class="main">
       //                       <ul id="og-grid" class="og-grid">
