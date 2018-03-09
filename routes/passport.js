@@ -5,6 +5,8 @@ var bCrypt = require('bcrypt-nodejs');
 module.exports = function(passport, user){
 
     var User = user;
+    console.log(User);
+
     var LocalStrategy = require('passport-local').Strategy;
 
     passport.serializeUser(function(user, done) {
@@ -28,21 +30,18 @@ module.exports = function(passport, user){
         {    
             usernameField: 'userName',
             passwordField: 'password',
-            emailField: 'email',
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
 
         function(req, done){
-            console.log(req.body);
-
 
             var generateHash = function() {
                 return bCrypt.hashSync(req.body.password, bCrypt.genSaltSync(8), null);
             };
 
-            User.findOne({where: {email: req.body.email}}).then(function(user){
+            User.findOne({email: req.body.email}).then(function(response){
 
-                if(user) {
+                if (response) {
                     return done(null, false, {message : 'That email is already taken'} );
                 } else {
                     var userPassword = generateHash(req.body.password);
@@ -87,14 +86,14 @@ module.exports = function(passport, user){
         },
 
         function(req, userName, password, done) {
-            console.log(req.body);
-            var User = user;
-
+            
             var isValidPassword = function(userpass){
                 return bCrypt.compareSync(req.body.password, userpass);
             }
 
-            User.findOne({ where: { userName: req.body.userName}}).then(function (user) {
+            console.log(User);
+
+            User.findOne({ userName: req.body.userName}).then(function (user) {
 
                 if (!user) {
                     return done(null, false, { message: 'User Name does not exist' });
