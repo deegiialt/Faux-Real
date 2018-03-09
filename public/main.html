@@ -219,6 +219,16 @@
 			displayChatMessage(message.name, message.text);
 	    });
 	    
+	    var ref = firebase.database().ref('/');
+		var now = Date.now();
+		//This controls the number of hours til chat resets.  currently set to 6 (based on now - 6)
+		var cutoff = now - 6 * 60 * 60 * 1000;
+		var old = ref.orderByChild('timestamp').endAt(cutoff).limitToLast(1);
+		var listener = old.on('child_added', function(snapshot) {
+		    snapshot.ref.remove();
+		});
+
+
 	    function displayChatMessage(name, text) {
 			$('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
 			$('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
