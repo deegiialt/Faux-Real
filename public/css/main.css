@@ -185,8 +185,28 @@ li a:hover {
 .tileContent {
     width: 250px;
     height: 250px;
-    background-color: #337d81b8;
+  /*  background-color: #337d81b8;*/
     color:white;
+}
+
+.tileOne {
+    background: #ee4035;
+}
+
+.tileTwo {
+    background: #f37736;
+}
+
+.tileThree {
+    background: #f1e56c;
+}
+
+.tileFour {
+    background: #7bc043;
+}
+
+.tileFive {
+    background: #0392cf;   
 }
 
 .tileTitle {
@@ -194,4 +214,24 @@ li a:hover {
 }
 
 
+/*===============================================*/
+/*Button*/
+/*===============================================*/
+.voteButton {
+    /*background-color: #337d81b8;*/
+    background-color: white;
+    outline-offset: 0;
+    color: #000044;
+}
+
+/*Voting bars*/
+.notFakeVote {
+    width:70%;
+    background-color: #cccccc;
+}
+
+.voteContainer {
+    background-color: white;
+    margin: 15px;
+}
 
