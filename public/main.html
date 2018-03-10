@@ -160,7 +160,7 @@
 						<div class="main">
 							<ul id="og-grid" class="og-grid">
 								<li>
-									<div id="six" class="button">
+									<div id="two" class="button">
 										<a href="#">
 											<div class="tileContent tileOne">
 												<p class="tileTitle">Example Title</p>
@@ -179,7 +179,7 @@
 									</div>
 								</li>
 								<li>
-									<div id="six" class="button">
+									<div id="two" class="button">
 										<a href="#">
 											<div class="tileContent tileTwo">
 												<p class="tileTitle">Example Title</p>
@@ -199,7 +199,7 @@
 									
 								</li>
 								<li>
-									<div id="six" class="button">
+									<div id="two" class="button">
 										<a href="#">
 											<div class="tileContent tileThree">
 												<p class="tileTitle">Example Title</p>
@@ -218,7 +218,7 @@
 									</div>
 								</li>
 								<li>
-									<div id="six" class="button">
+									<div id="two" class="button">
 										<a href="#">
 											<div class="tileContent tileFour">
 												<p class="tileTitle">Example Title</p>
@@ -237,7 +237,7 @@
 									</div>
 								</li>
 								<li>
-									<div id="six" class="button">
+									<div id="two" class="button">
 										<a href="#">
 											<div class="tileContent tileFive">
 												<p class="tileTitle">Example Title</p>
@@ -271,11 +271,12 @@
 	<div id="modal-container">
 	  <div class="modal-background">
 	    <div class="modal">
-	      <h2>I'm a Modal</h2>
+<!-- 	      <h2>I'm a Modal</h2>
 	      <p>Hear me roar.</p>
 	      <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
 			<rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
-		</svg>
+		</svg> -->
+			<iframe id="myFrame" src="http://www.latimes.com/local/lanow/la-me-pomona-officer-shot-20180309-story.html" style="height:500px;width:900px"></iframe>
 	    </div>
 	  </div>
 	</div>
@@ -293,6 +294,12 @@
 		  $(this).addClass('out');
 		  $('body').removeClass('modal-active');
 		});
+
+
+		// iFrame
+		var iframe = document.getElementById("myFrame");
+		var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
+		elmnt.style.display = "none";
 	</script>
 
 
