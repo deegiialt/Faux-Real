@@ -37,11 +37,11 @@
   require("./routes/login-api-routes.js")(app);
   require("./routes/count-api-routes.js")(app);
   require("./routes/user-votes-routes.js")(app);
-  // require('./routes/passport.js')(passport);
+  require('./routes/passport.js')(passport);
 
 // Syncing sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: false}).then(function() {
+db.sequelize.sync({ force:false}).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
