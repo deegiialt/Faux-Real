@@ -790,6 +790,7 @@ function searchTech(){
 //========================================================
 //this function will render all other search functions
 
+
 function renderArticles(searchResponse){
 
       var newPanel = $("<div>");
@@ -820,22 +821,22 @@ function renderArticles(searchResponse){
       //                     " data-description=" + searchResponse[i].description + ">" +
       //                     "<img src=" + searchResponse[i].urlToImage + " width= 250px height=250px/> </a>")
       newPanelList.append(listItemOne);
+
       var fauxNewButton = $("<button>Faux</button>");
       var realNewButton = $("<button>Real</button>");
       fauxNewButton.attr("type", "submit");
       //fauxNewButton.attr("id", "faux" + i);
-      fauxNewButton.attr("id", "fauxButton");
-      fauxNewButton.attr("data-id", i);
-      //fauxNewButton.attr("data-id", "faux-" + searchResponse[i].url);
-      realNewButton.attr("id", "realButton");
-      //realNewButton.attr("data-id", "real-" + searchResponse[i].url);
+      fauxNewButton.addClass("fauxButton");
+      fauxNewButton.attr("data-source", searchResponse[i].source.name);
+      fauxNewButton.attr("data-title", searchResponse[i].title);
+      fauxNewButton.attr("data-url", searchResponse[i].url);
+      fauxNewButton.attr("data-id", "faux-" + searchResponse[i].url);
+      realNewButton.addClass("realButton");
+      realNewButton.attr("data-source", searchResponse[i].source.name);
+      realNewButton.attr("data-title", searchResponse[i].title);
+      realNewButton.attr("data-url", searchResponse[i].url);
+      realNewButton.attr("data-id", "real-" + searchResponse[i].url);
 
-      // var tileContent = $("<div>");
-      // listItemOne.append(tileContent);
-      // tileContent.append("<p class= 'tileTitle'>" + searchResponse[i].title + "</p>");
-      // tileContent.append("<p class= 'tileSource'>" + searchResponse[i].source.name + "</p>");
-      // tileContent.append("<p class= 'tileDate'>" + searchResponse[i].publishedAt + "</p>");
-      // var listItemTwo = $("<li>")
 
       newPanel.append(fauxNewButton);
       newPanel.append(realNewButton);
@@ -882,4 +883,5 @@ function renderArticles(searchResponse){
       return false;
     }
   };
+
 });
