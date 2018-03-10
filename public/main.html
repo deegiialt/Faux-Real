@@ -8,7 +8,9 @@
 	<!-- Grid CSS -->
 	<link rel="stylesheet" type="text/css" href="css/default.css">
 	<link rel="stylesheet" type="text/css" href="css/component.css">
-	<script src="js/modernizr.custom.js"></script>
+<!-- 	<script src="js/modernizr.custom.js"></script> -->
+	<!-- News Modal -->
+	<link rel="stylesheet" href="css/newmodal.css">
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Railway" rel="stylesheet">
 	<!-- Favicon -->
@@ -168,18 +170,28 @@
 									</a>
 								</li>
 								<li>
-									<a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/2.jpg" data-title="Veggies sunt bona vobis" data-description="Komatsuna prairie turnip wattle seed artichoke mustard horseradish taro rutabaga ricebean carrot black-eyed pea turnip greens beetroot yarrow watercress kombu.">
-										<div class="tileContent">
-											<p class="tileTitle">Example Title</p>
-											<p class="tileSource">CNN</p>
-											<p class="tileDate">Date</p>
-											<!-- ==================================== -->
-											<!-- Voting buttons -->
-											<button class="voteButton glyphicon glyphicon-ok"></button>
-											<button class="voteButton glyphicon glyphicon-remove"></button>
+									<div id="six" class="button">
+<!-- 										<a href="" data-largesrc="images/2.jpg" data-title="Veggies sunt bona vobis" data-description="Komatsuna prairie turnip wattle seed artichoke mustard horseradish taro rutabaga ricebean carrot black-eyed pea turnip greens beetroot yarrow watercress kombu."> -->
+										<a href="#">
 											
-										</div>
-									</a>
+										
+											<div class="tileContent">
+												<p class="tileTitle">Example Title</p>
+												<p class="tileSource">CNN</p>
+												<p class="tileDate">Date</p>
+												<!-- ==================================== -->
+												<!-- Voting buttons -->
+												<button class="btn voteButton glyphicon glyphicon-ok"></button>
+												<button class="btn voteButton glyphicon glyphicon-remove"></button>
+												<!-- Voting bar -->
+												<div class="voteContainer">
+													<div class="notFakeVote">70%</div>
+												</div>											
+											</div>
+										</a>
+									<!-- 	</a> -->
+									</div>
+									
 								</li>
 								<li>
 									<a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/3.jpg" data-title="Dandelion horseradish" data-description="Cabbage bamboo shoot broccoli rabe chickpea chard sea lettuce lettuce ricebean artichoke earthnut pea aubergine okra brussels sprout avocado tomato.">
@@ -211,12 +223,12 @@
 								</ul>
 						</div>
 					</div><!-- /container -->
-					<script src="js/grid.js"></script>
+<!-- 					<script src="js/grid.js"></script>
 					<script>
 						$(function() {
 							Grid.init();
 						});
-					</script>
+					</script> -->
 					<!-- ========================================================================== -->
 					<!-- End of grid -->
 	          </div>
@@ -224,6 +236,37 @@
 	      </div>
 	    </div>
 	</div>
+
+	<!-- MODAL -->
+	<div id="modal-container">
+	  <div class="modal-background">
+	    <div class="modal">
+	      <h2>I'm a Modal</h2>
+	      <p>Hear me roar.</p>
+	      <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+			<rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
+		</svg>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- Modal JS -->
+
+	<script>
+		$('.button').click(function(){
+		  var buttonId = $(this).attr('id');
+		  $('#modal-container').removeAttr('class').addClass(buttonId);
+		  $('body').addClass('modal-active');
+		})
+
+		$('#modal-container').click(function(){
+		  $(this).addClass('out');
+		  $('body').removeClass('modal-active');
+		});
+	</script>
+
+
+
 	<script>
 		// Initialize Firebase
 		//$("#topArticles").hide();

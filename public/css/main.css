@@ -198,7 +198,18 @@ li a:hover {
 /*Button*/
 /*===============================================*/
 .voteButton {
-    background-color: #337d8180;
+    background-color: #337d81b8;
     outline-offset: 0;
+}
+
+/*Voting bars*/
+.notFakeVote {
+    width:70%;
+    background-color: #56c4c5;
+}
+
+.voteContainer {
+    background-color: #f58c76;
+    margin: 15px;
 }
 
