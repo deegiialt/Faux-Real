@@ -12,6 +12,11 @@ body {
   text-align: center;
 }
 
+#headerText {
+    color: white;
+    text-decoration: none;
+}
+
 /*===============================================*/
 /*Sidebar*/
 /*===============================================*/
