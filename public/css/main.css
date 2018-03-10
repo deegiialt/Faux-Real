@@ -149,7 +149,7 @@ input[type=submit] {
 
 .navLinks:hover {
    cursor: crosshair;
-   color: #ffffff3b;
+   color: #cccccc;
    background-color: #000044 !important;
 }
 
