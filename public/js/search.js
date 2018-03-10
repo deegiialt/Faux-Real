@@ -837,6 +837,7 @@ function renderArticles(searchResponse){
       realNewButton.attr("data-url", searchResponse[i].url);
       realNewButton.attr("data-id", "real-" + searchResponse[i].url);
 
+
       newPanel.append(fauxNewButton);
       newPanel.append(realNewButton);
 

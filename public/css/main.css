@@ -12,6 +12,11 @@ body {
   text-align: center;
 }
 
+#headerText {
+    color: white;
+    text-decoration: none;
+}
+
 /*===============================================*/
 /*Sidebar*/
 /*===============================================*/
@@ -119,11 +124,23 @@ input[type=submit] {
 #search-form {
     float: right;
     margin: 15px;
-    max-width: 40%;
+    max-width: 23%;
 }
 
-#advancedOptions {
+#advancedOptions,
+#userInfo {
     padding: 15px;
+}
+
+#logoutbutton {
+    padding: 5px;
+    display: block;
+    margin: 0 auto;
+}
+
+#userInfo {
+    position: absolute;
+    left: -120px;
 }
 
 .nav>li>a {
@@ -134,6 +151,10 @@ input[type=submit] {
    cursor: crosshair;
    color: #ffffff3b;
    background-color: #000044 !important;
+}
+
+input.form-control, .btn-default {
+    border-radius: 0 !important;
 }
 
 /*===============================================*/
@@ -164,10 +185,53 @@ li a:hover {
 .tileContent {
     width: 250px;
     height: 250px;
-    background-color: #337d81b8;
+  /*  background-color: #337d81b8;*/
     color:white;
+}
+
+.tileOne {
+    background: #ee4035;
+}
+
+.tileTwo {
+    background: #f37736;
+}
+
+.tileThree {
+    background: #f1e56c;
+}
+
+.tileFour {
+    background: #7bc043;
+}
+
+.tileFive {
+    background: #0392cf;   
 }
 
 .tileTitle {
     padding-top: 30px;
 }
+
+
+/*===============================================*/
+/*Button*/
+/*===============================================*/
+.voteButton {
+    /*background-color: #337d81b8;*/
+    background-color: white;
+    outline-offset: 0;
+    color: #000044;
+}
+
+/*Voting bars*/
+.notFakeVote {
+    width:70%;
+    background-color: #cccccc;
+}
+
+.voteContainer {
+    background-color: white;
+    margin: 15px;
+}
+

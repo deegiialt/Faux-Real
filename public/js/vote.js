@@ -78,6 +78,7 @@
     //   event.preventDefault();
     //
     //  var id = $(this).data("id");
+
     // var vote = true;
     // var source = $(this).data("source");
     // var articleURL = $(this).data("article-url");
@@ -103,5 +104,6 @@
     //     }
     //   );
     // });
+
 
     //setup get route to push new values to the page
