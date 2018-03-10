@@ -28,7 +28,7 @@ module.exports = function(passport){
 
 
     passport.use('local-signup', new LocalStrategy(
-        {    
+        {
             usernameField: 'userName',
             passwordField: 'password',
             passReqToCallback : true // allows us to pass back the entire request to the callback
@@ -101,7 +101,7 @@ module.exports = function(passport){
         },
 
         function(req, userName, password, done) {
-            
+
             var isValidPassword = function(password, userpass){
                 return bCrypt.compareSync(password, userpass);
             }
@@ -112,7 +112,7 @@ module.exports = function(passport){
 
                 if (!user) {
                     return done(null, false, { message: 'User Name does not exist' });
-                }    
+                }
 
                 if (!isValidPassword(password, user.password)) {
 
@@ -128,7 +128,7 @@ module.exports = function(passport){
 
                 console.log("Error:",err);
 
-                return done(null, false, { message: 'Something went wrong with your Signin' 
+                return done(null, false, { message: 'Something went wrong with your Signin'
 
                 });
 
