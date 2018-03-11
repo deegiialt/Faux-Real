@@ -13,6 +13,8 @@
     });
 
     app.get("/main", isLoggedIn, function(req, res) {
+      // res.sendFile(path.join(__dirname, "../public/main.html"));
+      
         res.render('main.ejs', {
             user : req.user // get the user out of session and pass to template
         });
