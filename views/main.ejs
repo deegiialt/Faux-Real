@@ -115,8 +115,8 @@
 	        <ul class="dropdown-menu" id="userInfo">
 	        	<li id="profileName" class="text-center">Username:<br> <%= user.userName || user.google.email%> </li>  <br>
 	        	<li id="profileEmailLabel" class="text-center">Email:<br> <span id="profileEmail"><%= user.email || user.google.email%> </span></li> 
-	        	<br><br>
-	        	<!-- <li id="profilePic" class="text-center">Pic:<br> <%= user.image %> </li> -->
+	        	<!-- <br><br>
+	        	<li id="profilePic" class="text-center">Pic:<br> <%= user.image %> </li> -->
 	        	<li role="separator" class="divider"></li>
 	        	<form method="get" action="/logout">
 	        		<button id="logoutbutton">log-out</button>
