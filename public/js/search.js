@@ -798,29 +798,67 @@ function renderArticles(searchResponse){
       var newPanelList = $("<ul>");
       newPanelList.attr("id", "og-grid");
       newPanelList.attr("class", "og-grid");
-      newPanel.append(newPanelList);
+      
 
     for(var i = 0; i < searchResponse.length; i++){
 
       var listItemOne = $("<li>")
-      var aTag = $("<a>");
-      aTag.attr("href", searchResponse[i].url);
-      aTag.attr("data-largesrc", searchResponse[i].urlToImage);
-      aTag.attr("data-description", searchResponse[i].description);
-      var image = $("<img>");
-      image.attr("src", searchResponse[i].urlToImage);
-      image.attr("width", "270px");
-      image.attr("height", "230px");
-      var artTitle = $("<p>" + searchResponse[i].title + "</p>");
-      //listItemOne.append(artTitle)
-      aTag.append(image);
-      listItemOne.append(aTag)
-      // listItemOne.append("<a href=" + searchResponse[i].url +
-      //                     " data-largesrc=" + searchResponse[i].urlToImage +
-      //                     " data-title=" + searchResponse[i].title +
-      //                     " data-description=" + searchResponse[i].description + ">" +
-      //                     "<img src=" + searchResponse[i].urlToImage + " width= 250px height=250px/> </a>")
+      //inside list item
+      var newDiv = $("<div>");
+      newDiv.attr("id", "two");
+      newDiv.addClass("button");
+      //inside "two" div
+      var link = $("<a>");
+      link.attr("href", searchResponse[i].url);
+      //inside anchor tag
+      var tileContent = $("<div>");
+      tileContent.addClass("tileContent");  
+      tileContent.addClass("tile"+ i);
+      link.append(tileContent);
+      //inside tilecontent
+      var tileTitle = $("<p>");
+      tileTitle.addClass("tileTitle");
+      tileTitle.attr(searchResponse[i].title);
+      var tileSource = $("<p>");
+      tileSource.addClass("tileSource");
+      tileSource.attr(searchResponse[i].source.name);
+      var tileDate = $("<p>");
+      tileDate.addClass("tileDate");
+      tileDate.attr(searchResponse[i].publishedAt);
+      var buttonOne = $("<button>");
+      buttonOne.addClass("btn");
+      buttonOne.addClass("voteButton")
+      buttonOne.addClass("glyphicon")
+      buttonOne.addClass("glyphicon-ok");
+      var buttonTwo = $("<p>");
+      buttonTwo.addClass("btn");
+      buttonTwo.addClass("voteButton");
+      buttonTwo.addClass("glyphicon");
+      buttonTwo.addClass("glyphicon-remove");
+      var voteContain = $("div");
+      voteContain.addClass("voteContainer");
+      //inside voteContainer
+      var scale = $("div");
+      scale.addClass("notFakeVote");
+      voteContain.append(scale);
+
+      //this code appends the various divs, ps, and buttons to the tilecontent div
+      tileContent.append(tileTitle);
+      tileContent.append(tileSource);
+      tileContent.append(tileDate);
+      tileContent.append(buttonOne);
+      tileContent.append(buttonTwo);
+      tileContent.append(voteContain);
+      //appends tilecontent to the anchor tag
+      link.append(tileContent);
+      //appends anchor to "two" div
+      newDiv.append(link);
+      //appends to the list item tag
+      listItemOne.append(newDiv)
+      //appends to "og-grid"
       newPanelList.append(listItemOne);
+      //appends to "main"
+      newPanel.append(newPanelList);
 
       var fauxNewButton = $("<button>Faux</button>");
       var realNewButton = $("<button>Real</button>");
@@ -841,26 +879,7 @@ function renderArticles(searchResponse){
       newPanel.append(fauxNewButton);
       newPanel.append(realNewButton);
 
-      $("#div-section").append(newPanel);
-
-
-      // <div class="main">
-      //                       <ul id="og-grid" class="og-grid">
-      //                           <li>
-      //                               <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/1.jpg" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
-      //                                   <!-- <img src="http://via.placeholder.com/250x250" alt="img01"/> -->
-      //                                   <div class="tileContent">
-      //                                       <p class="tileTitle">Example Title</p>
-      //                                       <p class="tileSource">CNN</p>
-      //                                       <p class="tileDate">Date</p>
-      //                                   </div>
-      //                               </a>
-      //                           </li>
-      //                           <li>
-      //                               <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/2.jpg" data-title="Veggies sunt bona vobis" data-description="Komatsuna prairie turnip wattle seed artichoke mustard horseradish taro rutabaga ricebean carrot black-eyed pea turnip greens beetroot yarrow watercress kombu.">
-      //                                   <img src="http://via.placeholder.com/250x250" alt="img02"/>
-      //                               </a>
-      //                           </li>
+      $(".container").append(newPanel);
 
     };
 };
