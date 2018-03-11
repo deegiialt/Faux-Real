@@ -5,10 +5,11 @@ var User = require('../models').User;
 
 module.exports = function(passport){
 
-    // var User = user;
-    console.log(User);
-
     var LocalStrategy = require('passport-local').Strategy;
+
+    var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+    var configAuth = require('../config/auth.js');
 
     passport.serializeUser(function(user, done) {
         done(null, user.id);
@@ -27,11 +28,16 @@ module.exports = function(passport){
     });
 
 
+    // =========================================================================
+    // LOCAL ==================================================================
+    // =========================================================================
+
     passport.use('local-signup', new LocalStrategy(
-        {    
+        {
             usernameField: 'userName',
             passwordField: 'password',
-            passReqToCallback : true // allows us to pass back the entire request to the callback
+            passReqToCallback : true, // allows us to pass back the entire request to the callback
+            failureFlash : true //allows flash messages
         },
 
         function(req, userName, password, done){
@@ -40,21 +46,13 @@ module.exports = function(passport){
                 console.log("BCYRPT Running HERE!!!!!!!!")
 
                 return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
-                // var encryptedPassword =  bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
-                // console.log(encryptedPassword);
-                // return encryptedPassword;
             };
 
-            User.findOne({where: {userName: userName}}).then(function(response){
+            User.findOne({where: {userName: userName}}).then(function(user){
 
-                console.log(response);
-
-                if (response) {
-                    console.log("Condintional 1, user exists!!!!!!!!!")
+                if (user) {
                     return done(null, false, {message : 'That name is already taken'} );
                 } else {
-                    console.log("Condintional 2, user being created!!!!!!!!!")
-
 
                     var userPassword = generateHash(password);
                     console.log(userPassword);
@@ -97,11 +95,12 @@ module.exports = function(passport){
              // by default, local strategy uses userName and password
             usernameField : 'userName',
             passwordField : 'password',
-            passReqToCallback : true // allows us to pass back the entire request to the callback
+            passReqToCallback : true, // allows us to pass back the entire request to the callback
+            failureFlash : true
         },
 
         function(req, userName, password, done) {
-            
+
             var isValidPassword = function(password, userpass){
                 return bCrypt.compareSync(password, userpass);
             }
@@ -111,12 +110,12 @@ module.exports = function(passport){
             User.findOne({where: {userName: userName}}).then(function (user) {
 
                 if (!user) {
-                    return done(null, false, { message: 'User Name does not exist' });
-                }    
+                    return done(null, false, { message: 'User Name does not exist.  Please create a new account if needed' });
+                }
 
                 if (!isValidPassword(password, user.password)) {
 
-                    return done(null, false, { message: 'Incorrect password' });
+                    return done(null, false, { message: 'Incorrect password on previous try.  Please create a new account if needed' });
 
                 }
 
@@ -128,9 +127,7 @@ module.exports = function(passport){
 
                 console.log("Error:",err);
 
-                return done(null, false, { message: 'Something went wrong with your Signin' 
-
-                });
+                return done(null, false, { message: 'Something went wrong with your Signin' });
 
 
             });
@@ -138,4 +135,52 @@ module.exports = function(passport){
         }
     ));
 
-}
+    // =========================================================================
+    // GOOGLE ==================================================================
+    // =========================================================================
+    passport.use(new GoogleStrategy({
+
+        clientID        : configAuth.googleAuth.clientID,
+        clientSecret    : configAuth.googleAuth.clientSecret,
+        callbackURL     : configAuth.googleAuth.callbackURL,
+
+    },
+    function(token, refreshToken, profile, done) {
+
+        // make the code asynchronous
+        // User.findOne won't fire until we have all our data back from Google
+        process.nextTick(function() {
+
+            // try to find the user based on their google id
+            User.findOne({ 'google.id' : profile.id }, function(err, user) {
+                if (err)
+                    return done(err);
+
+                if (user) {
+
+                    // if a user is found, log them in
+                    return done(null, user);
+                } else {
+                    // if the user isnt in our database, create a new user
+                    var newUser          = new User();
+
+                    // set all of the relevant information
+                    newUser.google.id    = profile.id;
+                    newUser.google.token = token;
+                    newUser.userName  = profile.displayName;
+                    newUser.email = profile.emails[0].value; // pull the first email
+
+                    // save the user
+                    newUser.save(function(err) {
+                        if (err)
+                            throw err;
+                        return done(null, newUser);
+                    });
+                }
+            });
+        });
+
+    }));
+
+};
+

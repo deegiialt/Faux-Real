@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
     "body-parser": "^1.18.2",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.7",
     "express": "^4.16.2",
     "express-generator": "^4.15.5",
     "express-handlebars": "^3.0.0",
@@ -29,10 +30,8 @@
     "mysql2": "^1.5.2",
     "node-sass": "^4.7.2",
     "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0",
     "passport-local": "^1.0.0",
     "sequelize": "^4.35.2"
-  },
-   "scripts": {
-   "start": "node server.js"
- }
+  }
 }

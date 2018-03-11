@@ -1,6 +1,7 @@
 body {
     background-color: #000044;
     font-family: Montserrat, sans-serif;
+    overflow: hidden;
 }
 
 #title {
@@ -10,6 +11,11 @@ body {
   letter-spacing: 6px;
   margin bottom: 20px;
   text-align: center;
+}
+
+#headerText {
+    color: white;
+    text-decoration: none;
 }
 
 /*===============================================*/
@@ -122,8 +128,20 @@ input[type=submit] {
     max-width: 23%;
 }
 
-#advancedOptions {
+#advancedOptions,
+#userInfo {
     padding: 15px;
+}
+
+#logoutbutton {
+    padding: 5px;
+    display: block;
+    margin: 0 auto;
+}
+
+#userInfo {
+    position: absolute;
+    left: -120px;
 }
 
 .nav>li>a {
@@ -132,8 +150,8 @@ input[type=submit] {
 
 .navLinks:hover {
    cursor: crosshair;
-   color: #ffffff3b;
-   background-color: #000044 !important;
+   color: #ee4035;
+   background-color: white !important;
 }
 
 input.form-control, .btn-default {
@@ -146,6 +164,7 @@ input.form-control, .btn-default {
 .panel {
     border-radius: 0;
     margin:0;
+    height: 100vh;
 }
 
 #topArticles {
@@ -168,8 +187,28 @@ li a:hover {
 .tileContent {
     width: 250px;
     height: 250px;
-    background-color: #337d81b8;
+  /*  background-color: #337d81b8;*/
     color:white;
+}
+
+.tileOne {
+    background: #ee4035;
+}
+
+.tileTwo {
+    background: #f37736;
+}
+
+.tileThree {
+    background: #f1e56c;
+}
+
+.tileFour {
+    background: #7bc043;
+}
+
+.tileFive {
+    background: #0392cf;   
 }
 
 .tileTitle {
@@ -177,4 +216,28 @@ li a:hover {
 }
 
 
+/*===============================================*/
+/*Button*/
+/*===============================================*/
+.voteButton {
+    /*background-color: #337d81b8;*/
+    background-color: white;
+    outline-offset: 0;
+    color: #000044;
+}
+
+/*Voting bars*/
+.notFakeVote {
+    width:70%;
+    background-color: #cccccc;
+}
+
+.voteContainer {
+    background-color: white;
+    margin: 15px;
+}
+
+#profileName {
+    text-transform: capitalize;
+}
 

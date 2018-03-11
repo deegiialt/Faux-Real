@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Votes = sequelize.define("Vote", {
+  var Vote = sequelize.define("Vote", {
     userName: {
       type: DataTypes.STRING,
       validate: {
@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     articleURL: { // article url (stored to save and display to users)
       type: DataTypes.STRING,
-      allowNull: false,
+      //allowNull: false,
       validate: {
         isURL: true
       }
@@ -48,5 +48,5 @@ module.exports = function(sequelize, DataTypes) {
   //     }
   //   });
   // };
-  return Votes;
+  return Vote;
 };

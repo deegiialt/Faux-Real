@@ -3,7 +3,7 @@
   var session = require("express-session");
   var passport = require('passport');
   var flash = require('connect-flash');
-
+  var ejs = require('ejs')
 
   // Sets up the Express App
   // =============================================================
@@ -41,7 +41,7 @@
 
 // Syncing sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: false}).then(function() {
+db.sequelize.sync({ force:false}).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
