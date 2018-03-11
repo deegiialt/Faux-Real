@@ -150,8 +150,8 @@ input[type=submit] {
 
 .navLinks:hover {
    cursor: crosshair;
-   color: #cccccc;
-   background-color: #000044 !important;
+   color: #ee4035;
+   background-color: white !important;
 }
 
 input.form-control, .btn-default {

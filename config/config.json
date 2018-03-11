@@ -4,7 +4,7 @@
     "password": "root",
     "port": 8889,
     "database": "faux_db",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
@@ -15,10 +15,12 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "use_env_variable": "JAWSDB_URL",
+    "username": "ycr8ocyk662b82dk",
+    "password": "du3w2pugylyc2w32",
+    "port": 3306,
+    "database": "faux_db",
+    "host": "etdq12exrvdjisg6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }
