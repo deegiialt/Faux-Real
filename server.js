@@ -3,7 +3,7 @@
   var session = require("express-session");
   var passport = require('passport');
   var flash = require('connect-flash');
-
+  var ejs = require('ejs')
 
   // Sets up the Express App
   // =============================================================

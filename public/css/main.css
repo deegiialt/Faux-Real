@@ -237,3 +237,7 @@ li a:hover {
     margin: 15px;
 }
 
+#profileName {
+    text-transform: capitalize;
+}
+
