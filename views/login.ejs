@@ -63,7 +63,7 @@
         			<hr>
         			<br>
         			<br>
-        			<span style="color:red;font-weight: bolder;"> <%= error %> </span>
+        			<span id="errorMessage" style="color:red;font-weight: bolder;"> <%= error %> </span>
 
 				</form>
 		    <form action="../main.html"></form>
@@ -101,7 +101,7 @@
         			<hr>
         			<br>
         			<br>
-        			<span style="color:red;font-weight: bolder;"> <%= error %> </span>
+        			<span id="errorMessage2" style="color:red;font-weight: bolder;"> <%= error %> </span>
 
 				</form>
 		    <form action="../main.html"></form>
@@ -125,6 +125,10 @@
 		// Get the <span> element that closes the modal
 		var span = document.getElementsByClassName("close")[0];
 		var span2 = document.getElementsByClassName("close2")[0];
+
+		if ($('#errorMessage')) {
+			modal.style.display = "block";
+		}
 
 		// When the user clicks the button, open the modal 
 		btn.onclick = function() {
