@@ -620,7 +620,6 @@ function renderArticles(searchResponse, category){
       // tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p><br>");
 
 
-
       var buttonReal = $("<button style='margin:10px'>");
       buttonReal.addClass("btn voteButton realButton glyphicon glyphicon-ok");
       buttonReal.attr("data-source", searchResponse[i].source.name);
@@ -640,11 +639,11 @@ function renderArticles(searchResponse, category){
       if (searchResponse[i].urlToImage === null) {
       tileContent.append("<img class='tileImage' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtrVBUxp2hTkZEGWzqxkT-mC0p5MFaiqsIVV5As2qO4M_U2XgiQ'>");
       } else {
-      tileContent.append("<img class='tileImage' src='" + searchResponse[i].urlToImage + "'>");
+      tileContent.append("<img class='tileImage' src='" + searchResponse[i].urlToImage + "' width='120px' height='120px' >");
       }
 
-      tileContent.append(buttonReal);
-      tileContent.append(buttonFaux);
+      //tileContent.append(buttonReal);
+      //tileContent.append(buttonFaux);
 
       tileContent.append('<br><div class="voteContainer"><div class="notFakeVote">0%</div></div>')
       // var voteContain = $("div");
