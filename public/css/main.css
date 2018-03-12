@@ -300,12 +300,6 @@ li a:hover {
     background: #0392cf;   
 }
 
-
-/*.tileImage {
-  height: 115px;
-  width: 115px;
-}*/
-
 /*===============================================*/
 /*Button*/
 /*===============================================*/
@@ -330,6 +324,10 @@ li a:hover {
 
 #profileName {
     text-transform: capitalize;
+}
+
+.glyphicon-ok, .glyphicon-remove {
+  font-size: 30px;
 }
 
 /*==========
