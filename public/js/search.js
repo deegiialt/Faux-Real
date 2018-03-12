@@ -16,14 +16,14 @@ console.log("here");
 
         if($('#all').is(':checked')){
           if(start!= "" || end!=""){
-            var check = validateDate();
+            var check = validateDate(keyword);
             if(check == false) return;
 
-                return searchKeywordDate();
+                return searchKeywordDate(keyword);
 
             }else{
       
-                searchKeyword();
+                searchKeyword(keyword);
               }
 
         } else if($('#cnn').is(':checked')){
@@ -31,77 +31,77 @@ console.log("here");
               var check = validateDate();
               if(check == false) return;
 
-                  return searchCNNDate();
+                  return searchCNNDate(keyword);
 
             }   else{
                 
-                searchCNN();
+                searchCNN(keyword);
             }
         } else if($('#the-wall-street-journal').is(':checked')){
             if(start!= "" || end!=""){
               var check = validateDate();
               if(check == false) return;
 
-                return searchWallStreetDate();
+                return searchWallStreetDate(keyword);
 
           }   else{
               
-              searchWallStreet();
+              searchWallStreet(keyword);
           }
         }else if($('#the-huffington-post').is(':checked')){
           if(start!= "" || end!=""){
             var check = validateDate();
             if(check == false) return;
 
-                return searchHuffPostDate(url);
+                return searchHuffPostDate(keyword);
 
           }else{
               
-              searchHuffPost(url);
+              searchHuffPost(keyword);
           }
         }else if($('#vice-news').is(':checked')){
           if(start!= "" || end!=""){
             var check = validateDate();
             if(check == false) return;
               
-                return searchViceDate(url);
+                return searchViceDate(keyword);
 
           }else{
               
-              searchVice(url);
+              searchVice(keyword);
           }
         }else if($('#usa-today').is(':checked')){
           if(start!= "" || end!=""){
             var check = validateDate();
             if(check == false) return;
 
-                return searchUSADate(url);
+                return searchUSADate(keyword);
 
           }else{
               
-              searchUSA(url);
+              searchUSA(keyword);
           }
         }else if($('#google-news').is(':checked')){
           if(start!= "" || end!=""){
             var check = validateDate();
             if(check == false) return;
 
-                return searchGoogleDate(url);
+                return searchGoogleDate(keyword);
 
           }else{
               
-              searchGoogle(url);
+              searchGoogle(keyword);
           }
         }else if($('#buzzfeed').is(':checked')){
           if(start!= "" || end!=""){
             var check = validateDate();
             if(check == false) return;
 
-                return searchBuzzfeed(url);
+                return searchBuzzfeed(keyword);
 
           }else{
 
-              searchBuzzfeed(url);
+              searchBuzzfeed(keyword);
           }
         };
       $(".form-control").val("")
@@ -127,11 +127,13 @@ console.log("here");
         // $("#gridContainer").empty();
         searchTech();
   })
-
+  //=========================================================================================================
+  //=========================================================================================================
+  //=========================================================================================================
   //the next 8 functions are for the search option menu
 
   //ALL seach bar function
-  function searchKeywordDate(){
+  function searchKeywordDate(keyword){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'language=en&' +
@@ -153,7 +155,7 @@ console.log("here");
         });
   }
 
-  function searchKeyword(){
+  function searchKeyword(keyword){
       var url = 'https://newsapi.org/v2/everything?' +
                       'q=' + keyword + '&' +
                       'language=en&' +
@@ -172,7 +174,7 @@ console.log("here");
         });
   }
 
-  function searchCNNDate(){
+  function searchCNNDate(keyword){
       var url = 'https://newsapi.org/v2/everything?' +
                   'q=' + keyword + '&' +
                   'sources=cnn&' +
@@ -194,7 +196,7 @@ console.log("here");
         });
   }
 
-  function searchCNN(){
+  function searchCNN(keyword){
       var url = 'https://newsapi.org/v2/everything?' +
                   'q=' + keyword + '&' +
                   'sources=cnn&' +
@@ -214,7 +216,7 @@ console.log("here");
         });
   }
 
-  function searchWallStreetDate(){
+  function searchWallStreetDate(keyword){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=the-wall-street-journal&' +
@@ -236,7 +238,7 @@ console.log("here");
         });
   }
 
-  function searchWallStreet(){
+  function searchWallStreet(keyword){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=the-wall-street-journal&' +
@@ -256,7 +258,7 @@ console.log("here");
         });
   }
 
-  function searchHuffPostDate(url){
+  function searchHuffPostDate(keyword){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=the-huffington-post&' +
@@ -278,7 +280,7 @@ console.log("here");
         });
   }
 
-  function searchHuffPost(url){
+  function searchHuffPost(keyword){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=the-huffington-post&' +
@@ -340,7 +342,7 @@ console.log("here");
         });
   }
 
-  function searchUSADate(url){
+  function searchUSADate(keyword){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=usa-today&' +
@@ -362,7 +364,7 @@ console.log("here");
         });
   }
 
-  function searchUSA(url){
+  function searchUSA(keyword){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=usa-today&' +
@@ -382,7 +384,7 @@ console.log("here");
         });
   }
 
-  function searchGoogleDate(url){
+  function searchGoogleDate(keyword){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=google-news&' +
@@ -404,7 +406,7 @@ console.log("here");
         });
   }
 
-  function searchGoogle(url){
+  function searchGoogle(keyword){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=google-news&' +
@@ -424,7 +426,7 @@ console.log("here");
         });
   }
 
-  function searchBuzzfeedDate(url){
+  function searchBuzzfeedDate(keyword){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=buzzfeed&' +
@@ -446,7 +448,7 @@ console.log("here");
         });
   }
 
-  function searchBuzzfeed(url){
+  function searchBuzzfeed(keyword){
     var url = 'https://newsapi.org/v2/everything?' +
               'q=' + keyword + '&' +
               'sources=buzzfeed&' +
@@ -466,9 +468,9 @@ console.log("here");
         });
   }
 
-  //================================================================
-  //================================================================
-  //================================================================
+  //===================================================================================================
+  //===================================================================================================
+  //===================================================================================================
   //the remainder of the functions are for the tab options on the page
   //business tab search
 
@@ -559,9 +561,9 @@ console.log("here");
         });
   }
 
-  //========================================================
-  //========================================================
-  //========================================================
+  //===========================================================================================
+  //===========================================================================================
+  //===========================================================================================
   //this function will render all other search functions
 
   // function renderArticles(searchResponse){
@@ -693,9 +695,9 @@ function renderArticles(searchResponse){
     };
 };
 
-//=============================================================
-//=============================================================
-//=============================================================
+//================================================================================================
+//================================================================================================
+//================================================================================================
 //this code toggles the date search option
 
 
