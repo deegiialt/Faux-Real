@@ -75,11 +75,6 @@
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus"></span> <span class="caret"></span></button>
 	        <ul class="dropdown-menu dropdown-menu-right" id="advancedOptions">
 
-				<li id="advSearch" class="input-group">
-			  		<input type="text" class="form-control" placeholder="Search" >
-				</li>
-	          	<li role="separator" class="divider"></li>
-
 	          	<li id="advNews">
 	          		<form action="">
 
@@ -116,7 +111,7 @@
 	        	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" area-expanded="false"><span class="glyphicon glyphicon-user"></span></button>
 	        <ul class="dropdown-menu" id="userInfo">
 	        	<li id="profileName" class="text-center">Username:<br> <%= user.userName || user.google.email%> </li>  <br>
-	        	<li id="profileEmailLabel" class="text-center">Email:<br> <span id="profileEmail"><%= user.email || user.google.email%> </span></li> 
+	        	<li id="profileEmailLabel" class="text-center">Email:<br> <span id="profileEmail"> <%= user.email || user.google.email%> </span></li> 
 	        	<!-- <br><br>
 	        	<li id="profilePic" class="text-center">Pic:<br> <%= user.image %> </li> -->
 	        	<li role="separator" class="divider"></li>

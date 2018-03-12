@@ -32,8 +32,8 @@
     // the callback after google has authenticated the user
     app.get('/auth/google/callback',
             passport.authenticate('google', {
-                    successRedirect : 'http://localhost:8080/main',
-                    failureRedirect : 'http://localhost:8080/'
+                    successRedirect : '/main',
+                    failureRedirect : '/'
             }));
 
     //other tries
