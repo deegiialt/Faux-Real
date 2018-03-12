@@ -232,7 +232,13 @@ input.form-control, .btn-default {
 .panel {
     border-radius: 0;
     margin:0;
-    height: 125vh;
+}
+
+.main {
+  height: 400px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
 }
 
 #topArticles {
@@ -256,6 +262,7 @@ li a:hover {
     background-color: #424B54;*/
     background-color: #7F7CAF;
     /*background-color: #4E6E5D;*/
+<<<<<<< HEAD
 }
 
 .tileContent {
@@ -264,7 +271,15 @@ li a:hover {
     padding: 20px;
     margin: 10px;
   /*  background-color: #337d81b8;*/
+=======
+    padding: 20px;
+    margin: 10px;
+    white-space: normal;
+    height: 300px !important;
+    width: 300px !important;
+>>>>>>> df845d2619cfb84c7e226427c8d256f79f4c406d
     color:white;
+
 }
 
 .tile0:hover,
