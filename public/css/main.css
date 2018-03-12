@@ -169,7 +169,6 @@ input.form-control, .btn-default {
 .panel {
     border-radius: 0;
     margin:0;
-    height: auto;
     height: 68vh;
 }
 
