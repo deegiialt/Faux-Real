@@ -70,7 +70,11 @@ body {
 }
 
 #signup {
-  height: 80%;
+  height: 90%;
+}
+
+#myModal {
+  height: 100%;
 }
 
 /* The Close Button */

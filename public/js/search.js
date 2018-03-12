@@ -151,7 +151,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search");
         });
   }
 
@@ -170,7 +170,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search");
         });
   }
 
@@ -192,7 +192,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search CNN");
         });
   }
 
@@ -212,7 +212,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search CNN");
         });
   }
 
@@ -234,7 +234,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Wall Street Journal");
         });
   }
 
@@ -254,7 +254,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Wall Street Journal");
         });
   }
 
@@ -276,7 +276,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Huffington Post");
         });
   }
 
@@ -296,7 +296,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Huffington Post");
         });
   }
 
@@ -318,7 +318,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Vice News");
         });
   }
 
@@ -338,7 +338,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Vice News");
         });
   }
 
@@ -360,7 +360,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search USA Today");
         });
   }
 
@@ -380,7 +380,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search USA Today");
         });
   }
 
@@ -402,7 +402,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Google News");
         });
   }
 
@@ -422,7 +422,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Google News");
         });
   }
 
@@ -444,7 +444,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Buzzfeed News");
         });
   }
 
@@ -464,7 +464,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Buzzfeed News");
         });
   }
 
@@ -487,7 +487,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Trending");
         });
   };
 
@@ -504,7 +504,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Business");
         });
 
   }
@@ -523,8 +523,9 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          renderArticles(response.articles);
+          renderArticles(response.articles, "Sports");
           modalButtons(response.articles);
+
         });
   }
 
@@ -542,7 +543,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Entertainment");
         });
   }
 
@@ -558,7 +559,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Technology");
         });
   }
 
@@ -568,7 +569,7 @@ console.log("here");
 //this function will render all other search functions
 
 
-function renderArticles(searchResponse){
+function renderArticles(searchResponse, category){
 
       //rendering the modal for the tiles
       var body = $(".putinmodal");
@@ -615,7 +616,7 @@ function renderArticles(searchResponse){
       tileContent.addClass("tile" + i);
       newDiv.append(tileContent);
       //inside tilecontent
-      tileContent.append("<p class='tileTitle' style='font-size:90%'>" + searchResponse[i].title + "</p>");
+      tileContent.append("<p class='tileTitle' style='font-size:85%'>" + searchResponse[i].title + "</p>");
       tileContent.append("<p class='tileSource' style='font-size:50%'>" + searchResponse[i].source.name + "</p>");
       // tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p><br>");
 
@@ -642,6 +643,8 @@ function renderArticles(searchResponse){
       }
 
       tileContent.append(buttonFaux);
+
+      tileContent.append('<br><div class="voteContainer"><div class="notFakeVote">70%</div></div>')
       // var voteContain = $("div");
       // voteContain.addClass("voteContainer");
       // tileContent.append(voteContain);
@@ -660,7 +663,7 @@ function renderArticles(searchResponse){
 
 
 
-//<<<<<<< HEAD
+
   
     $('div').on ("click", "div.button", function(){
         console.log("id two on click")
@@ -674,6 +677,8 @@ function renderArticles(searchResponse){
           $('body').removeClass('modal-active');
     });
 
+      newPanel.append('<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>');
+
     var iframe = document.getElementById("myFrame");
     var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
     elmnt.style.display = "none";
@@ -682,6 +687,7 @@ function renderArticles(searchResponse){
 
 //=======
       $(".panel").empty();
+      $(".panel").append('<h1 class="text-center">' + category + '</h1>');
       $(".panel").append(newPanel);
 
 //IN USE FOR DATABASE. PLEASE DON'T DELETE
