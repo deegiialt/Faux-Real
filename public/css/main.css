@@ -1,3 +1,4 @@
+
   html, body {
       height: 100%;
       margin: 0;
@@ -11,6 +12,24 @@
 
   #title {
     font-size: 80px;
+
+body {
+    background-color: #9696b5;
+    font-family: Montserrat, sans-serif;
+    overflow-y: hidden;
+}
+
+#title {
+  font-size: 80px;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 6px;
+  margin bottom: 20px;
+  text-align: center;
+}
+
+#headerText {
+
     color: white;
     font-weight: bold;
     letter-spacing: 6px;
@@ -354,9 +373,7 @@
       color: white !important;
   }
 
-  .carousel-control.left {
-      background-image: none !important;
-  }
-  .carousel-control.right {
-      background-image: none !important;
-  }
+
+
+
+
