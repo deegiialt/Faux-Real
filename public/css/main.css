@@ -269,8 +269,16 @@ li a:hover {
     background-color: #424B54;*/
     background-color: #7F7CAF;
     /*background-color: #4E6E5D;*/
+    position: relative;
 
+}
 
+.tileDetails {
+  position: absolute;
+  bottom: 20px;
+  display: block;
+  margin: 0 auto;
+  width: 88%;
 }
 
 .tile0:hover,
