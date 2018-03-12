@@ -570,10 +570,11 @@
 
 function renderArticles(searchResponse, category){
 
+
       //rendering the modal for the tiles
       var body = $(".putinmodal");
 
-      //for(var i = 0; i < 1; i++){
+      
         var modalContainer = $("<div>");
         modalContainer.attr("id", "modal-container");
         body.append(modalContainer);
@@ -584,9 +585,9 @@ function renderArticles(searchResponse, category){
 
         var modal = $("<div>");
         modal.addClass("modal");
-        modal.append("<iframe id='myFrame' src=" + searchResponse[0].url + " style='height:500px;width:900px'></iframe>")
+        modal.append("<iframe id='myFrame' src='' style='height:500px;width:900px'></iframe>")
         background.append(modal);
-      //}
+      
 
       var newPanel = $("<div>");
       newPanel.attr("class", "main");
@@ -607,8 +608,9 @@ function renderArticles(searchResponse, category){
       listItemOne.append(newDiv)
       //inside "two" div
       var link = $("<a>");
+      link.attr("id", "urlSource")
       link.attr("href", searchResponse[i].url);
-      link.append(link);
+      newDiv.append(link);
       //inside anchor tag
       var tileContent = $("<div>");
       tileContent.addClass("tileContent");
@@ -666,21 +668,26 @@ function renderArticles(searchResponse, category){
 
 
 
-
+  var url;
 
 
     $('div').on ("click", "div.button", function(){
-        //console.log("id two on click")
+        console.log("id two on click")
+          var url = $(this).find("a").attr("href");
+
           var buttonId = $(this).attr('id');
+          $("#myFrame").attr("src", url);
           $('#modal-container').removeAttr('class').addClass(buttonId);
           $('body').addClass('modal-active');
+          
+          console.log(url);
     })
 
     $('div').on("click", "div#modal-container", function(){
+          url = "";
           $(this).addClass('out');
           $('body').removeClass('modal-active');
     });
-
 
     var iframe = document.getElementById("myFrame");
     var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
