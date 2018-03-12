@@ -1,6 +1,6 @@
 console.log("here");
 
-  $(document).ready(function(){
+$(document).ready(function(){
 
     searchTopHeadlines();
 
@@ -808,7 +808,9 @@ function renderArticles(searchResponse, category){
               $('body').addClass('modal-active');
 
             } else {
-              //$(".modal").empty();
+              // $(".modal").empty();
+              errorDiv.empty()
+
               errorDiv.append("<h3>Page Unable to Render</h3>");
               errorDiv.append("<p>We are sorry, this page is unable to display here.  Please click the link below to be taken to the article's site.</p>");
               errorDiv.append("<a class='erorLink' href='" + url + "''>Go to Article</button>");
@@ -841,7 +843,7 @@ function renderArticles(searchResponse, category){
           alert("The span element was clicked.");
           $(this).addClass('out');
           $('body').removeClass('modal-active');
-          $(".modal").empty();
+          errorDiv.empty();
     });
 
       //newPanel.append('<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>');
