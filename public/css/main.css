@@ -14,7 +14,7 @@
     font-size: 80px;
 
 body {
-    background-color: #000044;
+    background-color: #9696b5;
     font-family: Montserrat, sans-serif;
     overflow-y: hidden;
 }
@@ -373,11 +373,7 @@ body {
       color: white !important;
   }
 
-  .carousel-control.left {
-      background-image: none !important;
-  }
-  .carousel-control.right {
-      background-image: none !important;
-  }
+
+
 
 
