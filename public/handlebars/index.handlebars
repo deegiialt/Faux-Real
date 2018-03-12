@@ -1,0 +1,197 @@
+	<nav class="navbar navbar-light bg-light justify-content-between">
+
+	<span id="chatText" style="font-size:30px;cursor:pointer;color:white;" onclick="openNav()">&#9776; chat</span>
+	<div id="mySidenav" class="sidenav">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<!-- Chat -->
+    	 <div id="chatBox">
+			<form class="chatForm">
+				<div class="row">
+					<div class="large-12 columns">
+					    <div id='messagesDiv' class="msg-wrapper"></div>
+					    <br>
+					</div>
+				</div>
+				
+				<div class="textboxes">
+					<div class="row">
+						<div class="large-12 columns">
+						    <span class="error"></span>
+						    <label>
+							<br>
+							<input type="text" id='nameInput' placeholder='Name' />
+							</label>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="large-12 columns">
+						    <label>
+							<br>
+							<textarea id='messageInput' placeholder='Message'></textarea>
+							<input type="submit" value="Submit" id="submit">
+							</label>
+						</div>
+					</div>
+				</div>
+				
+			</form>
+		</div>
+	</div>
+
+	<div class="input-group" id="search-form">
+	  <input type="text" class="form-control" aria-label="...">
+	  <div class="input-group-btn">
+ 			<button type="button" class="btn btn-default" id="search-submit"><span class="glyphicon glyphicon-search"></span></button>
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus"></span> <span class="caret"></span></button>
+	        <ul class="dropdown-menu dropdown-menu-right" id="advancedOptions">
+
+				<li id="advSearch" class="input-group">		
+			  		<input type="text" class="form-control" placeholder="Search" >
+				</li>
+	          	<li role="separator" class="divider"></li>
+
+	          	<li id="advNews">
+	          		<form action="">
+
+					  	<input type="radio" name="newsSource" classe= "radio" id="all" checked> All <br><br>
+					  	<input type="radio" name="newsSource" classe= "radio" id="cnn"> CNN <br><br>
+					  	<input type="radio" name="newsSource" classe= "radio" id="the-wall-street-journal"> Wall Street Journal <br><br>
+					  	<input type="radio" name="newsSource" classe= "radio" id="the-huffington-post"> Huffington Post <br><br>
+					  	<input type="radio" name="newsSource" classe= "radio" id="vice-news"> Vice News <br><br>
+					  	<input type="radio" name="newsSource" classe= "radio" id="usa-today"> USA Today <br><br>
+					  	<input type="radio" name="newsSource" classe= "radio" id="google-news"> Google News <br><br>
+					  	<input type="radio" name="newsSource" classe= "radio" id="buzzfeed"> BuzzFeed <br><br>
+                  
+						<div class="input-group">
+						    <span class="input-group-addon">
+						        <input type="checkbox">
+						    </span>
+						    <input type="text" class="form-control" placeholder="Other">
+						</div><!-- /input-group --> 
+
+					</form>
+	          	</li>
+
+	          	<li role="separator" class="divider"></li>
+
+	          	<li id="advDate">
+	          		Search Dates (start date, stop date) <br><br>
+			  		<input type="date" class="form-control" placeholder="Start Date" >
+  					<input type="date" class="form-control" placeholder="End Date" >
+
+	          	</li>
+
+	        </ul>
+        </div>
+	</div>
+	<!-- Search -->	
+<!--   	<form class="form-inline" id="search-form">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  	</form> -->
+	<br>
+	<br>
+	<br>
+	<!-- Nav -->	
+	<ul class="nav  nav-justified">
+		<li role="presentation"><a class="navLinks" id="business">Business</a></li>
+		<li role="presentation"><a class="navLinks" id="sports">Sports</a></li>
+		<li role="presentation"><a class="navLinks" id="trending">Trending</a></li>
+		<li role="presentation"><a class="navLinks" id="technology">Technology</a></li>
+		<li role="presentation"><a class="navLinks" id="entertainment">Entertainment</a></li>
+	</ul>
+</nav>
+
+	<div class="container-fluid">
+      <h1 id="title">
+          FAUX REAL
+      </h1>
+      <span><a href="/main">Home</a></span>
+    </div>
+	</div>
+
+	<div class="container">
+    	<div class="row">
+	      <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12" id="topArticles">
+	        <div class="panel">
+				<div class="panel-body" id="div-section">
+					<!-- ============================================================================= -->
+					<!-- Grid -->
+					<div class="container">	
+<!-- 						<header class="clearfix">
+							<h1>Trending</h1>	
+						</header> -->
+						<div class="main">
+							<ul id="og-grid" class="og-grid">
+								<li>
+									<a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/1.jpg" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
+										<!-- <img src="http://via.placeholder.com/250x250" alt="img01"/> -->
+										<div class="tileContent">
+											<p class="tileTitle">Example Title</p>
+											<p class="tileSource">CNN</p>
+											<p class="tileDate">Date</p>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/2.jpg" data-title="Veggies sunt bona vobis" data-description="Komatsuna prairie turnip wattle seed artichoke mustard horseradish taro rutabaga ricebean carrot black-eyed pea turnip greens beetroot yarrow watercress kombu.">
+										<div class="tileContent">
+											<p class="tileTitle">Example Title</p>
+											<p class="tileSource">CNN</p>
+											<p class="tileDate">Date</p>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/3.jpg" data-title="Dandelion horseradish" data-description="Cabbage bamboo shoot broccoli rabe chickpea chard sea lettuce lettuce ricebean artichoke earthnut pea aubergine okra brussels sprout avocado tomato.">
+										<div class="tileContent">
+											<p class="tileTitle">Example Title</p>
+											<p class="tileSource">CNN</p>
+											<p class="tileDate">Date</p>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/3.jpg" data-title="Dandelion horseradish" data-description="Cabbage bamboo shoot broccoli rabe chickpea chard sea lettuce lettuce ricebean artichoke earthnut pea aubergine okra brussels sprout avocado tomato.">
+										<div class="tileContent">
+											<p class="tileTitle">Example Title</p>
+											<p class="tileSource">CNN</p>
+											<p class="tileDate">Date</p>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/3.jpg" data-title="Dandelion horseradish" data-description="Cabbage bamboo shoot broccoli rabe chickpea chard sea lettuce lettuce ricebean artichoke earthnut pea aubergine okra brussels sprout avocado tomato.">
+										<div class="tileContent">
+											<p class="tileTitle">Example Title</p>
+											<p class="tileSource">CNN</p>
+											<p class="tileDate">Date</p>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/3.jpg" data-title="Dandelion horseradish" data-description="Cabbage bamboo shoot broccoli rabe chickpea chard sea lettuce lettuce ricebean artichoke earthnut pea aubergine okra brussels sprout avocado tomato.">
+										<div class="tileContent">
+											<p class="tileTitle">Example Title</p>
+											<p class="tileSource">CNN</p>
+											<p class="tileDate">Date</p>
+										</div>
+									</a>
+								</li>
+								</ul>
+						</div>
+					</div><!-- /container -->
+					<script src="js/grid.js"></script>
+					<script>
+						$(function() {
+							Grid.init();
+						});
+					</script>
+					<!-- ========================================================================== -->
+					<!-- End of grid -->
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	</div>
