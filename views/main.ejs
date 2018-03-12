@@ -75,11 +75,6 @@
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus"></span> <span class="caret"></span></button>
 	        <ul class="dropdown-menu dropdown-menu-right" id="advancedOptions">
 
-				<li id="advSearch" class="input-group">
-			  		<input type="text" class="form-control" placeholder="Search" >
-				</li>
-	          	<li role="separator" class="divider"></li>
-
 	          	<li id="advNews">
 	          		<form action="">
 
@@ -116,7 +111,8 @@
 	        	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" area-expanded="false"><span class="glyphicon glyphicon-user"></span></button>
 	        <ul class="dropdown-menu" id="userInfo">
 	        	<li id="profileName" class="text-center">Username:<br> <%= user.userName || user.google.email%> </li>  <br>
-	        	<li id="profileEmailLabel" class="text-center">Email:<br> <span id="profileEmail"><%= user.email || user.google.email%> </span></li>
+
+	        	<li id="profileEmailLabel" class="text-center">Email:<br> <span id="profileEmail"> <%= user.email || user.google.email%> </span></li> 
 	        	<!-- <br><br>
 	        	<li id="profilePic" class="text-center">Pic:<br> <%= user.image %> </li> -->
 	        	<li role="separator" class="divider"></li>
@@ -166,11 +162,6 @@
 												<p class="tileTitle">Example Title</p>
 												<p class="tileSource">CNN</p>
 												<p class="tileDate">Date</p>
-												<hr>
-												<!-- ==================================== -->
-												<!-- Voting buttons -->
-												<button class="btn voteButton glyphicon glyphicon-ok"></button>
-												<button class="btn voteButton glyphicon glyphicon-remove"></button>
 												<!-- Voting bar -->
 												<div class="voteContainer">
 													<div class="notFakeVote">70%</div>
@@ -186,11 +177,6 @@
 												<p class="tileTitle">Example Title</p>
 												<p class="tileSource">CNN</p>
 												<p class="tileDate">Date</p>
-												<hr>
-												<!-- ==================================== -->
-												<!-- Voting buttons -->
-												<button class="btn voteButton glyphicon glyphicon-ok"></button>
-												<button class="btn voteButton glyphicon glyphicon-remove"></button>
 												<!-- Voting bar -->
 												<div class="voteContainer">
 													<div class="notFakeVote">70%</div>
@@ -207,11 +193,6 @@
 												<p class="tileTitle">Example Title</p>
 												<p class="tileSource">CNN</p>
 												<p class="tileDate">Date</p>
-												<hr>
-												<!-- ==================================== -->
-												<!-- Voting buttons -->
-												<button class="btn voteButton glyphicon glyphicon-ok"></button>
-												<button class="btn voteButton glyphicon glyphicon-remove"></button>
 												<!-- Voting bar -->
 												<div class="voteContainer">
 													<div class="notFakeVote">70%</div>
@@ -227,11 +208,6 @@
 												<p class="tileTitle">Example Title</p>
 												<p class="tileSource">CNN</p>
 												<p class="tileDate">Date</p>
-												<hr>
-												<!-- ==================================== -->
-												<!-- Voting buttons -->
-												<button class="btn voteButton glyphicon glyphicon-ok"></button>
-												<button class="btn voteButton glyphicon glyphicon-remove"></button>
 												<!-- Voting bar -->
 												<div class="voteContainer">
 													<div class="notFakeVote">70%</div>
@@ -247,11 +223,6 @@
 												<p class="tileTitle">Example Title</p>
 												<p class="tileSource">CNN</p>
 												<p class="tileDate">Date</p>
-												<hr>
-												<!-- ==================================== -->
-												<!-- Voting buttons -->
-												<button class="btn voteButton glyphicon glyphicon-ok"></button>
-												<button class="btn voteButton glyphicon glyphicon-remove"></button>
 												<!-- Voting bar -->
 												<div class="voteContainer">
 													<div class="notFakeVote">70%</div>
@@ -285,7 +256,15 @@
 	      <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
 			<rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
 		</svg> -->
-			<iframe id="myFrame" src="#" style="height:500px;width:900px"></iframe>
+
+			<iframe id="myFrame" src="http://www.latimes.com/local/lanow/la-me-pomona-officer-shot-20180309-story.html" style="height:500px;width:900px"></iframe>
+			<br>
+			Vote if Real or Faux
+			<br>
+			<!-- ==================================== -->
+			<!-- Voting buttons -->
+			<button class="btn voteButton glyphicon glyphicon-ok"></button>
+			<button class="btn voteButton glyphicon glyphicon-remove"></button>
 	    </div>
 	  </div>
 	</div>

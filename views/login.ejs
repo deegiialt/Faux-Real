@@ -56,18 +56,14 @@
 					<hr>
 					<p>Login with:</p>
         			<a href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> Google</a>
-           			<br>
-        			<br>
        				<a href="/auth/twitter" class="btn btn-info"><span class="fa fa-twitter"></span> Twitter</a>
-           			<br>
-        			<br>
 	       			<a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a>
 					
 					<!-- Login Error Message -->
         			<hr>
         			<br>
         			<br>
-        			<span style="color:red;font-weight: bolder;"> <%= error %> </span>
+        			<span id="errorMessage" style="color:red;font-weight: bolder;"> <%= error %> </span>
 
 				</form>
 		    <form action="../main.html"></form>
@@ -98,18 +94,14 @@
 					<hr>	
 					<p>Login with:</p>
         			<a href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> Google</a>
-        			<br>
-        			<br>
        				<a href="/auth/twitter" class="btn btn-info"><span class="fa fa-twitter"></span> Twitter</a>
-           			<br>
-        			<br>
         			<a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a>
 	
 					<!-- Signup Error Message -->
         			<hr>
         			<br>
         			<br>
-        			<span style="color:red;font-weight: bolder;"> <%= error %> </span>
+        			<span id="errorMessage2" style="color:red;font-weight: bolder;"> <%= error %> </span>
 
 				</form>
 		    <form action="../main.html"></form>
@@ -133,6 +125,10 @@
 		// Get the <span> element that closes the modal
 		var span = document.getElementsByClassName("close")[0];
 		var span2 = document.getElementsByClassName("close2")[0];
+
+		if ($('#errorMessage')) {
+			modal.style.display = "block";
+		}
 
 		// When the user clicks the button, open the modal 
 		btn.onclick = function() {
