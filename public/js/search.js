@@ -523,7 +523,9 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles, "Sports");
+          renderArticles(response.articles, "Sports");
+          modalButtons(response.articles);
+
         });
   }
 
@@ -569,6 +571,23 @@ console.log("here");
 
 function renderArticles(searchResponse, category){
 
+      //rendering the modal for the tiles
+      var body = $(".putinmodal");
+
+      //for(var i = 0; i < 1; i++){
+        var modalContainer = $("<div>");
+        modalContainer.attr("id", "modal-container");
+        body.append(modalContainer);
+
+        var background = $("<div>");
+        background.addClass("modal-background");
+        modalContainer.append(background);
+
+        var modal = $("<div>");
+        modal.addClass("modal");
+        modal.append("<iframe id='myFrame' src=" + searchResponse[0].url + " style='height:500px;width:900px'></iframe>")
+        background.append(modal);
+      //}
 
       var newPanel = $("<div>");
       newPanel.attr("class", "main");
@@ -577,10 +596,7 @@ function renderArticles(searchResponse, category){
       newPanelList.attr("class", "og-grid");
       newPanel.append(newPanelList);
       
-
     for(var i = 0; i < searchResponse.length; i++){
-
-      //var articleDate = searchResponse[i].publishedAt
 
       var listItemOne = $("<li>")
       newPanelList.append(listItemOne);
@@ -637,27 +653,39 @@ function renderArticles(searchResponse, category){
       // scale.addClass("notFakeVote");
       // voteContain.append(scale);
 
+      $(".panel").empty();
+      $(".panel").append(newPanel);
+    };
+    return;
 
-      //  var fauxNewButton = $("<button>Faux</button>");
-      // var realNewButton = $("<button>Real</button>");
-      // fauxNewButton.attr("type", "submit");
-      //       //fauxNewButton.attr("id", "faux" + i);
-      // fauxNewButton.addClass("fauxButton");
-      // fauxNewButton.attr("data-source", searchResponse[i].source.name);
-      // fauxNewButton.attr("data-title", searchResponse[i].title);
-      // fauxNewButton.attr("data-url", searchResponse[i].url);
-      // fauxNewButton.attr("data-id", "faux-" + searchResponse[i].url);
-      // realNewButton.addClass("realButton");
-      // realNewButton.attr("data-source", searchResponse[i].source.name);
-      // realNewButton.attr("data-title", searchResponse[i].title);
-      // realNewButton.attr("data-url", searchResponse[i].url);
-      // realNewButton.attr("data-id", "real-" + searchResponse[i].url);
+  }
 
 
-      // newPanel.append(fauxNewButton);
-      // newPanel.append(realNewButton);
+
+
+
+  
+    $('div').on ("click", "div.button", function(){
+        console.log("id two on click")
+          var buttonId = $(this).attr('id');
+          $('#modal-container').removeAttr('class').addClass(buttonId);
+          $('body').addClass('modal-active');
+    })
+
+    $('div').on("click", "div#modal-container", function(){
+          $(this).addClass('out');
+          $('body').removeClass('modal-active');
+    });
+
       newPanel.append('<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>');
 
+    var iframe = document.getElementById("myFrame");
+    var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
+    elmnt.style.display = "none";
+  
+
+
+//=======
       $(".panel").empty();
       $(".panel").append('<h1 class="text-center">' + category + '</h1>');
       $(".panel").append(newPanel);
@@ -686,8 +714,8 @@ function renderArticles(searchResponse, category){
 
 //       $("#div-section").append(newPanel);
 
-    };
-};
+
+//>>>>>>> c39d76481343a299113ce795bfa8f936904bccfc
 
 //================================================================================================
 //================================================================================================
@@ -709,3 +737,11 @@ function renderArticles(searchResponse, category){
   };
 
 });
+
+
+
+
+
+
+
+
