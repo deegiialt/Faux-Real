@@ -1,16 +1,15 @@
-
-  console.log("here");
+console.log("here");
 
   $(document).ready(function(){
 
 
   $("#trending").on("click", function(){
-      $("#div-section").empty();
+      // $("#gridContainer").empty();
       searchTopHeadlines();
   })
 
   $("#search-submit").on("click", function(){
-        $("#div-section").empty();
+        // $("#gridContainer").empty();
         var start = $("#startDate").val();
         var end = $("#endDate").val();
         var keyword = $(".form-control").val().trim();
@@ -19,472 +18,131 @@
           if(start!= "" || end!=""){
             var check = validateDate();
             if(check == false) return;
-              var url = 'https://newsapi.org/v2/everything?' +
-                'q=' + keyword + '&' +
-                'language=en&' +
-                'sortBy=publishedAt&' +
-                'sortBy=relevancy&' +
-                'sortBy=popularity&' +
-                'from=' + start + '&' +
-                'to=' + end + '&' +
-                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
 
-                return searchKeyword(url);
+                return searchKeywordDate(keyword, start, end);
 
             }else{
-                var url = 'https://newsapi.org/v2/everything?' +
-                      'q=' + keyword + '&' +
-                      'language=en&' +
-                      'sortBy=publishedAt&' +
-                      'sortBy=relevancy&' +
-                      'sortBy=popularity&' +
-                      'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-                searchKeyword(url);
+      
+                searchKeyword(keyword, start, end);
               }
 
         } else if($('#cnn').is(':checked')){
-            if(start!= "" && end!=""){
-                var url = 'https://newsapi.org/v2/everything?' +
-                  'q=' + keyword + '&' +
-                  'sources=cnn&' +
-                  'language=en&' +
-                  'sortBy=publishedAt&' +
-                  'sortBy=relevancy&' +
-                  'sortBy=popularity&' +
-                  'from=' + start + '&' +
-                  'to=' + end + '&' +
-                  'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+            if(start!= "" || end!=""){
+              var check = validateDate();
+              if(check == false) return;
 
-                  return searchCNN(url);
+                  return searchCNNDate(keyword, start, end);
 
             }   else{
-                var url = 'https://newsapi.org/v2/everything?' +
-                  'q=' + keyword + '&' +
-                  'sources=cnn&' +
-                  'language=en&' +
-                  'sortBy=publishedAt&' +
-                  'sortBy=relevancy&' +
-                  'sortBy=popularity&' +
-                  'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-                searchCNN(url);
+                
+                searchCNN(keyword, start, end);
             }
         } else if($('#the-wall-street-journal').is(':checked')){
-            if(start!= "" && end!=""){
-              var url = 'https://newsapi.org/v2/everything?' +
-                'q=' + keyword + '&' +
-                'sources=the-wall-street-journal&' +
-                'language=en&' +
-                'sortBy=publishedAt&' +
-                'sortBy=relevancy&' +
-                'sortBy=popularity&' +
-                'from=' + start + '&' +
-                'to=' + end + '&' +
-                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+            if(start!= "" || end!=""){
+              var check = validateDate();
+              if(check == false) return;
 
-                return searchWallStreet(url);
+                return searchWallStreetDate(keyword, start, end);
 
           }   else{
-              var url = 'https://newsapi.org/v2/everything?' +
-                'q=' + keyword + '&' +
-                'sources=the-wall-street-journal&' +
-                'language=en&' +
-                'sortBy=publishedAt&' +
-                'sortBy=relevancy&' +
-                'sortBy=popularity&' +
-                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-              searchWallStreet(url);
+              
+              searchWallStreet(keyword, start, end);
           }
         }else if($('#the-huffington-post').is(':checked')){
-          if(start!= "" && end!=""){
-              var url = 'https://newsapi.org/v2/everything?' +
-                'q=' + keyword + '&' +
-                'sources=the-huffington-post&' +
-                'language=en&' +
-                'sortBy=publishedAt&' +
-                'sortBy=relevancy&' +
-                'sortBy=popularity&' +
-                'from=' + start + '&' +
-                'to=' + end + '&' +
-                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-
-                return searchHuffPost(url);
-
-          }else{
-              var url = 'https://newsapi.org/v2/everything?' +
-                'q=' + keyword + '&' +
-                'sources=the-huffington-post&' +
-                'language=en&' +
-                'sortBy=publishedAt&' +
-                'sortBy=relevancy&' +
-                'sortBy=popularity&' +
-                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-              searchHuffPost(url);
-          }
-        }else if($('#vice-news').is(':checked')){
-          if(start!= "" && end!=""){
-              var url = 'https://newsapi.org/v2/everything?' +
-                'q=' + keyword + '&' +
-                'sources=vice-news&' +
-                'language=en&' +
-                'sortBy=publishedAt&' +
-                'sortBy=relevancy&' +
-                'sortBy=popularity&' +
-                'from=' + start + '&' +
-                'to=' + end + '&' +
-                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-
-                return searchVice(url);
-
-          }else{
-              var url = 'https://newsapi.org/v2/everything?' +
-                'q=' + keyword + '&' +
-                'sources=vice-news&' +
-                'language=en&' +
-                'sortBy=publishedAt&' +
-                'sortBy=relevancy&' +
-                'sortBy=popularity&' +
-                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-              searchVice(url);
-          }
-        }else if($('#usa-today').is(':checked')){
-          if(start!= "" && end!=""){
-              var url = 'https://newsapi.org/v2/everything?' +
-                'q=' + keyword + '&' +
-                'sources=usa-today&' +
-                'language=en&' +
-                'sortBy=publishedAt&' +
-                'sortBy=relevancy&' +
-                'sortBy=popularity&' +
-                'from=' + start + '&' +
-                'to=' + end + '&' +
-                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-
-                return searchUSA(url);
-
-          }else{
-              var url = 'https://newsapi.org/v2/everything?' +
-                'q=' + keyword + '&' +
-                'sources=usa-today&' +
-                'language=en&' +
-                'sortBy=publishedAt&' +
-                'sortBy=relevancy&' +
-                'sortBy=popularity&' +
-                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-              searchUSA(url);
-          }
-        }else if($('#google-news').is(':checked')){
-          if(start!= "" && end!=""){
-              var url = 'https://newsapi.org/v2/everything?' +
-                'q=' + keyword + '&' +
-                'sources=google-news&' +
-                'language=en&' +
-                'sortBy=publishedAt&' +
-                'sortBy=relevancy&' +
-                'sortBy=popularity&' +
-                'from=' + start + '&' +
-                'to=' + end + '&' +
-                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-
-                return searchGoogle(url);
-
-          }else{
-              var url = 'https://newsapi.org/v2/everything?' +
-                'q=' + keyword + '&' +
-                'sources=google-news&' +
-                'language=en&' +
-                'sortBy=publishedAt&' +
-                'sortBy=relevancy&' +
-                'sortBy=popularity&' +
-                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-              searchGoogle(url);
-          }
-        }else if($('#buzzfeed').is(':checked')){
-          if(start!= "" && end!=""){
-              var url = 'https://newsapi.org/v2/everything?' +
-                'q=' + keyword + '&' +
-                'sources=buzzfeed&' +
-                'language=en&' +
-                'sortBy=publishedAt&' +
-                'sortBy=relevancy&' +
-                'sortBy=popularity&' +
-                'from=' + start + '&' +
-                'to=' + end + '&' +
-                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-
-                return searchBuzzfeed(url);
-
-          }else{
-
-
-              var url = 'https://newsapi.org/v2/everything?' +
-                'q=' + keyword + '&' +
-                'sources=buzzfeed&' +
-                'language=en&' +
-                'sortBy=publishedAt&' +
-                'sortBy=relevancy&' +
-                'sortBy=popularity&' +
-                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-              searchBuzzfeed(url);
-          }
-        };
-
-      var start = $("#startDate").val();
-      var end = $("#endDate").val();
-      var keyword = $(".form-control").val().trim();
-
-      if($('#all').is(':checked')){
-        if(start!= "" || end!=""){
-          var check = validateDate();
-          if(check == false) return;
-            var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'from=' + start + '&' +
-              'to=' + end + '&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-
-              return searchKeyword(url);
-
-        }else{
-            var url = 'https://newsapi.org/v2/everything?' +
-                  'q=' + keyword + '&' +
-                  'language=en&' +
-                  'sortBy=publishedAt&' +
-                  'sortBy=relevancy&' +
-                  'sortBy=popularity&' +
-                  'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-            searchKeyword(url);
-      }
-      }else if($('#cnn').is(':checked')){
-        if(start!= "" || end!=""){
-          var check = validateDate();
-          if(check == false) return;
-            var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=cnn&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'from=' + start + '&' +
-              'to=' + end + '&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-
-              return searchCNN(url);
-
-        }else{
-            var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=cnn&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-            searchCNN(url);
-        }
-      }else if($('#the-wall-street-journal').is(':checked')){
           if(start!= "" || end!=""){
             var check = validateDate();
             if(check == false) return;
-            var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=the-wall-street-journal&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'from=' + start + '&' +
-              'to=' + end + '&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
 
-              return searchWallStreet(url);
+                return searchHuffPostDate(keyword, start, end);
 
-        }else{
-            var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=the-wall-street-journal&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-            searchWallStreet(url);
-        }
-      }else if($('#the-huffington-post').is(':checked')){
-        if(start!= "" || end!=""){
-          var check = validateDate();
-          if(check == false) return;
-            var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=the-huffington-post&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'from=' + start + '&' +
-              'to=' + end + '&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+          }else{
+              
+              searchHuffPost(keyword, start, end);
+          }
+        }else if($('#vice-news').is(':checked')){
+          if(start!= "" || end!=""){
+            var check = validateDate();
+            if(check == false) return;
+              
+                return searchViceDate(keyword, start, end);
 
-              return searchHuffPost(url);
+          }else{
+              
+              searchVice(keyword, start, end);
+          }
+        }else if($('#usa-today').is(':checked')){
+          if(start!= "" || end!=""){
+            var check = validateDate();
+            if(check == false) return;
 
-        }else{
-            var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=the-huffington-post&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-            searchHuffPost(url);
-        }
-      }else if($('#vice-news').is(':checked')){
-        if(start!= "" || end!=""){
-          var check = validateDate();
-          if(check == false) return;
-            var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=vice-news&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'from=' + start + '&' +
-              'to=' + end + '&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+                return searchUSADate(keyword, start, end);
 
-              return searchVice(url);
+          }else{
+              
+              searchUSA(keyword, start, end);
+          }
+        }else if($('#google-news').is(':checked')){
+          if(start!= "" || end!=""){
+            var check = validateDate();
+            if(check == false) return;
 
-        }else{
-            var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=vice-news&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-            searchVice(url);
-        }
-      }else if($('#usa-today').is(':checked')){
-        if(start!= "" || end!=""){
-          var check = validateDate();
-          if(check == false) return;
-            var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=usa-today&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'from=' + start + '&' +
-              'to=' + end + '&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+                return searchGoogleDate(keyword, start, end);
 
-              return searchUSA(url);
+          }else{
+              
+              searchGoogle(keyword, start, end);
+          }
+        }else if($('#buzzfeed').is(':checked')){
+          if(start!= "" || end!=""){
+            var check = validateDate();
+            if(check == false) return;
 
-        }else{
-            var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=usa-today&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-            searchUSA(url);
-        }
-      }else if($('#google-news').is(':checked')){
-        if(start!= "" || end!=""){
-          var check = validateDate();
-          if(check == false) return;
-            var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=google-news&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'from=' + start + '&' +
-              'to=' + end + '&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+                return searchBuzzfeedDate(keyword, start, end);
 
-              return searchGoogle(url);
+          }else{
 
-        }else{
-            var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=google-news&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-            searchGoogle(url);
-        }
-      }else if($('#buzzfeed').is(':checked')){
-        if(start!= "" || end!=""){
-          var check = validateDate();
-          if(check == false) return;
-            var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=buzzfeed&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'from=' + start + '&' +
-              'to=' + end + '&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-
-              return searchBuzzfeed(url);
-
-        }else{
-
-
-            var url = 'https://newsapi.org/v2/everything?' +
-              'q=' + keyword + '&' +
-              'sources=buzzfeed&' +
-              'language=en&' +
-              'sortBy=publishedAt&' +
-              'sortBy=relevancy&' +
-              'sortBy=popularity&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
-            searchBuzzfeed(url);
-        }
-      };
+              searchBuzzfeed(keyword, start, end);
+          }
+        };
       $(".form-control").val("")
 
   });
 
   $("#business").on("click", function(){
-        $("#div-section").empty();
+        // $("#gridContainer").empty();
         searchBusiness();
   });
 
   $("#sports").on("click", function(){
-        $("#div-section").empty();
+        // $("#gridContainer").empty();
         searchSports();
   })
 
   $("#entertainment").on("click", function(){
-        $("#div-section").empty();
+        // $("#gridContainer").empty();
         searchEntertainment();
   })
 
   $("#technology").on("click", function(){
-        $("#div-section").empty();
+        // $("#gridContainer").empty();
         searchTech();
   })
-
+  //=========================================================================================================
+  //=========================================================================================================
+  //=========================================================================================================
   //the next 8 functions are for the search option menu
 
   //ALL seach bar function
-  function searchKeyword(url){
+  function searchKeywordDate(keyword, start, end){
+    var url = 'https://newsapi.org/v2/everything?' +
+                'q=' + keyword + '&' +
+                'language=en&' +
+                'sortBy=publishedAt&' +
+                'sortBy=relevancy&' +
+                'sortBy=popularity&' +
+                'from=' + start + '&' +
+                'to=' + end + '&' +
+                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
 
     var url = url;
         $.ajax({
@@ -497,7 +155,36 @@
         });
   }
 
-  function searchCNN(url){
+  function searchKeyword(keyword, start, end){
+      var url = 'https://newsapi.org/v2/everything?' +
+                      'q=' + keyword + '&' +
+                      'language=en&' +
+                      'sortBy=publishedAt&' +
+                      'sortBy=relevancy&' +
+                      'sortBy=popularity&' +
+                      'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+      var url = url;
+        $.ajax({
+          url: url,
+          method: "GET",
+
+        }).then(function(response){
+          console.log(response);
+          return renderArticles(response.articles);
+        });
+  }
+
+  function searchCNNDate(keyword, start, end){
+      var url = 'https://newsapi.org/v2/everything?' +
+                  'q=' + keyword + '&' +
+                  'sources=cnn&' +
+                  'language=en&' +
+                  'sortBy=publishedAt&' +
+                  'sortBy=relevancy&' +
+                  'sortBy=popularity&' +
+                  'from=' + start + '&' +
+                  'to=' + end + '&' +
+                  'apiKey=b8438b744ce24b42a60f3a56367a00c4';
 
         $.ajax({
           url: url,
@@ -509,7 +196,15 @@
         });
   }
 
-  function searchWallStreet(url){
+  function searchCNN(keyword, start, end){
+      var url = 'https://newsapi.org/v2/everything?' +
+                  'q=' + keyword + '&' +
+                  'sources=cnn&' +
+                  'language=en&' +
+                  'sortBy=publishedAt&' +
+                  'sortBy=relevancy&' +
+                  'sortBy=popularity&' +
+                  'apiKey=b8438b744ce24b42a60f3a56367a00c4';
 
         $.ajax({
           url: url,
@@ -521,7 +216,17 @@
         });
   }
 
-  function searchHuffPost(url){
+  function searchWallStreetDate(keyword, start, end){
+    var url = 'https://newsapi.org/v2/everything?' +
+                'q=' + keyword + '&' +
+                'sources=the-wall-street-journal&' +
+                'language=en&' +
+                'sortBy=publishedAt&' +
+                'sortBy=relevancy&' +
+                'sortBy=popularity&' +
+                'from=' + start + '&' +
+                'to=' + end + '&' +
+                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
 
         $.ajax({
           url: url,
@@ -533,7 +238,15 @@
         });
   }
 
-  function searchVice(url){
+  function searchWallStreet(keyword, start, end){
+    var url = 'https://newsapi.org/v2/everything?' +
+                'q=' + keyword + '&' +
+                'sources=the-wall-street-journal&' +
+                'language=en&' +
+                'sortBy=publishedAt&' +
+                'sortBy=relevancy&' +
+                'sortBy=popularity&' +
+                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
 
         $.ajax({
           url: url,
@@ -545,7 +258,17 @@
         });
   }
 
-  function searchUSA(url){
+  function searchHuffPostDate(keyword, start, end){
+    var url = 'https://newsapi.org/v2/everything?' +
+                'q=' + keyword + '&' +
+                'sources=the-huffington-post&' +
+                'language=en&' +
+                'sortBy=publishedAt&' +
+                'sortBy=relevancy&' +
+                'sortBy=popularity&' +
+                'from=' + start + '&' +
+                'to=' + end + '&' +
+                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
 
         $.ajax({
           url: url,
@@ -557,7 +280,15 @@
         });
   }
 
-  function searchGoogle(url){
+  function searchHuffPost(keyword, start, end){
+    var url = 'https://newsapi.org/v2/everything?' +
+                'q=' + keyword + '&' +
+                'sources=the-huffington-post&' +
+                'language=en&' +
+                'sortBy=publishedAt&' +
+                'sortBy=relevancy&' +
+                'sortBy=popularity&' +
+                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
 
         $.ajax({
           url: url,
@@ -569,7 +300,17 @@
         });
   }
 
-  function searchBuzzfeed(url){
+  function searchViceDate(keyword, start, end){
+    var url = 'https://newsapi.org/v2/everything?' +
+                'q=' + keyword + '&' +
+                'sources=vice-news&' +
+                'language=en&' +
+                'sortBy=publishedAt&' +
+                'sortBy=relevancy&' +
+                'sortBy=popularity&' +
+                'from=' + start + '&' +
+                'to=' + end + '&' +
+                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
 
         $.ajax({
           url: url,
@@ -581,9 +322,155 @@
         });
   }
 
-  //================================================================
-  //================================================================
-  //================================================================
+  function searchVice(keyword, start, end){
+    var url = 'https://newsapi.org/v2/everything?' +
+                'q=' + keyword + '&' +
+                'sources=vice-news&' +
+                'language=en&' +
+                'sortBy=publishedAt&' +
+                'sortBy=relevancy&' +
+                'sortBy=popularity&' +
+                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+
+        $.ajax({
+          url: url,
+          method: "GET",
+
+        }).then(function(response){
+          console.log(response);
+          return renderArticles(response.articles);
+        });
+  }
+
+  function searchUSADate(keyword, start, end){
+    var url = 'https://newsapi.org/v2/everything?' +
+                'q=' + keyword + '&' +
+                'sources=usa-today&' +
+                'language=en&' +
+                'sortBy=publishedAt&' +
+                'sortBy=relevancy&' +
+                'sortBy=popularity&' +
+                'from=' + start + '&' +
+                'to=' + end + '&' +
+                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+
+        $.ajax({
+          url: url,
+          method: "GET",
+
+        }).then(function(response){
+          console.log(response);
+          return renderArticles(response.articles);
+        });
+  }
+
+  function searchUSA(keyword, start, end){
+    var url = 'https://newsapi.org/v2/everything?' +
+                'q=' + keyword + '&' +
+                'sources=usa-today&' +
+                'language=en&' +
+                'sortBy=publishedAt&' +
+                'sortBy=relevancy&' +
+                'sortBy=popularity&' +
+                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+
+        $.ajax({
+          url: url,
+          method: "GET",
+
+        }).then(function(response){
+          console.log(response);
+          return renderArticles(response.articles);
+        });
+  }
+
+  function searchGoogleDate(keyword, start, end){
+    var url = 'https://newsapi.org/v2/everything?' +
+                'q=' + keyword + '&' +
+                'sources=google-news&' +
+                'language=en&' +
+                'sortBy=publishedAt&' +
+                'sortBy=relevancy&' +
+                'sortBy=popularity&' +
+                'from=' + start + '&' +
+                'to=' + end + '&' +
+                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+
+        $.ajax({
+          url: url,
+          method: "GET",
+
+        }).then(function(response){
+          console.log(response);
+          return renderArticles(response.articles);
+        });
+  }
+
+  function searchGoogle(keyword, start, end){
+    var url = 'https://newsapi.org/v2/everything?' +
+                'q=' + keyword + '&' +
+                'sources=google-news&' +
+                'language=en&' +
+                'sortBy=publishedAt&' +
+                'sortBy=relevancy&' +
+                'sortBy=popularity&' +
+                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+
+        $.ajax({
+          url: url,
+          method: "GET",
+
+        }).then(function(response){
+          console.log(response);
+          return renderArticles(response.articles);
+        });
+  }
+
+  function searchBuzzfeedDate(keyword, start, end){
+    var url = 'https://newsapi.org/v2/everything?' +
+                'q=' + keyword + '&' +
+                'sources=buzzfeed&' +
+                'language=en&' +
+                'sortBy=publishedAt&' +
+                'sortBy=relevancy&' +
+                'sortBy=popularity&' +
+                'from=' + start + '&' +
+                'to=' + end + '&' +
+                'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+
+        $.ajax({
+          url: url,
+          method: "GET",
+
+        }).then(function(response){
+          console.log(response);
+          return renderArticles(response.articles);
+        });
+  }
+
+  function searchBuzzfeed(keyword, start, end){
+    var url = 'https://newsapi.org/v2/everything?' +
+              'q=' + keyword + '&' +
+              'sources=buzzfeed&' +
+              'language=en&' +
+              'sortBy=publishedAt&' +
+              'sortBy=relevancy&' +
+              'sortBy=popularity&' +
+              'apiKey=b8438b744ce24b42a60f3a56367a00c4';
+
+        $.ajax({
+          url: url,
+          method: "GET",
+
+        }).then(function(response){
+          console.log(response);
+          return renderArticles(response.articles);
+        });
+  }
+
+  //===================================================================================================
+  //===================================================================================================
+  //===================================================================================================
   //the remainder of the functions are for the tab options on the page
   //business tab search
 
@@ -674,126 +561,14 @@
         });
   }
 
-  //========================================================
-  //========================================================
-  //========================================================
-  //this function will render all other search functions
-
-  function renderArticles(searchResponse){
-
-      for(var i = 0; i < searchResponse.length; i++){
-
-        var newPanel = $("<div>");
-        newPanel.attr("class", "headBodyPanel")
-        var newPanelHeading = $("<div>");
-        newPanelHeading.attr("class", "panel-heading")
-        newPanelHeading.attr("id", "articleHead-" + i)
-        newPanelHeading.append("<h3>" + searchResponse[i].source.name + "</h3>");
-        newPanelHeading.append("<h4>" + searchResponse[i].author + "</h4>");
-        var newPanelBody = $("<div>");
-        newPanelBody.attr("class", "panel-body")
-        newPanelBody.attr("id", "articleBody-" + i);
-        newPanelBody.append("<p>" + searchResponse[i].description + "</p>");
-        newPanelBody.append("<a href=" + "'" + searchResponse[i].url + "'" + "target='_blank'" + ">" + "Go to Article" + "</a>");
-
-      // NOT IN USE FOR VOTING AND DELIVERING TO DATABASE, CAN BE DELETED
-        // var fauxNewButton = $("<button>Faux</button>");
-        // var realNewButton = $("<button>Real</button>");
-        // fauxNewButton.attr("type", "submit");
-        // //fauxNewButton.attr("id", "faux" + i);
-        // fauxNewButton.addClass("fauxButton");
-        // fauxNewButton.attr("data-id", i);
-        // //fauxNewButton.attr("data-id", "faux-" + searchResponse[i].url);
-        // realNewButton.addClass("realButton");
-        // //realNewButton.attr("data-id", "real-" + searchResponse[i].url);
-
-
-
-        newPanel.append(newPanelHeading);
-        newPanel.append(newPanelBody);
-        newPanel.append(fauxNewButton);
-        newPanel.append(realNewButton);
-
-        $("#div-section").append(newPanel);
-
-
-
-      };
-  };
-
-  //=============================================================
-  //=============================================================
-  //=============================================================
-  //this code toggles the date search option
-
-
-
-  function validateDate(){
-    var start = $("#startDate").val();
-    var end = $("#endDate").val();
-    if(start == ""){
-      alert("Please fill in a start date.")
-      return false;
-    }else if(end == ""){
-      alert("Please fill in an end date.")
-      return false;
-    }
-    return true;
-              'country=us&' +
-              'category=sports&' +
-              'sortBy=publishedAt&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4'
-      $.ajax({
-        url: url,
-        method: "GET",
-
-      }).then(function(response){
-        console.log(response);
-        return renderArticles(response.articles);
-      });
-}
-
-//entertainment tab search
-
-function searchEntertainment(){
-    var url = 'https://newsapi.org/v2/top-headlines?' +
-              'country=us&' +
-              'category=entertainment&' +
-              'sortBy=publishedAt&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4'
-      $.ajax({
-        url: url,
-        method: "GET",
-
-      }).then(function(response){
-        console.log(response);
-        return renderArticles(response.articles);
-      });
-}
-
-function searchTech(){
-    var url = 'https://newsapi.org/v2/top-headlines?' +
-              'country=us&' +
-              'category=technology&' +
-              'sortBy=publishedAt&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4'
-      $.ajax({
-        url: url,
-        method: "GET",
-
-      }).then(function(response){
-        console.log(response);
-        return renderArticles(response.articles);
-      });
-}
-
-//========================================================
-//========================================================
-//========================================================
+//========================================================================================
+//========================================================================================
+//========================================================================================
 //this function will render all other search functions
 
 
 function renderArticles(searchResponse){
+
 
       var newPanel = $("<div>");
       newPanel.attr("class", "main");
@@ -801,59 +576,109 @@ function renderArticles(searchResponse){
       newPanelList.attr("id", "og-grid");
       newPanelList.attr("class", "og-grid");
       newPanel.append(newPanelList);
+      
 
     for(var i = 0; i < searchResponse.length; i++){
 
+      //var articleDate = searchResponse[i].publishedAt
+
       var listItemOne = $("<li>")
-      var aTag = $("<a>");
-      aTag.attr("href", searchResponse[i].url);
-      aTag.attr("data-largesrc", searchResponse[i].urlToImage);
-      aTag.attr("data-description", searchResponse[i].description);
-      var image = $("<img>");
-      image.attr("src", searchResponse[i].urlToImage);
-      image.attr("width", "270px");
-      image.attr("height", "230px");
-      var artTitle = $("<p>" + searchResponse[i].title + "</p>");
-      //listItemOne.append(artTitle)
-      aTag.append(image);
-      listItemOne.append(aTag)
-      // listItemOne.append("<a href=" + searchResponse[i].url +
-      //                     " data-largesrc=" + searchResponse[i].urlToImage +
-      //                     " data-title=" + searchResponse[i].title +
-      //                     " data-description=" + searchResponse[i].description + ">" +
-      //                     "<img src=" + searchResponse[i].urlToImage + " width= 250px height=250px/> </a>")
       newPanelList.append(listItemOne);
 
+      //inside list item
+      var newDiv = $("<div>");
+      newDiv.attr("id", "two");
+      newDiv.addClass("button");
+      listItemOne.append(newDiv)
+      //inside "two" div
+      var link = $("<a>");
+      link.attr("href", searchResponse[i].url);
+      link.append(link);
+      //inside anchor tag
+      var tileContent = $("<div>");
+      tileContent.addClass("tileContent");  
+      tileContent.addClass("tile" + i);
+      newDiv.append(tileContent);
+      //inside tilecontent
+      tileContent.append("<p class='tileTitle'>" + searchResponse[i].title + "</p>");
+      tileContent.append("<p class='tileSource'>" + searchResponse[i].source.name + "</p>");
+      tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p>");
+      var buttonReal = $("<button>");
+      buttonReal.addClass("btn voteButton glyphicon glyphicon-ok");
+      buttonReal.attr("data-source", searchResponse[i].source.name);
+      buttonReal.attr("data-title", searchResponse[i].title);
+      buttonReal.attr("data-url", searchResponse[i].url);
+      buttonReal.attr("data-id", "real-" + searchResponse[i].url);
+      var buttonFaux = $("<button>");
+      buttonFaux.addClass("btn voteButton glyphicon glyphicon-remove");
+      buttonFaux.attr("data-source", searchResponse[i].source.name);
+      buttonFaux.attr("data-title", searchResponse[i].title);
+      buttonFaux.attr("data-url", searchResponse[i].url);
+      buttonFaux.attr("data-id", "faux-" + searchResponse[i].url);
+      tileContent.append(buttonReal);
+      tileContent.append(buttonFaux);
+      // var voteContain = $("div");
+      // voteContain.addClass("voteContainer");
+      // tileContent.append(voteContain);
+      // //inside voteContainer
+      // var scale = $("div");
+      // scale.addClass("notFakeVote");
+      // voteContain.append(scale);
+
+
+      //  var fauxNewButton = $("<button>Faux</button>");
+      // var realNewButton = $("<button>Real</button>");
+      // fauxNewButton.attr("type", "submit");
+      //       //fauxNewButton.attr("id", "faux" + i);
+      // fauxNewButton.addClass("fauxButton");
+      // fauxNewButton.attr("data-source", searchResponse[i].source.name);
+      // fauxNewButton.attr("data-title", searchResponse[i].title);
+      // fauxNewButton.attr("data-url", searchResponse[i].url);
+      // fauxNewButton.attr("data-id", "faux-" + searchResponse[i].url);
+      // realNewButton.addClass("realButton");
+      // realNewButton.attr("data-source", searchResponse[i].source.name);
+      // realNewButton.attr("data-title", searchResponse[i].title);
+      // realNewButton.attr("data-url", searchResponse[i].url);
+      // realNewButton.attr("data-id", "real-" + searchResponse[i].url);
+
+
+      // newPanel.append(fauxNewButton);
+      // newPanel.append(realNewButton);
+
+
+      $(".panel").empty();
+      $(".panel").append(newPanel);
+
 //IN USE FOR DATABASE. PLEASE DON'T DELETE
-      var fauxNewButton = $("<button>Faux</button>");
-      var realNewButton = $("<button>Real</button>");
-      fauxNewButton.attr("type", "submit");
-      //fauxNewButton.attr("id", "faux" + i);
-      fauxNewButton.addClass("fauxButton");
-      fauxNewButton.attr("data-source", searchResponse[i].source.name);
-      fauxNewButton.attr("data-title", searchResponse[i].title);
-      fauxNewButton.attr("data-url", searchResponse[i].url);
-      fauxNewButton.attr("data-id", "faux-" + searchResponse[i].url);
-      fauxNewButton.attr("data-date", searchResponse[i].publishedAt);
-      realNewButton.addClass("realButton");
-      realNewButton.attr("data-source", searchResponse[i].source.name);
-      realNewButton.attr("data-title", searchResponse[i].title);
-      realNewButton.attr("data-url", searchResponse[i].url);
-      realNewButton.attr("data-date", searchResponse[i].publishedAt);
-      realNewButton.attr("data-id", "real-" + searchResponse[i].url);
+//       var fauxNewButton = $("<button>Faux</button>");
+//       var realNewButton = $("<button>Real</button>");
+//       fauxNewButton.attr("type", "submit");
+//       //fauxNewButton.attr("id", "faux" + i);
+//       fauxNewButton.addClass("fauxButton");
+//       fauxNewButton.attr("data-source", searchResponse[i].source.name);
+//       fauxNewButton.attr("data-title", searchResponse[i].title);
+//       fauxNewButton.attr("data-url", searchResponse[i].url);
+//       fauxNewButton.attr("data-id", "faux-" + searchResponse[i].url);
+//       fauxNewButton.attr("data-date", searchResponse[i].publishedAt);
+//       realNewButton.addClass("realButton");
+//       realNewButton.attr("data-source", searchResponse[i].source.name);
+//       realNewButton.attr("data-title", searchResponse[i].title);
+//       realNewButton.attr("data-url", searchResponse[i].url);
+//       realNewButton.attr("data-date", searchResponse[i].publishedAt);
+//       realNewButton.attr("data-id", "real-" + searchResponse[i].url);
 
 
-      newPanel.append(fauxNewButton);
-      newPanel.append(realNewButton);
+//       newPanel.append(fauxNewButton);
+//       newPanel.append(realNewButton);
 
-      $("#div-section").append(newPanel);
+//       $("#div-section").append(newPanel);
 
     };
 };
 
-//=============================================================
-//=============================================================
-//=============================================================
+//================================================================================================
+//================================================================================================
+//================================================================================================
 //this code toggles the date search option
 
 
