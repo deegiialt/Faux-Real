@@ -212,6 +212,10 @@ input[type=submit] {
     left: -120px;
 }
 
+.nav-tabs.nav-justified>li>a {
+  margin-bottom: 10px;
+}
+
 .nav>li>a {
     color: white;
 }
