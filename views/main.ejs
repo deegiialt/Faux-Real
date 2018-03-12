@@ -249,41 +249,42 @@
 	</div>
 
 	<!-- MODAL -->
-	<div id="modal-container">
+	<div class="putinmodal"></div>
+	<!-- <div id="modal-container">
 	  <div class="modal-background">
 	    <div class="modal">
 			<iframe id="myFrame" src="http://www.latimes.com/local/lanow/la-me-pomona-officer-shot-20180309-story.html" style="height:500px;width:900px"></iframe>
 			<br>
 			Vote if Real or Faux
-			<br>
+			<br> -->
 			<!-- ==================================== -->
 			<!-- Voting buttons -->
-			<button class="btn voteButton glyphicon glyphicon-ok"></button>
+			<!-- <button class="btn voteButton glyphicon glyphicon-ok"></button>
 			<button class="btn voteButton glyphicon glyphicon-remove"></button>
 	    </div>
 	  </div>
-	</div>
+	</div> -->
 
 	</div>
 	<!-- Modal JS -->
 
 	<script>
-		$('.button').click(function(){
-		  var buttonId = $(this).attr('id');
-		  $('#modal-container').removeAttr('class').addClass(buttonId);
-		  $('body').addClass('modal-active');
-		})
+		// $('.button').click(function(){
+		//   var buttonId = $(this).attr('id');
+		//   $('#modal-container').removeAttr('class').addClass(buttonId);
+		//   $('body').addClass('modal-active');
+		// })
 
-		$('#modal-container').click(function(){
-		  $(this).addClass('out');
-		  $('body').removeClass('modal-active');
-		});
+		// $('#modal-container').click(function(){
+		//   $(this).addClass('out');
+		//   $('body').removeClass('modal-active');
+		// });
 
 
-		// iFrame
-		var iframe = document.getElementById("myFrame");
-		var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
-		elmnt.style.display = "none";
+		// // iFrame
+		// var iframe = document.getElementById("myFrame");
+		// var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
+		// elmnt.style.display = "none";
 	</script>
 
 

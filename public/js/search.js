@@ -192,7 +192,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles, "Search CNN");
+          return renderSearchResults(response.articles, "Search CNN");
         });
   }
 
@@ -212,7 +212,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles, "Search CNN");
+          return renderSearchResults(response.articles, "Search CNN");
         });
   }
 
@@ -234,7 +234,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles, "Search Wall Street Journal");
+          return renderSearchResults(response.articles, "Search Wall Street Journal");
         });
   }
 
@@ -254,7 +254,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles, "Search Wall Street Journal");
+          return renderSearchResults(response.articles, "Search Wall Street Journal");
         });
   }
 
@@ -276,7 +276,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles, "Search Huffington Post");
+          return renderSearchResults(response.articles, "Search Huffington Post");
         });
   }
 
@@ -296,7 +296,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles, "Search Huffington Post");
+          return renderSearchResults(response.articles, "Search Huffington Post");
         });
   }
 
@@ -318,7 +318,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles, "Search Vice News");
+          return renderSearchResults(response.articles, "Search Vice News");
         });
   }
 
@@ -338,7 +338,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles, "Search Vice News");
+          return renderSearchResults(response.articles, "Search Vice News");
         });
   }
 
@@ -360,7 +360,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles, "Search USA Today");
+          return renderSearchResults(response.articles, "Search USA Today");
         });
   }
 
@@ -380,7 +380,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles, "Search USA Today");
+          return renderSearchResults(response.articles, "Search USA Today");
         });
   }
 
@@ -402,7 +402,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles, "Search Google News");
+          return renderSearchResults(response.articles, "Search Google News");
         });
   }
 
@@ -422,7 +422,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles, "Search Google News");
+          return renderSearchResults(response.articles, "Search Google News");
         });
   }
 
@@ -444,7 +444,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles, "Search Buzzfeed News");
+          return renderSearchResults(response.articles, "Search Buzzfeed News");
         });
   }
 
@@ -464,7 +464,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles, "Search Buzzfeed News");
+          return renderSearchResults(response.articles, "Search Buzzfeed News");
         });
   }
 
@@ -570,9 +570,7 @@ console.log("here");
 
 
 function renderArticles(searchResponse, category){
-
-
-      //rendering the modal for the tiles
+    //rendering the modal for the tiles
       var body = $(".putinmodal");
 
       
@@ -586,10 +584,23 @@ function renderArticles(searchResponse, category){
 
       var modal = $("<div>");
       modal.addClass("modal");
-      modal.append("<iframe id='myFrame' src='' style='height:500px;width:900px'></iframe>")
       background.append(modal);
-      
 
+      var articleDiv = $("<div>");
+      articleDiv.attr("id", "articleDiv");
+      articleDiv.append("<iframe id='myFrame' src='' style='height:500px;width:900px'></iframe>")
+      modal.append(articleDiv);
+
+      var errorDiv = $("<div>");
+      errorDiv.attr("class", "errorDiv")
+      errorDiv.append("<h3>Page Unable to Render</h3>");
+      errorDiv.append("<p>We are sorry, this page is unable to display here.  Please click the link below to be taken to the article's site.</p>");
+      errorDiv.append("<a class='erorLink' href='" + url + "''>Go to Article</button>");
+      modal.append(errorDiv)
+      
+      //this starts the tile rendering 
+      //================================================
+      //================================================
       var newPanel = $("<div>");
       newPanel.attr("class", "main");
       var newPanelList = $("<ul>");
@@ -626,8 +637,6 @@ function renderArticles(searchResponse, category){
       tileDetails.attr("class", "tileDetails");      
       tileDetails.append("<p class='tileSource' style='font-size:50%'>" + searchResponse[i].source.name + "</p>");
       // tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p><br>");
-
-
 
       var buttonReal = $("<button style='margin:10px'>");
       buttonReal.addClass("btn voteButton glyphicon glyphicon-ok");
@@ -676,6 +685,36 @@ function renderArticles(searchResponse, category){
 
   function renderSearchResults(searchResponse, category){
 
+      var body = $(".putinmodal");
+
+      var modalContainer = $("<div>");
+      modalContainer.attr("id", "modal-container");
+      body.append(modalContainer);
+
+      var background = $("<div>");
+      background.addClass("modal-background");
+      modalContainer.append(background);
+
+      var modal = $("<div>");
+      modal.addClass("modal");
+      modal.append("<iframe id='myFrame' src='' style='height:500px;width:900px'></iframe>")
+      background.append(modal);
+
+      var articleDiv = $("<div>");
+      articleDiv.attr("id", "articleDiv");
+      articleDiv.append("<iframe id='myFrame' src='' style='height:500px;width:900px'></iframe>")
+      modal.append(articleDiv);
+
+      var errorDiv = $("<div>");
+      errorDiv.attr("class", "errorDiv")
+      errorDiv.append("<h3>Page Unable to Render</h3>");
+      errorDiv.append("<p>We are sorry, this page is unable to display here.  Please click the link below to be taken to the article's site.</p>");
+      errorDiv.append("<a class='erorLink' href='" + url + "''>Go to Article</button>");
+      modal.append(errorDiv)
+
+      //this starts the tile rendering
+      //====================================
+      //====================================
       var newPanel = $("<div>");
       newPanel.attr("class", "main");
       
@@ -683,14 +722,21 @@ function renderArticles(searchResponse, category){
 
       var newDiv = $("<div>");
       newDiv.attr("class", "well")
+      newDiv.attr("id", "two");
+      newDiv.addClass("button");
+      //newDiv.addClass("button");
+      var link = $("<a>");
+      link.attr("id", "urlSource")
+      link.attr("href", searchResponse[i].url);
+      newDiv.append(link);
       newPanel.append(newDiv);
       var upperDiv = $("<div>");
       upperDiv.append("<h3>" + searchResponse[i].title + "</h3>");
       upperDiv.append("<h4>" + searchResponse[i].source.name + "</h4>");
       newDiv.append(upperDiv);
       var lowerDiv = $("<div>");
+      //lowerDiv.addClass("search")
       lowerDiv.append("<p>" + searchResponse[i].description + "</p>");
-      lowerDiv.append("<p>" + searchResponse[i].url + "</p>");
       newDiv.append(lowerDiv);
 
       var buttonReal = $("<button style='margin:10px'>");
@@ -722,10 +768,12 @@ function renderArticles(searchResponse, category){
 
   console.log("TEST");
     $('body').on ("click", ".button", function(){
-        console.log("id two on click")
+        console.log("id two on click function")
         var url = $(this).find("a").attr("href");
         var buttonId = $(this).attr('id');
         console.log(url)
+        // $("#errorDiv").hide();
+        // $("#articleDiv").hide();
 
 
         $.ajax({
@@ -735,36 +783,37 @@ function renderArticles(searchResponse, category){
             url: url
           }
           }).then(function(response){
-            console.log("=======================================================================")
+            console.log("inside of .then")
             console.log(response);
             if (response === "true") {
+              $(".errorDiv").hide();
+              $("#articleDiv").show();
+              console.log("inside true conditional")
+
               $("#myFrame").attr("src", url);
               $('#modal-container').removeAttr('class').addClass(buttonId);
               $('body').addClass('modal-active');
 
             } else {
-              $(".modal").empty();
-              var errorDiv = $("<div>");
-              errorDiv.append("<h3>Page Unable to Render</h3>");
-              errorDiv.append("<p>We are sorry, this page is unable to display here.  Please click the link below to be taken to the article's site.</p>");
-              errorDiv.append("<a class='erorLink' href='" + url + "''>Go to Article</button>");
-              $(".modal").append(errorDiv)
+              console.log("inside false conditional");
+              $("#articleDiv").hide();
+              $(".errorDiv").show();
+
+              $(".errorDiv").find("a").attr("href", url)
+              
               $('#modal-container').removeAttr('class').addClass(buttonId);
               $('body').addClass('modal-active');
             }
           
           
-          }).fail(function(err) {
-            console.error(err);
-          });
-        
+          })
     })
 
     $('div').on("click", "div#modal-container", function(){
           url = "";
           $(this).addClass('out');
           $('body').removeClass('modal-active');
-          $(".modal").empty();
+          //$(".modal").clear();
     });
 
       //newPanel.append('<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>');
@@ -773,27 +822,7 @@ function renderArticles(searchResponse, category){
     // var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
     // elmnt.style.display = "none";
   
-  // function validateArticle(url, buttonId){
-  //     var url = url;
-  //     var buttonId = buttonId;
-  //       $.ajax({
-  //         url: url,
-  //         method: "GET",
-  //         }).then(function(response){
-  //           console.log("=======================================================================")
-  //         console.log(response);
-
-
-
-  //         $("#myFrame").attr("src", url);
-  //         $('#modal-container').removeAttr('class').addClass(buttonId);
-  //         $('body').addClass('modal-active');
-          
-  //         });
-
-
-  // }
-
+  
 
 //=======
       // $(".panel").empty();
