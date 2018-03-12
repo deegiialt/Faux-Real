@@ -641,7 +641,7 @@ function renderArticles(searchResponse, category){
       buttonFaux.attr("data-title", searchResponse[i].title);
       buttonFaux.attr("data-url", searchResponse[i].url);
       buttonFaux.attr("data-id", "faux-" + searchResponse[i].url);
-      tileContent.append(buttonReal);
+      // tileContent.append(buttonReal);
 
       if (searchResponse[i].urlToImage === null) {
       tileDetails.append("<img class='tileImage' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtrVBUxp2hTkZEGWzqxkT-mC0p5MFaiqsIVV5As2qO4M_U2XgiQ' width='120px' height='120px'>");
@@ -651,7 +651,7 @@ function renderArticles(searchResponse, category){
 
       }
 
-      tileContent.append(buttonFaux);
+      // tileContent.append(buttonFaux);
 
 
       tileDetails.append('<br><div class="voteContainer"><div class="notFakeVote">0%</div></div>')
@@ -663,7 +663,7 @@ function renderArticles(searchResponse, category){
       // scale.addClass("notFakeVote");
       // voteContain.append(scale);
 
-      tileContent.append(tileDetails)
+      tileContent.append(tileDetails);
 
       $(".panel").empty();
       $(".panel").append('<h1 class="text-center">' + category + '</h1>');
