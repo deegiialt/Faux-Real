@@ -1,5 +1,5 @@
 {
-  "name": "lo-siento",
+  "name": "faux-real",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/deegiialt/Lo-Siento.git"
+    "url": "git+https://github.com/deegiialt/Faux-Real.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/deegiialt/Lo-Siento/issues"
+    "url": "https://github.com/deegiialt/Faux-Real/issues"
   },
-  "homepage": "https://github.com/deegiialt/Lo-Siento#readme",
+  "homepage": "https://github.com/deegiialt/Faux-Real#readme",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
