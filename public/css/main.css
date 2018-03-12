@@ -1,6 +1,7 @@
 body {
     background-color: #000044;
     font-family: Montserrat, sans-serif;
+    overflow: hidden;
 }
 
 #title {
@@ -149,8 +150,8 @@ input[type=submit] {
 
 .navLinks:hover {
    cursor: crosshair;
-   color: #cccccc;
-   background-color: #000044 !important;
+   color: #ee4035;
+   background-color: white !important;
 }
 
 input.form-control, .btn-default {
@@ -163,6 +164,7 @@ input.form-control, .btn-default {
 .panel {
     border-radius: 0;
     margin:0;
+    height: 100vh;
 }
 
 #topArticles {
@@ -233,5 +235,9 @@ li a:hover {
 .voteContainer {
     background-color: white;
     margin: 15px;
+}
+
+#profileName {
+    text-transform: capitalize;
 }
 
