@@ -1,12 +1,12 @@
 
 $(document).ready(function() {
 
-  var realArr = [];
+  var totalArr = [];
   var fauxArr = [];
 
 // ajax post for faux to both routes with unique id identifier
   $(document).on("click", ".fauxButton",function() {
-
+        //event.stopPropagation();
         var id = $(this).data("id");
         var vote = true;
         var source = $(this).data("source");
@@ -68,11 +68,14 @@ $(document).ready(function() {
               //console.log(getVotes.rows[i].faux);
               var fauxTrue = getVotes.rows[i].faux;
               fauxTrue += getVotes.rows[i].faux;
+              totalArr.push(fauxTrue);
               if(fauxTrue) {
                 fauxArr.push(getVotes.rows[i].faux);
                 console.log("______________________________________________");
-                console.log(fauxArr);
-                console.log(fauxArr.length);
+                //console.log(fauxArr);
+                //console.log(fauxArr.length);
+
+                chart();
               }
             }
           });
@@ -89,7 +92,9 @@ $(document).ready(function() {
   //___________________________________________________________________
 
   function realVote(cb) {
-    $(document).on("click", ".realButton",function() {
+    $(document).on("click", ".realButton",function(event) {
+      //event.stopPropagation();
+
         var id = $(this).data("id");
         var vote = true;
         var source = $(this).data("source");
@@ -149,11 +154,14 @@ $(document).ready(function() {
                 //console.log(getVotes.rows[i].faux);
                 var realTrue = getVotes.rows[i].faux;
                 realTrue += getVotes.rows[i].faux;
+
                 if(realTrue) {
                   realArr.push(getVotes.rows[i].faux);
                   console.log("______________________________________________");
                   console.log(realArr);
                   console.log(realArr.length);
+
+                  chart();
                 }
               }
           });
@@ -163,7 +171,22 @@ $(document).ready(function() {
     cb();
   }
 
+  function chart() {
+    var fauxArrLength = fauxArr.length;
+    var totalArrLength = totalArr.length;
 
+    if(fauxArrLength > 0) {
+      var percent = fauxArrLength/totalArrLength;
+      percent *= 100; //determine correct syntax
+      console.log("______________________________________________");
+      console.log(percent + "%");
+      //display percentage in chart (push value into html)
+    }
+    else{
+      //display 0%
+      console.log();
+    }
+  }
 
 
 
@@ -172,13 +195,15 @@ $(document).ready(function() {
   //___________________________________________________________________
 
   // function loadTiles() {
-  //   $(".tileContent").on("load", function() {
+  //   $(".notFakeVote").on("load", function() {
   //     console.log("panel is loading and works");
   //   })
   //
   // }
 
   realVote();
+
+  // loadTiles();
 
 
 });
