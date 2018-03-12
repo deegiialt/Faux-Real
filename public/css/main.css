@@ -238,8 +238,8 @@ li a:hover {
 }
 
 .tileImage {
-  height: 150px;
-  width: 150px;
+  height: 115px;
+  width: 115px;
 }
 
 /*===============================================*/
@@ -250,7 +250,7 @@ li a:hover {
     background-color: white;
     outline-offset: 0;
     color: #000044;
-    margin:0 !important;
+    margin:5px !important;
 }
 
 /*Voting bars*/

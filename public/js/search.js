@@ -600,7 +600,7 @@ function renderArticles(searchResponse){
       tileContent.addClass("tile" + i);
       newDiv.append(tileContent);
       //inside tilecontent
-      tileContent.append("<p class='tileTitle' style='font-size:90%'>" + searchResponse[i].title + "</p>");
+      tileContent.append("<p class='tileTitle' style='font-size:85%'>" + searchResponse[i].title + "</p>");
       tileContent.append("<p class='tileSource' style='font-size:50%'>" + searchResponse[i].source.name + "</p>");
       // tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p><br>");
 
@@ -627,6 +627,8 @@ function renderArticles(searchResponse){
       }
 
       tileContent.append(buttonFaux);
+
+      tileContent.append('<br><div class="voteContainer"><div class="notFakeVote">70%</div></div>')
       // var voteContain = $("div");
       // voteContain.addClass("voteContainer");
       // tileContent.append(voteContain);
@@ -654,7 +656,7 @@ function renderArticles(searchResponse){
 
       // newPanel.append(fauxNewButton);
       // newPanel.append(realNewButton);
-
+      newPanel.append('<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>');
 
       $(".panel").empty();
       $(".panel").append(newPanel);
