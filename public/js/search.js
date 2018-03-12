@@ -710,24 +710,36 @@ function renderArticles(searchResponse, category){
 
   var url;
 
-  
-    $('div').on ("click", "div.button", function(){
+  console.log("TEST");
+    $('body').on ("click", ".button", function(){
         console.log("id two on click")
         var url = $(this).find("a").attr("href");
         var buttonId = $(this).attr('id');
         console.log(url)
-        
+
+
         $.ajax({
-          url: "https://www.cnbc.com/2018/03/12/californias-77-billion-high-speed-rail-project-is-in-trouble.html",
-          method: "GET"
+          url: "/checkiframe",
+          method: "POST",
+          data: {
+            url: url
+          }
           }).then(function(response){
             console.log("=======================================================================")
             console.log(response);
-            $("#myFrame").attr("src", url);
-            $('#modal-container').removeAttr('class').addClass(buttonId);
-            $('body').addClass('modal-active');
+            if (response === "true") {
+              $("#myFrame").attr("src", url);
+              $('#modal-container').removeAttr('class').addClass(buttonId);
+              $('body').addClass('modal-active');
+
+            } else {
+              alert("Error");
+              var errorDiv = $("<div>");
+            }
           
           
+          }).fail(function(err) {
+            console.error(err);
           });
         
     })
