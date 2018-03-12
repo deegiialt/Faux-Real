@@ -232,7 +232,13 @@ input.form-control, .btn-default {
 .panel {
     border-radius: 0;
     margin:0;
-    height: 125vh;
+}
+
+.main {
+  height: 400px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
 }
 
 #topArticles {
@@ -249,22 +255,30 @@ li a:hover {
 }
 
 .tileContent {
-/*    background-color: #000044;
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+    margin: 10px;
+  /*background-color: #337d81b8;*/
+    color:white;
+    white-space: normal;
+    /*background-color: #000044;
     background-color: #2274A5;
     background-color: #FFBF00;
     background-color: #A9ACA9;
     background-color: #424B54;*/
     background-color: #7F7CAF;
     /*background-color: #4E6E5D;*/
-    padding: 20px;
-    margin: 10px;
+    position: relative;
+
 }
 
-.tileContent {
-    width: 250px;
-    height: 250px;
-  /*  background-color: #337d81b8;*/
-    color:white;
+.tileDetails {
+  position: absolute;
+  bottom: 20px;
+  display: block;
+  margin: 0 auto;
+  width: 88%;
 }
 
 .tile0:hover,
@@ -306,7 +320,6 @@ li a:hover {
 /*Button*/
 /*===============================================*/
 .voteButton {
-    /*background-color: #337d81b8;*/
     background-color: white;
     outline-offset: 0;
     color: #000044;
