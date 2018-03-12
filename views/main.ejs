@@ -8,8 +8,6 @@
 	<!-- Grid CSS -->
 	<link rel="stylesheet" type="text/css" href="css/default.css">
 	<link rel="stylesheet" type="text/css" href="css/component.css">
-	<!-- Carousel -->
-<!-- 	<link rel="stylesheet" type="text/css" href="slick/slick.css"/> -->
 	<!-- News Modal -->
 	<link rel="stylesheet" href="css/newmodal.css">
 	<!-- Google Fonts -->
@@ -113,7 +111,7 @@
 	        <ul class="dropdown-menu" id="userInfo">
 	        	<li id="profileName" class="text-center">Username:<br> <%= user.userName || user.google.email%> </li>  <br>
 
-	        	<li id="profileEmailLabel" class="text-center">Email:<br> <span id="profileEmail"> <%= user.email || user.google.email%> </span></li> 
+	        	<li id="profileEmailLabel" class="text-center">Email:<br> <span id="profileEmail"> <%= user.email || user.google.email%> </span></li>
 	        	<!-- <br><br>
 	        	<li id="profilePic" class="text-center">Pic:<br> <%= user.image %> </li> -->
 	        	<li role="separator" class="divider"></li>
@@ -252,15 +250,23 @@
 	<div class="putinmodal"></div>
 	<!-- <div id="modal-container">
 	  <div class="modal-background">
-	    <div class="modal">
+	  <div class="modal">
 			<iframe id="myFrame" src="http://www.latimes.com/local/lanow/la-me-pomona-officer-shot-20180309-story.html" style="height:500px;width:900px"></iframe>
 			<br>
-			Vote if Real or Faux
-			<br> -->
+
+			<h3>Vote if Real or Faux</h3>
+			<br>
 			<!-- ==================================== -->
 			<!-- Voting buttons -->
-			<!-- <button class="btn voteButton glyphicon glyphicon-ok"></button>
-			<button class="btn voteButton glyphicon glyphicon-remove"></button>
+
+				<div id="button-div">
+					<button class="btn voteButton .realButton glyphicon glyphicon-ok" id='real-button'></button>
+					<button class="btn voteButton .fauxButton glyphicon glyphicon-remove" id='faux-button'></button>
+				</div>
+
+			<br>
+
+			<div class="voteContainer" style="display: block;margin:auto"><div class="notFakeVote" style="width: 50%">50%</div></div>
 	    </div>
 	  </div>
 	</div> -->
@@ -285,6 +291,7 @@
 		// var iframe = document.getElementById("myFrame");
 		// var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
 		// elmnt.style.display = "none";
+
 	</script>
 
 
@@ -342,11 +349,15 @@
 
 	</script>
   	<script src="./js/search.js" type="text/javascript"></script>
+
 	<script src="./js/vote.js" type="text/javascript"></script>
 	<script src="./js/carousel.js" type="text/javascript"></script>
-
-<!--   	<div class="text-center">
-    	<footer style="color:white;padding-top:5px;background-color:#000044"><a id="footer" href="https://github.com/deegiialt/Faux-Real">Copyright &copy; 2018 - Faux Real Group<br>powered by NewsAPI</a></footer>
-  	</div> -->
+	
+	<div style="height: 50px;background-color: white"></div>
+	<br>
+	<br>
+  	<div class="text-center">
+    	<footer class="page-footer" style="color:white;padding-top:5px;background-color:#000044"><a id="footer" href="https://github.com/deegiialt/Faux-Real">Copyright &copy; 2018 - Faux Real Group<br>powered by NewsAPI</a></footer>
+  	</div>
 </body>
 </html>
