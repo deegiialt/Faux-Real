@@ -695,15 +695,17 @@
         newPanelBody.attr("id", "articleBody-" + i);
         newPanelBody.append("<p>" + searchResponse[i].description + "</p>");
         newPanelBody.append("<a href=" + "'" + searchResponse[i].url + "'" + "target='_blank'" + ">" + "Go to Article" + "</a>");
-        var fauxNewButton = $("<button>Faux</button>");
-        var realNewButton = $("<button>Real</button>");
-        fauxNewButton.attr("type", "submit");
-        //fauxNewButton.attr("id", "faux" + i);
-        fauxNewButton.addClass("fauxButton");
-        fauxNewButton.attr("data-id", i);
-        //fauxNewButton.attr("data-id", "faux-" + searchResponse[i].url);
-        realNewButton.addClass("realButton");
-        //realNewButton.attr("data-id", "real-" + searchResponse[i].url);
+
+      // NOT IN USE FOR VOTING AND DELIVERING TO DATABASE, CAN BE DELETED
+        // var fauxNewButton = $("<button>Faux</button>");
+        // var realNewButton = $("<button>Real</button>");
+        // fauxNewButton.attr("type", "submit");
+        // //fauxNewButton.attr("id", "faux" + i);
+        // fauxNewButton.addClass("fauxButton");
+        // fauxNewButton.attr("data-id", i);
+        // //fauxNewButton.attr("data-id", "faux-" + searchResponse[i].url);
+        // realNewButton.addClass("realButton");
+        // //realNewButton.attr("data-id", "real-" + searchResponse[i].url);
 
 
 
@@ -822,6 +824,7 @@ function renderArticles(searchResponse){
       //                     "<img src=" + searchResponse[i].urlToImage + " width= 250px height=250px/> </a>")
       newPanelList.append(listItemOne);
 
+//IN USE FOR DATABASE. PLEASE DON'T DELETE
       var fauxNewButton = $("<button>Faux</button>");
       var realNewButton = $("<button>Real</button>");
       fauxNewButton.attr("type", "submit");
@@ -831,10 +834,12 @@ function renderArticles(searchResponse){
       fauxNewButton.attr("data-title", searchResponse[i].title);
       fauxNewButton.attr("data-url", searchResponse[i].url);
       fauxNewButton.attr("data-id", "faux-" + searchResponse[i].url);
+      fauxNewButton.attr("data-date", searchResponse[i].publishedAt);
       realNewButton.addClass("realButton");
       realNewButton.attr("data-source", searchResponse[i].source.name);
       realNewButton.attr("data-title", searchResponse[i].title);
       realNewButton.attr("data-url", searchResponse[i].url);
+      realNewButton.attr("data-date", searchResponse[i].publishedAt);
       realNewButton.attr("data-id", "real-" + searchResponse[i].url);
 
 
@@ -842,25 +847,6 @@ function renderArticles(searchResponse){
       newPanel.append(realNewButton);
 
       $("#div-section").append(newPanel);
-
-
-      // <div class="main">
-      //                       <ul id="og-grid" class="og-grid">
-      //                           <li>
-      //                               <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/1.jpg" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
-      //                                   <!-- <img src="http://via.placeholder.com/250x250" alt="img01"/> -->
-      //                                   <div class="tileContent">
-      //                                       <p class="tileTitle">Example Title</p>
-      //                                       <p class="tileSource">CNN</p>
-      //                                       <p class="tileDate">Date</p>
-      //                                   </div>
-      //                               </a>
-      //                           </li>
-      //                           <li>
-      //                               <a href="http://cargocollective.com/jaimemartinez/" data-largesrc="images/2.jpg" data-title="Veggies sunt bona vobis" data-description="Komatsuna prairie turnip wattle seed artichoke mustard horseradish taro rutabaga ricebean carrot black-eyed pea turnip greens beetroot yarrow watercress kombu.">
-      //                                   <img src="http://via.placeholder.com/250x250" alt="img02"/>
-      //                               </a>
-      //                           </li>
 
     };
 };
