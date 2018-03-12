@@ -1,4 +1,3 @@
-console.log("here");
 
   $(document).ready(function(){
 
@@ -524,7 +523,7 @@ console.log("here");
         }).then(function(response){
           console.log(response);
           renderArticles(response.articles, "Sports");
-          modalButtons(response.articles);
+          //modalButtons(response.articles);
 
         });
   }
@@ -670,9 +669,9 @@ function renderArticles(searchResponse, category){
 
 
 
-  
+
     $('div').on ("click", "div.button", function(){
-        console.log("id two on click")
+        //console.log("id two on click")
           var buttonId = $(this).attr('id');
           $('#modal-container').removeAttr('class').addClass(buttonId);
           $('body').addClass('modal-active');
@@ -687,7 +686,7 @@ function renderArticles(searchResponse, category){
     var iframe = document.getElementById("myFrame");
     var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
     elmnt.style.display = "none";
-  
+
 
 //IN USE FOR DATABASE. PLEASE DON'T DELETE
 //       var fauxNewButton = $("<button>Faux</button>");
