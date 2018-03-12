@@ -561,88 +561,10 @@ console.log("here");
         });
   }
 
-  //===========================================================================================
-  //===========================================================================================
-  //===========================================================================================
-  //this function will render all other search functions
 
-  // function renderArticles(searchResponse){
-
-  //     for(var i = 0; i < searchResponse.length; i++){
-
-  //       var newPanel = $("<div>");
-  //       newPanel.attr("class", "headBodyPanel")
-  //       var newPanelHeading = $("<div>");
-  //       newPanelHeading.attr("class", "panel-heading")
-  //       newPanelHeading.attr("id", "articleHead-" + i)
-  //       newPanelHeading.append("<h3>" + searchResponse[i].source.name + "</h3>");
-  //       newPanelHeading.append("<h4>" + searchResponse[i].author + "</h4>");
-  //       var newPanelBody = $("<div>");
-  //       newPanelBody.attr("class", "panel-body")
-  //       newPanelBody.attr("id", "articleBody-" + i);
-  //       newPanelBody.append("<p>" + searchResponse[i].description + "</p>");
-  //       newPanelBody.append("<a href=" + "'" + searchResponse[i].url + "'" + "target='_blank'" + ">" + "Go to Article" + "</a>");
-  //       var fauxNewButton = $("<button>Faux</button>");
-  //       var realNewButton = $("<button>Real</button>");
-  //       fauxNewButton.attr("type", "submit");
-  //       //fauxNewButton.attr("id", "faux" + i);
-  //       fauxNewButton.addClass("fauxButton");
-  //       fauxNewButton.attr("data-id", i);
-  //       //fauxNewButton.attr("data-id", "faux-" + searchResponse[i].url);
-  //       realNewButton.addClass("realButton");
-  //       //realNewButton.attr("data-id", "real-" + searchResponse[i].url);
-
-
-
-  //       newPanel.append(newPanelHeading);
-  //       newPanel.append(newPanelBody);
-  //       newPanel.append(fauxNewButton);
-  //       newPanel.append(realNewButton);
-
-  //       $("#gridContainer").append(newPanel);
-
-
-
-  //     };
-  // };
-
-  //=============================================================
-  //=============================================================
-  //=============================================================
-  //this code toggles the date search option
-
-
-
-  function validateDate(){
-    var start = $("#startDate").val();
-    var end = $("#endDate").val();
-    if(start == ""){
-      alert("Please fill in a start date.")
-      return false;
-    }else if(end == ""){
-      alert("Please fill in an end date.")
-      return false;
-    }
-    return true;
-              'country=us&' +
-              'category=sports&' +
-              'sortBy=publishedAt&' +
-              'apiKey=b8438b744ce24b42a60f3a56367a00c4'
-      $.ajax({
-        url: url,
-        method: "GET",
-
-      }).then(function(response){
-        console.log(response);
-        return renderArticles(response.articles);
-      });
-}
-
-
-
-//========================================================
-//========================================================
-//========================================================
+//========================================================================================
+//========================================================================================
+//========================================================================================
 //this function will render all other search functions
 
 
@@ -681,8 +603,20 @@ function renderArticles(searchResponse){
       tileContent.append("<p class='tileTitle'>" + searchResponse[i].title + "</p>");
       tileContent.append("<p class='tileSource'>" + searchResponse[i].source.name + "</p>");
       tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p>");
-      tileContent.append("<button class= 'btn voteButton glyphicon glyphicon-ok'></button>");
-      tileContent.append("<button class= 'btn voteButton glyphicon glyphicon-remove'></button>");
+      var buttonReal = $("<button>");
+      buttonReal.addClass("btn voteButton glyphicon glyphicon-ok");
+      buttonReal.attr("data-source", searchResponse[i].source.name);
+      buttonReal.attr("data-title", searchResponse[i].title);
+      buttonReal.attr("data-url", searchResponse[i].url);
+      buttonReal.attr("data-id", "real-" + searchResponse[i].url);
+      var buttonFaux = $("<button>");
+      buttonFaux.addClass("btn voteButton glyphicon glyphicon-remove");
+      buttonFaux.attr("data-source", searchResponse[i].source.name);
+      buttonFaux.attr("data-title", searchResponse[i].title);
+      buttonFaux.attr("data-url", searchResponse[i].url);
+      buttonFaux.attr("data-id", "faux-" + searchResponse[i].url);
+      tileContent.append(buttonReal);
+      tileContent.append(buttonFaux);
       // var voteContain = $("div");
       // voteContain.addClass("voteContainer");
       // tileContent.append(voteContain);
@@ -690,6 +624,28 @@ function renderArticles(searchResponse){
       // var scale = $("div");
       // scale.addClass("notFakeVote");
       // voteContain.append(scale);
+
+
+      //  var fauxNewButton = $("<button>Faux</button>");
+      // var realNewButton = $("<button>Real</button>");
+      // fauxNewButton.attr("type", "submit");
+      //       //fauxNewButton.attr("id", "faux" + i);
+      // fauxNewButton.addClass("fauxButton");
+      // fauxNewButton.attr("data-source", searchResponse[i].source.name);
+      // fauxNewButton.attr("data-title", searchResponse[i].title);
+      // fauxNewButton.attr("data-url", searchResponse[i].url);
+      // fauxNewButton.attr("data-id", "faux-" + searchResponse[i].url);
+      // realNewButton.addClass("realButton");
+      // realNewButton.attr("data-source", searchResponse[i].source.name);
+      // realNewButton.attr("data-title", searchResponse[i].title);
+      // realNewButton.attr("data-url", searchResponse[i].url);
+      // realNewButton.attr("data-id", "real-" + searchResponse[i].url);
+
+
+      // newPanel.append(fauxNewButton);
+      // newPanel.append(realNewButton);
+
+
       $(".panel").empty();
       $(".panel").append(newPanel);
     };
