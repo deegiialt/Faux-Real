@@ -4,12 +4,12 @@ console.log("here");
 
 
   $("#trending").on("click", function(){
-      $("#gridContainer").empty();
+      // $("#gridContainer").empty();
       searchTopHeadlines();
   })
 
   $("#search-submit").on("click", function(){
-        $("#gridContainer").empty();
+        // $("#gridContainer").empty();
         var start = $("#startDate").val();
         var end = $("#endDate").val();
         var keyword = $(".form-control").val().trim();
@@ -109,22 +109,22 @@ console.log("here");
   });
 
   $("#business").on("click", function(){
-        $("#gridContainer").empty();
+        // $("#gridContainer").empty();
         searchBusiness();
   });
 
   $("#sports").on("click", function(){
-        $("#gridContainer").empty();
+        // $("#gridContainer").empty();
         searchSports();
   })
 
   $("#entertainment").on("click", function(){
-        $("#gridContainer").empty();
+        // $("#gridContainer").empty();
         searchEntertainment();
   })
 
   $("#technology").on("click", function(){
-        $("#gridContainer").empty();
+        // $("#gridContainer").empty();
         searchTech();
   })
 
@@ -657,6 +657,8 @@ function renderArticles(searchResponse){
 
     for(var i = 0; i < searchResponse.length; i++){
 
+      //var articleDate = searchResponse[i].publishedAt
+
       var listItemOne = $("<li>")
       newPanelList.append(listItemOne);
       //inside list item
@@ -667,7 +669,7 @@ function renderArticles(searchResponse){
       //inside "two" div
       var link = $("<a>");
       link.attr("href", searchResponse[i].url);
-      newDiv.append(link);
+      link.append(link);
       //inside anchor tag
       var tileContent = $("<div>");
       tileContent.addClass("tileContent");  
@@ -677,8 +679,8 @@ function renderArticles(searchResponse){
       tileContent.append("<p class='tileTitle'>" + searchResponse[i].title + "</p>");
       tileContent.append("<p class='tileSource'>" + searchResponse[i].source.name + "</p>");
       tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p>");
-      tileContent.append("<button class= 'btn' 'voteButton' 'glyphicon' 'glyphicon-ok'></button>");
-      tileContent.append("<button class= 'btn' 'voteButton' 'glyphicon' 'glyphicon-remove'></button>");
+      tileContent.append("<button class= 'btn voteButton glyphicon glyphicon-ok'></button>");
+      tileContent.append("<button class= 'btn voteButton glyphicon glyphicon-remove'></button>");
       // var voteContain = $("div");
       // voteContain.addClass("voteContainer");
       // tileContent.append(voteContain);
@@ -686,8 +688,8 @@ function renderArticles(searchResponse){
       // var scale = $("div");
       // scale.addClass("notFakeVote");
       // voteContain.append(scale);
-      
-      $("#gridContainer").append(newPanel);
+      $(".panel").empty();
+      $(".panel").append(newPanel);
     };
 };
 
