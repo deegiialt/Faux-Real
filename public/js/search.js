@@ -600,9 +600,12 @@ function renderArticles(searchResponse){
       tileContent.addClass("tile" + i);
       newDiv.append(tileContent);
       //inside tilecontent
-      tileContent.append("<p class='tileTitle'>" + searchResponse[i].title + "</p>");
-      tileContent.append("<p class='tileSource'>" + searchResponse[i].source.name + "</p>");
-      tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p><br>");
+      tileContent.append("<p class='tileTitle' style='font-size:90%'>" + searchResponse[i].title + "</p>");
+      tileContent.append("<p class='tileSource' style='font-size:50%'>" + searchResponse[i].source.name + "</p>");
+      // tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p><br>");
+
+
+
       var buttonReal = $("<button style='margin:10px'>");
       buttonReal.addClass("btn voteButton glyphicon glyphicon-ok");
       buttonReal.attr("data-source", searchResponse[i].source.name);
@@ -616,6 +619,13 @@ function renderArticles(searchResponse){
       buttonFaux.attr("data-url", searchResponse[i].url);
       buttonFaux.attr("data-id", "faux-" + searchResponse[i].url);
       tileContent.append(buttonReal);
+
+      if (searchResponse[i].urlToImage === null) {
+      tileContent.append("<img class='tileImage' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtrVBUxp2hTkZEGWzqxkT-mC0p5MFaiqsIVV5As2qO4M_U2XgiQ'>");
+      } else {
+      tileContent.append("<img class='tileImage' src='" + searchResponse[i].urlToImage + "'>");
+      }
+
       tileContent.append(buttonFaux);
       // var voteContain = $("div");
       // voteContain.addClass("voteContainer");
