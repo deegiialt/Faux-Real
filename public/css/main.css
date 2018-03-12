@@ -198,23 +198,38 @@ li a:hover {
     color:white;
 }
 
-.tileOne:hover {
+.tile0:hover,
+  .tile5:hover,
+  .tile10:hover,
+  .tile15:hover {
     background: #ee4035;
 }
 
-.tileTwo:hover {
+.tile1:hover,
+  .tile6:hover,
+  .tile11:hover,
+  .tile16:hover {
     background: #f37736;
 }
 
-.tileThree:hover {
+.tile2:hover,
+  .tile7:hover,
+  .tile12:hover,
+  .tile17:hover {
     background: #f1e56c;
 }
 
-.tileFour:hover {
+.tile3:hover,
+  .tile8:hover,
+  .tile13:hover,
+  .tile18:hover {
     background: #7bc043;
 }
 
-.tileFive:hover {
+.tile4:hover,
+  .tile9:hover,
+  .tile14:hover,
+  .tile19:hover {
     background: #0392cf;   
 }
 

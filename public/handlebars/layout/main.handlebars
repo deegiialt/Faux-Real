@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Faux Real- Fake News or Not?</title>
+	<!-- Latest compiled and minified CSS & JS -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Grid CSS -->
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<link rel="stylesheet" type="text/css" href="css/component.css">
+	<script src="js/modernizr.custom.js"></script>
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Railway" rel="stylesheet">
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="http://jonathanrosen.com/wp-content/uploads/2017/07/trump-twitter-bird-300x300.png" />	
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="css/main.css" media="screen" title="no title">
+	<!-- Firebase Link -->
+    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+
+		{{{ body }}}
+
+
+
+
+
+
+
+
+
+	<script>
+		// Initialize Firebase
+		//$("#topArticles").hide();
+
+		var config = {
+			apiKey: "AIzaSyA7uWeljdVkI-dTT5T48pxGqYX0d5FxkLY",
+			authDomain: "project-28f23.firebaseapp.com",
+			databaseURL: "https://project-28f23.firebaseio.com",
+			projectId: "project-28f23",
+			storageBucket: "project-28f23.appspot.com",
+			messagingSenderId: "294037184898"
+		};
+
+		firebase.initializeApp(config);
+
+		var database = firebase.database();
+
+		// CHAT LISTENERS
+	    $("#submit").on("click", function(event) {
+			event.preventDefault();
+			var name = $('#nameInput').val().trim();
+			var text = $('#messageInput').val().trim();
+			if (name == "" || text == "") {
+				$(".error").text("All fields required.")
+			}
+			else {
+				database.ref().push({name: name, text: text});
+				$('#messageInput').val('');
+				$(".error").text("")
+			}
+	    });
+	    database.ref().on('child_added', function(snapshot) {
+			var message = snapshot.val();
+			displayChatMessage(message.name, message.text);
+	    });
+	    
+	    function displayChatMessage(name, text) {
+			$('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+			$('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+	    };
+
+		//=============================================================
+		//Navigation
+		function openNav() {
+		    document.getElementById("mySidenav").style.width = "300px";
+		}
+
+		function closeNav() {
+		    document.getElementById("mySidenav").style.width = "0";
+		}
+	</script>
+  <script src="js/search.js" type="text/javascript"></script>
+
+</body>
