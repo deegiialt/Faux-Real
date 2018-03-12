@@ -23,7 +23,7 @@ $(document).ready(function(){
                 return searchKeywordDate(keyword, start, end);
 
             }else{
-      
+
                 searchKeyword(keyword, start, end);
               }
 
@@ -35,7 +35,7 @@ $(document).ready(function(){
                   return searchCNNDate(keyword, start, end);
 
             }   else{
-                
+
                 searchCNN(keyword, start, end);
             }
         } else if($('#the-wall-street-journal').is(':checked')){
@@ -46,7 +46,7 @@ $(document).ready(function(){
                 return searchWallStreetDate(keyword, start, end);
 
           }   else{
-              
+
               searchWallStreet(keyword, start, end);
           }
         }else if($('#the-huffington-post').is(':checked')){
@@ -57,18 +57,18 @@ $(document).ready(function(){
                 return searchHuffPostDate(keyword, start, end);
 
           }else{
-              
+
               searchHuffPost(keyword, start, end);
           }
         }else if($('#vice-news').is(':checked')){
           if(start!= "" || end!=""){
             var check = validateDate();
             if(check == false) return;
-              
+
                 return searchViceDate(keyword, start, end);
 
           }else{
-              
+
               searchVice(keyword, start, end);
           }
         }else if($('#usa-today').is(':checked')){
@@ -79,7 +79,7 @@ $(document).ready(function(){
                 return searchUSADate(keyword, start, end);
 
           }else{
-              
+
               searchUSA(keyword, start, end);
           }
         }else if($('#google-news').is(':checked')){
@@ -90,7 +90,7 @@ $(document).ready(function(){
                 return searchGoogleDate(keyword, start, end);
 
           }else{
-              
+
               searchGoogle(keyword, start, end);
           }
         }else if($('#buzzfeed').is(':checked')){
@@ -600,7 +600,7 @@ function renderArticles(searchResponse, category){
         modal.append(buttonDiv);
         background.append(modal);
 
-      
+
       var modalContainer = $("<div>");
       modalContainer.attr("id", "modal-container");
       body.append(modalContainer);
@@ -614,7 +614,6 @@ function renderArticles(searchResponse, category){
 
       modal.append("<iframe id='myFrame' src='' style='height:500px;width:900px'></iframe>")
       modal.append('<br><div class="voteContainer"><div class="notFakeVote">0%</div></div>')
-  
       background.append(modal);
 
       var articleDiv = $("<div>");
@@ -639,7 +638,7 @@ function renderArticles(searchResponse, category){
       newPanelList.attr("id", "og-grid");
       newPanelList.attr("class", "og-grid");
       newPanel.append(newPanelList);
-      
+
     for(var i = 0; i < searchResponse.length; i++){
 
       var listItemOne = $("<li>")
@@ -663,7 +662,7 @@ function renderArticles(searchResponse, category){
       newDiv.append(link);
       //inside anchor tag
       var tileContent = $("<div>");
-      tileContent.addClass("tileContent");  
+      tileContent.addClass("tileContent");
       tileContent.addClass("tile" + i);
       newDiv.append(tileContent);
 
@@ -673,6 +672,7 @@ function renderArticles(searchResponse, category){
       tileContent.append("<p class='tileTitle' style='font-size:125%;overflow:visible;display:block !important'>" + searchResponse[i].title + "</p>");
 
       var tileDetails = $("<div>");
+
       tileDetails.attr("class", "tileDetails");      
       tileDetails.append("<p class='tileSource' style='font-size:75%'>" + searchResponse[i].source.name + "</p>");
       // tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p><br>");
@@ -764,7 +764,7 @@ function renderArticles(searchResponse, category){
       //====================================
       var newPanel = $("<div>");
       newPanel.attr("class", "main");
-      
+
       for(var i = 0; i < searchResponse.length; i++){
 
       var newDiv = $("<div>");
@@ -843,7 +843,7 @@ function renderArticles(searchResponse, category){
           $("#faux-button").attr("data-url", url);
           $("#faux-button").attr("data-date", date);
           $("#faux-button").attr("data-faux", faux);
-      
+
         console.log(url)
         // $("#errorDiv").hide();
         // $("#articleDiv").hide();
@@ -879,8 +879,8 @@ function renderArticles(searchResponse, category){
               $('body').addClass('modal-active');
             }
           
-          
           })
+
     })
 
           //console.log(url);
@@ -904,13 +904,16 @@ function renderArticles(searchResponse, category){
           //errorDiv.empty();
     });
 
+    // var iframe = document.getElementById("myFrame");
+    // var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
+    // elmnt.style.display = "none";
+
       //newPanel.append('<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>');
 
     // var iframe = document.getElementById("myFrame");
     // var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
     // elmnt.style.display = "none";
-  
-  
+
 
 //=======
       // $(".panel").empty();
@@ -937,11 +940,3 @@ function renderArticles(searchResponse, category){
   };
 
 });
-
-
-
-
-
-
-
-
