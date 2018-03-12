@@ -73,6 +73,10 @@ body {
   height: 80%;
 }
 
+#myModal {
+  height: 100%;
+}
+
 /* The Close Button */
 .close, .close2 {
     color: #aaaaaa;
