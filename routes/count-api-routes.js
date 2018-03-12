@@ -51,7 +51,7 @@
     //   })
     // })
 
-    app.put("/api/count/:showtotal", function(req, res) {
+    app.get("/api/count/:showtotal", function(req, res) {
       //console.log(req.params.showtotal);
         Count.findAndCountAll({
           where: {
