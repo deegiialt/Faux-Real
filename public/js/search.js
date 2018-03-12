@@ -561,7 +561,6 @@ console.log("here");
         });
   }
 
-
 //========================================================================================
 //========================================================================================
 //========================================================================================
@@ -585,6 +584,7 @@ function renderArticles(searchResponse){
 
       var listItemOne = $("<li>")
       newPanelList.append(listItemOne);
+
       //inside list item
       var newDiv = $("<div>");
       newDiv.attr("id", "two");
@@ -648,6 +648,31 @@ function renderArticles(searchResponse){
 
       $(".panel").empty();
       $(".panel").append(newPanel);
+
+//IN USE FOR DATABASE. PLEASE DON'T DELETE
+//       var fauxNewButton = $("<button>Faux</button>");
+//       var realNewButton = $("<button>Real</button>");
+//       fauxNewButton.attr("type", "submit");
+//       //fauxNewButton.attr("id", "faux" + i);
+//       fauxNewButton.addClass("fauxButton");
+//       fauxNewButton.attr("data-source", searchResponse[i].source.name);
+//       fauxNewButton.attr("data-title", searchResponse[i].title);
+//       fauxNewButton.attr("data-url", searchResponse[i].url);
+//       fauxNewButton.attr("data-id", "faux-" + searchResponse[i].url);
+//       fauxNewButton.attr("data-date", searchResponse[i].publishedAt);
+//       realNewButton.addClass("realButton");
+//       realNewButton.attr("data-source", searchResponse[i].source.name);
+//       realNewButton.attr("data-title", searchResponse[i].title);
+//       realNewButton.attr("data-url", searchResponse[i].url);
+//       realNewButton.attr("data-date", searchResponse[i].publishedAt);
+//       realNewButton.attr("data-id", "real-" + searchResponse[i].url);
+
+
+//       newPanel.append(fauxNewButton);
+//       newPanel.append(realNewButton);
+
+//       $("#div-section").append(newPanel);
+
     };
 };
 
