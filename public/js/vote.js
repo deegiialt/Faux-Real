@@ -1,10 +1,5 @@
 
-  // link up api routes for voting
-
-  // ajax post for faux to both routes with unique id identifier
-
-
-  console.log("vote page loads");
+// ajax post for faux to both routes with unique id identifier
 
   $(document).on("click", ".fauxButton",function() {
       var id = $(this).data("id");
@@ -12,39 +7,55 @@
       var source = $(this).data("source");
       var articleURL = $(this).data("url");
       var articleTitle = $(this).data("title");
+      var datePublished = $(this).data("date");
   // include id: id for unique identifier
       var fakeVote = {
+        userName: "Test",
         faux: vote,
         real: false,
         source: source,
         articleURL: articleURL,
         articleTitle: articleTitle
       }
-      console.log(fakeVote);
+
+      var fakeVoteTotal = {
+        faux: vote,
+        real: false,
+        source: source,
+        articleURL: articleURL,
+        articleTitle: articleTitle,
+        datePublished: datePublished
+      }
+      console.log(fakeVoteTotal);
 
       $.post("/api/uservote", fakeVote)
         // On success, run the following code
         .then(function(data) {
           // Log the data we found
-          console.log("sending to database");
-          console.log(data);
+          //console.log("sending to user's individual vote database");
+          //console.log(data);
         });
 
-      $.post("/api/uservote", fakeVote)
+      $.post("/api/totalvote", fakeVoteTotal)
         // On success, run the following code
         .then(function(data) {
           // Log the data we found
-          console.log("sending to database");
-          console.log(data);
+          //console.log("sending to count database");
+          //console.log(data);
         });
     });
 
-    $(document).on("click", ".realButton",function() {
+
+// ajax post for real votes to both routes with unique id identifier
+
+  $(document).on("click", ".realButton",function() {
       var id = $(this).data("id");
       var vote = true;
       var source = $(this).data("source");
       var articleURL = $(this).data("url");
       var articleTitle = $(this).data("title");
+      var datePublished = $(this).data("date");
+
   // include id: id for unique identifier
       var realVote = {
         faux: false,
@@ -53,57 +64,58 @@
         articleURL: articleURL,
         articleTitle: articleTitle
       }
-      console.log(realVote);
-
+      var realVoteTotal = {
+        faux: vote,
+        real: false,
+        source: source,
+        articleURL: articleURL,
+        articleTitle: articleTitle,
+        datePublished: datePublished
+      }
+      console.log(fakeVoteTotal);
       $.post("/api/uservote", realVote)
         // On success, run the following code
         .then(function(data) {
           // Log the data we found
-          console.log("sending to database");
+          console.log("sending to user's individual vote database - real");
           console.log(data);
         });
 
-      $.post("/api/uservote", realVote)
+      $.post("/api/totalvote", realVoteTotal)
         // On success, run the following code
         .then(function(data) {
           // Log the data we found
-          console.log("sending to database");
+          console.log("sending to count database - real");
           console.log(data);
         });
     });
 
-  // ajax post for real to both routes with unique id identifier
+  $(document).ready(function() {
+    console.log("works");
+    $.get("/login", function(data){
+      console.log("works");
+    }).then(function(data) {
+      // Log the data we found
+      // console.log("sending to database");
+      console.log(data);
+    })
 
-    // $(".realButton").on("click", function(event) {
-    //   event.preventDefault();
-    //
-    //  var id = $(this).data("id");
-
-    // var vote = true;
-    // var source = $(this).data("source");
-    // var articleURL = $(this).data("article-url");
-    // var articleTitle = $(this).data("article-title");
-    //
-    // var fakeVote = {
-    //   faux: vote,
-    //   real: false,
-    //   source: source,
-    //   articleURL: articleURL,
-    //   articleTitle: articleTitle
-    // }
-    //   // Send the PUT request.
-    //   $.ajax("/api/burgers/" + id, {
-    //     type: "PUT",
-    //     data: eat
-    //   }).then(
-    //     function() {
-    //       console.log("burger devoured .. handlebar");
-    //       console.log("changed devoured to", eat);
-    //       // Reload the page to get the updated list
-    //       location.reload();
-    //     }
-    //   );
+    // $.get("/api/posts" + authorId, function(data) {
+    //   console.log("Posts", data);
+    //   posts = data;
+    //   if (!posts || !posts.length) {
+    //     displayEmpty(author);
+    //   }
+    //   else {
+    //     initializeRows();
+    //   }
     // });
+
+  });
+
+//console.log("vote page loads");
+
+    //setup a get with a count where articleURL matches to provide count of all fake and real votes
 
 
     //setup get route to push new values to the page
