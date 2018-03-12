@@ -743,8 +743,14 @@ function renderArticles(searchResponse, category){
               $('body').addClass('modal-active');
 
             } else {
-              alert("Error");
+              $(".modal").empty();
               var errorDiv = $("<div>");
+              errorDiv.append("<h3>Page Unable to Render</h3>");
+              errorDiv.append("<p>We are sorry, this page is unable to display here.  Please click the link below to be taken to the article's site.</p>");
+              errorDiv.append("<a class='erorLink' href='" + url + "''>Go to Article</button>");
+              $(".modal").append(errorDiv)
+              $('#modal-container').removeAttr('class').addClass(buttonId);
+              $('body').addClass('modal-active');
             }
           
           
@@ -758,6 +764,7 @@ function renderArticles(searchResponse, category){
           url = "";
           $(this).addClass('out');
           $('body').removeClass('modal-active');
+          $(".modal").empty();
     });
 
       //newPanel.append('<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>');
