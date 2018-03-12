@@ -22,7 +22,7 @@ console.log("here");
                 return searchKeywordDate(keyword, start, end);
 
             }else{
-      
+
                 searchKeyword(keyword, start, end);
               }
 
@@ -34,7 +34,7 @@ console.log("here");
                   return searchCNNDate(keyword, start, end);
 
             }   else{
-                
+
                 searchCNN(keyword, start, end);
             }
         } else if($('#the-wall-street-journal').is(':checked')){
@@ -45,7 +45,7 @@ console.log("here");
                 return searchWallStreetDate(keyword, start, end);
 
           }   else{
-              
+
               searchWallStreet(keyword, start, end);
           }
         }else if($('#the-huffington-post').is(':checked')){
@@ -56,18 +56,18 @@ console.log("here");
                 return searchHuffPostDate(keyword, start, end);
 
           }else{
-              
+
               searchHuffPost(keyword, start, end);
           }
         }else if($('#vice-news').is(':checked')){
           if(start!= "" || end!=""){
             var check = validateDate();
             if(check == false) return;
-              
+
                 return searchViceDate(keyword, start, end);
 
           }else{
-              
+
               searchVice(keyword, start, end);
           }
         }else if($('#usa-today').is(':checked')){
@@ -78,7 +78,7 @@ console.log("here");
                 return searchUSADate(keyword, start, end);
 
           }else{
-              
+
               searchUSA(keyword, start, end);
           }
         }else if($('#google-news').is(':checked')){
@@ -89,7 +89,7 @@ console.log("here");
                 return searchGoogleDate(keyword, start, end);
 
           }else{
-              
+
               searchGoogle(keyword, start, end);
           }
         }else if($('#buzzfeed').is(':checked')){
@@ -576,7 +576,7 @@ function renderArticles(searchResponse){
       newPanelList.attr("id", "og-grid");
       newPanelList.attr("class", "og-grid");
       newPanel.append(newPanelList);
-      
+
 
     for(var i = 0; i < searchResponse.length; i++){
 
@@ -596,7 +596,7 @@ function renderArticles(searchResponse){
       link.append(link);
       //inside anchor tag
       var tileContent = $("<div>");
-      tileContent.addClass("tileContent");  
+      tileContent.addClass("tileContent");
       tileContent.addClass("tile" + i);
       newDiv.append(tileContent);
       //inside tilecontent
@@ -607,18 +607,20 @@ function renderArticles(searchResponse){
 
 
       var buttonReal = $("<button style='margin:10px'>");
-      buttonReal.addClass("btn voteButton glyphicon glyphicon-ok");
+      buttonReal.addClass("btn voteButton realButton glyphicon glyphicon-ok");
       buttonReal.attr("data-source", searchResponse[i].source.name);
       buttonReal.attr("data-title", searchResponse[i].title);
       buttonReal.attr("data-url", searchResponse[i].url);
+      buttonReal.attr("data-date", searchResponse[i].publishedAt);
       buttonReal.attr("data-id", "real-" + searchResponse[i].url);
+
       var buttonFaux = $("<button>");
-      buttonFaux.addClass("btn voteButton glyphicon glyphicon-remove");
+      buttonFaux.addClass("btn voteButton fauxButton glyphicon glyphicon-remove");
       buttonFaux.attr("data-source", searchResponse[i].source.name);
       buttonFaux.attr("data-title", searchResponse[i].title);
       buttonFaux.attr("data-url", searchResponse[i].url);
+      buttonFaux.attr("data-date", searchResponse[i].publishedAt);
       buttonFaux.attr("data-id", "faux-" + searchResponse[i].url);
-      tileContent.append(buttonReal);
 
       if (searchResponse[i].urlToImage === null) {
       tileContent.append("<img class='tileImage' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtrVBUxp2hTkZEGWzqxkT-mC0p5MFaiqsIVV5As2qO4M_U2XgiQ'>");
@@ -626,7 +628,9 @@ function renderArticles(searchResponse){
       tileContent.append("<img class='tileImage' src='" + searchResponse[i].urlToImage + "'>");
       }
 
+      tileContent.append(buttonReal);
       tileContent.append(buttonFaux);
+
       // var voteContain = $("div");
       // voteContain.addClass("voteContainer");
       // tileContent.append(voteContain);
@@ -635,11 +639,10 @@ function renderArticles(searchResponse){
       // scale.addClass("notFakeVote");
       // voteContain.append(scale);
 
-
       //  var fauxNewButton = $("<button>Faux</button>");
       // var realNewButton = $("<button>Real</button>");
       // fauxNewButton.attr("type", "submit");
-      //       //fauxNewButton.attr("id", "faux" + i);
+      //       fauxNewButton.attr("id", "faux" + i);
       // fauxNewButton.addClass("fauxButton");
       // fauxNewButton.attr("data-source", searchResponse[i].source.name);
       // fauxNewButton.attr("data-title", searchResponse[i].title);
