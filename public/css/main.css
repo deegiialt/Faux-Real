@@ -302,12 +302,6 @@ li a:hover {
     background: #0392cf;
 }
 
-
-/*.tileImage {
-  height: 115px;
-  width: 115px;
-}*/
-
 /*===============================================*/
 /*Button*/
 /*===============================================*/
@@ -316,7 +310,6 @@ li a:hover {
     background-color: white;
     outline-offset: 0;
     color: #000044;
-    margin:5px !important;
 }
 
 /*Voting bars*/
@@ -332,6 +325,10 @@ li a:hover {
 
 #profileName {
     text-transform: capitalize;
+}
+
+.glyphicon-ok, .glyphicon-remove {
+  font-size: 30px;
 }
 
 /*==========
