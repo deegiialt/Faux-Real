@@ -4,7 +4,7 @@ html, body {
 }
 
 body {
-    background-color: #000044;
+    background-color: #9696b5;
     font-family: Montserrat, sans-serif;
     overflow-y: hidden;
 }
@@ -276,7 +276,7 @@ li a:hover {
     background-color: #FFBF00;
     background-color: #A9ACA9;
     background-color: #424B54;*/
-    background-color: #7F7CAF;
+    /*background-color: #7F7CAF;*/
     /*background-color: #4E6E5D;*/
     position: relative;
 
@@ -289,6 +289,28 @@ li a:hover {
   margin: 0 auto;
   width: 88%;
 }
+
+.tile0, .tile5, .tile10, .tile15 {
+  background-color: #f76f73;
+}
+
+.tile1, .tile6, .tile11, .tile16  {
+  background-color: #fdb71e;
+}
+
+.tile2, .tile7, .tile12, .tile17  {
+  background-color: #f0e56d;
+}
+
+.tile3, .tile8, .tile13, .tile18  {
+  background-color: #7bc043;
+}
+
+.tile4, .tile9, .tile14, .tile19 {
+  background-color: #0393ce;
+}
+
+
 
 .tile0:hover,
   .tile5:hover,
