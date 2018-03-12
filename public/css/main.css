@@ -191,23 +191,23 @@ li a:hover {
     color:white;
 }
 
-.tileOne {
+.tile0, .tile5, .tile10, .tile15{
     background: #ee4035;
 }
 
-.tileTwo {
+.tile1, .tile6, .tile11, .tile16{
     background: #f37736;
 }
 
-.tileThree {
+.tile2, .tile7, .tile12, .tile17{
     background: #f1e56c;
 }
 
-.tileFour {
+.tile3, .tile8, .tile13, .tile18{
     background: #7bc043;
 }
 
-.tileFive {
+.tile4, .tile9, .tile14, .tile19{
     background: #0392cf;   
 }
 

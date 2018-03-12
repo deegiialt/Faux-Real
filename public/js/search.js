@@ -673,7 +673,7 @@ function renderArticles(searchResponse){
       //inside anchor tag
       var tileContent = $("<div>");
       tileContent.addClass("tileContent");  
-      tileContent.addClass("tileTwo");
+      tileContent.addClass("tile" + i);
       newDiv.append(tileContent);
       //inside tilecontent
       tileContent.append("<p class='tileTitle'>" + searchResponse[i].title + "</p>");
