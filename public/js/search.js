@@ -616,9 +616,14 @@ function renderArticles(searchResponse, category){
       tileContent.addClass("tileContent");
       tileContent.addClass("tile" + i);
       newDiv.append(tileContent);
+
+
       //inside tilecontent
       tileContent.append("<p class='tileTitle' style='font-size:100%;overflow:visible;display:block !important'>" + searchResponse[i].title + "</p>");
-      tileContent.append("<p class='tileSource' style='font-size:50%'>" + searchResponse[i].source.name + "</p>");
+
+      var tileDetails = $("<div>");
+      tileDetails.attr("class", "tileDetails");      
+      tileDetails.append("<p class='tileSource' style='font-size:50%'>" + searchResponse[i].source.name + "</p>");
       // tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p><br>");
 
 
@@ -639,15 +644,15 @@ function renderArticles(searchResponse, category){
       buttonFaux.attr("data-id", "faux-" + searchResponse[i].url);
 
       if (searchResponse[i].urlToImage === null) {
-      tileContent.append("<img class='tileImage' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtrVBUxp2hTkZEGWzqxkT-mC0p5MFaiqsIVV5As2qO4M_U2XgiQ' width='120px' height='120px'>");
+      tileDetails.append("<img class='tileImage' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtrVBUxp2hTkZEGWzqxkT-mC0p5MFaiqsIVV5As2qO4M_U2XgiQ' width='120px' height='120px'>");
       } else {
-      tileContent.append("<img class='tileImage' src='" + searchResponse[i].urlToImage + "' width='120px' height='120px' >");
+      tileDetails.append("<img class='tileImage' src='" + searchResponse[i].urlToImage + "' width='120px' height='120px' >");
       }
 
       //tileContent.append(buttonReal);
       //tileContent.append(buttonFaux);
 
-      tileContent.append('<br><div class="voteContainer"><div class="notFakeVote">0%</div></div>')
+      tileDetails.append('<br><div class="voteContainer"><div class="notFakeVote">0%</div></div>')
       // var voteContain = $("div");
       // voteContain.addClass("voteContainer");
       // tileContent.append(voteContain);
@@ -655,7 +660,7 @@ function renderArticles(searchResponse, category){
       // var scale = $("div");
       // scale.addClass("notFakeVote");
       // voteContain.append(scale);
-
+      tileContent.append(tileDetails)
 
       $(".panel").empty();
       $(".panel").append('<h1 class="text-center" style="padding: 10px 0;">' + category + '</h1>');
