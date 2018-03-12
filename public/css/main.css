@@ -21,6 +21,8 @@ body {
 #headerText {
     color: white;
     text-decoration: none;
+    position: relative;
+    left: 15%;
 }
 
 /*===============================================*/
@@ -230,7 +232,7 @@ li a:hover {
   .tile9:hover,
   .tile14:hover,
   .tile19:hover {
-    background: #0392cf;   
+    background: #0392cf;
 }
 
 .tileTitle:hover {
