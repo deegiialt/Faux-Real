@@ -652,8 +652,10 @@ function renderArticles(searchResponse, category){
       // var scale = $("div");
       // scale.addClass("notFakeVote");
       // voteContain.append(scale);
+      newPanel.append('<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>');
 
       $(".panel").empty();
+      $(".panel").append('<h1 class="text-center">' + category + '</h1>');
       $(".panel").append(newPanel);
     };
     return;
@@ -677,18 +679,11 @@ function renderArticles(searchResponse, category){
           $('body').removeClass('modal-active');
     });
 
-      newPanel.append('<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>');
 
     var iframe = document.getElementById("myFrame");
     var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
     elmnt.style.display = "none";
   
-
-
-//=======
-      $(".panel").empty();
-      $(".panel").append('<h1 class="text-center">' + category + '</h1>');
-      $(".panel").append(newPanel);
 
 //IN USE FOR DATABASE. PLEASE DON'T DELETE
 //       var fauxNewButton = $("<button>Faux</button>");
