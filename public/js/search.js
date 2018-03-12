@@ -1,6 +1,8 @@
+console.log("here");
 
   $(document).ready(function(){
 
+    searchTopHeadlines();
 
   $("#trending").on("click", function(){
       // $("#gridContainer").empty();
@@ -21,7 +23,7 @@
                 return searchKeywordDate(keyword, start, end);
 
             }else{
-
+      
                 searchKeyword(keyword, start, end);
               }
 
@@ -33,7 +35,7 @@
                   return searchCNNDate(keyword, start, end);
 
             }   else{
-
+                
                 searchCNN(keyword, start, end);
             }
         } else if($('#the-wall-street-journal').is(':checked')){
@@ -44,7 +46,7 @@
                 return searchWallStreetDate(keyword, start, end);
 
           }   else{
-
+              
               searchWallStreet(keyword, start, end);
           }
         }else if($('#the-huffington-post').is(':checked')){
@@ -55,18 +57,18 @@
                 return searchHuffPostDate(keyword, start, end);
 
           }else{
-
+              
               searchHuffPost(keyword, start, end);
           }
         }else if($('#vice-news').is(':checked')){
           if(start!= "" || end!=""){
             var check = validateDate();
             if(check == false) return;
-
+              
                 return searchViceDate(keyword, start, end);
 
           }else{
-
+              
               searchVice(keyword, start, end);
           }
         }else if($('#usa-today').is(':checked')){
@@ -77,7 +79,7 @@
                 return searchUSADate(keyword, start, end);
 
           }else{
-
+              
               searchUSA(keyword, start, end);
           }
         }else if($('#google-news').is(':checked')){
@@ -88,7 +90,7 @@
                 return searchGoogleDate(keyword, start, end);
 
           }else{
-
+              
               searchGoogle(keyword, start, end);
           }
         }else if($('#buzzfeed').is(':checked')){
@@ -126,6 +128,8 @@
         // $("#gridContainer").empty();
         searchTech();
   })
+
+
   //=========================================================================================================
   //=========================================================================================================
   //=========================================================================================================
@@ -150,7 +154,7 @@
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles, "Search");
+          return renderSearchResults(response.articles, "Search");
         });
   }
 
@@ -169,7 +173,7 @@
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles, "Search");
+          return renderSearchResults(response.articles, "Search");
         });
   }
 
@@ -523,7 +527,7 @@
         }).then(function(response){
           console.log(response);
           renderArticles(response.articles, "Sports");
-          //modalButtons(response.articles);
+          modalButtons(response.articles);
 
         });
   }
@@ -596,6 +600,22 @@ function renderArticles(searchResponse, category){
         modal.append(buttonDiv);
         background.append(modal);
 
+      
+      var modalContainer = $("<div>");
+      modalContainer.attr("id", "modal-container");
+      body.append(modalContainer);
+
+      var background = $("<div>");
+      background.addClass("modal-background");
+      modalContainer.append(background);
+
+      var modal = $("<div>");
+      modal.addClass("modal");
+      modal.append("<iframe id='myFrame' src='' style='height:500px;width:900px'></iframe>")
+      modal.append('<br><div class="voteContainer"><div class="notFakeVote">0%</div></div>')      
+      background.append(modal);
+      
+
 
       var newPanel = $("<div>");
       newPanel.attr("class", "main");
@@ -603,7 +623,7 @@ function renderArticles(searchResponse, category){
       newPanelList.attr("id", "og-grid");
       newPanelList.attr("class", "og-grid");
       newPanel.append(newPanelList);
-
+      
     for(var i = 0; i < searchResponse.length; i++){
 
       var listItemOne = $("<li>")
@@ -627,12 +647,19 @@ function renderArticles(searchResponse, category){
       newDiv.append(link);
       //inside anchor tag
       var tileContent = $("<div>");
-      tileContent.addClass("tileContent");
+      tileContent.addClass("tileContent");  
       tileContent.addClass("tile" + i);
       newDiv.append(tileContent);
+
+
       //inside tilecontent
-      tileContent.append("<h4 class='tileTitle' style='font-size:85%'>" + searchResponse[i].title + "</h4>");
-      tileContent.append("<p class='tileSource' style='font-size:50%'>" + searchResponse[i].source.name + "</p>");
+
+      tileContent.append("<p class='tileTitle' style='font-size:100%;overflow:visible;display:block !important'>" + searchResponse[i].title + "</p>");
+
+      var tileDetails = $("<div>");
+      tileDetails.attr("class", "tileDetails");      
+      tileDetails.append("<p class='tileSource' style='font-size:50%'>" + searchResponse[i].source.name + "</p>");
+      // tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p><br>");
 
       // tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p><br>");
 
@@ -653,14 +680,17 @@ function renderArticles(searchResponse, category){
       // buttonFaux.attr("data-date", searchResponse[i].publishedAt);
       // buttonFaux.attr("data-id", "faux-" + searchResponse[i].url);
 
+
       if (searchResponse[i].urlToImage === null) {
-      tileContent.append("<img class='tileImage' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtrVBUxp2hTkZEGWzqxkT-mC0p5MFaiqsIVV5As2qO4M_U2XgiQ'>");
+      tileDetails.append("<img class='tileImage' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtrVBUxp2hTkZEGWzqxkT-mC0p5MFaiqsIVV5As2qO4M_U2XgiQ' width='120px' height='120px'>");
       } else {
-      tileContent.append("<img class='tileImage' src='" + searchResponse[i].urlToImage + "' width='120px' height='120px' >");
+
+      tileDetails.append("<img class='tileImage' src='" + searchResponse[i].urlToImage + "' width='120px' height='120px' >");
+
       }
 
 
-      tileContent.append('<br><div class="voteContainer"><div class="notFakeVote">0%</div></div>')
+      tileDetails.append('<br><div class="voteContainer"><div class="notFakeVote">0%</div></div>')
       // var voteContain = $("div");
       // voteContain.addClass("voteContainer");
       // tileContent.append(voteContain);
@@ -668,11 +698,11 @@ function renderArticles(searchResponse, category){
       // var scale = $("div");
       // scale.addClass("notFakeVote");
       // voteContain.append(scale);
-      newPanel.append('<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>');
 
+      tileContent.append(tileDetails);
 
       $(".panel").empty();
-      $(".panel").append('<h1 class="text-center" style="padding: 10px 0;">' + category + '</h1>');
+      $(".panel").append('<h1 class="text-center">' + category + '</h1>');
       $(".panel").append(newPanel);
     };
     return;
@@ -683,6 +713,57 @@ function renderArticles(searchResponse, category){
         //console.log("id two on click")
           var modal = $(".modal-test");
 
+
+  function renderSearchResults(searchResponse, category){
+
+      var newPanel = $("<div>");
+      newPanel.attr("class", "main");
+      
+      for(var i = 0; i < searchResponse.length; i++){
+
+      var newDiv = $("<div>");
+      newDiv.attr("class", "well")
+      newPanel.append(newDiv);
+      var upperDiv = $("<div>");
+      upperDiv.append("<h3>" + searchResponse[i].title + "</h3>");
+      upperDiv.append("<h4>" + searchResponse[i].source.name + "</h4>");
+      newDiv.append(upperDiv);
+      var lowerDiv = $("<div>");
+      lowerDiv.append("<p>" + searchResponse[i].description + "</p>");
+      lowerDiv.append("<p>" + searchResponse[i].url + "</p>");
+      newDiv.append(lowerDiv);
+
+//       var buttonReal = $("<button style='margin:10px'>");
+//       buttonReal.addClass("btn voteButton glyphicon glyphicon-ok");
+//       buttonReal.attr("data-source", searchResponse[i].source.name);
+//       buttonReal.attr("data-title", searchResponse[i].title);
+//       buttonReal.attr("data-url", searchResponse[i].url);
+//       buttonReal.attr("data-id", "real-" + searchResponse[i].url);
+//       var buttonFaux = $("<button>");
+//       buttonFaux.addClass("btn voteButton glyphicon glyphicon-remove");
+//       buttonFaux.attr("data-source", searchResponse[i].source.name);
+//       buttonFaux.attr("data-title", searchResponse[i].title);
+//       buttonFaux.attr("data-url", searchResponse[i].url);
+//       buttonFaux.attr("data-id", "faux-" + searchResponse[i].url);
+//       lowerDiv.append('<br><div class="voteContainer"><div class="notFakeVote">70%</div></div>');
+//       lowerDiv.append(buttonReal);
+//       lowerDiv.append(buttonFaux);
+
+      }
+      $(".panel").empty();
+      $(".panel").append('<h1 class="text-center">' + category + '</h1>');
+      $(".panel").append(newPanel);
+
+  }
+
+
+
+  var url;
+  var errorDiv = $("<div>");
+
+  console.log("TEST");
+    $('body').on ("click", ".button", function(){
+        console.log("id two on click")
           var url = $(this).find("a").attr("href");
           var source = $(this).find("a").attr("data-source");
           var title = $(this).find("a").attr("data-title");
@@ -708,10 +789,40 @@ function renderArticles(searchResponse, category){
           $("#faux-button").attr("data-url", url);
           $("#faux-button").attr("data-date", date);
           $("#faux-button").attr("data-faux", faux);
+      
+        console.log(url)
 
-          $("#myFrame").attr("src", url);
-          $('#modal-container').removeAttr('class').addClass(buttonId);
-          $('body').addClass('modal-active');
+
+        $.ajax({
+          url: "/checkiframe",
+          method: "POST",
+          data: {
+            url: url
+          }
+          }).then(function(response){
+            console.log("=======================================================================")
+            console.log(response);
+            if (response === "true") {
+              $("#myFrame").attr("src", url);
+              $('#modal-container').removeAttr('class').addClass(buttonId);
+              $('body').addClass('modal-active');
+
+            } else {
+              //$(".modal").empty();
+              errorDiv.append("<h3>Page Unable to Render</h3>");
+              errorDiv.append("<p>We are sorry, this page is unable to display here.  Please click the link below to be taken to the article's site.</p>");
+              errorDiv.append("<a class='erorLink' href='" + url + "''>Go to Article</button>");
+              $(".modal").append(errorDiv)
+              $('#modal-container').removeAttr('class').addClass(buttonId);
+              $('body').addClass('modal-active');
+            }
+          
+          
+          }).fail(function(err) {
+            console.error(err);
+          });
+        
+    })
 
           //console.log(url);
     });
@@ -730,12 +841,41 @@ function renderArticles(searchResponse, category){
           alert("The span element was clicked.");
           $(this).addClass('out');
           $('body').removeClass('modal-active');
+          $(".modal").empty();
     });
 
-    var iframe = document.getElementById("myFrame");
-    var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
-    elmnt.style.display = "none";
+      //newPanel.append('<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>');
 
+    // var iframe = document.getElementById("myFrame");
+    // var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
+    // elmnt.style.display = "none";
+  
+  // function validateArticle(url, buttonId){
+  //     var url = url;
+  //     var buttonId = buttonId;
+  //       $.ajax({
+  //         url: url,
+  //         method: "GET",
+  //         }).then(function(response){
+  //           console.log("=======================================================================")
+  //         console.log(response);
+
+
+
+  //         $("#myFrame").attr("src", url);
+  //         $('#modal-container').removeAttr('class').addClass(buttonId);
+  //         $('body').addClass('modal-active');
+          
+  //         });
+
+
+  // }
+
+
+//=======
+      // $(".panel").empty();
+      // $(".panel").append('<h1 class="text-center">' + category + '</h1>');
+      // $(".panel").append(newPanel);
 
 //================================================================================================
 //================================================================================================
@@ -757,3 +897,11 @@ function renderArticles(searchResponse, category){
   };
 
 });
+
+
+
+
+
+
+
+
