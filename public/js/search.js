@@ -732,9 +732,9 @@ function renderArticles(searchResponse, category){
           $('body').removeClass('modal-active');
     });
 
-    var iframe = document.getElementById("myFrame");
-    var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
-    elmnt.style.display = "none";
+    // var iframe = document.getElementById("myFrame");
+    // var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
+    // elmnt.style.display = "none";
 
 
 //================================================================================================
