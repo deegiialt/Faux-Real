@@ -695,6 +695,7 @@ function renderArticles(searchResponse, category){
       buttonFaux.attr("data-title", searchResponse[i].title);
       buttonFaux.attr("data-url", searchResponse[i].url);
       buttonFaux.attr("data-id", "faux-" + searchResponse[i].url);
+      lowerDiv.append('<br><div class="voteContainer"><div class="notFakeVote">70%</div></div>');
       lowerDiv.append(buttonReal);
       lowerDiv.append(buttonFaux);
 
