@@ -154,7 +154,7 @@ $(document).ready(function(){
 
         }).then(function(response){
           console.log(response);
-          return renderSearchResults(response.articles, "Search");
+          return renderArticles(response.articles, "Search");
         });
   }
 
@@ -173,7 +173,7 @@ $(document).ready(function(){
 
         }).then(function(response){
           console.log(response);
-          return renderSearchResults(response.articles, "Search");
+          return renderArticles(response.articles, "Search");
         });
   }
 
@@ -195,7 +195,7 @@ $(document).ready(function(){
 
         }).then(function(response){
           console.log(response);
-          return renderSearchResults(response.articles, "Search CNN");
+          return renderArticles(response.articles, "Search CNN");
         });
   }
 
@@ -215,7 +215,7 @@ $(document).ready(function(){
 
         }).then(function(response){
           console.log(response);
-          return renderSearchResults(response.articles, "Search CNN");
+          return renderArticles(response.articles, "Search CNN");
         });
   }
 
@@ -237,7 +237,7 @@ $(document).ready(function(){
 
         }).then(function(response){
           console.log(response);
-          return renderSearchResults(response.articles, "Search Wall Street Journal");
+          return renderArticles(response.articles, "Search Wall Street Journal");
         });
   }
 
@@ -257,7 +257,7 @@ $(document).ready(function(){
 
         }).then(function(response){
           console.log(response);
-          return renderSearchResults(response.articles, "Search Wall Street Journal");
+          return renderArticles(response.articles, "Search Wall Street Journal");
         });
   }
 
@@ -279,7 +279,7 @@ $(document).ready(function(){
 
         }).then(function(response){
           console.log(response);
-          return renderSearchResults(response.articles, "Search Huffington Post");
+          return renderArticles(response.articles, "Search Huffington Post");
         });
   }
 
@@ -299,7 +299,7 @@ $(document).ready(function(){
 
         }).then(function(response){
           console.log(response);
-          return renderSearchResults(response.articles, "Search Huffington Post");
+          return renderArticles(response.articles, "Search Huffington Post");
         });
   }
 
@@ -321,7 +321,7 @@ $(document).ready(function(){
 
         }).then(function(response){
           console.log(response);
-          return renderSearchResults(response.articles, "Search Vice News");
+          return renderArticles(response.articles, "Search Vice News");
         });
   }
 
@@ -341,7 +341,7 @@ $(document).ready(function(){
 
         }).then(function(response){
           console.log(response);
-          return renderSearchResults(response.articles, "Search Vice News");
+          return renderArticles(response.articles, "Search Vice News");
         });
   }
 
@@ -363,7 +363,7 @@ $(document).ready(function(){
 
         }).then(function(response){
           console.log(response);
-          return renderSearchResults(response.articles, "Search USA Today");
+          return renderArticles(response.articles, "Search USA Today");
         });
   }
 
@@ -383,7 +383,7 @@ $(document).ready(function(){
 
         }).then(function(response){
           console.log(response);
-          return renderSearchResults(response.articles, "Search USA Today");
+          return renderArticles(response.articles, "Search USA Today");
         });
   }
 
@@ -405,7 +405,7 @@ $(document).ready(function(){
 
         }).then(function(response){
           console.log(response);
-          return renderSearchResults(response.articles, "Search Google News");
+          return renderArticles(response.articles, "Search Google News");
         });
   }
 
@@ -425,7 +425,7 @@ $(document).ready(function(){
 
         }).then(function(response){
           console.log(response);
-          return renderSearchResults(response.articles, "Search Google News");
+          return renderArticles(response.articles, "Search Google News");
         });
   }
 
@@ -447,7 +447,7 @@ $(document).ready(function(){
 
         }).then(function(response){
           console.log(response);
-          return renderSearchResults(response.articles, "Search Buzzfeed News");
+          return renderArticles(response.articles, "Search Buzzfeed News");
         });
   }
 
@@ -467,7 +467,7 @@ $(document).ready(function(){
 
         }).then(function(response){
           console.log(response);
-          return renderSearchResults(response.articles, "Search Buzzfeed News");
+          return renderArticles(response.articles, "Search Buzzfeed News");
         });
   }
 
@@ -669,7 +669,7 @@ function renderArticles(searchResponse, category){
 
       //inside tilecontent
 
-      tileContent.append("<p class='tileTitle' style='font-size:125%;overflow:visible;display:block !important'>" + searchResponse[i].title + "</p>");
+      tileContent.append("<p class='tileTitle' style='font-size:110%;overflow:visible;display:block !important'>" + searchResponse[i].title + "</p>");
 
       var tileDetails = $("<div>");
 

@@ -7,8 +7,13 @@ html, body {
 body {
     background-color: #000044;
     font-family: Montserrat, sans-serif;
+<<<<<<< HEAD
    /* overflow-y: hidden;*/
 }
+=======
+/*    overflow-y: hidden;
+*/}
+>>>>>>> 2283a21c2ea2ebf5525f790f3a682047e86b3a60
 
 #title {
   font-size: 80px;
