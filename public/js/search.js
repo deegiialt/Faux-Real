@@ -590,6 +590,7 @@ function renderArticles(searchResponse, category){
       var modal = $("<div>");
       modal.addClass("modal");
       modal.append("<iframe id='myFrame' src='' style='height:500px;width:900px'></iframe>")
+      modal.append('<br><div class="voteContainer"><div class="notFakeVote">0%</div></div>')      
       background.append(modal);
       
 
