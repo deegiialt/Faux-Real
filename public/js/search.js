@@ -16,14 +16,14 @@ console.log("here");
 
         if($('#all').is(':checked')){
           if(start!= "" || end!=""){
-            var check = validateDate(keyword);
+            var check = validateDate();
             if(check == false) return;
 
-                return searchKeywordDate(keyword);
+                return searchKeywordDate(keyword, start, end);
 
             }else{
       
-                searchKeyword(keyword);
+                searchKeyword(keyword, start, end);
               }
 
         } else if($('#cnn').is(':checked')){
@@ -31,77 +31,77 @@ console.log("here");
               var check = validateDate();
               if(check == false) return;
 
-                  return searchCNNDate(keyword);
+                  return searchCNNDate(keyword, start, end);
 
             }   else{
                 
-                searchCNN(keyword);
+                searchCNN(keyword, start, end);
             }
         } else if($('#the-wall-street-journal').is(':checked')){
             if(start!= "" || end!=""){
               var check = validateDate();
               if(check == false) return;
 
-                return searchWallStreetDate(keyword);
+                return searchWallStreetDate(keyword, start, end);
 
           }   else{
               
-              searchWallStreet(keyword);
+              searchWallStreet(keyword, start, end);
           }
         }else if($('#the-huffington-post').is(':checked')){
           if(start!= "" || end!=""){
             var check = validateDate();
             if(check == false) return;
 
-                return searchHuffPostDate(keyword);
+                return searchHuffPostDate(keyword, start, end);
 
           }else{
               
-              searchHuffPost(keyword);
+              searchHuffPost(keyword, start, end);
           }
         }else if($('#vice-news').is(':checked')){
           if(start!= "" || end!=""){
             var check = validateDate();
             if(check == false) return;
               
-                return searchViceDate(keyword);
+                return searchViceDate(keyword, start, end);
 
           }else{
               
-              searchVice(keyword);
+              searchVice(keyword, start, end);
           }
         }else if($('#usa-today').is(':checked')){
           if(start!= "" || end!=""){
             var check = validateDate();
             if(check == false) return;
 
-                return searchUSADate(keyword);
+                return searchUSADate(keyword, start, end);
 
           }else{
               
-              searchUSA(keyword);
+              searchUSA(keyword, start, end);
           }
         }else if($('#google-news').is(':checked')){
           if(start!= "" || end!=""){
             var check = validateDate();
             if(check == false) return;
 
-                return searchGoogleDate(keyword);
+                return searchGoogleDate(keyword, start, end);
 
           }else{
               
-              searchGoogle(keyword);
+              searchGoogle(keyword, start, end);
           }
         }else if($('#buzzfeed').is(':checked')){
           if(start!= "" || end!=""){
             var check = validateDate();
             if(check == false) return;
 
-                return searchBuzzfeed(keyword);
+                return searchBuzzfeedDate(keyword, start, end);
 
           }else{
 
-              searchBuzzfeed(keyword);
+              searchBuzzfeed(keyword, start, end);
           }
         };
       $(".form-control").val("")
@@ -133,7 +133,7 @@ console.log("here");
   //the next 8 functions are for the search option menu
 
   //ALL seach bar function
-  function searchKeywordDate(keyword){
+  function searchKeywordDate(keyword, start, end){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'language=en&' +
@@ -155,7 +155,7 @@ console.log("here");
         });
   }
 
-  function searchKeyword(keyword){
+  function searchKeyword(keyword, start, end){
       var url = 'https://newsapi.org/v2/everything?' +
                       'q=' + keyword + '&' +
                       'language=en&' +
@@ -174,7 +174,7 @@ console.log("here");
         });
   }
 
-  function searchCNNDate(keyword){
+  function searchCNNDate(keyword, start, end){
       var url = 'https://newsapi.org/v2/everything?' +
                   'q=' + keyword + '&' +
                   'sources=cnn&' +
@@ -196,7 +196,7 @@ console.log("here");
         });
   }
 
-  function searchCNN(keyword){
+  function searchCNN(keyword, start, end){
       var url = 'https://newsapi.org/v2/everything?' +
                   'q=' + keyword + '&' +
                   'sources=cnn&' +
@@ -216,7 +216,7 @@ console.log("here");
         });
   }
 
-  function searchWallStreetDate(keyword){
+  function searchWallStreetDate(keyword, start, end){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=the-wall-street-journal&' +
@@ -238,7 +238,7 @@ console.log("here");
         });
   }
 
-  function searchWallStreet(keyword){
+  function searchWallStreet(keyword, start, end){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=the-wall-street-journal&' +
@@ -258,7 +258,7 @@ console.log("here");
         });
   }
 
-  function searchHuffPostDate(keyword){
+  function searchHuffPostDate(keyword, start, end){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=the-huffington-post&' +
@@ -280,7 +280,7 @@ console.log("here");
         });
   }
 
-  function searchHuffPost(keyword){
+  function searchHuffPost(keyword, start, end){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=the-huffington-post&' +
@@ -300,7 +300,7 @@ console.log("here");
         });
   }
 
-  function searchViceDate(){
+  function searchViceDate(keyword, start, end){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=vice-news&' +
@@ -322,7 +322,7 @@ console.log("here");
         });
   }
 
-  function searchVice(){
+  function searchVice(keyword, start, end){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=vice-news&' +
@@ -342,7 +342,7 @@ console.log("here");
         });
   }
 
-  function searchUSADate(keyword){
+  function searchUSADate(keyword, start, end){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=usa-today&' +
@@ -364,7 +364,7 @@ console.log("here");
         });
   }
 
-  function searchUSA(keyword){
+  function searchUSA(keyword, start, end){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=usa-today&' +
@@ -384,7 +384,7 @@ console.log("here");
         });
   }
 
-  function searchGoogleDate(keyword){
+  function searchGoogleDate(keyword, start, end){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=google-news&' +
@@ -406,7 +406,7 @@ console.log("here");
         });
   }
 
-  function searchGoogle(keyword){
+  function searchGoogle(keyword, start, end){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=google-news&' +
@@ -426,7 +426,7 @@ console.log("here");
         });
   }
 
-  function searchBuzzfeedDate(keyword){
+  function searchBuzzfeedDate(keyword, start, end){
     var url = 'https://newsapi.org/v2/everything?' +
                 'q=' + keyword + '&' +
                 'sources=buzzfeed&' +
@@ -448,7 +448,7 @@ console.log("here");
         });
   }
 
-  function searchBuzzfeed(keyword){
+  function searchBuzzfeed(keyword, start, end){
     var url = 'https://newsapi.org/v2/everything?' +
               'q=' + keyword + '&' +
               'sources=buzzfeed&' +
