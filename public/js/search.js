@@ -1,3 +1,4 @@
+console.log("here");
 
   $(document).ready(function(){
 
@@ -21,7 +22,7 @@
                 return searchKeywordDate(keyword, start, end);
 
             }else{
-
+      
                 searchKeyword(keyword, start, end);
               }
 
@@ -33,7 +34,7 @@
                   return searchCNNDate(keyword, start, end);
 
             }   else{
-
+                
                 searchCNN(keyword, start, end);
             }
         } else if($('#the-wall-street-journal').is(':checked')){
@@ -44,7 +45,7 @@
                 return searchWallStreetDate(keyword, start, end);
 
           }   else{
-
+              
               searchWallStreet(keyword, start, end);
           }
         }else if($('#the-huffington-post').is(':checked')){
@@ -55,18 +56,18 @@
                 return searchHuffPostDate(keyword, start, end);
 
           }else{
-
+              
               searchHuffPost(keyword, start, end);
           }
         }else if($('#vice-news').is(':checked')){
           if(start!= "" || end!=""){
             var check = validateDate();
             if(check == false) return;
-
+              
                 return searchViceDate(keyword, start, end);
 
           }else{
-
+              
               searchVice(keyword, start, end);
           }
         }else if($('#usa-today').is(':checked')){
@@ -77,7 +78,7 @@
                 return searchUSADate(keyword, start, end);
 
           }else{
-
+              
               searchUSA(keyword, start, end);
           }
         }else if($('#google-news').is(':checked')){
@@ -88,7 +89,7 @@
                 return searchGoogleDate(keyword, start, end);
 
           }else{
-
+              
               searchGoogle(keyword, start, end);
           }
         }else if($('#buzzfeed').is(':checked')){
@@ -150,7 +151,7 @@
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles, "Search");
+          return renderSearchResults(response.articles, "Search");
         });
   }
 
@@ -169,7 +170,7 @@
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles, "Search");
+          return renderSearchResults(response.articles, "Search");
         });
   }
 
@@ -523,7 +524,7 @@
         }).then(function(response){
           console.log(response);
           renderArticles(response.articles, "Sports");
-          //modalButtons(response.articles);
+          modalButtons(response.articles);
 
         });
   }
@@ -575,18 +576,18 @@ function renderArticles(searchResponse, category){
       var body = $(".putinmodal");
 
       
-        var modalContainer = $("<div>");
-        modalContainer.attr("id", "modal-container");
-        body.append(modalContainer);
+      var modalContainer = $("<div>");
+      modalContainer.attr("id", "modal-container");
+      body.append(modalContainer);
 
-        var background = $("<div>");
-        background.addClass("modal-background");
-        modalContainer.append(background);
+      var background = $("<div>");
+      background.addClass("modal-background");
+      modalContainer.append(background);
 
-        var modal = $("<div>");
-        modal.addClass("modal");
-        modal.append("<iframe id='myFrame' src='' style='height:500px;width:900px'></iframe>")
-        background.append(modal);
+      var modal = $("<div>");
+      modal.addClass("modal");
+      modal.append("<iframe id='myFrame' src='' style='height:500px;width:900px'></iframe>")
+      background.append(modal);
       
 
       var newPanel = $("<div>");
@@ -595,7 +596,7 @@ function renderArticles(searchResponse, category){
       newPanelList.attr("id", "og-grid");
       newPanelList.attr("class", "og-grid");
       newPanel.append(newPanelList);
-
+      
     for(var i = 0; i < searchResponse.length; i++){
 
       var listItemOne = $("<li>")
@@ -613,7 +614,7 @@ function renderArticles(searchResponse, category){
       newDiv.append(link);
       //inside anchor tag
       var tileContent = $("<div>");
-      tileContent.addClass("tileContent");
+      tileContent.addClass("tileContent");  
       tileContent.addClass("tile" + i);
       newDiv.append(tileContent);
       //inside tilecontent
@@ -622,32 +623,30 @@ function renderArticles(searchResponse, category){
       // tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p><br>");
 
 
+
       var buttonReal = $("<button style='margin:10px'>");
-      buttonReal.addClass("btn voteButton realButton glyphicon glyphicon-ok");
+      buttonReal.addClass("btn voteButton glyphicon glyphicon-ok");
       buttonReal.attr("data-source", searchResponse[i].source.name);
       buttonReal.attr("data-title", searchResponse[i].title);
       buttonReal.attr("data-url", searchResponse[i].url);
-      buttonReal.attr("data-date", searchResponse[i].publishedAt);
       buttonReal.attr("data-id", "real-" + searchResponse[i].url);
-
       var buttonFaux = $("<button>");
-      buttonFaux.addClass("btn voteButton fauxButton glyphicon glyphicon-remove");
+      buttonFaux.addClass("btn voteButton glyphicon glyphicon-remove");
       buttonFaux.attr("data-source", searchResponse[i].source.name);
       buttonFaux.attr("data-title", searchResponse[i].title);
       buttonFaux.attr("data-url", searchResponse[i].url);
-      buttonFaux.attr("data-date", searchResponse[i].publishedAt);
       buttonFaux.attr("data-id", "faux-" + searchResponse[i].url);
+      tileContent.append(buttonReal);
 
       if (searchResponse[i].urlToImage === null) {
       tileContent.append("<img class='tileImage' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtrVBUxp2hTkZEGWzqxkT-mC0p5MFaiqsIVV5As2qO4M_U2XgiQ'>");
       } else {
-      tileContent.append("<img class='tileImage' src='" + searchResponse[i].urlToImage + "' width='120px' height='120px' >");
+      tileContent.append("<img class='tileImage' src='" + searchResponse[i].urlToImage + "'>");
       }
 
-      //tileContent.append(buttonReal);
-      //tileContent.append(buttonFaux);
+      tileContent.append(buttonFaux);
 
-      tileContent.append('<br><div class="voteContainer"><div class="notFakeVote">0%</div></div>')
+      tileContent.append('<br><div class="voteContainer"><div class="notFakeVote">70%</div></div>')
       // var voteContain = $("div");
       // voteContain.addClass("voteContainer");
       // tileContent.append(voteContain);
@@ -655,11 +654,9 @@ function renderArticles(searchResponse, category){
       // var scale = $("div");
       // scale.addClass("notFakeVote");
       // voteContain.append(scale);
-      newPanel.append('<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>');
-
 
       $(".panel").empty();
-      $(".panel").append('<h1 class="text-center" style="padding: 10px 0;">' + category + '</h1>');
+      $(".panel").append('<h1 class="text-center">' + category + '</h1>');
       $(".panel").append(newPanel);
     };
     return;
@@ -667,20 +664,71 @@ function renderArticles(searchResponse, category){
   }
 
 
+  function renderSearchResults(searchResponse, category){
+
+      var newPanel = $("<div>");
+      newPanel.attr("class", "main");
+      
+      for(var i = 0; i < searchResponse.length; i++){
+
+      var newDiv = $("<div>");
+      newDiv.attr("class", "well")
+      newPanel.append(newDiv);
+      var upperDiv = $("<div>");
+      upperDiv.append("<h3>" + searchResponse[i].title + "</h3>");
+      upperDiv.append("<h4>" + searchResponse[i].source.name + "</h4>");
+      newDiv.append(upperDiv);
+      var lowerDiv = $("<div>");
+      lowerDiv.append("<p>" + searchResponse[i].description + "</p>");
+      lowerDiv.append("<p>" + searchResponse[i].url + "</p>");
+      newDiv.append(lowerDiv);
+
+      var buttonReal = $("<button style='margin:10px'>");
+      buttonReal.addClass("btn voteButton glyphicon glyphicon-ok");
+      buttonReal.attr("data-source", searchResponse[i].source.name);
+      buttonReal.attr("data-title", searchResponse[i].title);
+      buttonReal.attr("data-url", searchResponse[i].url);
+      buttonReal.attr("data-id", "real-" + searchResponse[i].url);
+      var buttonFaux = $("<button>");
+      buttonFaux.addClass("btn voteButton glyphicon glyphicon-remove");
+      buttonFaux.attr("data-source", searchResponse[i].source.name);
+      buttonFaux.attr("data-title", searchResponse[i].title);
+      buttonFaux.attr("data-url", searchResponse[i].url);
+      buttonFaux.attr("data-id", "faux-" + searchResponse[i].url);
+      lowerDiv.append(buttonReal);
+      lowerDiv.append(buttonFaux);
+
+      }
+      $(".panel").empty();
+      $(".panel").append('<h1 class="text-center">' + category + '</h1>');
+      $(".panel").append(newPanel);
+
+  }
+
+
 
   var url;
 
-
+  
     $('div').on ("click", "div.button", function(){
         console.log("id two on click")
-          var url = $(this).find("a").attr("href");
-
-          var buttonId = $(this).attr('id');
-          $("#myFrame").attr("src", url);
-          $('#modal-container').removeAttr('class').addClass(buttonId);
-          $('body').addClass('modal-active');
+        var url = $(this).find("a").attr("href");
+        var buttonId = $(this).attr('id');
+        console.log(url)
+        
+        $.ajax({
+          url: "https://www.cnbc.com/2018/03/12/californias-77-billion-high-speed-rail-project-is-in-trouble.html",
+          method: "GET"
+          }).then(function(response){
+            console.log("=======================================================================")
+            console.log(response);
+            $("#myFrame").attr("src", url);
+            $('#modal-container').removeAttr('class').addClass(buttonId);
+            $('body').addClass('modal-active');
           
-          console.log(url);
+          
+          });
+        
     })
 
     $('div').on("click", "div#modal-container", function(){
@@ -689,10 +737,38 @@ function renderArticles(searchResponse, category){
           $('body').removeClass('modal-active');
     });
 
-    var iframe = document.getElementById("myFrame");
-    var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
-    elmnt.style.display = "none";
+      //newPanel.append('<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>');
 
+    // var iframe = document.getElementById("myFrame");
+    // var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
+    // elmnt.style.display = "none";
+  
+  // function validateArticle(url, buttonId){
+  //     var url = url;
+  //     var buttonId = buttonId;
+  //       $.ajax({
+  //         url: url,
+  //         method: "GET",
+  //         }).then(function(response){
+  //           console.log("=======================================================================")
+  //         console.log(response);
+
+
+
+  //         $("#myFrame").attr("src", url);
+  //         $('#modal-container').removeAttr('class').addClass(buttonId);
+  //         $('body').addClass('modal-active');
+          
+  //         });
+
+
+  // }
+
+
+//=======
+      // $(".panel").empty();
+      // $(".panel").append('<h1 class="text-center">' + category + '</h1>');
+      // $(".panel").append(newPanel);
 
 //IN USE FOR DATABASE. PLEASE DON'T DELETE
 //       var fauxNewButton = $("<button>Faux</button>");
@@ -741,3 +817,11 @@ function renderArticles(searchResponse, category){
   };
 
 });
+
+
+
+
+
+
+
+
