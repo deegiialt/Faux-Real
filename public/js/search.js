@@ -617,7 +617,7 @@ function renderArticles(searchResponse, category){
       tileContent.addClass("tile" + i);
       newDiv.append(tileContent);
       //inside tilecontent
-      tileContent.append("<p class='tileTitle' style='font-size:85%'>" + searchResponse[i].title + "</p>");
+      tileContent.append("<p class='tileTitle' style='font-size:100%;overflow:visible;display:block !important'>" + searchResponse[i].title + "</p>");
       tileContent.append("<p class='tileSource' style='font-size:50%'>" + searchResponse[i].source.name + "</p>");
       // tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p><br>");
 
@@ -639,7 +639,7 @@ function renderArticles(searchResponse, category){
       buttonFaux.attr("data-id", "faux-" + searchResponse[i].url);
 
       if (searchResponse[i].urlToImage === null) {
-      tileContent.append("<img class='tileImage' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtrVBUxp2hTkZEGWzqxkT-mC0p5MFaiqsIVV5As2qO4M_U2XgiQ'>");
+      tileContent.append("<img class='tileImage' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtrVBUxp2hTkZEGWzqxkT-mC0p5MFaiqsIVV5As2qO4M_U2XgiQ' width='120px' height='120px'>");
       } else {
       tileContent.append("<img class='tileImage' src='" + searchResponse[i].urlToImage + "' width='120px' height='120px' >");
       }
@@ -655,7 +655,6 @@ function renderArticles(searchResponse, category){
       // var scale = $("div");
       // scale.addClass("notFakeVote");
       // voteContain.append(scale);
-      newPanel.append('<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>');
 
 
       $(".panel").empty();
