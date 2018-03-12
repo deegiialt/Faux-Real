@@ -6,7 +6,7 @@ html, body {
 body {
     background-color: #000044;
     font-family: Montserrat, sans-serif;
-    /*overflow: hidden;*/
+    overflow-y: hidden;
 }
 
 #title {
@@ -234,6 +234,11 @@ input.form-control, .btn-default {
     margin:0;
 }
 
+.panel-body {
+    height: 90%;
+}
+
+
 .main {
   height: 400px;
     overflow-x: scroll;
@@ -354,7 +359,9 @@ Footer
   margin-bottom: -25px;
 }
 
-#footer {
+.footer {
+  position: absolute;
+  bottom: 0px;
     height: 25px;
     padding: 10px;
     text-decoration: none;
