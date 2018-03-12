@@ -574,7 +574,7 @@ function renderArticles(searchResponse){
       //rendering the modal for the tiles
       var body = $(".putinmodal");
 
-      for(var i = 0; i < 5; i++){
+      for(var i = 0; i < 3; i++){
         var modalContainer = $("<div>");
         modalContainer.attr("id", "modal-container" + i);
         body.append(modalContainer);
@@ -585,7 +585,7 @@ function renderArticles(searchResponse){
 
         var modal = $("<div>");
         modal.addClass("modal");
-        modal.append("<iframe id='myFrame' src=" + searchResponse[i].url + "style='height:500px;width:900px'></iframe>")
+        modal.append("<iframe id='myFrame' src=" + searchResponse[i].url + " style='height:500px;width:900px'></iframe>")
         background.append(modal);
       }
 
@@ -596,7 +596,7 @@ function renderArticles(searchResponse){
       newPanelList.attr("class", "og-grid");
       newPanel.append(newPanelList);
       
-    for(var i = 0; i < 5; i++){
+    for(var i = 0; i < searchResponse.length; i++){
 
       var listItemOne = $("<li>")
       newPanelList.append(listItemOne);
