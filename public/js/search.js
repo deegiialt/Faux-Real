@@ -654,11 +654,11 @@ function renderArticles(searchResponse, category){
 
       //inside tilecontent
 
-      tileContent.append("<p class='tileTitle' style='font-size:100%;overflow:visible;display:block !important'>" + searchResponse[i].title + "</p>");
+      tileContent.append("<p class='tileTitle' style='font-size:125%;overflow:visible;display:block !important'>" + searchResponse[i].title + "</p>");
 
       var tileDetails = $("<div>");
       tileDetails.attr("class", "tileDetails");      
-      tileDetails.append("<p class='tileSource' style='font-size:50%'>" + searchResponse[i].source.name + "</p>");
+      tileDetails.append("<p class='tileSource' style='font-size:75%'>" + searchResponse[i].source.name + "</p>");
       // tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p><br>");
 
       // tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p><br>");
@@ -682,15 +682,16 @@ function renderArticles(searchResponse, category){
 
 
       if (searchResponse[i].urlToImage === null) {
-      tileDetails.append("<img class='tileImage' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtrVBUxp2hTkZEGWzqxkT-mC0p5MFaiqsIVV5As2qO4M_U2XgiQ' width='120px' height='120px'>");
+      tileDetails.append("<img class='tileImage' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtrVBUxp2hTkZEGWzqxkT-mC0p5MFaiqsIVV5As2qO4M_U2XgiQ' width='125px' height='150px'>");
       } else {
 
-      tileDetails.append("<img class='tileImage' src='" + searchResponse[i].urlToImage + "' width='120px' height='120px' >");
+      tileDetails.append("<img class='tileImage' src='" + searchResponse[i].urlToImage + "' width='150px' height='125px' >");
 
       }
 
 
-      tileDetails.append('<br><div class="voteContainer"><div class="notFakeVote">0%</div></div>')
+      // tileDetails.append('<br><div class="voteContainer"><div class="notFakeVote">0%</div></div>')
+
       // var voteContain = $("div");
       // voteContain.addClass("voteContainer");
       // tileContent.append(voteContain);
