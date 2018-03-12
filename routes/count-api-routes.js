@@ -30,24 +30,39 @@
           faux: req.body.faux, // need to check if array works
           real: req.body.real, // need to check if array works
           source: req.body.source,
-          article: req.body.article,
+          articleURL: req.body.articleURL,
           articleTitle: req.body.articleTitle,
           datePublished: req.body.datePublished
       }).then(function(count) {
-        console.log(count);
+        //console.log("this is the data coming in....\n" + count);
         res.json(count);
       });
     })
 
-    app.put("/api/vote", function(req, res) {
-      //to update the count as people vote
-      db.Count.update({
+    // app.put("/api/vote", function(req, res) {
+    //   //to update the count as people vote
+    //   Count.update({
+    //       where: {
+    //         id: req.body.id
+    //       }
+    //   }).then(function(count) {
+    //     console.log(count);
+    //     res.json(count)
+    //   })
+    // })
+
+    app.put("/api/count/:showtotal", function(req, res) {
+      //console.log(req.params.showtotal);
+        Count.findAndCountAll({
           where: {
-            id: req.body.id
+            articleTitle: req.params.showtotal
           }
-      }).then(function(count) {
-        console.log(count);
-        res.json(count)
-      })
-    })
+        }).then(result => {
+          res.json(result);
+          console.log("---------------");
+          console.log(result.count + "..." + result.rows);
+          console.log("---------------");
+        });
+
+    });
   };
