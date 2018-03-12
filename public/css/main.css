@@ -255,22 +255,21 @@ li a:hover {
 }
 
 .tileContent {
-/*    background-color: #000044;
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+    margin: 10px;
+  /*background-color: #337d81b8;*/
+    color:white;
+    white-space: normal;
+    /*background-color: #000044;
     background-color: #2274A5;
     background-color: #FFBF00;
     background-color: #A9ACA9;
     background-color: #424B54;*/
     background-color: #7F7CAF;
     /*background-color: #4E6E5D;*/
-}
 
-.tileContent {
-    width: 300px;
-    height: 300px;
-    padding: 20px;
-    margin: 10px;
-  /*  background-color: #337d81b8;*/
-    color:white;
 
 }
 
