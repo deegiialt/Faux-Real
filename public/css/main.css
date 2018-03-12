@@ -1,3 +1,8 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
     background-color: #000044;
     font-family: Montserrat, sans-serif;
@@ -30,7 +35,7 @@ body {
     top: 0;
     left: 0;
     background-color: white;
-    opacity: 0.9;
+    /*opacity: 0.9;*/
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -164,7 +169,7 @@ input.form-control, .btn-default {
 .panel {
     border-radius: 0;
     margin:0;
-    height: 100vh;
+    height: 115vh;
 }
 
 #topArticles {
@@ -180,8 +185,10 @@ li a:hover {
     cursor: crosshair;
 }
 
-.tileContent:hover {
-    background-color: #337d8180;
+.tileContent {
+    background-color: #000044;
+    padding: 5px;
+    margin: 10px;
 }
 
 .tileContent {
@@ -191,30 +198,49 @@ li a:hover {
     color:white;
 }
 
-.tile0, .tile5, .tile10, .tile15{
+.tile0:hover,
+  .tile5:hover,
+  .tile10:hover,
+  .tile15:hover {
     background: #ee4035;
 }
 
-.tile1, .tile6, .tile11, .tile16{
+.tile1:hover,
+  .tile6:hover,
+  .tile11:hover,
+  .tile16:hover {
     background: #f37736;
 }
 
-.tile2, .tile7, .tile12, .tile17{
+.tile2:hover,
+  .tile7:hover,
+  .tile12:hover,
+  .tile17:hover {
     background: #f1e56c;
 }
 
-.tile3, .tile8, .tile13, .tile18{
+.tile3:hover,
+  .tile8:hover,
+  .tile13:hover,
+  .tile18:hover {
     background: #7bc043;
 }
 
-.tile4, .tile9, .tile14, .tile19{
+.tile4:hover,
+  .tile9:hover,
+  .tile14:hover,
+  .tile19:hover {
     background: #0392cf;   
 }
 
-.tileTitle {
+.tileTitle:hover {
     padding-top: 30px;
 }
 
+.tileImage {
+  height: 150px;
+  width: 150px;
+}
 
 /*===============================================*/
 /*Button*/
@@ -224,6 +250,7 @@ li a:hover {
     background-color: white;
     outline-offset: 0;
     color: #000044;
+    margin:0 !important;
 }
 
 /*Voting bars*/
@@ -241,3 +268,19 @@ li a:hover {
     text-transform: capitalize;
 }
 
+/*==========
+Footer
+==========*/
+.wrapper {
+  min-height: auto;
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+  margin-bottom: -25px;
+}
+
+#footer {
+    height: 25px;
+    padding: 10px;
+    text-decoration: none;
+    color: white !important;
+}

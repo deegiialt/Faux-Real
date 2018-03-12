@@ -1,7 +1,7 @@
   //user vote api routes
   var db = require("../models");
   var Votes = require("../models").Vote;
-  var Count = require("../models").Count;
+
 
   console.log(Votes);
 
@@ -53,7 +53,7 @@
         articleURL: req.body.articleURL,
         articleTitle: req.body.articleTitle
       }).then(function(votes) {
-    		console.log("user vote is set");
+    		//console.log("user vote is set");
     		res.json(votes); //for individual vote
     	});
     });

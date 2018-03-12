@@ -1,4 +1,5 @@
   var db = require("../models");
+  var User = require("../models").User;
   const passport = require('passport');
 
   // Routes
@@ -7,17 +8,16 @@
 
 
     app.post("/signup", function(req, res) {
-       
-        passport.authenticate('local-signup')(req, res, function() {
-          res.redirect('/main')
-        })
-      
-    })
+      passport.authenticate('local-signup')(req, res, function() {
+        res.redirect('/main')
+      });
+    });
+
 
     app.post('/login', 
       passport.authenticate('local-login', {  
         successRedirect: '/main',
-        failureRedirect: '/', 
+        failureRedirect: '/',
         failureFlash : true })// allow flash messages
     );
 
@@ -36,6 +36,7 @@
                     failureRedirect : 'http://localhost:8080/'
             }));
 
+    //other tries
 
     // app.get('/auth/google/callback',
     //     passport.authenticate('google', { failureRedirect: '/' }),
@@ -43,6 +44,7 @@
     //  // absolute path
     //         res.redirect('/main');
     // });
+
 
     // app.get('/auth/google/callback',
     //   passport.authenticate('google'), // complete the authenticate using the google strategy
@@ -58,10 +60,46 @@
     //   }
     // );
 
+
+    // =====================================
+    // TWITTER ROUTES ======================
+    // =====================================
+    // route for twitter authentication and login
+    app.get('/auth/twitter', passport.authenticate('twitter'));
+
+    // handle the callback after twitter has authenticated the user
+    app.get('/auth/twitter/callback',
+        passport.authenticate('twitter', {
+            successRedirect : '/main',
+            failureRedirect : '/'
+        }));
+
+    // =====================================
+    // FACEBOOK ROUTES =====================
+    // =====================================
+    // route for facebook authentication and login
+    app.get('/auth/facebook', passport.authenticate('facebook', { 
+      scope : ['public_profile', 'email']
+    }));
+
+    // handle the callback after facebook has authenticated the user
+    app.get('/auth/facebook/callback',
+        passport.authenticate('facebook', {
+            successRedirect : '/main',
+            failureRedirect : '/'
+        }));
+
+
   };
 
 
-
-
-
-
+//Keep code for testing purposes
+// app.get('/login', function(req, res) {
+//   User.findOne({
+//     where: {
+//       userName: req.body
+//     }
+//   }).then(function(user) {
+//     console.log(user);
+//   });
+// })
