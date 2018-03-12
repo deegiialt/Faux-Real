@@ -1,7 +1,12 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
     background-color: #000044;
     font-family: Montserrat, sans-serif;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 #title {
@@ -30,7 +35,7 @@ body {
     top: 0;
     left: 0;
     background-color: white;
-    opacity: 0.9;
+    /*opacity: 0.9;*/
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -164,7 +169,8 @@ input.form-control, .btn-default {
 .panel {
     border-radius: 0;
     margin:0;
-    height: 100vh;
+    height: auto;
+    height: 68vh;
 }
 
 #topArticles {
@@ -180,8 +186,9 @@ li a:hover {
     cursor: crosshair;
 }
 
-.tileContent:hover {
-    background-color: #337d8180;
+.tileContent {
+    background-color: #000044;
+    padding: 5px;
 }
 
 .tileContent {
@@ -191,27 +198,27 @@ li a:hover {
     color:white;
 }
 
-.tileOne {
+.tileOne:hover {
     background: #ee4035;
 }
 
-.tileTwo {
+.tileTwo:hover {
     background: #f37736;
 }
 
-.tileThree {
+.tileThree:hover {
     background: #f1e56c;
 }
 
-.tileFour {
+.tileFour:hover {
     background: #7bc043;
 }
 
-.tileFive {
+.tileFive:hover {
     background: #0392cf;   
 }
 
-.tileTitle {
+.tileTitle:hover {
     padding-top: 30px;
 }
 
@@ -241,3 +248,19 @@ li a:hover {
     text-transform: capitalize;
 }
 
+/*==========
+Footer
+==========*/
+.wrapper {
+  min-height: auto;
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+  margin-bottom: -25px;
+}
+
+#footer {
+    height: 25px;
+    padding: 10px;
+    text-decoration: none;
+    color: white !important;
+}
