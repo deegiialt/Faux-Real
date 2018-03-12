@@ -602,8 +602,8 @@ function renderArticles(searchResponse){
       //inside tilecontent
       tileContent.append("<p class='tileTitle'>" + searchResponse[i].title + "</p>");
       tileContent.append("<p class='tileSource'>" + searchResponse[i].source.name + "</p>");
-      tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p>");
-      var buttonReal = $("<button>");
+      tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p><br>");
+      var buttonReal = $("<button style='margin:10px'>");
       buttonReal.addClass("btn voteButton glyphicon glyphicon-ok");
       buttonReal.attr("data-source", searchResponse[i].source.name);
       buttonReal.attr("data-title", searchResponse[i].title);
