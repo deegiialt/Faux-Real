@@ -580,25 +580,25 @@ function renderArticles(searchResponse, category){
 
       var body = $(".putinmodal");
 
-        var modalContainer = $("<div>");
-        modalContainer.attr("id", "modal-container");
-        body.append(modalContainer);
+        // var modalContainer = $("<div>");
+        // modalContainer.attr("id", "modal-container");
+        // body.append(modalContainer);
 
-        var background = $("<div>");
-        background.addClass("modal-background");
-        modalContainer.append(background);
+        // var background = $("<div>");
+        // background.addClass("modal-background");
+        // modalContainer.append(background);
 
-        var modal = $("<div>");
-        modal.addClass("modal");
-        modal.addClass("modal-test");
-        modal.append("<iframe id='myFrame' src='' style='height:500px;width:900px'></iframe>")
+        // var modal = $("<div>");
+        // modal.addClass("modal");
+        // modal.addClass("modal-test");
+        // modal.append("<iframe id='myFrame' src='' style='height:500px;width:900px'></iframe>")
 
-        var buttonDiv = $("<div>");
-        buttonDiv.addClass("button-div");
-        buttonDiv.append(buttonReal);
-        buttonDiv.append(buttonFaux);
-        modal.append(buttonDiv);
-        background.append(modal);
+        // var buttonDiv = $("<div>");
+        // buttonDiv.addClass("button-div");
+        // // buttonDiv.append(buttonReal);
+        // // buttonDiv.append(buttonFaux);
+        // modal.append(buttonDiv);
+        // background.append(modal);
 
 
       var modalContainer = $("<div>");
@@ -897,7 +897,7 @@ function renderArticles(searchResponse, category){
           //   msg = "not called";
           //   alert(msg);
           // }
-          //alert("The span element was clicked.");
+
           $(this).addClass('out');
           $('body').removeClass('modal-active');
           //$(".modal").clear();
