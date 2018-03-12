@@ -151,7 +151,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search");
         });
   }
 
@@ -170,7 +170,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search");
         });
   }
 
@@ -192,7 +192,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search CNN");
         });
   }
 
@@ -212,7 +212,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search CNN");
         });
   }
 
@@ -234,7 +234,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Wall Street Journal");
         });
   }
 
@@ -254,7 +254,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Wall Street Journal");
         });
   }
 
@@ -276,7 +276,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Huffington Post");
         });
   }
 
@@ -296,7 +296,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Huffington Post");
         });
   }
 
@@ -318,7 +318,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Vice News");
         });
   }
 
@@ -338,7 +338,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Vice News");
         });
   }
 
@@ -360,7 +360,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search USA Today");
         });
   }
 
@@ -380,7 +380,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search USA Today");
         });
   }
 
@@ -402,7 +402,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Google News");
         });
   }
 
@@ -422,7 +422,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Google News");
         });
   }
 
@@ -444,7 +444,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Buzzfeed News");
         });
   }
 
@@ -464,7 +464,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Buzzfeed News");
         });
   }
 
@@ -487,7 +487,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Trending");
         });
   };
 
@@ -504,7 +504,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Business");
         });
 
   }
@@ -523,7 +523,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Sports");
         });
   }
 
@@ -541,7 +541,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Entertainment");
         });
   }
 
@@ -557,7 +557,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Technology");
         });
   }
 
@@ -567,7 +567,7 @@ console.log("here");
 //this function will render all other search functions
 
 
-function renderArticles(searchResponse){
+function renderArticles(searchResponse, category){
 
 
       var newPanel = $("<div>");
@@ -659,6 +659,7 @@ function renderArticles(searchResponse){
       newPanel.append('<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>');
 
       $(".panel").empty();
+      $(".panel").append('<h1 class="text-center">' + category + '</h1>');
       $(".panel").append(newPanel);
 
 //IN USE FOR DATABASE. PLEASE DON'T DELETE
