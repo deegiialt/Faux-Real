@@ -570,13 +570,35 @@ console.log("here");
 //========================================================================================
 //========================================================================================
 //this function will render all other search functions
-
+var modal = $("<div>");
+var url;
+var buttonReal = $("<button style='margin:10px' id='real-button' data-source='' data-title='' data-url='' data-date=''>");
+var buttonFaux = $("<button style='margin:10px' id='faux-button' data-source='' data-title='' data-url='' data-date=''>");
 
 function renderArticles(searchResponse, category){
 
-
       //rendering the modal for the tiles
       var body = $(".putinmodal");
+
+        var modalContainer = $("<div>");
+        modalContainer.attr("id", "modal-container");
+        body.append(modalContainer);
+
+        var background = $("<div>");
+        background.addClass("modal-background");
+        modalContainer.append(background);
+
+        var modal = $("<div>");
+        modal.addClass("modal");
+        modal.addClass("modal-test");
+        modal.append("<iframe id='myFrame' src='' style='height:500px;width:900px'></iframe>")
+
+        var buttonDiv = $("<div>");
+        buttonDiv.addClass("button-div");
+        buttonDiv.append(buttonReal);
+        buttonDiv.append(buttonFaux);
+        modal.append(buttonDiv);
+        background.append(modal);
 
       
       var modalContainer = $("<div>");
@@ -593,6 +615,7 @@ function renderArticles(searchResponse, category){
       modal.append('<br><div class="voteContainer"><div class="notFakeVote">0%</div></div>')      
       background.append(modal);
       
+
 
       var newPanel = $("<div>");
       newPanel.attr("class", "main");
@@ -615,6 +638,12 @@ function renderArticles(searchResponse, category){
       var link = $("<a>");
       link.attr("id", "urlSource")
       link.attr("href", searchResponse[i].url);
+      link.attr("data-source", searchResponse[i].source.name);
+      link.attr("data-title", searchResponse[i].title);
+      link.attr("data-url", searchResponse[i].url);
+      link.attr("data-date", searchResponse[i].publishedAt);
+      link.attr("data-faux", "faux-" + searchResponse[i].url);
+      link.attr("data-real", "real-" + searchResponse[i].url);
       newDiv.append(link);
       //inside anchor tag
       var tileContent = $("<div>");
@@ -624,6 +653,7 @@ function renderArticles(searchResponse, category){
 
 
       //inside tilecontent
+
       tileContent.append("<p class='tileTitle' style='font-size:100%;overflow:visible;display:block !important'>" + searchResponse[i].title + "</p>");
 
       var tileDetails = $("<div>");
@@ -631,21 +661,25 @@ function renderArticles(searchResponse, category){
       tileDetails.append("<p class='tileSource' style='font-size:50%'>" + searchResponse[i].source.name + "</p>");
       // tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p><br>");
 
+      // tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p><br>");
 
 
-      var buttonReal = $("<button style='margin:10px'>");
-      buttonReal.addClass("btn voteButton glyphicon glyphicon-ok");
-      buttonReal.attr("data-source", searchResponse[i].source.name);
-      buttonReal.attr("data-title", searchResponse[i].title);
-      buttonReal.attr("data-url", searchResponse[i].url);
-      buttonReal.attr("data-id", "real-" + searchResponse[i].url);
-      var buttonFaux = $("<button>");
-      buttonFaux.addClass("btn voteButton glyphicon glyphicon-remove");
-      buttonFaux.attr("data-source", searchResponse[i].source.name);
-      buttonFaux.attr("data-title", searchResponse[i].title);
-      buttonFaux.attr("data-url", searchResponse[i].url);
-      buttonFaux.attr("data-id", "faux-" + searchResponse[i].url);
-      // tileContent.append(buttonReal);
+      // var buttonReal = $("<button style='margin:10px'>");
+      // buttonReal.addClass("btn voteButton realButton glyphicon glyphicon-ok");
+      // buttonReal.attr("data-source", searchResponse[i].source.name);
+      // buttonReal.attr("data-title", searchResponse[i].title);
+      // buttonReal.attr("data-url", searchResponse[i].url);
+      // buttonReal.attr("data-date", searchResponse[i].publishedAt);
+      // buttonReal.attr("data-id", "real-" + searchResponse[i].url);
+      //
+      // var buttonFaux = $("<button>");
+      // buttonFaux.addClass("btn voteButton fauxButton glyphicon glyphicon-remove");
+      // buttonFaux.attr("data-source", searchResponse[i].source.name);
+      // buttonFaux.attr("data-title", searchResponse[i].title);
+      // buttonFaux.attr("data-url", searchResponse[i].url);
+      // buttonFaux.attr("data-date", searchResponse[i].publishedAt);
+      // buttonFaux.attr("data-id", "faux-" + searchResponse[i].url);
+
 
       if (searchResponse[i].urlToImage === null) {
       tileDetails.append("<img class='tileImage' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtrVBUxp2hTkZEGWzqxkT-mC0p5MFaiqsIVV5As2qO4M_U2XgiQ' width='120px' height='120px'>");
@@ -654,8 +688,6 @@ function renderArticles(searchResponse, category){
       tileDetails.append("<img class='tileImage' src='" + searchResponse[i].urlToImage + "' width='120px' height='120px' >");
 
       }
-
-      // tileContent.append(buttonFaux);
 
 
       tileDetails.append('<br><div class="voteContainer"><div class="notFakeVote">0%</div></div>')
@@ -677,6 +709,10 @@ function renderArticles(searchResponse, category){
 
   }
 
+    $('body').on("click", ".button", function(event){
+        //console.log("id two on click")
+          var modal = $(".modal-test");
+
 
   function renderSearchResults(searchResponse, category){
 
@@ -697,21 +733,21 @@ function renderArticles(searchResponse, category){
       lowerDiv.append("<p>" + searchResponse[i].url + "</p>");
       newDiv.append(lowerDiv);
 
-      var buttonReal = $("<button style='margin:10px'>");
-      buttonReal.addClass("btn voteButton glyphicon glyphicon-ok");
-      buttonReal.attr("data-source", searchResponse[i].source.name);
-      buttonReal.attr("data-title", searchResponse[i].title);
-      buttonReal.attr("data-url", searchResponse[i].url);
-      buttonReal.attr("data-id", "real-" + searchResponse[i].url);
-      var buttonFaux = $("<button>");
-      buttonFaux.addClass("btn voteButton glyphicon glyphicon-remove");
-      buttonFaux.attr("data-source", searchResponse[i].source.name);
-      buttonFaux.attr("data-title", searchResponse[i].title);
-      buttonFaux.attr("data-url", searchResponse[i].url);
-      buttonFaux.attr("data-id", "faux-" + searchResponse[i].url);
-      lowerDiv.append('<br><div class="voteContainer"><div class="notFakeVote">70%</div></div>');
-      lowerDiv.append(buttonReal);
-      lowerDiv.append(buttonFaux);
+//       var buttonReal = $("<button style='margin:10px'>");
+//       buttonReal.addClass("btn voteButton glyphicon glyphicon-ok");
+//       buttonReal.attr("data-source", searchResponse[i].source.name);
+//       buttonReal.attr("data-title", searchResponse[i].title);
+//       buttonReal.attr("data-url", searchResponse[i].url);
+//       buttonReal.attr("data-id", "real-" + searchResponse[i].url);
+//       var buttonFaux = $("<button>");
+//       buttonFaux.addClass("btn voteButton glyphicon glyphicon-remove");
+//       buttonFaux.attr("data-source", searchResponse[i].source.name);
+//       buttonFaux.attr("data-title", searchResponse[i].title);
+//       buttonFaux.attr("data-url", searchResponse[i].url);
+//       buttonFaux.attr("data-id", "faux-" + searchResponse[i].url);
+//       lowerDiv.append('<br><div class="voteContainer"><div class="notFakeVote">70%</div></div>');
+//       lowerDiv.append(buttonReal);
+//       lowerDiv.append(buttonFaux);
 
       }
       $(".panel").empty();
@@ -723,12 +759,37 @@ function renderArticles(searchResponse, category){
 
 
   var url;
+  var errorDiv = $("<div>");
 
   console.log("TEST");
     $('body').on ("click", ".button", function(){
         console.log("id two on click")
-        var url = $(this).find("a").attr("href");
-        var buttonId = $(this).attr('id');
+          var url = $(this).find("a").attr("href");
+          var source = $(this).find("a").attr("data-source");
+          var title = $(this).find("a").attr("data-title");
+          var url = $(this).find("a").attr("data-url");
+          var date = $(this).find("a").attr("data-date");
+          var faux = $(this).find("a").attr("data-faux");
+          var real = $(this).find("a").attr("data-real");
+
+          //console.log(source);
+          var buttonId = $(this).attr('id');
+
+          modal.append();
+          //appending attributes to each of the button ids
+          $("#real-button").attr("data-source", source);
+          $("#real-button").attr("data-title", title);
+          $("#real-button").attr("data-url", url);
+          $("#real-button").attr("data-date", date);
+          $("#real-button").attr("data-faux", faux);
+
+          //appending attributes to each of the button ids
+          $("#faux-button").attr("data-source", source);
+          $("#faux-button").attr("data-title", title);
+          $("#faux-button").attr("data-url", url);
+          $("#faux-button").attr("data-date", date);
+          $("#faux-button").attr("data-faux", faux);
+      
         console.log(url)
 
 
@@ -747,8 +808,7 @@ function renderArticles(searchResponse, category){
               $('body').addClass('modal-active');
 
             } else {
-              $(".modal").empty();
-              var errorDiv = $("<div>");
+              //$(".modal").empty();
               errorDiv.append("<h3>Page Unable to Render</h3>");
               errorDiv.append("<p>We are sorry, this page is unable to display here.  Please click the link below to be taken to the article's site.</p>");
               errorDiv.append("<a class='erorLink' href='" + url + "''>Go to Article</button>");
@@ -764,8 +824,21 @@ function renderArticles(searchResponse, category){
         
     })
 
-    $('div').on("click", "div#modal-container", function(){
+          //console.log(url);
+    });
+
+    $('div').on("click", "div#modal-container", function(event){
           url = "";
+          // event.stopPropagation();
+          // var msg = "";
+          // if ( event.isPropagationStopped() ) {
+          //   msg = "called";
+          //   alert(msg);
+          // } else {
+          //   msg = "not called";
+          //   alert(msg);
+          // }
+          alert("The span element was clicked.");
           $(this).addClass('out');
           $('body').removeClass('modal-active');
           $(".modal").empty();
@@ -803,33 +876,6 @@ function renderArticles(searchResponse, category){
       // $(".panel").empty();
       // $(".panel").append('<h1 class="text-center">' + category + '</h1>');
       // $(".panel").append(newPanel);
-
-//IN USE FOR DATABASE. PLEASE DON'T DELETE
-//       var fauxNewButton = $("<button>Faux</button>");
-//       var realNewButton = $("<button>Real</button>");
-//       fauxNewButton.attr("type", "submit");
-//       //fauxNewButton.attr("id", "faux" + i);
-//       fauxNewButton.addClass("fauxButton");
-//       fauxNewButton.attr("data-source", searchResponse[i].source.name);
-//       fauxNewButton.attr("data-title", searchResponse[i].title);
-//       fauxNewButton.attr("data-url", searchResponse[i].url);
-//       fauxNewButton.attr("data-id", "faux-" + searchResponse[i].url);
-//       fauxNewButton.attr("data-date", searchResponse[i].publishedAt);
-//       realNewButton.addClass("realButton");
-//       realNewButton.attr("data-source", searchResponse[i].source.name);
-//       realNewButton.attr("data-title", searchResponse[i].title);
-//       realNewButton.attr("data-url", searchResponse[i].url);
-//       realNewButton.attr("data-date", searchResponse[i].publishedAt);
-//       realNewButton.attr("data-id", "real-" + searchResponse[i].url);
-
-
-//       newPanel.append(fauxNewButton);
-//       newPanel.append(realNewButton);
-
-//       $("#div-section").append(newPanel);
-
-
-//>>>>>>> c39d76481343a299113ce795bfa8f936904bccfc
 
 //================================================================================================
 //================================================================================================
