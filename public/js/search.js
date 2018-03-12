@@ -151,7 +151,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search");
         });
   }
 
@@ -170,7 +170,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search");
         });
   }
 
@@ -192,7 +192,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search CNN");
         });
   }
 
@@ -212,7 +212,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search CNN");
         });
   }
 
@@ -234,7 +234,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Wall Street Journal");
         });
   }
 
@@ -254,7 +254,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Wall Street Journal");
         });
   }
 
@@ -276,7 +276,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Huffington Post");
         });
   }
 
@@ -296,7 +296,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Huffington Post");
         });
   }
 
@@ -318,7 +318,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Vice News");
         });
   }
 
@@ -338,7 +338,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Vice News");
         });
   }
 
@@ -360,7 +360,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search USA Today");
         });
   }
 
@@ -380,7 +380,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search USA Today");
         });
   }
 
@@ -402,7 +402,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Google News");
         });
   }
 
@@ -422,7 +422,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Google News");
         });
   }
 
@@ -444,7 +444,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Buzzfeed News");
         });
   }
 
@@ -464,7 +464,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Search Buzzfeed News");
         });
   }
 
@@ -487,7 +487,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Trending");
         });
   };
 
@@ -504,7 +504,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Business");
         });
 
   }
@@ -523,7 +523,9 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          renderArticles(response.articles, "Sports");
+          modalButtons(response.articles);
+
         });
   }
 
@@ -541,7 +543,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Entertainment");
         });
   }
 
@@ -557,7 +559,7 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          return renderArticles(response.articles, "Technology");
         });
   }
 
@@ -567,8 +569,25 @@ console.log("here");
 //this function will render all other search functions
 
 
-function renderArticles(searchResponse){
+function renderArticles(searchResponse, category){
 
+      //rendering the modal for the tiles
+      var body = $(".putinmodal");
+
+      //for(var i = 0; i < 1; i++){
+        var modalContainer = $("<div>");
+        modalContainer.attr("id", "modal-container");
+        body.append(modalContainer);
+
+        var background = $("<div>");
+        background.addClass("modal-background");
+        modalContainer.append(background);
+
+        var modal = $("<div>");
+        modal.addClass("modal");
+        modal.append("<iframe id='myFrame' src=" + searchResponse[0].url + " style='height:500px;width:900px'></iframe>")
+        background.append(modal);
+      //}
 
       var newPanel = $("<div>");
       newPanel.attr("class", "main");
@@ -577,10 +596,7 @@ function renderArticles(searchResponse){
       newPanelList.attr("class", "og-grid");
       newPanel.append(newPanelList);
 
-
     for(var i = 0; i < searchResponse.length; i++){
-
-      //var articleDate = searchResponse[i].publishedAt
 
       var listItemOne = $("<li>")
       newPanelList.append(listItemOne);
@@ -600,7 +616,7 @@ function renderArticles(searchResponse){
       tileContent.addClass("tile" + i);
       newDiv.append(tileContent);
       //inside tilecontent
-      tileContent.append("<p class='tileTitle' style='font-size:90%'>" + searchResponse[i].title + "</p>");
+      tileContent.append("<p class='tileTitle' style='font-size:85%'>" + searchResponse[i].title + "</p>");
       tileContent.append("<p class='tileSource' style='font-size:50%'>" + searchResponse[i].source.name + "</p>");
       // tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p><br>");
 
@@ -631,6 +647,7 @@ function renderArticles(searchResponse){
       tileContent.append(buttonReal);
       tileContent.append(buttonFaux);
 
+      tileContent.append('<br><div class="voteContainer"><div class="notFakeVote">0%</div></div>')
       // var voteContain = $("div");
       // voteContain.addClass("voteContainer");
       // tileContent.append(voteContain);
@@ -638,29 +655,39 @@ function renderArticles(searchResponse){
       // var scale = $("div");
       // scale.addClass("notFakeVote");
       // voteContain.append(scale);
-
-      //  var fauxNewButton = $("<button>Faux</button>");
-      // var realNewButton = $("<button>Real</button>");
-      // fauxNewButton.attr("type", "submit");
-      //       fauxNewButton.attr("id", "faux" + i);
-      // fauxNewButton.addClass("fauxButton");
-      // fauxNewButton.attr("data-source", searchResponse[i].source.name);
-      // fauxNewButton.attr("data-title", searchResponse[i].title);
-      // fauxNewButton.attr("data-url", searchResponse[i].url);
-      // fauxNewButton.attr("data-id", "faux-" + searchResponse[i].url);
-      // realNewButton.addClass("realButton");
-      // realNewButton.attr("data-source", searchResponse[i].source.name);
-      // realNewButton.attr("data-title", searchResponse[i].title);
-      // realNewButton.attr("data-url", searchResponse[i].url);
-      // realNewButton.attr("data-id", "real-" + searchResponse[i].url);
-
-
-      // newPanel.append(fauxNewButton);
-      // newPanel.append(realNewButton);
+      newPanel.append('<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>');
 
 
       $(".panel").empty();
+      $(".panel").append('<h1 class="text-center" style="padding: 10px 0;">' + category + '</h1>');
       $(".panel").append(newPanel);
+    };
+    return;
+
+  }
+
+
+
+
+
+  
+    $('div').on ("click", "div.button", function(){
+        console.log("id two on click")
+          var buttonId = $(this).attr('id');
+          $('#modal-container').removeAttr('class').addClass(buttonId);
+          $('body').addClass('modal-active');
+    })
+
+    $('div').on("click", "div#modal-container", function(){
+          $(this).addClass('out');
+          $('body').removeClass('modal-active');
+    });
+
+
+    var iframe = document.getElementById("myFrame");
+    var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
+    elmnt.style.display = "none";
+  
 
 //IN USE FOR DATABASE. PLEASE DON'T DELETE
 //       var fauxNewButton = $("<button>Faux</button>");
@@ -686,8 +713,8 @@ function renderArticles(searchResponse){
 
 //       $("#div-section").append(newPanel);
 
-    };
-};
+
+//>>>>>>> c39d76481343a299113ce795bfa8f936904bccfc
 
 //================================================================================================
 //================================================================================================
