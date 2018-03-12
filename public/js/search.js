@@ -655,7 +655,7 @@ function renderArticles(searchResponse, category){
       newPanel.append('<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>');
 
       $(".panel").empty();
-      $(".panel").append('<h1 class="text-center">' + category + '</h1>');
+      $(".panel").append('<h1 class="text-center" style="padding: 10px 0;">' + category + '</h1>');
       $(".panel").append(newPanel);
     };
     return;
