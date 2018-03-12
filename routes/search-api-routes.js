@@ -1,5 +1,7 @@
 
 var db = require("../models");
+var request = require('request');
+var bodyParser = require("body-parser");
 
 
 
@@ -20,24 +22,28 @@ module.exports = function(app) {
 
 
 	
-	app.get("/api/search/:userinput", function(req, res){
+	app.post("/checkiframe", function(req, res){
+		//console.log("hereeeeeee")
+		console.log(req.body.url)
+		var queryUrl = req.body.url;
+		
 
-		// res.json(res);
+		request(queryUrl, function(error, response, body){
+		 	if (!error && response.statusCode === 200) {
+				console.log("here ============================")
+				if (response.headers["x-frame-options"] && (response.headers["x-frame-options"]==="SameOrigin" || response.headers["x-frame-options"]==="SAMEORIGIN")) {
+					res.send("false");
+				} else {
+					res.send("true");
+				}
+				console.log(response.headers["x-frame-options"]);
 
+			}
+		})
 	})
 
-	app.get("/api/trending", function(req, res){
 
-		//res.json(data);
-		console.log(req.body);
-	})
 
-	app.post("/api/settings", function(req, res) {
-  		db.Settings.create(req.body).then(function(settings) {
-  			console.log(settings);
-  			res.json(settings);
-  		})
-  	})
 };
 
 
