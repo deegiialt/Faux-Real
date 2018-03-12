@@ -254,7 +254,7 @@ li a:hover {
     background-color: #424B54;*/
     background-color: #7F7CAF;
     /*background-color: #4E6E5D;*/
-    padding: 5px;
+    padding: 20px;
     margin: 10px;
 }
 
@@ -300,14 +300,11 @@ li a:hover {
     background: #0392cf;   
 }
 
-.tileTitle:hover {
-    padding-top: 30px;
-}
 
-.tileImage {
+/*.tileImage {
   height: 115px;
   width: 115px;
-}
+}*/
 
 /*===============================================*/
 /*Button*/
