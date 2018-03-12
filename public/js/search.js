@@ -627,8 +627,8 @@ function renderArticles(searchResponse, category){
       errorDiv.append("<p>We are sorry, this page is unable to display here.  Please click the link below to be taken to the article's site.</p>");
       errorDiv.append("<a class='erorLink' href='" + url + "''>Go to Article</button>");
       modal.append(errorDiv)
-      
-      //this starts the tile rendering 
+
+      //this starts the tile rendering
       //================================================
       //================================================
 
@@ -673,7 +673,7 @@ function renderArticles(searchResponse, category){
 
       var tileDetails = $("<div>");
 
-      tileDetails.attr("class", "tileDetails");      
+      tileDetails.attr("class", "tileDetails");
       tileDetails.append("<p class='tileSource' style='font-size:75%'>" + searchResponse[i].source.name + "</p>");
       // tileContent.append("<p class='tileSource'>" + searchResponse[i].publishedAt + "</p><br>");
 
@@ -868,17 +868,17 @@ function renderArticles(searchResponse, category){
               $('body').addClass('modal-active');
 
             } else {
-              
+
               console.log("inside false conditional");
               $("#articleDiv").hide();
               $(".errorDiv").show();
 
               $(".errorDiv").find("a").attr("href", url)
-              
+
               $('#modal-container').removeAttr('class').addClass(buttonId);
               $('body').addClass('modal-active');
             }
-          
+
           })
 
     })
@@ -897,7 +897,7 @@ function renderArticles(searchResponse, category){
           //   msg = "not called";
           //   alert(msg);
           // }
-          alert("The span element was clicked.");
+          //alert("The span element was clicked.");
           $(this).addClass('out');
           $('body').removeClass('modal-active');
           //$(".modal").clear();
