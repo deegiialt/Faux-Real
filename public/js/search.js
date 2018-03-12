@@ -523,7 +523,8 @@ console.log("here");
 
         }).then(function(response){
           console.log(response);
-          return renderArticles(response.articles);
+          renderArticles(response.articles);
+          modalButtons(response.articles);
         });
   }
 
@@ -573,18 +574,20 @@ function renderArticles(searchResponse){
       //rendering the modal for the tiles
       var body = $(".putinmodal");
 
-      var modalContainer = $("<div>");
-      modalContainer.attr("id", "modal-container");
-      body.append(modalContainer);
+      for(var i = 0; i < 5; i++){
+        var modalContainer = $("<div>");
+        modalContainer.attr("id", "modal-container" + i);
+        body.append(modalContainer);
 
-      var background = $("<div>");
-      background.addClass("modal-background");
-      modalContainer.append(background);
+        var background = $("<div>");
+        background.addClass("modal-background");
+        modalContainer.append(background);
 
-      var modal = $("<div>");
-      modal.addClass("modal");
-      modal.append("<iframe id='myFrame' src=" + searchResponse[0].url + "style='height:500px;width:900px'></iframe>")
-      background.append(modal);
+        var modal = $("<div>");
+        modal.addClass("modal");
+        modal.append("<iframe id='myFrame' src=" + searchResponse[i].url + "style='height:500px;width:900px'></iframe>")
+        background.append(modal);
+      }
 
       var newPanel = $("<div>");
       newPanel.attr("class", "main");
@@ -593,15 +596,14 @@ function renderArticles(searchResponse){
       newPanelList.attr("class", "og-grid");
       newPanel.append(newPanelList);
       
-
-    for(var i = 0; i < searchResponse.length; i++){
+    for(var i = 0; i < 5; i++){
 
       var listItemOne = $("<li>")
       newPanelList.append(listItemOne);
       //inside list item
       var newDiv = $("<div>");
       newDiv.attr("id", "two");
-      newDiv.addClass("button");
+      newDiv.addClass("button" + i);
       listItemOne.append(newDiv)
       //inside "two" div
       var link = $("<a>");
@@ -641,29 +643,32 @@ function renderArticles(searchResponse){
       $(".panel").empty();
       $(".panel").append(newPanel);
     };
-    
-
-
+    return;
 
   }
 
 
+function modaleButtons(searchResponse){
 
-  $('div').on ("click", "div.button", function(){
-      console.log("id two on click")
-        var buttonId = $(this).attr('id');
-        $('#modal-container').removeAttr('class').addClass(buttonId);
-        $('body').addClass('modal-active');
-  })
+  
+    $('div').on ("click", "div.button", function(){
+        console.log("id two on click")
+          var buttonId = $(this).attr('id');
+          $('#modal-container').removeAttr('class').addClass(buttonId);
+          $('body').addClass('modal-active');
+    })
 
-  $('div').on("click", "div#modal-container", function(){
-        $(this).addClass('out');
-        $('body').removeClass('modal-active');
-  });
+    $('div').on("click", "div#modal-container", function(){
+          $(this).addClass('out');
+          $('body').removeClass('modal-active');
+    });
 
-  var iframe = document.getElementById("myFrame");
-  var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
-  elmnt.style.display = "none";
+    var iframe = document.getElementById("myFrame");
+    var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
+    elmnt.style.display = "none";
+  
+
+}
 
 //================================================================================================
 //================================================================================================
