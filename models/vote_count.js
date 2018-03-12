@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Count = sequelize.define("Count", {
-    article: { // article url (stored to save and display to users)
+    articleURL: { // article url (stored to save and display to users)
       type: DataTypes.STRING,
       validate: {
         isURL: true

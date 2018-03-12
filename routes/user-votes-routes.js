@@ -53,7 +53,7 @@
         articleURL: req.body.articleURL,
         articleTitle: req.body.articleTitle
       }).then(function(votes) {
-    		console.log("user vote is set");
+    		//console.log("user vote is set");
     		res.json(votes); //for individual vote
     	});
     });
