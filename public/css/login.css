@@ -73,6 +73,10 @@ body {
   height: 90%;
 }
 
+#login {
+  height: 75%;
+}
+
 /* The Close Button */
 .close, .close2 {
   color: #aaaaaa;

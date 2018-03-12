@@ -259,7 +259,7 @@ input.form-control, .btn-default {
 /*===============================================*/
 /*Tile Content*/
 /*===============================================*/
-li a:hover {
+a:hover {
     text-decoration: none;
     cursor: crosshair;
 }
@@ -292,15 +292,15 @@ li a:hover {
 }
 
 .tile0, .tile5, .tile10, .tile15 {
-  background-color: #f76f73;
+  background-color: #ee4035;
 }
 
 .tile1, .tile6, .tile11, .tile16  {
-  background-color: #fdb71e;
+  background-color: #f37736;
 }
 
 .tile2, .tile7, .tile12, .tile17  {
-  background-color: #f0e56d;
+  background-color: #f1e56c;
 }
 
 .tile3, .tile8, .tile13, .tile18  {
@@ -308,7 +308,7 @@ li a:hover {
 }
 
 .tile4, .tile9, .tile14, .tile19 {
-  background-color: #0393ce;
+  background-color: #0392cf;
 }
 
 
@@ -317,35 +317,45 @@ li a:hover {
   .tile5:hover,
   .tile10:hover,
   .tile15:hover {
-    background: #ee4035;
+    opacity: 0.7;
+    text-decoration: none;
+    cursor: crosshair;
 }
 
 .tile1:hover,
   .tile6:hover,
   .tile11:hover,
   .tile16:hover {
-    background: #f37736;
+    opacity: 0.7;
+    text-decoration: none;
+    cursor: crosshair;
 }
 
 .tile2:hover,
   .tile7:hover,
   .tile12:hover,
   .tile17:hover {
-    background: #f1e56c;
+    opacity: 0.7;
+    text-decoration: none;
+    cursor: crosshair;
 }
 
 .tile3:hover,
   .tile8:hover,
   .tile13:hover,
   .tile18:hover {
-    background: #7bc043;
+    opacity: 0.7;
+    text-decoration: none;
+    cursor: crosshair;
 }
 
 .tile4:hover,
   .tile9:hover,
   .tile14:hover,
   .tile19:hover {
-    background: #0392cf;
+    opacity: 0.7;
+    text-decoration: none;
+    cursor: crosshair;
 }
 
 /*===============================================*/
