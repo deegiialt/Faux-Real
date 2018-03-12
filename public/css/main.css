@@ -1,17 +1,7 @@
-
-  html, body {
-      height: 100%;
-      margin: 0;
-  }
-
-  body {
-      background-color: #000044;
-      font-family: Montserrat, sans-serif;
-      /*overflow: hidden;*/
-  }
-
-  #title {
-    font-size: 80px;
+html, body {
+    height: 100%;
+    margin: 0;
+}
 
 body {
     background-color: #9696b5;
@@ -29,351 +19,377 @@ body {
 }
 
 #headerText {
-
     color: white;
-    font-weight: bold;
-    letter-spacing: 6px;
-    margin bottom: 20px;
-    text-align: center;
-  }
+    text-decoration: none;
+    position: relative;
+    left: 15%;
+}
 
-  #headerText {
-      color: white;
-      text-decoration: none;
-      position: relative;
-      left: 15%;
-  }
+/*CSS rainbow hover effect for the header*/
+/*the next 4 lines control the rainbows speed*/
+#headerText:hover {
+-webkit-animation:headerText 2s infinite;
+-ms-animation:headerText 2s infinite;
+-o-animation:headerText 2s infinite;
+animation:headerText 2s infinite;
+}
+@-webkit-keyframes headerText {
+0% {color: #ff0000;}
+10% {color: #ff8000;}
+20% {color: #ffff00;}
+30% {color: #80ff00;}
+40% {color: #00ff00;}
+50% {color: #00ff80;}
+60% {color: #00ffff;}
+70% {color: #0080ff;}
+80% {color: #0000ff;}
+90% {color: #8000ff;}
+100% {color: #ff0080;}
+}
+@-ms-keyframes headerText {
+0% {color: #ff0000;}
+10% {color: #ff8000;}
+20% {color: #ffff00;}
+30% {color: #80ff00;}
+40% {color: #00ff00;}
+50% {color: #00ff80;}
+60% {color: #00ffff;}
+70% {color: #0080ff;}
+80% {color: #0000ff;}
+90% {color: #8000ff;}
+100% {color: #ff0080;}
+}
+@-o-keyframes headerText {
+0% {color: #ff0000;}
+10% {color: #ff8000;}
+20% {color: #ffff00;}
+30% {color: #80ff00;}
+40% {color: #00ff00;}
+50% {color: #00ff80;}
+60% {color: #00ffff;}
+70% {color: #0080ff;}
+80% {color: #0000ff;}
+90% {color: #8000ff;}
+100% {color: #ff0080;}
+}
+@keyframes headerText {
+0% {color: #ff0000;}
+10% {color: #ff8000;}
+20% {color: #ffff00;}
+30% {color: #80ff00;}
+40% {color: #00ff00;}
+50% {color: #00ff80;}
+60% {color: #00ffff;}
+70% {color: #0080ff;}
+80% {color: #0000ff;}
+90% {color: #8000ff;}
+100% {color: #ff0080;}
+}
 
-  /*CSS rainbow hover effect for the header*/
-  /*the next 4 lines control the rainbows speed*/
-  #headerText:hover {
-  -webkit-animation:headerText 2s infinite;
-  -ms-animation:headerText 2s infinite;
-  -o-animation:headerText 2s infinite;
-  animation:headerText 2s infinite;
-  }
-  @-webkit-keyframes headerText {
-  0% {color: #ff0000;}
-  10% {color: #ff8000;}
-  20% {color: #ffff00;}
-  30% {color: #80ff00;}
-  40% {color: #00ff00;}
-  50% {color: #00ff80;}
-  60% {color: #00ffff;}
-  70% {color: #0080ff;}
-  80% {color: #0000ff;}
-  90% {color: #8000ff;}
-  100% {color: #ff0080;}
-  }
-  @-ms-keyframes headerText {
-  0% {color: #ff0000;}
-  10% {color: #ff8000;}
-  20% {color: #ffff00;}
-  30% {color: #80ff00;}
-  40% {color: #00ff00;}
-  50% {color: #00ff80;}
-  60% {color: #00ffff;}
-  70% {color: #0080ff;}
-  80% {color: #0000ff;}
-  90% {color: #8000ff;}
-  100% {color: #ff0080;}
-  }
-  @-o-keyframes headerText {
-  0% {color: #ff0000;}
-  10% {color: #ff8000;}
-  20% {color: #ffff00;}
-  30% {color: #80ff00;}
-  40% {color: #00ff00;}
-  50% {color: #00ff80;}
-  60% {color: #00ffff;}
-  70% {color: #0080ff;}
-  80% {color: #0000ff;}
-  90% {color: #8000ff;}
-  100% {color: #ff0080;}
-  }
-  @keyframes headerText {
-  0% {color: #ff0000;}
-  10% {color: #ff8000;}
-  20% {color: #ffff00;}
-  30% {color: #80ff00;}
-  40% {color: #00ff00;}
-  50% {color: #00ff80;}
-  60% {color: #00ffff;}
-  70% {color: #0080ff;}
-  80% {color: #0000ff;}
-  90% {color: #8000ff;}
-  100% {color: #ff0080;}
-  }
+/*===============================================*/
+/*Sidebar*/
+/*===============================================*/
 
-  /*===============================================*/
-  /*Sidebar*/
-  /*===============================================*/
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    /*opacity: 0.9;*/
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
 
-  .sidenav {
-      height: 100%;
-      width: 0;
-      position: fixed;
-      z-index: 1;
-      top: 0;
-      left: 0;
-      background-color: white;
-      /*opacity: 0.9;*/
-      overflow-x: hidden;
-      transition: 0.5s;
-      padding-top: 60px;
-  }
-
-  .sidenav a {
-      padding: 8px 8px 8px 32px;
-      text-decoration: none;
-      font-size: 25px;
-      color: #cccccc;
-      display: block;
-      transition: 0.3s;
-  }
-
-  .sidenav a:hover {
-      color: #f1f1f1;
-  }
-
-  .sidenav .closebtn {
-      position: absolute;
-      top: 0;
-      right: 25px;
-      font-size: 36px;
-      margin-left: 50px;
-  }
-
-  @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-  }
-
-  /*===============================================*/
-  /*CHAT*/
-  /*===============================================*/
-
-  .chatForm {
-      font-family: Roboto, sans-serif;
-      max-width: 260px;
-      height: 600px;
-      margin: 10px auto;
-      border-radius: 5px;
-  }
-
-  .msg-wrapper {
-      max-height: 400px;
-      overflow: auto;
-  }
-
-  .msg-wrapper div {
-      font-size: 16px;
-  }
-
-  .textboxes {
-  	margin-top: 80%;
-  }
-
-  .columns {
-      padding-left: 25px;
-  }
-
-  #nameInput,
-  textarea {
-      width: 250px;
-      border: 1px solid #ccc;
-      padding: 10px;
-      display: inline-block;
-  }
-
-  .error {
-      color: red;
-      font-size: -2em;
-  }
-
-  input[type=submit] {
-      width: 30%;
-      background-color: #cccccc;
-      cursor: pointer;
-  }
-
-  #messagesDiv {
-      color: black;
-  }
-
-  #chatText {
-      margin: 15px;
-  }
-
-  /*===============================================*/
-  /*NAV*/
-  /*===============================================*/
-
-  #search-form {
-      float: right;
-      margin: 15px;
-      max-width: 23%;
-  }
-
-  #advancedOptions,
-  #userInfo {
-      padding: 15px;
-  }
-
-  #logoutbutton {
-      padding: 5px;
-      display: block;
-      margin: 0 auto;
-  }
-
-  #userInfo {
-      position: absolute;
-      left: -120px;
-  }
-
-  .nav>li>a {
-      color: white;
-  }
-
-  .navLinks:hover {
-     cursor: crosshair;
-     color: #ee4035;
-     background-color: white !important;
-  }
-
-  input.form-control, .btn-default {
-      border-radius: 0 !important;
-  }
-
-  /*===============================================*/
-  /*Results panel*/
-  /*===============================================*/
-  .panel {
-      border-radius: 0;
-      margin:0;
-      height: 125vh;
-  }
-
-  #topArticles {
-      padding:0;
-      height: auto;
-  }
-
-  /*===============================================*/
-  /*Tile Content*/
-  /*===============================================*/
-  li a:hover {
-      text-decoration: none;
-      cursor: crosshair;
-  }
-
-  .tileContent {
-  /*    background-color: #000044;
-      background-color: #2274A5;
-      background-color: #FFBF00;
-      background-color: #A9ACA9;
-      background-color: #424B54;*/
-      background-color: #7F7CAF;
-      /*background-color: #4E6E5D;*/
-      padding: 20px;
-      margin: 10px;
-  }
-
-  .tileContent {
-      width: 250px;
-      height: 250px;
-    /*  background-color: #337d81b8;*/
-      color:white;
-  }
-
-  .tile0:hover,
-    .tile5:hover,
-    .tile10:hover,
-    .tile15:hover {
-      background: #ee4035;
-  }
-
-  .tile1:hover,
-    .tile6:hover,
-    .tile11:hover,
-    .tile16:hover {
-      background: #f37736;
-  }
-
-  .tile2:hover,
-    .tile7:hover,
-    .tile12:hover,
-    .tile17:hover {
-      background: #f1e56c;
-  }
-
-  .tile3:hover,
-    .tile8:hover,
-    .tile13:hover,
-    .tile18:hover {
-      background: #7bc043;
-  }
-
-  .tile4:hover,
-    .tile9:hover,
-    .tile14:hover,
-    .tile19:hover {
-      background: #0392cf;
-  }
-
-  /*===============================================*/
-  /*Button*/
-  /*===============================================*/
-  .voteButton {
-      /*background-color: #337d81b8;*/
-      background-color: white;
-      outline-offset: 0;
-      color: #000044;
-      margin-right: 1%;
-  }
-
-  /*Voting bars*/
-  .notFakeVote {
-      width:70%;
-      background-color: #cccccc;
-  }
-
-  .voteContainer {
-      background-color: white;
-      margin: 15px;
-  }
-
-  #profileName {
-      text-transform: capitalize;
-  }
-
-  .glyphicon-ok, .glyphicon-remove {
-    font-size: 30px;
-  }
-
-  #button-div {
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #cccccc;
     display: block;
-    margin-top: 1%;
-  }
+    transition: 0.3s;
+}
 
-  /*==========
-  Footer
-  ==========*/
-  .wrapper {
-    min-height: auto;
-    /* Equal to height of footer */
-    /* But also accounting for potential margin-bottom of last child */
-    margin-bottom: -25px;
-  }
+.sidenav a:hover {
+    color: #f1f1f1;
+}
 
-  #footer {
-      height: 25px;
-      padding: 10px;
-      text-decoration: none;
-      color: white !important;
-  }
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+/*===============================================*/
+/*CHAT*/
+/*===============================================*/
+
+.chatForm {
+    font-family: Roboto, sans-serif;
+    max-width: 260px;
+    height: 600px;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+.msg-wrapper {
+    max-height: 400px;
+    overflow: auto;
+}
+
+.msg-wrapper div {
+    font-size: 16px;
+}
+
+.textboxes {
+  margin-top: 80%;
+}
+
+.columns {
+    padding-left: 25px;
+}
+
+#nameInput,
+textarea {
+    width: 250px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: inline-block;
+}
+
+.error {
+    color: red;
+    font-size: -2em;
+}
+
+input[type=submit] {
+    width: 30%;
+    background-color: #cccccc;
+    cursor: pointer;
+}
+
+#messagesDiv {
+    color: black;
+}
+
+#chatText {
+    margin: 15px;
+}
+
+/*===============================================*/
+/*NAV*/
+/*===============================================*/
+
+#search-form {
+    float: right;
+    margin: 15px;
+    max-width: 23%;
+}
+
+#advancedOptions,
+#userInfo {
+    padding: 15px;
+}
+
+#logoutbutton {
+    padding: 5px;
+    display: block;
+    margin: 0 auto;
+}
+
+#userInfo {
+    position: absolute;
+    left: -120px;
+}
+
+.nav-tabs.nav-justified>li>a {
+  margin-bottom: 10px;
+}
+
+.nav>li>a {
+    color: white;
+}
+
+.navLinks:hover {
+   cursor: crosshair;
+   color: #ee4035;
+   background-color: white !important;
+}
+
+input.form-control, .btn-default {
+    border-radius: 0 !important;
+}
+
+/*===============================================*/
+/*Results panel*/
+/*===============================================*/
+.panel {
+    border-radius: 0;
+    margin:0;
+}
+
+.panel-body {
+    height: 90%;
+}
+
+
+.main {
+  height: 400px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+#topArticles {
+    padding:0;
+    height: auto;
+}
+
+/*===============================================*/
+/*Tile Content*/
+/*===============================================*/
+li a:hover {
+    text-decoration: none;
+    cursor: crosshair;
+}
+
+.tileContent {
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+    margin: 10px;
+  /*background-color: #337d81b8;*/
+    color:white;
+    white-space: normal;
+    /*background-color: #000044;
+    background-color: #2274A5;
+    background-color: #FFBF00;
+    background-color: #A9ACA9;
+    background-color: #424B54;*/
+    /*background-color: #7F7CAF;*/
+    /*background-color: #4E6E5D;*/
+    position: relative;
+
+}
+
+.tileDetails {
+  position: absolute;
+  bottom: 20px;
+  display: block;
+  margin: 0 auto;
+  width: 88%;
+}
+
+.tile0, .tile5, .tile10, .tile15 {
+  background-color: #f76f73;
+}
+
+.tile1, .tile6, .tile11, .tile16  {
+  background-color: #fdb71e;
+}
+
+.tile2, .tile7, .tile12, .tile17  {
+  background-color: #f0e56d;
+}
+
+.tile3, .tile8, .tile13, .tile18  {
+  background-color: #7bc043;
+}
+
+.tile4, .tile9, .tile14, .tile19 {
+  background-color: #0393ce;
+}
 
 
 
+.tile0:hover,
+  .tile5:hover,
+  .tile10:hover,
+  .tile15:hover {
+    background: #ee4035;
+}
 
+.tile1:hover,
+  .tile6:hover,
+  .tile11:hover,
+  .tile16:hover {
+    background: #f37736;
+}
 
+.tile2:hover,
+  .tile7:hover,
+  .tile12:hover,
+  .tile17:hover {
+    background: #f1e56c;
+}
+
+.tile3:hover,
+  .tile8:hover,
+  .tile13:hover,
+  .tile18:hover {
+    background: #7bc043;
+}
+
+.tile4:hover,
+  .tile9:hover,
+  .tile14:hover,
+  .tile19:hover {
+    background: #0392cf;
+}
+
+/*===============================================*/
+/*Button*/
+/*===============================================*/
+.voteButton {
+    background-color: white;
+    outline-offset: 0;
+    color: #000044;
+}
+
+/*Voting bars*/
+.notFakeVote {
+    width:70%;
+    background-color: #cccccc;
+}
+
+.voteContainer {
+    background-color: white;
+    margin: 15px;
+}
+
+#profileName {
+    text-transform: capitalize;
+}
+
+.glyphicon-ok, .glyphicon-remove {
+  font-size: 30px;
+}
+
+/*==========
+Footer
+==========*/
+.wrapper {
+  min-height: auto;
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+  margin-bottom: -25px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+    height: 25px;
+    padding: 10px;
+    text-decoration: none;
+    color: white !important;
+}
