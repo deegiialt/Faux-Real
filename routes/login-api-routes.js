@@ -36,6 +36,7 @@
                     failureRedirect : 'http://localhost:8080/'
             }));
 
+    //other tries
 
     // app.get('/auth/google/callback',
     //     passport.authenticate('google', { failureRedirect: '/' }),
@@ -43,6 +44,7 @@
     //  // absolute path
     //         res.redirect('/main');
     // });
+
 
     // app.get('/auth/google/callback',
     //   passport.authenticate('google'), // complete the authenticate using the google strategy
@@ -57,6 +59,36 @@
     //     res.redirect('/main');
     //   }
     // );
+
+
+    // =====================================
+    // TWITTER ROUTES ======================
+    // =====================================
+    // route for twitter authentication and login
+    app.get('/auth/twitter', passport.authenticate('twitter'));
+
+    // handle the callback after twitter has authenticated the user
+    app.get('/auth/twitter/callback',
+        passport.authenticate('twitter', {
+            successRedirect : '/main',
+            failureRedirect : '/'
+        }));
+
+    // =====================================
+    // FACEBOOK ROUTES =====================
+    // =====================================
+    // route for facebook authentication and login
+    app.get('/auth/facebook', passport.authenticate('facebook', { 
+      scope : ['public_profile', 'email']
+    }));
+
+    // handle the callback after facebook has authenticated the user
+    app.get('/auth/facebook/callback',
+        passport.authenticate('facebook', {
+            successRedirect : '/main',
+            failureRedirect : '/'
+        }));
+
 
   };
 
