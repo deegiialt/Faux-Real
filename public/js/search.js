@@ -660,7 +660,7 @@ function renderArticles(searchResponse){
 
 
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
   
     $('div').on ("click", "div.button", function(){
         console.log("id two on click")
@@ -680,7 +680,7 @@ function renderArticles(searchResponse){
   
 
 
-=======
+//=======
       $(".panel").empty();
       $(".panel").append(newPanel);
 
@@ -708,9 +708,8 @@ function renderArticles(searchResponse){
 
 //       $("#div-section").append(newPanel);
 
-    };
-};
->>>>>>> c39d76481343a299113ce795bfa8f936904bccfc
+
+//>>>>>>> c39d76481343a299113ce795bfa8f936904bccfc
 
 //================================================================================================
 //================================================================================================
@@ -732,6 +731,7 @@ function renderArticles(searchResponse){
   };
 
 });
+
 
 
 
