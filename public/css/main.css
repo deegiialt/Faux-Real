@@ -232,7 +232,13 @@ input.form-control, .btn-default {
 .panel {
     border-radius: 0;
     margin:0;
-    height: 125vh;
+}
+
+.main {
+  height: 400px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
 }
 
 #topArticles {
@@ -258,13 +264,11 @@ li a:hover {
     /*background-color: #4E6E5D;*/
     padding: 20px;
     margin: 10px;
-}
-
-.tileContent {
-    width: 250px;
-    height: 250px;
-  /*  background-color: #337d81b8;*/
+    white-space: normal;
+    height: 300px !important;
+    width: 300px !important;
     color:white;
+
 }
 
 .tile0:hover,
