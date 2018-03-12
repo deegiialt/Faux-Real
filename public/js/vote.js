@@ -1,12 +1,23 @@
-
-$(document).ready(function() {
-
+console.log("horsey");
   var totalArr = [];
   var fauxArr = [];
 
 // ajax post for faux to both routes with unique id identifier
-  $(document).on("click", ".fauxButton",function() {
-        //event.stopPropagation();
+
+  $(document).on("click", ".faux-button",function(event) {
+        // console.log("______________________________________________");
+        // console.log("faux button works");
+        //
+        // event.stopPropagation();
+        // var msg = "";
+        // if ( event.isPropagationStopped() ) {
+        //   msg = "called";
+        //   console.log(msg);
+        // } else {
+        //   msg = "not called";
+        //   console.log(msg);
+        // }
+
         var id = $(this).data("id");
         var vote = true;
         var source = $(this).data("source");
@@ -79,10 +90,7 @@ $(document).ready(function() {
               }
             }
           });
-
-
-  });
-
+    });
 
 
 
@@ -91,9 +99,18 @@ $(document).ready(function() {
   // ajax post for real votes to both routes with unique id identifier
   //___________________________________________________________________
 
-  function realVote(cb) {
-    $(document).on("click", ".realButton",function(event) {
-      //event.stopPropagation();
+    $(document).on("click", ".real-button",function(event) {
+        console.log("______________________________________________");
+        console.log("real button works");
+      // event.stopPropagation();
+      // var msg = "";
+      // if ( event.isPropagationStopped() ) {
+      //   msg = "called";
+      //   console.log(msg);
+      // } else {
+      //   msg = "not called";
+      //   console.log(msg);
+      // }
 
         var id = $(this).data("id");
         var vote = true;
@@ -168,8 +185,6 @@ $(document).ready(function() {
 
     });
 
-    cb();
-  }
 
   function chart() {
     var fauxArrLength = fauxArr.length;
@@ -181,6 +196,8 @@ $(document).ready(function() {
       console.log("______________________________________________");
       console.log(percent + "%");
       //display percentage in chart (push value into html)
+      $(".notFakeVote").text(percent + "%");
+      $(".notFakeVote").css("width": percent + "%");
     }
     else{
       //display 0%
@@ -189,21 +206,40 @@ $(document).ready(function() {
   }
 
 
+  $('#real-button').click(function(){
+    console.log("______________________________________________");
+    console.log("real button is working");
+    event.stopPropagation();
+    var msg = "";
+    if ( event.isPropagationStopped() ) {
+      msg = "called";
+      console.log(msg);
+    } else {
+      msg = "not called";
+      console.log(msg);
+    }
+  });
+
+  $('#faux-button').click(function(){
+    console.log("______________________________________________");
+    console.log("faux button is working");
+    event.stopPropagation();
+    var msg = "";
+    if ( event.isPropagationStopped() ) {
+      msg = "called";
+      console.log(msg);
+    } else {
+      msg = "not called";
+      console.log(msg);
+    }
+  });
+
+
 
   //___________________________________________________________________
   //setup get route to push new values to the page
   //___________________________________________________________________
 
-  // function loadTiles() {
-  //   $(".notFakeVote").on("load", function() {
-  //     console.log("panel is loading and works");
-  //   })
-  //
-  // }
-
-  realVote();
-
-  // loadTiles();
 
 
-});
+  }
