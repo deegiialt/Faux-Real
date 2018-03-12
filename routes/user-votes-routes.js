@@ -1,7 +1,7 @@
   //user vote api routes
   var db = require("../models");
   var Votes = require("../models").Vote;
-  var Count = require("../models").Count;
+
 
   console.log(Votes);
 

@@ -2,30 +2,29 @@ module.exports = function(sequelize, DataTypes) {
   var Count = sequelize.define("Count", {
     article: { // article url (stored to save and display to users)
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
         isURL: true
       }
     },
     articleTitle: { // article title
       type: DataTypes.STRING,
-      allowNull: false
+      //allowNull: false
     },
     source: { // source of the article (i.e. New York Times)
       type: DataTypes.STRING,
-      allowNull: false
+      //allowNull: false
     },
     datePublished: {
       type: DataTypes.DATE,
-      allowNull: false
+      //allowNull: false
     },
     faux: { //array of fake votes Note: only works with postgreSQL
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.BOOLEAN,
+      //allowNull: false
     },
     real: { //array of real votes Note: only works with postgreSQL
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.BOOLEAN,
+      //allowNull: false
     }
   });
 
