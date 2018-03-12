@@ -669,7 +669,7 @@ function renderArticles(searchResponse, category){
 
       //inside tilecontent
 
-      tileContent.append("<p class='tileTitle' style='font-size:125%;overflow:visible;display:block !important'>" + searchResponse[i].title + "</p>");
+      tileContent.append("<p class='tileTitle' style='font-size:110%;overflow:visible;display:block !important'>" + searchResponse[i].title + "</p>");
 
       var tileDetails = $("<div>");
 
