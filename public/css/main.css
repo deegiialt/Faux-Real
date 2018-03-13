@@ -396,11 +396,15 @@ Footer
   margin-bottom: -25px;
 }
 
+a#footer {
+  color: white;
+}
+
 .footer {
   position: absolute;
   bottom: 0px;
-    height: 25px;
-    padding: 10px;
-    text-decoration: none;
-    color: white !important;
+  height: 25px;
+  padding: 10px;
+  text-decoration: none;
+  color: white !important;
 }
