@@ -697,10 +697,10 @@ function renderArticles(searchResponse, category){
 
 
       if (searchResponse[i].urlToImage === null) {
-      tileDetails.append("<img class='tileImage' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtrVBUxp2hTkZEGWzqxkT-mC0p5MFaiqsIVV5As2qO4M_U2XgiQ' width='125px' height='150px'>");
+      tileDetails.append("<img class='tileImage' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhtrVBUxp2hTkZEGWzqxkT-mC0p5MFaiqsIVV5As2qO4M_U2XgiQ' width='150px' height='150px'>");
       } else {
 
-      tileDetails.append("<img class='tileImage' src='" + searchResponse[i].urlToImage + "' width='150px' height='125px' >");
+      tileDetails.append("<img class='tileImage' src='" + searchResponse[i].urlToImage + "' width='150px' height='150px' >");
 
       }
 
