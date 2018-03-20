@@ -17,5 +17,5 @@ https://drive.google.com/file/d/10PKntnXEvlCWEzH2bsvjVWafTQRvMzgJ/view
 
 ## Guest Login
 > Test out site with our guest login.
-user: 
-password: 
+user: guest
+password: guest
