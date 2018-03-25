@@ -1,8 +1,9 @@
 # Faux Real
 > News site where users can vote whether they think an article is "fake news" or not.
+http://faux-real.herokuapp.com/
 
 ## Technology used
-Node.js, Javascript, ejs, Firebase, Passport, jQuery, mySQL, sequelize, SASS, express.js
+Node.js, Javascript, ejs, Firebase, Passport, jQuery, mySQL, sequelize, SASS, express.js, Heroku deployment (JawsDB used)
 
 ## How to use
 1. At login page, users can sign-up or login.
