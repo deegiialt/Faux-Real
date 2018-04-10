@@ -17,6 +17,6 @@ Node.js, Javascript, ejs, Firebase, Passport, jQuery, mySQL, sequelize, SASS, ex
 https://drive.google.com/file/d/10PKntnXEvlCWEzH2bsvjVWafTQRvMzgJ/view
 
 ## Guest Login
-> Test out site with our guest login.
-user: guest
-password: guest
+Test out site with our guest login.
+#### user: guest
+#### password: guest
